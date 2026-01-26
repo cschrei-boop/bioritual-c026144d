@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { ProblemIllustration } from "@/components/illustrations";
 
 const Problem = () => {
   const ref = useRef(null);
@@ -15,10 +16,10 @@ const Problem = () => {
 
   return (
     <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden">
-      {/* Graphic elements */}
-      <div className="absolute top-10 left-10 w-24 h-24 rounded-full border border-cyan/30" />
-      <div className="absolute top-16 left-16 w-16 h-16 rounded-full border border-magenta/30" />
-      <div className="absolute bottom-20 right-16 w-20 h-20 rounded-full bg-yellow/10" />
+      {/* Problem Illustration */}
+      <div className="absolute top-8 left-4 md:left-8 w-32 md:w-40 h-32 md:h-40 opacity-60">
+        <ProblemIllustration />
+      </div>
 
       <div className="relative z-10 max-w-3xl mx-auto">
         <motion.div

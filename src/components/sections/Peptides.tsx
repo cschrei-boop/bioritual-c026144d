@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { PeptidesIllustration } from "@/components/illustrations";
 
 const applications = [
   { name: "Metabolic", peptides: "GLP-1", color: "cyan" },
@@ -15,11 +16,10 @@ const Peptides = () => {
 
   return (
     <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden">
-      {/* DNA-like graphic */}
-      <svg className="absolute right-0 top-0 h-full w-32 opacity-10" viewBox="0 0 50 200">
-        <path d="M25 0 Q40 50 25 100 Q10 150 25 200" fill="none" stroke="hsl(185 100% 45%)" strokeWidth="1" />
-        <path d="M25 0 Q10 50 25 100 Q40 150 25 200" fill="none" stroke="hsl(320 100% 50%)" strokeWidth="1" />
-      </svg>
+      {/* DNA/Peptides Illustration */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-24 md:w-32 h-48 md:h-64 opacity-50">
+        <PeptidesIllustration />
+      </div>
 
       <div className="relative z-10 max-w-3xl mx-auto">
         <div className="grid md:grid-cols-2 gap-6">
