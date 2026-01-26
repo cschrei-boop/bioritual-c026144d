@@ -16,7 +16,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 py-24 overflow-hidden">
+    <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 lg:px-16 py-16 overflow-hidden">
       {/* Oversized hero image - positioned absolutely */}
       <motion.div
         initial={{ opacity: 0, scale: 1.1 }}
@@ -48,7 +48,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-8"
+          className="mb-4"
         >
           <span className="text-xs tracking-[0.4em] text-muted-foreground uppercase">BIORITUAL</span>
         </motion.div>
@@ -87,7 +87,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-12 max-w-md space-y-4"
+          className="mt-8 max-w-md space-y-2"
         >
           <p className="text-muted-foreground">
             Not what the algorithm says.
@@ -107,7 +107,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-12 max-w-md"
+          className="mt-8 max-w-md"
         >
           <p className="text-xs text-muted-foreground mb-3 uppercase tracking-wider">
             Start by telling us where you're at
@@ -141,7 +141,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 pt-8 border-t border-border/20 max-w-2xl"
+          className="mt-10 pt-6 border-t border-border/20 max-w-2xl"
         >
           <p className="text-xs text-muted-foreground mb-4 uppercase tracking-wider">
             Or explore at your own pace
