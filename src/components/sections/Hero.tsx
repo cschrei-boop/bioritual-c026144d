@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Sparkles, Calendar, BookOpen } from "lucide-react";
+import { HeroIllustration } from "@/components/illustrations";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
@@ -15,20 +16,13 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 lg:px-16 py-16 overflow-hidden">
-      {/* Graphic elements */}
-      <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-gradient-to-br from-cyan to-primary opacity-20 blur-2xl" />
-      <div className="absolute top-40 right-32 w-20 h-20 rounded-full bg-magenta opacity-15 blur-xl" />
-      <div className="absolute bottom-32 right-20 w-24 h-24 rounded-full bg-yellow opacity-20 blur-xl" />
-      <div className="absolute top-1/2 right-1/4 w-2 h-2 rounded-full bg-cyan" />
-      <div className="absolute top-1/3 right-1/3 w-3 h-3 rounded-full bg-magenta" />
-      <div className="absolute bottom-1/3 right-1/5 w-2 h-2 rounded-full bg-yellow" />
+      {/* Hero Illustration */}
+      <div className="absolute top-1/2 right-8 md:right-16 lg:right-24 -translate-y-1/2 w-48 md:w-64 lg:w-80 h-64 md:h-80 lg:h-96 opacity-80">
+        <HeroIllustration />
+      </div>
       
-      {/* Decorative lines */}
-      <svg className="absolute top-32 right-16 w-48 h-48 opacity-30" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="40" fill="none" stroke="hsl(185 100% 45%)" strokeWidth="0.5" />
-        <circle cx="50" cy="50" r="30" fill="none" stroke="hsl(320 100% 50%)" strokeWidth="0.5" />
-        <circle cx="50" cy="50" r="20" fill="none" stroke="hsl(45 100% 55%)" strokeWidth="0.5" />
-      </svg>
+      {/* Background glow */}
+      <div className="absolute top-1/2 right-16 w-64 h-64 rounded-full bg-gradient-to-br from-cyan/10 via-magenta/10 to-yellow/10 blur-3xl" />
       
       <div className="relative z-10 max-w-4xl">
         {/* Logo */}

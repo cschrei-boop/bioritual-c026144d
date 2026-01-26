@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { TimelineIllustration } from "@/components/illustrations";
 
 const WhyNinetyDays = () => {
   const ref = useRef(null);
@@ -14,11 +15,9 @@ const WhyNinetyDays = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          {/* Visual accent */}
-          <div className="flex justify-center gap-2 mb-6">
-            <div className="w-16 h-1 rounded-full bg-cyan" />
-            <div className="w-16 h-1 rounded-full bg-magenta" />
-            <div className="w-16 h-1 rounded-full bg-yellow" />
+          {/* Timeline Illustration */}
+          <div className="w-full max-w-md mx-auto mb-6">
+            <TimelineIllustration />
           </div>
 
           <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-4">

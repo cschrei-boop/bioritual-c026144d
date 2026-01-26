@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Check } from "lucide-react";
+import { ProfessionalIllustration } from "@/components/illustrations";
 
 const features = ["Clear protocols", "Flexible consistency", "No shame", "Works on off days"];
 
@@ -19,17 +20,9 @@ const BuiltFor = () => {
           className="bg-card border border-border rounded-3xl p-6 md:p-8"
         >
           <div className="flex flex-col md:flex-row md:items-center gap-6">
-            {/* Left - Graphic */}
-            <div className="flex-shrink-0">
-              <div className="relative w-24 h-24">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan via-magenta to-yellow opacity-20" />
-                <div className="absolute inset-2 rounded-xl bg-card flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-4 h-4 mx-auto rounded-full bg-gradient-to-br from-cyan to-magenta mb-1" />
-                    <span className="text-xs font-medium">You</span>
-                  </div>
-                </div>
-              </div>
+            {/* Left - Illustration */}
+            <div className="flex-shrink-0 w-28 h-28 md:w-32 md:h-32">
+              <ProfessionalIllustration />
             </div>
 
             {/* Right - Content */}
