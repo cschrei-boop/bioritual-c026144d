@@ -14,7 +14,7 @@ import backgroundVideo from "@/assets/background-video.mp4";
 const Index = () => {
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
-      <VideoBackground src={backgroundVideo} opacity={0.2} />
+      <VideoBackground src={backgroundVideo} opacity={0.5} />
       <Hero />
       <Problem />
       <ThreeLegs />
