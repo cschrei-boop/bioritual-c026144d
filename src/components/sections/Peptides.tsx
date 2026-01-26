@@ -1,13 +1,12 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const applications = [
-  "Metabolic optimization (GLP-1–based peptides)",
-  "Tissue repair (BPC-157, TB-500)",
-  "Cognitive clarity (Semax, Selank)",
-  "Longevity signaling (Epithalon, GHK-Cu)",
+  { name: "Metabolic", peptides: "GLP-1", color: "cyan" },
+  { name: "Tissue repair", peptides: "BPC-157", color: "magenta" },
+  { name: "Cognitive", peptides: "Semax", color: "yellow" },
+  { name: "Longevity", peptides: "Epithalon", color: "cyan" },
 ];
 
 const Peptides = () => {
@@ -16,92 +15,86 @@ const Peptides = () => {
 
   return (
     <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden">
-      <div className="max-w-5xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
-          {/* Image placeholder */}
+      {/* DNA-like graphic */}
+      <svg className="absolute right-0 top-0 h-full w-32 opacity-10" viewBox="0 0 50 200">
+        <path d="M25 0 Q40 50 25 100 Q10 150 25 200" fill="none" stroke="hsl(185 100% 45%)" strokeWidth="1" />
+        <path d="M25 0 Q10 50 25 100 Q40 150 25 200" fill="none" stroke="hsl(320 100% 50%)" strokeWidth="1" />
+      </svg>
+
+      <div className="relative z-10 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Left - Content */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="relative order-2 lg:order-1"
+            className="space-y-4"
           >
-            <div className="aspect-[4/3] rounded-3xl overflow-hidden sticky top-20">
-              <img src={heroPortrait} alt="Placeholder" className="w-full h-full object-cover" />
-              <div className="absolute bottom-3 left-3 right-3 backdrop-blur-md bg-background/50 rounded-xl px-3 py-2 border border-border/30">
-                <p className="text-xs text-muted-foreground italic">Illustration placeholder</p>
-              </div>
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-cyan to-magenta" />
+              <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase font-medium">
+                Peptides
+              </p>
             </div>
+            
+            <h2 className="font-serif text-2xl md:text-3xl">
+              Biology's <span className="italic text-cyan">Native</span> Language
+            </h2>
+            
+            <p className="text-sm text-muted-foreground">
+              Peptides are signaling molecules your body already produces. They communicate with your biology — not override it.
+            </p>
+
+            <ul className="space-y-2 text-sm">
+              <li className="flex items-center gap-2">
+                <span className="text-cyan">→</span>
+                <span>Work within existing feedback loops</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-magenta">→</span>
+                <span>Respect regulatory systems</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-yellow">→</span>
+                <span>Require receptor availability</span>
+              </li>
+            </ul>
           </motion.div>
 
-          {/* Content */}
-          <div className="space-y-4 order-1 lg:order-2">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="backdrop-blur-xl bg-background/60 border border-border/50 rounded-2xl p-5"
-            >
-              <p className="text-xs tracking-[0.2em] text-primary uppercase mb-2 font-medium">
-                Understanding Peptides
-              </p>
-              <h2 className="font-serif text-2xl md:text-3xl">
-                Biology's <span className="italic text-primary">Native Language</span>
-              </h2>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="backdrop-blur-xl bg-background/60 border border-border/50 rounded-2xl p-5"
-            >
-              <p className="text-sm text-muted-foreground mb-3">
-                Peptides are signaling molecules your body already produces. Unlike supplements or medications, they:
-              </p>
-              <ul className="space-y-1.5 text-sm">
-                <li className="flex items-center gap-2 text-foreground/90">
-                  <span className="text-primary font-bold">→</span>
-                  Work within existing biological feedback loops
-                </li>
-                <li className="flex items-center gap-2 text-foreground/90">
-                  <span className="text-primary font-bold">→</span>
-                  Respect your body's regulatory systems
-                </li>
-              </ul>
-              <p className="text-sm text-foreground mt-3 font-medium">
-                They <span className="text-primary">communicate</span> with your biology, not override it.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="backdrop-blur-xl bg-background/60 border border-border/50 rounded-2xl p-5"
-            >
-              <h3 className="font-serif text-lg text-foreground mb-3">Common applications:</h3>
-              <ul className="grid grid-cols-2 gap-2">
-                {applications.map((app, index) => (
-                  <li key={index} className="flex items-start gap-2 text-xs text-muted-foreground">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1 flex-shrink-0" />
-                    {app}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.blockquote
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="backdrop-blur-xl bg-primary/10 border border-primary/30 rounded-2xl p-5"
-            >
-              <p className="font-serif text-lg italic text-foreground/90">
-                "Your body decides how to respond — based on what it needs."
-              </p>
-            </motion.blockquote>
-          </div>
+          {/* Right - Applications grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="grid grid-cols-2 gap-3"
+          >
+            {applications.map((app, index) => (
+              <motion.div
+                key={app.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                className={`bg-card border border-border rounded-xl p-4 hover:border-${app.color}/50 transition-colors`}
+              >
+                <div className={`w-2 h-2 rounded-full bg-${app.color} mb-2`} />
+                <p className="font-medium text-sm">{app.name}</p>
+                <p className="text-xs text-muted-foreground">{app.peptides}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
+
+        {/* Quote */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-8 bg-gradient-to-r from-cyan/10 via-magenta/10 to-yellow/10 rounded-2xl p-5 text-center"
+        >
+          <p className="font-serif text-lg italic">
+            "Your body decides how to respond — based on what it needs."
+          </p>
+        </motion.div>
       </div>
     </section>
   );

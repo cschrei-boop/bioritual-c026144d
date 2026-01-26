@@ -3,57 +3,46 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Sparkles, Calendar, BookOpen } from "lucide-react";
-import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle email submission
     console.log("Email submitted:", email);
     setEmail("");
   };
 
   return (
     <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 lg:px-16 py-16 overflow-hidden">
-      {/* Oversized hero image - positioned absolutely */}
-      <motion.div
-        initial={{ opacity: 0, scale: 1.1 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.2, delay: 0.2 }}
-        className="absolute top-0 right-0 w-[50%] md:w-[45%] lg:w-[40%] h-full pointer-events-none hidden md:block"
-      >
-        <div className="relative w-full h-full">
-          <img
-            src={heroPortrait}
-            alt="Wellness portrait"
-            className="absolute top-1/2 right-0 -translate-y-1/2 w-full h-[90%] object-cover object-center rounded-l-3xl"
-          />
-          {/* Gradient overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
-        </div>
-      </motion.div>
+      {/* Graphic elements */}
+      <div className="absolute top-20 right-10 w-32 h-32 rounded-full bg-gradient-to-br from-cyan to-primary opacity-20 blur-2xl" />
+      <div className="absolute top-40 right-32 w-20 h-20 rounded-full bg-magenta opacity-15 blur-xl" />
+      <div className="absolute bottom-32 right-20 w-24 h-24 rounded-full bg-yellow opacity-20 blur-xl" />
+      <div className="absolute top-1/2 right-1/4 w-2 h-2 rounded-full bg-cyan" />
+      <div className="absolute top-1/3 right-1/3 w-3 h-3 rounded-full bg-magenta" />
+      <div className="absolute bottom-1/3 right-1/5 w-2 h-2 rounded-full bg-yellow" />
       
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-cream/50 via-transparent to-transparent pointer-events-none" />
+      {/* Decorative lines */}
+      <svg className="absolute top-32 right-16 w-48 h-48 opacity-30" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="hsl(185 100% 45%)" strokeWidth="0.5" />
+        <circle cx="50" cy="50" r="30" fill="none" stroke="hsl(320 100% 50%)" strokeWidth="0.5" />
+        <circle cx="50" cy="50" r="20" fill="none" stroke="hsl(45 100% 55%)" strokeWidth="0.5" />
+      </svg>
       
-      {/* Ambient glow */}
-      <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-primary/10 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/10 blur-[120px] rounded-full pointer-events-none" />
-      
-      <div className="relative z-10 max-w-7xl">
+      <div className="relative z-10 max-w-4xl">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-4"
+          className="mb-4 flex items-center gap-3"
         >
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan via-magenta to-yellow" />
           <span className="text-xs tracking-[0.4em] text-muted-foreground uppercase">BIORITUAL</span>
         </motion.div>
 
-        {/* Main headline - oversized */}
+        {/* Main headline */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -63,24 +52,10 @@ const Hero = () => {
           <span className="block">Tell me</span>
           <span className="block">how you</span>
           <span className="block">
-            <span className="italic font-serif text-primary lowercase">really</span>{" "}
+            <span className="italic font-serif bg-gradient-to-r from-cyan via-magenta to-yellow bg-clip-text text-transparent lowercase">really</span>{" "}
             feel
           </span>
         </motion.h1>
-
-        {/* Mobile hero image */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-8 md:hidden"
-        >
-          <img
-            src={heroPortrait}
-            alt="Wellness portrait"
-            className="w-full h-64 object-cover object-top rounded-2xl"
-          />
-        </motion.div>
 
         {/* Subheadline */}
         <motion.div
@@ -90,8 +65,7 @@ const Hero = () => {
           className="mt-8 max-w-md space-y-2"
         >
           <p className="text-muted-foreground">
-            Not what the algorithm says.
-            Not what you think you <em>should</em> say.
+            Not what the algorithm says. Not what you think you <em>should</em> say.
           </p>
           <p className="text-foreground/90">
             How your body actually feels —
@@ -119,7 +93,7 @@ const Hero = () => {
               placeholder="your@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-muted/50 border-border/50 focus:border-primary/50 h-11"
+              className="flex-1 bg-secondary/50 border-border focus:border-primary h-11"
               required
             />
             <Button 
@@ -141,21 +115,21 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-10 pt-6 border-t border-border/20 max-w-2xl"
+          className="mt-10 pt-6 border-t border-border max-w-2xl"
         >
           <p className="text-xs text-muted-foreground mb-4 uppercase tracking-wider">
             Or explore at your own pace
           </p>
           <div className="flex flex-wrap gap-3">
-            <Button variant="outline" size="sm" className="gap-2 border-border/40 hover:border-primary/50 hover:bg-muted/50 text-xs">
+            <Button variant="outline" size="sm" className="gap-2 hover:border-cyan hover:text-cyan text-xs">
               <Sparkles className="w-3.5 h-3.5" />
               AI Coach
             </Button>
-            <Button variant="outline" size="sm" className="gap-2 border-border/40 hover:border-primary/50 hover:bg-muted/50 text-xs">
+            <Button variant="outline" size="sm" className="gap-2 hover:border-magenta hover:text-magenta text-xs">
               <BookOpen className="w-3.5 h-3.5" />
               Peptide Protocols
             </Button>
-            <Button variant="outline" size="sm" className="gap-2 border-border/40 hover:border-primary/50 hover:bg-muted/50 text-xs">
+            <Button variant="outline" size="sm" className="gap-2 hover:border-yellow hover:text-yellow text-xs">
               <Calendar className="w-3.5 h-3.5" />
               1-on-1 Coaching
             </Button>

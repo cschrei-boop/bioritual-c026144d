@@ -3,7 +3,6 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Sparkles, FlaskConical, Calendar, ArrowRight } from "lucide-react";
-import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const FinalCTA = () => {
   const ref = useRef(null);
@@ -11,45 +10,47 @@ const FinalCTA = () => {
 
   return (
     <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden">
-      <div className="absolute inset-0">
-        <img src={heroPortrait} alt="" className="w-full h-full object-cover opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/95 to-background" />
-      </div>
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan/5 to-magenta/5" />
 
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[300px] h-[300px] bg-primary/15 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[200px] h-[200px] bg-accent/15 blur-[80px] rounded-full pointer-events-none" />
-      
-      <div className="relative z-10 max-w-2xl mx-auto">
+      <div className="relative z-10 max-w-2xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="backdrop-blur-xl bg-background/70 border border-border/50 rounded-3xl p-6 md:p-8 text-center"
         >
-          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-4">
-            Build Your <span className="italic text-primary">BIORITUAL</span>
+          {/* Decorative element */}
+          <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-cyan via-magenta to-yellow p-0.5">
+            <div className="w-full h-full rounded-2xl bg-background flex items-center justify-center">
+              <span className="font-serif text-2xl">B</span>
+            </div>
+          </div>
+
+          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-3">
+            Build Your <span className="italic bg-gradient-to-r from-cyan via-magenta to-yellow bg-clip-text text-transparent">BIORITUAL</span>
           </h2>
+          
           <p className="text-sm text-muted-foreground mb-6">
-            You don't need more motivation. <span className="text-foreground font-medium">You need better systems.</span>
+            You don't need more motivation. You need better systems.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-3 mb-6">
+          <div className="flex flex-wrap justify-center gap-3">
             <Button className="gap-2 bg-primary hover:bg-primary/90 h-10 px-5 rounded-xl text-sm">
               <Sparkles className="w-4 h-4" />
               AI Coach
               <ArrowRight className="w-3 h-3" />
             </Button>
-            <Button variant="outline" className="gap-2 h-10 px-5 rounded-xl text-sm">
+            <Button variant="outline" className="gap-2 h-10 px-5 rounded-xl text-sm hover:border-magenta hover:text-magenta">
               <FlaskConical className="w-4 h-4" />
               Protocols
             </Button>
-            <Button variant="outline" className="gap-2 h-10 px-5 rounded-xl text-sm">
+            <Button variant="outline" className="gap-2 h-10 px-5 rounded-xl text-sm hover:border-yellow hover:text-yellow">
               <Calendar className="w-4 h-4" />
               Consult
             </Button>
           </div>
 
-          <p className="font-serif text-lg italic text-muted-foreground">
+          <p className="font-serif text-lg italic text-muted-foreground mt-6">
             Let's design your ritual.
           </p>
         </motion.div>
