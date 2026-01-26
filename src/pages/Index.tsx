@@ -14,7 +14,7 @@ import backgroundImage from "@/assets/background-gradient.jpg";
 const Index = () => {
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
-      <ImageBackground src={backgroundImage} opacity={0.5} overlayOpacity={0.5} />
+      <ImageBackground src={backgroundImage} opacity={0.8} overlayOpacity={0.2} />
       <Hero />
       <Problem />
       <ThreeLegs />
