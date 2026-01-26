@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Sparkles, Calendar, BookOpen } from "lucide-react";
+import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
@@ -16,11 +17,29 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 py-24 overflow-hidden">
+      {/* Oversized hero image - positioned absolutely */}
+      <motion.div
+        initial={{ opacity: 0, scale: 1.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, delay: 0.2 }}
+        className="absolute top-0 right-0 w-[50%] md:w-[45%] lg:w-[40%] h-full pointer-events-none hidden md:block"
+      >
+        <div className="relative w-full h-full">
+          <img
+            src={heroPortrait}
+            alt="Wellness portrait"
+            className="absolute top-1/2 right-0 -translate-y-1/2 w-full h-[90%] object-cover object-center rounded-l-3xl"
+          />
+          {/* Gradient overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+        </div>
+      </motion.div>
+      
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-charcoal-light/50 via-transparent to-transparent pointer-events-none" />
       
       {/* Ambient glow */}
-      <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
       
       <div className="relative z-10 max-w-7xl">
         {/* Logo */}
@@ -38,7 +57,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1 }}
-          className="font-sans font-semibold text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-[0.9] tracking-tight uppercase text-foreground"
+          className="font-sans font-semibold text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tight uppercase text-foreground"
         >
           <span className="block">Tell me</span>
           <span className="block">how you</span>
@@ -47,6 +66,20 @@ const Hero = () => {
             feel
           </span>
         </motion.h1>
+
+        {/* Mobile hero image */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-8 md:hidden"
+        >
+          <img
+            src={heroPortrait}
+            alt="Wellness portrait"
+            className="w-full h-64 object-cover object-top rounded-2xl"
+          />
+        </motion.div>
 
         {/* Subheadline */}
         <motion.div
