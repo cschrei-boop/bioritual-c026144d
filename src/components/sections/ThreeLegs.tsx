@@ -77,19 +77,15 @@ const ThreeLegs = () => {
               className="group relative cursor-pointer"
             >
               <div className="bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-6 hover:shadow-lg hover:bg-card/80 transition-all">
-                <div className="flex items-center gap-5">
-                  <div className={`w-14 h-14 rounded-xl bg-${pillar.color}/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform`}>
-                    <pillar.icon className={`w-7 h-7 text-${pillar.color}`} />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className={`font-objektiv text-3xl md:text-4xl lg:text-5xl tracking-wide text-${pillar.color} mb-1 uppercase`}>
-                      {pillar.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {pillar.subtitle} — {pillar.description}
-                    </p>
-                  </div>
+                <div className={`w-14 h-14 rounded-xl bg-${pillar.color}/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  <pillar.icon className={`w-7 h-7 text-${pillar.color}`} />
                 </div>
+                <h3 className={`font-objektiv text-3xl md:text-4xl lg:text-5xl tracking-wide text-${pillar.color} mb-2 uppercase font-bold`}>
+                  {pillar.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {pillar.subtitle} — {pillar.description}
+                </p>
               </div>
             </motion.a>
           ))}
