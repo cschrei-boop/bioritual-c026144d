@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const WhyNinetyDays = () => {
   const ref = useRef(null);
@@ -9,46 +8,50 @@ const WhyNinetyDays = () => {
 
   return (
     <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden">
-      <div className="absolute inset-0">
-        <img src={heroPortrait} alt="" className="w-full h-full object-cover opacity-15" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background" />
-      </div>
-
-      <div className="relative z-10 max-w-3xl mx-auto">
+      <div className="relative z-10 max-w-2xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="backdrop-blur-xl bg-background/70 border border-border/50 rounded-3xl p-6 md:p-8 text-center"
         >
-          <p className="text-xs tracking-[0.2em] text-primary uppercase font-medium mb-2">
-            The 90-Day Framework
-          </p>
+          {/* Visual accent */}
+          <div className="flex justify-center gap-2 mb-6">
+            <div className="w-16 h-1 rounded-full bg-cyan" />
+            <div className="w-16 h-1 rounded-full bg-magenta" />
+            <div className="w-16 h-1 rounded-full bg-yellow" />
+          </div>
+
           <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-4">
-            Why <span className="text-primary">90 Days</span> Matters
+            Why <span className="bg-gradient-to-r from-cyan to-magenta bg-clip-text text-transparent">90 Days</span>?
           </h2>
+          
           <p className="text-sm text-muted-foreground mb-6 max-w-md mx-auto">
-            Biology responds to <span className="text-foreground">sustained signals</span>, not chaos.
-            Ninety days allows your system to adapt, regulate, and reveal what works.
+            Biology responds to sustained signals. Ninety days allows adaptation, regulation, and real results.
           </p>
 
-          <div className="flex justify-center gap-4 mb-6">
-            {["Adapt", "Regulate", "Reveal"].map((item, i) => (
+          <div className="flex justify-center gap-4">
+            {[
+              { num: "1", label: "Adapt", color: "cyan" },
+              { num: "2", label: "Regulate", color: "magenta" },
+              { num: "3", label: "Reveal", color: "yellow" },
+            ].map((item, i) => (
               <motion.div
-                key={item}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-                className="backdrop-blur-md bg-primary/10 border border-primary/30 rounded-xl px-4 py-3 text-center"
+                key={item.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                className="text-center"
               >
-                <span className="block text-xl font-serif text-primary">{i + 1}</span>
-                <span className="text-xs text-foreground">{item}</span>
+                <div className={`w-12 h-12 rounded-xl bg-${item.color}/20 flex items-center justify-center mx-auto mb-2`}>
+                  <span className={`text-xl font-serif text-${item.color}`}>{item.num}</span>
+                </div>
+                <span className="text-xs text-muted-foreground">{item.label}</span>
               </motion.div>
             ))}
           </div>
 
-          <p className="text-sm text-muted-foreground">
-            This isn't about streaks. It's about building <span className="font-serif italic text-foreground">rituals</span>.
+          <p className="text-sm text-muted-foreground mt-6">
+            It's about building <span className="font-serif italic text-foreground">rituals</span>.
           </p>
         </motion.div>
       </div>
