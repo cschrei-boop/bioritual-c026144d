@@ -11,22 +11,12 @@ const ImageBackground = ({
 }: ImageBackgroundProps) => {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
-      {/* Background image */}
+      {/* Background image - fully visible */}
       <img
         src={src}
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ opacity }}
       />
-
-      {/* Overlay for text readability */}
-      <div 
-        className="absolute inset-0 bg-background" 
-        style={{ opacity: overlayOpacity }}
-      />
-
-      {/* Gradient fade at edges */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background opacity-50" />
     </div>
   );
 };

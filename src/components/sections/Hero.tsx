@@ -24,7 +24,7 @@ const Hero = () => {
       {/* Background glow */}
       <div className="absolute top-1/2 right-16 w-64 h-64 rounded-full bg-gradient-to-br from-cyan/10 via-magenta/10 to-yellow/10 blur-3xl" />
       
-      <div className="relative z-10 max-w-4xl">
+      <div className="relative z-10 max-w-4xl bg-background/80 backdrop-blur-md rounded-3xl p-8 md:p-12">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}

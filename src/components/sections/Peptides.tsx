@@ -21,7 +21,7 @@ const Peptides = () => {
         <PeptidesIllustration />
       </div>
 
-      <div className="relative z-10 max-w-3xl mx-auto">
+      <div className="relative z-10 max-w-3xl mx-auto bg-background/80 backdrop-blur-md rounded-3xl p-8">
         <div className="grid md:grid-cols-2 gap-6">
           {/* Left - Content */}
           <motion.div
