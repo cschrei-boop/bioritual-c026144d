@@ -15,89 +15,84 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 py-24 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-20 py-24 overflow-hidden">
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-charcoal-light/50 via-transparent to-transparent pointer-events-none" />
       
       {/* Ambient glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
       
-      <div className="relative z-10 max-w-3xl mx-auto text-center">
+      <div className="relative z-10 max-w-7xl">
         {/* Logo */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-12"
+          className="mb-8"
         >
-          <span className="text-sm tracking-[0.4em] text-muted-foreground uppercase">BIORITUAL</span>
+          <span className="text-xs tracking-[0.4em] text-muted-foreground uppercase">BIORITUAL</span>
         </motion.div>
 
-        {/* Main headline */}
+        {/* Main headline - oversized */}
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-serif text-4xl md:text-5xl lg:text-6xl font-normal leading-tight mb-8"
+          transition={{ duration: 1, delay: 0.1 }}
+          className="font-sans font-semibold text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-[0.9] tracking-tight uppercase text-foreground"
         >
-          Tell me how you{" "}
-          <span className="italic text-primary">really</span> feel.
+          <span className="block">Tell me</span>
+          <span className="block">how you</span>
+          <span className="block">
+            <span className="italic font-serif text-primary lowercase">really</span>{" "}
+            feel
+          </span>
         </motion.h1>
 
         {/* Subheadline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="space-y-4 mb-8"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-12 max-w-md space-y-4"
         >
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground">
             Not what the algorithm says.
-            <br />
             Not what you think you <em>should</em> say.
           </p>
           <p className="text-foreground/90">
             How your body actually feels —
-            <br />
-            <span className="font-medium">energy, focus, appetite, stress, recovery.</span>
+            <span className="font-medium"> energy, focus, appetite, stress, recovery.</span>
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Structured biological optimization for minds in constant motion.
           </p>
         </motion.div>
-
-        {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-muted-foreground mb-12"
-        >
-          Structured biological optimization for minds in constant motion.
-        </motion.p>
 
         {/* Email signup */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-12"
+          className="mt-12 max-w-md"
         >
-          <p className="text-sm text-muted-foreground mb-4">
+          <p className="text-xs text-muted-foreground mb-3 uppercase tracking-wider">
             Start by telling us where you're at
           </p>
           
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
             <Input
               type="email"
               placeholder="your@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-muted/50 border-border/50 focus:border-primary/50 h-12"
+              className="flex-1 bg-muted/50 border-border/50 focus:border-primary/50 h-11"
               required
             />
             <Button 
               type="submit" 
-              className="h-12 px-6 bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
+              className="h-11 px-5 bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-sm"
             >
-              Get the BIORITUAL signal
+              Get the signal
               <ArrowRight className="w-4 h-4" />
             </Button>
           </form>
@@ -112,23 +107,23 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="pt-8 border-t border-border/30"
+          className="mt-16 pt-8 border-t border-border/20 max-w-2xl"
         >
-          <p className="text-sm text-muted-foreground mb-6">
-            Or explore at your own pace:
+          <p className="text-xs text-muted-foreground mb-4 uppercase tracking-wider">
+            Or explore at your own pace
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="outline" className="gap-2 border-border/50 hover:border-primary/50 hover:bg-muted/50">
-              <Sparkles className="w-4 h-4" />
-              Start with AI Coach
+          <div className="flex flex-wrap gap-3">
+            <Button variant="outline" size="sm" className="gap-2 border-border/40 hover:border-primary/50 hover:bg-muted/50 text-xs">
+              <Sparkles className="w-3.5 h-3.5" />
+              AI Coach
             </Button>
-            <Button variant="outline" className="gap-2 border-border/50 hover:border-primary/50 hover:bg-muted/50">
-              <BookOpen className="w-4 h-4" />
-              Explore Peptide Protocols
+            <Button variant="outline" size="sm" className="gap-2 border-border/40 hover:border-primary/50 hover:bg-muted/50 text-xs">
+              <BookOpen className="w-3.5 h-3.5" />
+              Peptide Protocols
             </Button>
-            <Button variant="outline" className="gap-2 border-border/50 hover:border-primary/50 hover:bg-muted/50">
-              <Calendar className="w-4 h-4" />
-              Book 1-on-1 Optimization
+            <Button variant="outline" size="sm" className="gap-2 border-border/40 hover:border-primary/50 hover:bg-muted/50 text-xs">
+              <Calendar className="w-3.5 h-3.5" />
+              1-on-1 Coaching
             </Button>
           </div>
         </motion.div>
