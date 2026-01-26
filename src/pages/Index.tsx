@@ -8,10 +8,13 @@ import WhyNinetyDays from "@/components/sections/WhyNinetyDays";
 import BuiltFor from "@/components/sections/BuiltFor";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/sections/Footer";
+import VideoBackground from "@/components/VideoBackground";
+import backgroundVideo from "@/assets/background-video.mp4";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
+      <VideoBackground src={backgroundVideo} opacity={0.2} />
       <Hero />
       <Problem />
       <ThreeLegs />
