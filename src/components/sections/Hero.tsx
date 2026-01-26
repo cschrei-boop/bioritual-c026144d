@@ -31,15 +31,16 @@ const Hero = () => {
             className="absolute top-1/2 right-0 -translate-y-1/2 w-full h-[90%] object-cover object-center rounded-l-3xl"
           />
           {/* Gradient overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent" />
         </div>
       </motion.div>
       
       {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal-light/50 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-cream/50 via-transparent to-transparent pointer-events-none" />
       
       {/* Ambient glow */}
-      <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-primary/5 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-primary/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/10 blur-[120px] rounded-full pointer-events-none" />
       
       <div className="relative z-10 max-w-7xl">
         {/* Logo */}

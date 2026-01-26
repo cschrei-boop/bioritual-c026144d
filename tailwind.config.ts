@@ -57,12 +57,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        bone: "hsl(var(--bone))",
-        sage: "hsl(var(--sage))",
-        charcoal: {
-          DEFAULT: "hsl(var(--charcoal))",
-          light: "hsl(var(--charcoal-light))",
-        },
+        "neon-lime": "hsl(var(--neon-lime))",
+        "neon-cyan": "hsl(var(--neon-cyan))",
+        "neon-magenta": "hsl(var(--neon-magenta))",
+        "off-white": "hsl(var(--off-white))",
+        cream: "hsl(var(--cream))",
+        charcoal: "hsl(var(--charcoal))",
         "warm-gray": "hsl(var(--warm-gray))",
       },
       fontFamily: {
