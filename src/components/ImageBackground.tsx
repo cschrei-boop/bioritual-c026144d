@@ -6,8 +6,8 @@ interface ImageBackgroundProps {
 
 const ImageBackground = ({ 
   src, 
-  opacity = 0.4,
-  overlayOpacity = 0.6
+  opacity = 0.7,
+  overlayOpacity = 0.3
 }: ImageBackgroundProps) => {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
