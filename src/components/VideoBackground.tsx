@@ -36,7 +36,7 @@ const VideoBackground = ({
 
       {/* Overlay for better text readability */}
       {overlay && (
-        <div className="absolute inset-0 bg-background/85 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-background/40" />
       )}
 
       {/* Optional gradient fade at edges */}
