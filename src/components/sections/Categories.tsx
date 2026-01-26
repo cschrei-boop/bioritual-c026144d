@@ -16,7 +16,7 @@ const Categories = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden">
+    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
       <div className="relative z-10 max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -39,7 +39,7 @@ const Categories = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
-              className={`flex items-center gap-3 bg-card border border-border rounded-full px-5 py-3 hover:border-${cat.color}/50 transition-colors`}
+              className={`flex items-center gap-3 bg-card/60 backdrop-blur-sm border border-border rounded-full px-5 py-3 hover:border-${cat.color}/50 transition-colors`}
             >
               <cat.icon className={`w-4 h-4 text-${cat.color}`} />
               <span className="text-sm font-medium">{cat.title}</span>

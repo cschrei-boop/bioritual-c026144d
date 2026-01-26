@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <footer className="relative py-10 px-6 border-t border-border">
+    <footer className="relative py-10 px-6 border-t border-border bg-transparent">
       <div className="max-w-3xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           {/* Brand */}

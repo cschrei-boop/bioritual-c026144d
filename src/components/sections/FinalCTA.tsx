@@ -9,7 +9,7 @@ const FinalCTA = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden">
+    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan/5 to-magenta/5" />
 

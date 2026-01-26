@@ -15,7 +15,7 @@ const Peptides = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden">
+    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
       {/* DNA/Peptides Illustration */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-24 md:w-32 h-48 md:h-64 opacity-50">
         <PeptidesIllustration />
@@ -74,7 +74,7 @@ const Peptides = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className={`bg-card border border-border rounded-xl p-4 hover:border-${app.color}/50 transition-colors`}
+                className={`bg-card/60 backdrop-blur-sm border border-border rounded-xl p-4 hover:border-${app.color}/50 transition-colors`}
               >
                 <div className={`w-2 h-2 rounded-full bg-${app.color} mb-2`} />
                 <p className="font-medium text-sm">{app.name}</p>
