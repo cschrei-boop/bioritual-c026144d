@@ -15,7 +15,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 lg:px-16 py-16 overflow-hidden">
+    <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 lg:px-16 py-16 overflow-hidden bg-transparent">
       {/* Hero Illustration */}
       <div className="absolute top-1/2 right-8 md:right-16 lg:right-24 -translate-y-1/2 w-48 md:w-64 lg:w-80 h-64 md:h-80 lg:h-96 opacity-80">
         <HeroIllustration />

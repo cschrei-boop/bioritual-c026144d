@@ -15,7 +15,7 @@ const Problem = () => {
   ];
 
   return (
-    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden">
+    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
       {/* Problem Illustration */}
       <div className="absolute top-8 left-4 md:left-8 w-32 md:w-40 h-32 md:h-40 opacity-60">
         <ProblemIllustration />
@@ -26,7 +26,7 @@ const Problem = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="bg-card/80 backdrop-blur-sm border border-border rounded-3xl p-6 md:p-8"
+          className="bg-card/60 backdrop-blur-sm border border-border rounded-3xl p-6 md:p-8"
         >
           <div className="flex items-start gap-6">
             {/* Graphic accent */}

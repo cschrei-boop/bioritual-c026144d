@@ -33,7 +33,7 @@ const Services = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden">
+    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
       {/* Background accent */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-br from-cyan/5 via-magenta/5 to-yellow/5 blur-3xl" />
 
@@ -54,7 +54,7 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-              className={`relative bg-card border rounded-2xl p-5 text-center transition-all hover:shadow-lg ${
+              className={`relative bg-card/60 backdrop-blur-sm border rounded-2xl p-5 text-center transition-all hover:shadow-lg ${
                 service.featured ? `border-${service.color}` : "border-border"
               }`}
             >

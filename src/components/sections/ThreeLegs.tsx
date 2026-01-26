@@ -32,7 +32,7 @@ const ThreeLegs = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden">
+    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
       {/* Decorative background */}
       <svg className="absolute inset-0 w-full h-full opacity-5" viewBox="0 0 100 100" preserveAspectRatio="none">
         <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
@@ -73,7 +73,7 @@ const ThreeLegs = () => {
               className="group relative"
             >
               <div className={`absolute top-0 left-0 w-full h-1 rounded-t-2xl bg-${pillar.color}`} />
-              <div className="bg-card border border-border rounded-2xl p-5 pt-6 h-full hover:shadow-lg transition-shadow">
+              <div className="bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-5 pt-6 h-full hover:shadow-lg transition-shadow">
                 <div className={`w-10 h-10 rounded-xl bg-${pillar.color}/20 flex items-center justify-center mb-4`}>
                   <pillar.icon className={`w-5 h-5 text-${pillar.color}`} />
                 </div>
