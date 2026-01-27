@@ -62,6 +62,7 @@ export default {
         yellow: "hsl(var(--yellow))",
         charcoal: "hsl(var(--charcoal))",
         "warm-gray": "hsl(var(--warm-gray))",
+        navy: "hsl(var(--navy))",
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

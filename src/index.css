@@ -11,13 +11,13 @@
   :root {
     /* Core palette - clean white background */
     --background: 0 0% 100%;
-    --foreground: 220 25% 10%;
+    --foreground: 227 78% 28%;
 
     --card: 0 0% 98%;
-    --card-foreground: 220 25% 10%;
+    --card-foreground: 227 78% 28%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 10%;
+    --popover-foreground: 227 78% 28%;
 
     /* Cyan primary */
     --primary: 185 100% 45%;
@@ -25,10 +25,10 @@
 
     /* Soft gray secondary */
     --secondary: 220 10% 94%;
-    --secondary-foreground: 220 25% 10%;
+    --secondary-foreground: 227 78% 28%;
 
     --muted: 220 10% 96%;
-    --muted-foreground: 220 10% 40%;
+    --muted-foreground: 227 50% 45%;
 
     /* Magenta accent */
     --accent: 320 100% 50%;
@@ -47,8 +47,9 @@
     --cyan: 185 100% 45%;
     --magenta: 320 100% 50%;
     --yellow: 45 100% 55%;
-    --charcoal: 220 25% 10%;
-    --warm-gray: 220 10% 40%;
+    --charcoal: 227 78% 28%;
+    --warm-gray: 227 50% 45%;
+    --navy: 227 78% 28%;
     
     /* Gradients */
     --gradient-cmy: linear-gradient(135deg, hsl(185 100% 45%) 0%, hsl(320 100% 50%) 50%, hsl(45 100% 55%) 100%);
@@ -56,16 +57,16 @@
     --gradient-magenta-yellow: linear-gradient(135deg, hsl(320 100% 50%) 0%, hsl(45 100% 55%) 100%);
     
     /* Shadows */
-    --shadow-soft: 0 4px 24px -4px hsl(220 25% 10% / 0.08);
+    --shadow-soft: 0 4px 24px -4px hsl(227 78% 28% / 0.08);
     --shadow-cyan: 0 0 30px -5px hsl(185 100% 45% / 0.3);
     --shadow-magenta: 0 0 30px -5px hsl(320 100% 50% / 0.3);
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 220 25% 10%;
+    --sidebar-foreground: 227 78% 28%;
     --sidebar-primary: 185 100% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 220 10% 94%;
-    --sidebar-accent-foreground: 220 25% 10%;
+    --sidebar-accent-foreground: 227 78% 28%;
     --sidebar-border: 220 10% 90%;
     --sidebar-ring: 185 100% 45%;
   }
