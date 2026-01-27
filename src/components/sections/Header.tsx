@@ -25,7 +25,7 @@ const Header = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           href="mailto:hello@sundayafternoonproject.com"
-          className="px-4 py-2 text-xs md:text-sm text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition-all uppercase tracking-wider font-medium backdrop-blur-sm"
+          className="px-4 py-2 text-xs md:text-sm text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition-all uppercase tracking-wider font-bold backdrop-blur-sm"
         >
           Contact Us
         </motion.a>
