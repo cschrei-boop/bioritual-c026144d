@@ -35,7 +35,7 @@ const ThreeLegs = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-10 md:py-14 px-6 overflow-hidden bg-transparent">
+    <section ref={ref} className="relative py-6 md:py-14 px-4 md:px-6 overflow-hidden bg-transparent">
       {/* Decorative background */}
       <svg className="absolute inset-0 w-full h-full opacity-5" viewBox="0 0 100 100" preserveAspectRatio="none">
         <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">

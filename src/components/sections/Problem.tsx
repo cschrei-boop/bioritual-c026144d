@@ -15,7 +15,7 @@ const Problem = () => {
   ];
 
   return (
-    <section ref={ref} className="relative py-10 md:py-14 px-6 overflow-hidden bg-transparent">
+    <section ref={ref} className="relative py-6 md:py-14 px-4 md:px-6 overflow-hidden bg-transparent">
       {/* Problem Illustration */}
       <div className="absolute top-6 left-4 md:left-8 w-28 md:w-36 h-28 md:h-36 opacity-60">
         <ProblemIllustration />
