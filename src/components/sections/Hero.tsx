@@ -27,7 +27,7 @@ const Hero = () => {
       }} className="font-sans font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tighter uppercase text-foreground">
           <span className="block">Tell me</span>
           <span className="block">how you</span>
-          <span className="block text-5xl">
+          <span className="block text-7xl">
             <span className="italic font-serif font-normal bg-gradient-to-r from-cyan via-magenta to-yellow bg-clip-text text-transparent lowercase">really</span>{" "}
             feel
           </span>
