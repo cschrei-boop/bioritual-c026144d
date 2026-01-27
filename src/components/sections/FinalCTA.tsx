@@ -13,7 +13,7 @@ const FinalCTA = () => {
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan/5 to-magenta/5" />
 
-      <div className="relative z-10 max-w-2xl mx-auto text-center bg-background/80 backdrop-blur-md rounded-3xl p-8">
+      <div className="relative z-10 max-w-2xl mx-auto text-center bg-background/70 backdrop-blur-md rounded-3xl p-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

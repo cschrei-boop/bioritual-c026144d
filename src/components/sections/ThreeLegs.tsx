@@ -44,7 +44,7 @@ const ThreeLegs = () => {
         <rect width="100" height="100" fill="url(#grid)" />
       </svg>
 
-      <div className="relative z-10 max-w-4xl mx-auto bg-background/80 backdrop-blur-md rounded-3xl p-8">
+      <div className="relative z-10 max-w-4xl mx-auto bg-background/70 backdrop-blur-md rounded-3xl p-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
