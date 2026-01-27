@@ -32,7 +32,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1 }}
           className="font-sans font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tighter uppercase text-foreground"
-          style={{ wordSpacing: '-0.15em' }}
+          style={{ wordSpacing: '-0.05em' }}
         >
           <span className="block">Tell me</span>
           <span className="block">how you</span>
