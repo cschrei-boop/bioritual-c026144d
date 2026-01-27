@@ -1,13 +1,23 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Calendar, BookOpen } from "lucide-react";
-import { HeroIllustration } from "@/components/illustrations";
+import heroPortrait from "@/assets/hero-portrait.jpg";
+
 const Hero = () => {
   return <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 lg:px-16 py-16 overflow-hidden bg-transparent">
-      {/* Hero Illustration */}
-      <div className="absolute top-1/2 right-8 md:right-16 lg:right-24 -translate-y-1/2 w-48 md:w-64 lg:w-80 h-64 md:h-80 lg:h-96 opacity-80">
-        <HeroIllustration />
-      </div>
+      {/* Hero Portrait Image */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, delay: 0.2 }}
+        className="absolute top-1/2 right-4 md:right-12 lg:right-20 -translate-y-1/2 w-40 md:w-56 lg:w-72 h-56 md:h-72 lg:h-96 rounded-3xl overflow-hidden shadow-2xl"
+      >
+        <img 
+          src={heroPortrait} 
+          alt="Serene portrait" 
+          className="w-full h-full object-cover object-center"
+        />
+      </motion.div>
       
       {/* Background glow */}
       <div className="absolute top-1/2 right-16 w-64 h-64 rounded-full bg-gradient-to-br from-cyan/10 via-magenta/10 to-yellow/10 blur-3xl" />
