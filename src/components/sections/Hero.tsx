@@ -40,13 +40,13 @@ const Hero = () => {
           duration: 0.8,
           delay: 0.3
         }} className="mt-8 max-w-md space-y-2">
-            <p className="text-foreground/80">
+            <p className="text-foreground/80 text-right">
               Not what the algorithm says. Not what you think you <em>should</em> say.
             </p>
-            <p className="text-foreground/80">
+            <p className="text-foreground/80 text-center">
               How your body actually feels — energy, focus, appetite, stress, recovery.
             </p>
-            <p className="text-foreground/80">At BioRitual, we specialize in STRUCTURED BIOLOGICAL OPTIMIZATION for minds in constant motion.</p>
+            <p className="text-foreground/80 text-center">At BioRitual, we specialize in STRUCTURED BIOLOGICAL OPTIMIZATION for minds in constant motion.</p>
           </motion.div>
 
           {/* Secondary CTAs */}
@@ -68,12 +68,9 @@ const Hero = () => {
               type: "spring",
               stiffness: 400,
               damping: 17
-            }} className="flex-1 min-w-[200px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-5 py-4 flex flex-col items-center justify-center gap-2 hover:border-cyan/60 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_8px_24px_rgba(0,200,200,0.25)] transition-all duration-300 cursor-pointer">
-                <div className="flex items-center gap-3">
-                  <Sparkles className="w-5 h-5 text-cyan" />
-                  <span className="text-sm font-black uppercase tracking-wider text-foreground">AI CONCIERGE</span>
-                </div>
-                <p className="text-xs text-muted-foreground text-center">A no-BS guide to peptides and biosignals.</p>
+            }} className="flex-1 min-w-[160px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-5 py-4 flex items-center justify-center gap-3 hover:border-cyan/60 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_8px_24px_rgba(0,200,200,0.25)] transition-all duration-300 cursor-pointer">
+                <Sparkles className="w-5 h-5 text-cyan" />
+                <span className="text-sm font-black uppercase tracking-wider text-foreground">AI CONCIERGE</span>
               </motion.div>
               <motion.div whileHover={{
               scale: 1.05
@@ -81,12 +78,9 @@ const Hero = () => {
               type: "spring",
               stiffness: 400,
               damping: 17
-            }} className="flex-1 min-w-[200px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-5 py-4 flex flex-col items-center justify-center gap-2 hover:border-magenta/60 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_8px_24px_rgba(255,0,150,0.25)] transition-all duration-300 cursor-pointer">
-                <div className="flex items-center gap-3">
-                  <BookOpen className="w-5 h-5 text-magenta" />
-                  <span className="text-sm font-black uppercase tracking-wider text-foreground">1:1 PROTOCOL DESIGN</span>
-                </div>
-                <p className="text-xs text-muted-foreground text-center">Get your own Wiki and tracking.</p>
+            }} className="flex-1 min-w-[160px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-5 py-4 flex items-center justify-center gap-3 hover:border-magenta/60 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_8px_24px_rgba(255,0,150,0.25)] transition-all duration-300 cursor-pointer">
+                <BookOpen className="w-5 h-5 text-magenta" />
+                <span className="text-sm font-black uppercase tracking-wider text-foreground">1:1 PROTOCOL DESIGN</span>
               </motion.div>
               <motion.div whileHover={{
               scale: 1.05
@@ -94,12 +88,9 @@ const Hero = () => {
               type: "spring",
               stiffness: 400,
               damping: 17
-            }} className="flex-1 min-w-[200px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-5 py-4 flex flex-col items-center justify-center gap-2 hover:border-yellow/60 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_8px_24px_rgba(255,200,0,0.25)] transition-all duration-300 cursor-pointer">
-                <div className="flex items-center gap-3">
-                  <Calendar className="w-5 h-5 text-yellow" />
-                  <span className="text-sm font-black uppercase tracking-wider text-foreground">COACHING SPRINT</span>
-                </div>
-                <p className="text-xs text-muted-foreground text-center">90 day sprints with weekly guidance.</p>
+            }} className="flex-1 min-w-[160px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-5 py-4 flex items-center justify-center gap-3 hover:border-yellow/60 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_8px_24px_rgba(255,200,0,0.25)] transition-all duration-300 cursor-pointer">
+                <Calendar className="w-5 h-5 text-yellow" />
+                <span className="text-sm font-black uppercase tracking-wider text-foreground">COACHING SPRINT</span>
               </motion.div>
             </div>
           </motion.div>
