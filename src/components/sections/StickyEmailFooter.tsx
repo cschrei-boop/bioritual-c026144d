@@ -36,7 +36,7 @@ const StickyEmailFooter = () => {
             type="submit"
             className="h-9 sm:h-11 px-3 sm:px-5 bg-primary hover:bg-primary/90 text-primary-foreground gap-1 sm:gap-2 text-xs sm:text-sm whitespace-nowrap"
           >
-            <span className="hidden sm:inline">Get the signal</span>
+            <span className="hidden sm:inline">Get the latest signals</span>
             <span className="sm:hidden">Go</span>
             <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
           </Button>
