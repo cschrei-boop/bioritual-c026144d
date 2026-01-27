@@ -21,6 +21,7 @@ const StickyEmailFooter = () => {
       className="fixed bottom-0 left-0 right-0 z-50 px-3 pb-3 sm:px-4 sm:pb-4"
     >
       <div className="max-w-xl mx-auto bg-background/90 backdrop-blur-md rounded-xl sm:rounded-2xl border border-border p-2 sm:p-4 shadow-lg">
+        <p className="text-xs font-medium text-foreground mb-2 sm:hidden">Get the latest signals</p>
         <form onSubmit={handleSubmit} className="flex flex-row gap-2 sm:gap-3 items-center">
           <div className="flex-1">
             <Input
