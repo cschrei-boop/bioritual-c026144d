@@ -11,7 +11,7 @@ const BuiltFor = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-10 md:py-14 px-6 overflow-hidden bg-transparent">
+    <section ref={ref} className="relative py-6 md:py-14 px-4 md:px-6 overflow-hidden bg-transparent">
       <div className="relative z-10 max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
