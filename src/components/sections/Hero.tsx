@@ -4,18 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight, Sparkles, Calendar, BookOpen } from "lucide-react";
 import { HeroIllustration } from "@/components/illustrations";
-
 const Hero = () => {
   const [email, setEmail] = useState("");
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Email submitted:", email);
     setEmail("");
   };
-
-  return (
-    <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 lg:px-16 py-16 overflow-hidden bg-transparent">
+  return <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 lg:px-16 py-16 overflow-hidden bg-transparent">
       {/* Hero Illustration */}
       <div className="absolute top-1/2 right-8 md:right-16 lg:right-24 -translate-y-1/2 w-48 md:w-64 lg:w-80 h-64 md:h-80 lg:h-96 opacity-80">
         <HeroIllustration />
@@ -27,12 +23,16 @@ const Hero = () => {
       <div className="relative z-10 max-w-4xl bg-background/70 backdrop-blur-md rounded-3xl p-8 md:p-12">
 
         {/* Main headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.1 }}
-          className="font-sans font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tighter uppercase text-foreground"
-        >
+        <motion.h1 initial={{
+        opacity: 0,
+        y: 40
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 1,
+        delay: 0.1
+      }} className="font-sans font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tighter uppercase text-foreground">
           <span className="block">Tell me</span>
           <span className="block">how you</span>
           <span className="block">
@@ -42,12 +42,16 @@ const Hero = () => {
         </motion.h1>
 
         {/* Subheadline */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-8 max-w-md space-y-2"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 0.8,
+        delay: 0.3
+      }} className="mt-8 max-w-md space-y-2">
           <p className="text-muted-foreground">
             Not what the algorithm says. Not what you think you <em>should</em> say.
           </p>
@@ -55,35 +59,27 @@ const Hero = () => {
             How your body actually feels —
             <span className="font-medium"> energy, focus, appetite, stress, recovery.</span>
           </p>
-          <p className="text-sm text-muted-foreground">
-            Structured biological optimization for minds in constant motion.
-          </p>
+          <p className="text-sm text-muted-foreground font-bold">At BioRitual, we specialize in STRUCTURED BIOLOGICAL OPTIMIZATION for minds in constant motion.</p>
         </motion.div>
 
         {/* Email signup */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-8 max-w-md"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 0.8,
+        delay: 0.4
+      }} className="mt-8 max-w-md">
           <p className="text-xs text-muted-foreground mb-3 uppercase tracking-wider">
             Start by telling us where you're at
           </p>
           
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-            <Input
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-secondary/50 border-border focus:border-primary h-11"
-              required
-            />
-            <Button 
-              type="submit" 
-              className="h-11 px-5 bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-sm"
-            >
+            <Input type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} className="flex-1 bg-secondary/50 border-border focus:border-primary h-11" required />
+            <Button type="submit" className="h-11 px-5 bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-sm">
               Get the signal
               <ArrowRight className="w-4 h-4" />
             </Button>
@@ -95,12 +91,16 @@ const Hero = () => {
         </motion.div>
 
         {/* Secondary CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-10 pt-6 border-t border-border max-w-2xl"
-        >
+        <motion.div initial={{
+        opacity: 0,
+        y: 20
+      }} animate={{
+        opacity: 1,
+        y: 0
+      }} transition={{
+        duration: 0.8,
+        delay: 0.5
+      }} className="mt-10 pt-6 border-t border-border max-w-2xl">
           <p className="text-xs text-muted-foreground mb-4 uppercase tracking-wider">
             Or explore at your own pace
           </p>
@@ -120,8 +120,6 @@ const Hero = () => {
           </div>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
