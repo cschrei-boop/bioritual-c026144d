@@ -61,19 +61,19 @@ const Hero = () => {
           delay: 0.5
         }} className="mt-10 pt-6 border-t border-border max-w-2xl">
             <p className="text-xs text-muted-foreground mb-4 uppercase tracking-wider font-bold">WE WORK AT YOUR PACE</p>
-            <div className="flex flex-wrap gap-3">
-              <Button variant="outline" size="sm" className="gap-2 hover:border-cyan hover:text-cyan text-xs">
-                <Sparkles className="w-3.5 h-3.5" />
-                AI Coach
-              </Button>
-              <Button variant="outline" size="sm" className="gap-2 hover:border-magenta hover:text-magenta text-xs">
-                <BookOpen className="w-3.5 h-3.5" />
-                Peptide Protocols
-              </Button>
-              <Button variant="outline" size="sm" className="gap-2 hover:border-yellow hover:text-yellow text-xs">
-                <Calendar className="w-3.5 h-3.5" />
-                1-on-1 Coaching
-              </Button>
+            <div className="flex flex-wrap md:flex-nowrap gap-3">
+              <div className="flex-1 min-w-[140px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-4 py-3 flex items-center justify-center gap-2 hover:border-cyan/60 transition-all cursor-pointer">
+                <Sparkles className="w-4 h-4 text-cyan" />
+                <span className="text-xs font-bold uppercase tracking-wide text-foreground">AI Coach</span>
+              </div>
+              <div className="flex-1 min-w-[140px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-4 py-3 flex items-center justify-center gap-2 hover:border-magenta/60 transition-all cursor-pointer">
+                <BookOpen className="w-4 h-4 text-magenta" />
+                <span className="text-xs font-bold uppercase tracking-wide text-foreground">Peptide Protocols</span>
+              </div>
+              <div className="flex-1 min-w-[140px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-4 py-3 flex items-center justify-center gap-2 hover:border-yellow/60 transition-all cursor-pointer">
+                <Calendar className="w-4 h-4 text-yellow" />
+                <span className="text-xs font-bold uppercase tracking-wide text-foreground">1-on-1 Coaching</span>
+              </div>
             </div>
           </motion.div>
         </div>
