@@ -11,13 +11,13 @@ const BuiltFor = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
+    <section ref={ref} className="relative py-10 md:py-14 px-6 overflow-hidden bg-transparent">
       <div className="relative z-10 max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="bg-card/60 backdrop-blur-sm border border-border rounded-3xl p-6 md:p-8"
+          className="bg-card/60 backdrop-blur-sm border border-border rounded-3xl p-5 md:p-6"
         >
           <div className="flex flex-col md:flex-row md:items-center gap-6">
             {/* Left - Illustration */}

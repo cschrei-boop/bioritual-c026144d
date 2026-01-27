@@ -35,7 +35,7 @@ const ThreeLegs = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
+    <section ref={ref} className="relative py-10 md:py-14 px-6 overflow-hidden bg-transparent">
       {/* Decorative background */}
       <svg className="absolute inset-0 w-full h-full opacity-5" viewBox="0 0 100 100" preserveAspectRatio="none">
         <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
@@ -44,13 +44,13 @@ const ThreeLegs = () => {
         <rect width="100" height="100" fill="url(#grid)" />
       </svg>
 
-      <div className="relative z-10 max-w-4xl mx-auto bg-background/70 backdrop-blur-md rounded-3xl p-8">
+      <div className="relative z-10 max-w-4xl mx-auto bg-background/70 backdrop-blur-md rounded-3xl p-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-10"
+          className="text-center mb-6"
         >
           <div className="inline-flex items-center gap-2 mb-4">
             <div className="w-2 h-2 rounded-full bg-cyan" />
@@ -66,7 +66,7 @@ const ThreeLegs = () => {
         </motion.div>
 
         {/* Pillars */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4">
           {pillars.map((pillar, index) => (
             <motion.a
               key={pillar.title}
@@ -76,9 +76,9 @@ const ThreeLegs = () => {
               transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
               className="group relative cursor-pointer"
             >
-              <div className="bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-6 hover:shadow-lg hover:bg-card/80 transition-all">
-                <div className={`w-14 h-14 rounded-xl bg-${pillar.color}/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                  <pillar.icon className={`w-7 h-7 text-${pillar.color}`} />
+              <div className="bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-5 hover:shadow-lg hover:bg-card/80 transition-all">
+                <div className={`w-12 h-12 rounded-xl bg-${pillar.color}/20 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
+                  <pillar.icon className={`w-6 h-6 text-${pillar.color}`} />
                 </div>
                 <h3 className={`font-objektiv text-3xl md:text-4xl lg:text-5xl tracking-wide text-${pillar.color} mb-2 uppercase font-bold`}>
                   {pillar.title}
@@ -96,7 +96,7 @@ const ThreeLegs = () => {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex justify-center mt-8"
+          className="flex justify-center mt-5"
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-px bg-gradient-to-r from-transparent to-cyan" />

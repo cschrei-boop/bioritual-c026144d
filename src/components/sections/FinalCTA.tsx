@@ -9,18 +9,18 @@ const FinalCTA = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
+    <section ref={ref} className="relative py-10 md:py-14 px-6 overflow-hidden bg-transparent">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan/5 to-magenta/5" />
 
-      <div className="relative z-10 max-w-2xl mx-auto text-center bg-background/70 backdrop-blur-md rounded-3xl p-8">
+      <div className="relative z-10 max-w-2xl mx-auto text-center bg-background/70 backdrop-blur-md rounded-3xl p-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
           {/* Decorative element */}
-          <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-cyan via-magenta to-yellow p-0.5">
+          <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-cyan via-magenta to-yellow p-0.5">
             <div className="w-full h-full rounded-2xl bg-background flex items-center justify-center">
               <span className="font-serif text-2xl">B</span>
             </div>
@@ -30,7 +30,7 @@ const FinalCTA = () => {
             Build Your <span className="italic bg-gradient-to-r from-cyan via-magenta to-yellow bg-clip-text text-transparent">BIORITUAL</span>
           </h2>
           
-          <p className="text-sm text-muted-foreground mb-6">
+          <p className="text-sm text-muted-foreground mb-4">
             You don't need more motivation. You need better systems.
           </p>
 
@@ -50,7 +50,7 @@ const FinalCTA = () => {
             </Button>
           </div>
 
-          <p className="font-serif text-lg italic text-muted-foreground mt-6">
+          <p className="font-serif text-lg italic text-muted-foreground mt-4">
             Let's design your ritual.
           </p>
         </motion.div>

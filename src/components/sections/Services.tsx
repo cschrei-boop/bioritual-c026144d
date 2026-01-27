@@ -33,16 +33,16 @@ const Services = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
+    <section ref={ref} className="relative py-10 md:py-14 px-6 overflow-hidden bg-transparent">
       {/* Background accent */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-br from-cyan/5 via-magenta/5 to-yellow/5 blur-3xl" />
 
-      <div className="relative z-10 max-w-3xl mx-auto bg-background/70 backdrop-blur-md rounded-3xl p-8">
+      <div className="relative z-10 max-w-3xl mx-auto bg-background/70 backdrop-blur-md rounded-3xl p-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-8"
+          className="text-center mb-5"
         >
           <h2 className="font-serif text-2xl md:text-3xl">Choose Your Path</h2>
         </motion.div>
