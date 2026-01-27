@@ -11,7 +11,7 @@ import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/sections/Footer";
 import StickyEmailFooter from "@/components/sections/StickyEmailFooter";
 import ImageBackground from "@/components/ImageBackground";
-import backgroundImage from "@/assets/background-gradient.jpg";
+import backgroundImage from "@/assets/iridescent-bg.jpg";
 
 const Index = () => {
   return (
