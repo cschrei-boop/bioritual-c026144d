@@ -73,7 +73,7 @@ const Hero = () => {
                   <Sparkles className="w-5 h-5 text-cyan" />
                   <span className="text-sm font-black uppercase tracking-wider text-foreground">AI CONCIERGE</span>
                 </div>
-                <p className="text-xs text-muted-foreground text-center">A no-BS guide to peptides, nutrition, supplements and more.</p>
+                <p className="text-xs text-muted-foreground text-center">A no-BS guide to peptides and biosignals.</p>
               </motion.div>
               <motion.div whileHover={{
               scale: 1.05
