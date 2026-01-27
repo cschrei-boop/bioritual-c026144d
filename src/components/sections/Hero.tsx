@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sparkles, Calendar, BookOpen } from "lucide-react";
 import heroPortrait from "@/assets/hero-portrait.jpg";
-
 const Hero = () => {
   return <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 lg:px-16 py-16 overflow-hidden bg-transparent">
       {/* Background glow */}
@@ -13,15 +12,15 @@ const Hero = () => {
         <div className="flex-1">
           {/* Main headline */}
           <motion.h1 initial={{
-            opacity: 0,
-            y: 40
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 1,
-            delay: 0.1
-          }} className="font-sans font-black text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tighter uppercase text-foreground">
+          opacity: 0,
+          y: 40
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 1,
+          delay: 0.1
+        }} className="font-sans font-black text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tighter uppercase text-foreground">
             <span className="block">Tell me</span>
             <span className="block">how you</span>
             <span className="block text-5xl sm:text-6xl md:text-7xl">
@@ -32,15 +31,15 @@ const Hero = () => {
 
           {/* Subheadline */}
           <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.8,
-            delay: 0.3
-          }} className="mt-8 max-w-md space-y-2">
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8,
+          delay: 0.3
+        }} className="mt-8 max-w-md space-y-2">
             <p className="text-foreground/80">
               Not what the algorithm says. Not what you think you <em>should</em> say.
             </p>
@@ -52,18 +51,16 @@ const Hero = () => {
 
           {/* Secondary CTAs */}
           <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.8,
-            delay: 0.5
-          }} className="mt-10 pt-6 border-t border-border max-w-2xl">
-            <p className="text-xs text-muted-foreground mb-4 uppercase tracking-wider">
-              Or explore at your own pace
-            </p>
+          opacity: 0,
+          y: 20
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8,
+          delay: 0.5
+        }} className="mt-10 pt-6 border-t border-border max-w-2xl">
+            <p className="text-xs text-muted-foreground mb-4 uppercase tracking-wider font-bold">WE WORK AT YOUR PACE</p>
             <div className="flex flex-wrap gap-3">
               <Button variant="outline" size="sm" className="gap-2 hover:border-cyan hover:text-cyan text-xs">
                 <Sparkles className="w-3.5 h-3.5" />
@@ -82,17 +79,17 @@ const Hero = () => {
         </div>
 
         {/* Hero Portrait Image */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.2 }}
-          className="w-full md:w-64 lg:w-80 h-64 md:h-auto rounded-2xl overflow-hidden flex-shrink-0"
-        >
-          <img 
-            src={heroPortrait} 
-            alt="Serene portrait" 
-            className="w-full h-full object-cover object-center"
-          />
+        <motion.div initial={{
+        opacity: 0,
+        scale: 0.95
+      }} animate={{
+        opacity: 1,
+        scale: 1
+      }} transition={{
+        duration: 1.2,
+        delay: 0.2
+      }} className="w-full md:w-64 lg:w-80 h-64 md:h-auto rounded-2xl overflow-hidden flex-shrink-0">
+          <img src={heroPortrait} alt="Serene portrait" className="w-full h-full object-cover object-center" />
         </motion.div>
       </div>
     </section>;
