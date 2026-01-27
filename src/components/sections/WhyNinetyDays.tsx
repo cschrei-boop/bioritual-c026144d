@@ -9,7 +9,7 @@ const WhyNinetyDays = () => {
 
   return (
     <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
-      <div className="relative z-10 max-w-2xl mx-auto text-center bg-background/80 backdrop-blur-md rounded-3xl p-8">
+      <div className="relative z-10 max-w-2xl mx-auto text-center bg-background/70 backdrop-blur-md rounded-3xl p-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
