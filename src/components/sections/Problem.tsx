@@ -15,9 +15,9 @@ const Problem = () => {
   ];
 
   return (
-    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
+    <section ref={ref} className="relative py-10 md:py-14 px-6 overflow-hidden bg-transparent">
       {/* Problem Illustration */}
-      <div className="absolute top-8 left-4 md:left-8 w-32 md:w-40 h-32 md:h-40 opacity-60">
+      <div className="absolute top-6 left-4 md:left-8 w-28 md:w-36 h-28 md:h-36 opacity-60">
         <ProblemIllustration />
       </div>
 
@@ -26,7 +26,7 @@ const Problem = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="bg-card/60 backdrop-blur-sm border border-border rounded-3xl p-6 md:p-8"
+          className="bg-card/60 backdrop-blur-sm border border-border rounded-3xl p-5 md:p-6"
         >
           <div className="flex items-start gap-6">
             {/* Graphic accent */}
@@ -79,7 +79,7 @@ const Problem = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-6 flex items-center gap-4 max-w-xl mx-auto"
+          className="mt-4 flex items-center gap-4 max-w-xl mx-auto"
         >
           <div className="w-1 h-12 bg-gradient-to-b from-cyan via-magenta to-yellow rounded-full" />
           <p className="font-serif text-lg italic text-foreground/90">

@@ -16,13 +16,13 @@ const Categories = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
-      <div className="relative z-10 max-w-3xl mx-auto bg-background/70 backdrop-blur-md rounded-3xl p-8">
+    <section ref={ref} className="relative py-10 md:py-14 px-6 overflow-hidden bg-transparent">
+      <div className="relative z-10 max-w-3xl mx-auto bg-background/70 backdrop-blur-md rounded-3xl p-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-8"
+          className="text-center mb-5"
         >
           <h2 className="font-serif text-2xl md:text-3xl mb-2">Five Core Areas</h2>
           <div className="flex justify-center gap-1">

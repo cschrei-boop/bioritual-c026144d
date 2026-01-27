@@ -8,23 +8,23 @@ const WhyNinetyDays = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-16 md:py-20 px-6 overflow-hidden bg-transparent">
-      <div className="relative z-10 max-w-2xl mx-auto text-center bg-background/70 backdrop-blur-md rounded-3xl p-8">
+    <section ref={ref} className="relative py-10 md:py-14 px-6 overflow-hidden bg-transparent">
+      <div className="relative z-10 max-w-2xl mx-auto text-center bg-background/70 backdrop-blur-md rounded-3xl p-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
           {/* Timeline Illustration */}
-          <div className="w-full max-w-md mx-auto mb-6">
+          <div className="w-full max-w-md mx-auto mb-4">
             <TimelineIllustration />
           </div>
 
-          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-4">
+          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-3">
             Why <span className="bg-gradient-to-r from-cyan to-magenta bg-clip-text text-transparent">90 Days</span>?
           </h2>
           
-          <p className="text-sm text-muted-foreground mb-6 max-w-md mx-auto">
+          <p className="text-sm text-muted-foreground mb-4 max-w-md mx-auto">
             Biology responds to sustained signals. Ninety days allows adaptation, regulation, and real results.
           </p>
 
@@ -49,7 +49,7 @@ const WhyNinetyDays = () => {
             ))}
           </div>
 
-          <p className="text-sm text-muted-foreground mt-6">
+          <p className="text-sm text-muted-foreground mt-4">
             It's about building <span className="font-serif italic text-foreground">rituals</span>.
           </p>
         </motion.div>
