@@ -3,7 +3,7 @@ import logo from "@/assets/logo.png";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50 w-full bg-navy/70 backdrop-blur-md border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-navy/70 backdrop-blur-md border-b border-white/10">
       <div className="flex items-center justify-between px-4 md:px-8 py-3">
         {/* Logo */}
         <motion.a
