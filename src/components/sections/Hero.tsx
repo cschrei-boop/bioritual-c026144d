@@ -25,16 +25,6 @@ const Hero = () => {
       <div className="absolute top-1/2 right-16 w-64 h-64 rounded-full bg-gradient-to-br from-cyan/10 via-magenta/10 to-yellow/10 blur-3xl" />
       
       <div className="relative z-10 max-w-4xl bg-background/70 backdrop-blur-md rounded-3xl p-8 md:p-12">
-        {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-4 flex items-center gap-3"
-        >
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan via-magenta to-yellow" />
-          <span className="text-xs tracking-[0.4em] text-muted-foreground uppercase">BIORITUAL</span>
-        </motion.div>
 
         {/* Main headline */}
         <motion.h1
