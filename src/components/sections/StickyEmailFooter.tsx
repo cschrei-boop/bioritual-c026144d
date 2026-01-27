@@ -24,7 +24,14 @@ const StickyEmailFooter = () => {
           transition={{ duration: 0.6, delay: 1 }}
           className="fixed bottom-0 left-0 right-0 z-50 bg-navy/70 backdrop-blur-md border-t border-white/10"
         >
-          <div className="flex items-center justify-between px-4 md:px-8 py-3">
+          <button
+            onClick={() => setIsVisible(false)}
+            className="absolute top-2 right-2 p-1 text-white/60 hover:text-white transition-colors"
+            aria-label="Dismiss"
+          >
+            <X className="w-4 h-4" />
+          </button>
+          <div className="flex items-center justify-center px-4 md:px-8 py-3">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 flex-1 sm:justify-center">
               <p className="text-xs text-white font-bold uppercase tracking-wider">
                 Get the latest signals
@@ -51,14 +58,6 @@ const StickyEmailFooter = () => {
                 </Button>
               </form>
             </div>
-
-            <button
-              onClick={() => setIsVisible(false)}
-              className="ml-4 p-2 text-white/60 hover:text-white transition-colors"
-              aria-label="Dismiss"
-            >
-              <X className="w-4 h-4" />
-            </button>
           </div>
         </motion.div>
       )}
