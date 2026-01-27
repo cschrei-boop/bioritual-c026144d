@@ -1,16 +1,8 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { ArrowRight, Sparkles, Calendar, BookOpen } from "lucide-react";
+import { Sparkles, Calendar, BookOpen } from "lucide-react";
 import { HeroIllustration } from "@/components/illustrations";
 const Hero = () => {
-  const [email, setEmail] = useState("");
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Email submitted:", email);
-    setEmail("");
-  };
   return <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 lg:px-16 py-16 overflow-hidden bg-transparent">
       {/* Hero Illustration */}
       <div className="absolute top-1/2 right-8 md:right-16 lg:right-24 -translate-y-1/2 w-48 md:w-64 lg:w-80 h-64 md:h-80 lg:h-96 opacity-80">
@@ -60,34 +52,6 @@ const Hero = () => {
             <span className="font-medium"> energy, focus, appetite, stress, recovery.</span>
           </p>
           <p className="text-sm text-muted-foreground font-bold">At BioRitual, we specialize in STRUCTURED BIOLOGICAL OPTIMIZATION for minds in constant motion.</p>
-        </motion.div>
-
-        {/* Email signup */}
-        <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.8,
-        delay: 0.4
-      }} className="mt-8 max-w-md">
-          <p className="text-xs text-muted-foreground mb-3 uppercase tracking-wider">
-            Start by telling us where you're at
-          </p>
-          
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-            <Input type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} className="flex-1 bg-secondary/50 border-border focus:border-primary h-11" required />
-            <Button type="submit" className="h-11 px-5 bg-primary hover:bg-primary/90 text-primary-foreground gap-2 text-sm">
-              Get the signal
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </form>
-          
-          <p className="text-xs text-muted-foreground mt-3">
-            No spam. No hype. Just clarity.
-          </p>
         </motion.div>
 
         {/* Secondary CTAs */}
