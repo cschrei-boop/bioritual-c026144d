@@ -61,19 +61,31 @@ const Hero = () => {
           delay: 0.5
         }} className="mt-10 pt-6 border-t border-border max-w-2xl">
             <p className="text-xs text-muted-foreground mb-4 uppercase tracking-wider font-bold">WE WORK AT YOUR PACE</p>
-            <div className="flex flex-wrap md:flex-nowrap gap-3">
-              <div className="flex-1 min-w-[140px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-4 py-3 flex items-center justify-center gap-2 hover:border-cyan/60 transition-all cursor-pointer">
-                <Sparkles className="w-4 h-4 text-cyan" />
-                <span className="text-xs font-bold uppercase tracking-wide text-foreground">AI Coach</span>
-              </div>
-              <div className="flex-1 min-w-[140px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-4 py-3 flex items-center justify-center gap-2 hover:border-magenta/60 transition-all cursor-pointer">
-                <BookOpen className="w-4 h-4 text-magenta" />
-                <span className="text-xs font-bold uppercase tracking-wide text-foreground">Peptide Protocols</span>
-              </div>
-              <div className="flex-1 min-w-[140px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-4 py-3 flex items-center justify-center gap-2 hover:border-yellow/60 transition-all cursor-pointer">
-                <Calendar className="w-4 h-4 text-yellow" />
-                <span className="text-xs font-bold uppercase tracking-wide text-foreground">1-on-1 Coaching</span>
-              </div>
+            <div className="flex flex-wrap md:flex-nowrap gap-4">
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="flex-1 min-w-[160px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-5 py-4 flex items-center justify-center gap-3 hover:border-cyan/60 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_8px_24px_rgba(0,200,200,0.25)] transition-all duration-300 cursor-pointer"
+              >
+                <Sparkles className="w-5 h-5 text-cyan" />
+                <span className="text-sm font-black uppercase tracking-wider text-foreground">AI Coach</span>
+              </motion.div>
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="flex-1 min-w-[160px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-5 py-4 flex items-center justify-center gap-3 hover:border-magenta/60 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_8px_24px_rgba(255,0,150,0.25)] transition-all duration-300 cursor-pointer"
+              >
+                <BookOpen className="w-5 h-5 text-magenta" />
+                <span className="text-sm font-black uppercase tracking-wider text-foreground">Peptide Protocols</span>
+              </motion.div>
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="flex-1 min-w-[160px] bg-background/70 backdrop-blur-md border border-white/40 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_4px_12px_rgba(0,0,0,0.1)] rounded-xl px-5 py-4 flex items-center justify-center gap-3 hover:border-yellow/60 hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_8px_24px_rgba(255,200,0,0.25)] transition-all duration-300 cursor-pointer"
+              >
+                <Calendar className="w-5 h-5 text-yellow" />
+                <span className="text-sm font-black uppercase tracking-wider text-foreground">1-on-1 Coaching</span>
+              </motion.div>
             </div>
           </motion.div>
         </div>
