@@ -1,3 +1,4 @@
+import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
 import ThreeLegs from "@/components/sections/ThreeLegs";
@@ -15,6 +16,7 @@ const Index = () => {
   return (
     <main className="relative min-h-screen text-foreground overflow-x-hidden">
       <ImageBackground src={backgroundImage} opacity={0.8} overlayOpacity={0.2} />
+      <Header />
       <Hero />
       <Problem />
       <ThreeLegs />
