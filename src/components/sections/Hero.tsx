@@ -41,14 +41,13 @@ const Hero = () => {
             duration: 0.8,
             delay: 0.3
           }} className="mt-8 max-w-md space-y-2">
-            <p className="text-muted-foreground text-justify">
+            <p className="text-foreground/80">
               Not what the algorithm says. Not what you think you <em>should</em> say.
             </p>
-            <p className="text-foreground/90 text-justify">
-              How your body actually feels —
-              <span className="font-medium text-justify"> energy, focus, appetite, stress, recovery.</span>
+            <p className="text-foreground/80">
+              How your body actually feels — energy, focus, appetite, stress, recovery.
             </p>
-            <p className="text-sm text-muted-foreground font-bold">At BioRitual, we specialize in STRUCTURED BIOLOGICAL OPTIMIZATION for minds in constant motion.</p>
+            <p className="text-foreground/80">At BioRitual, we specialize in STRUCTURED BIOLOGICAL OPTIMIZATION for minds in constant motion.</p>
           </motion.div>
 
           {/* Secondary CTAs */}
