@@ -27,7 +27,7 @@ const Hero = () => {
       }} className="font-sans font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tighter uppercase text-foreground">
           <span className="block">Tell me</span>
           <span className="block">how you</span>
-          <span className="block">
+          <span className="block text-5xl">
             <span className="italic font-serif font-normal bg-gradient-to-r from-cyan via-magenta to-yellow bg-clip-text text-transparent lowercase">really</span>{" "}
             feel
           </span>
@@ -44,12 +44,12 @@ const Hero = () => {
         duration: 0.8,
         delay: 0.3
       }} className="mt-8 max-w-md space-y-2">
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground text-justify">
             Not what the algorithm says. Not what you think you <em>should</em> say.
           </p>
-          <p className="text-foreground/90">
+          <p className="text-foreground/90 text-justify">
             How your body actually feels —
-            <span className="font-medium"> energy, focus, appetite, stress, recovery.</span>
+            <span className="font-medium text-justify"> energy, focus, appetite, stress, recovery.</span>
           </p>
           <p className="text-sm text-muted-foreground font-bold">At BioRitual, we specialize in STRUCTURED BIOLOGICAL OPTIMIZATION for minds in constant motion.</p>
         </motion.div>
