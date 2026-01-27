@@ -31,12 +31,13 @@ const Hero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1 }}
-          className="font-sans font-semibold text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tight uppercase text-foreground"
+          className="font-sans font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.9] tracking-tighter uppercase text-foreground"
+          style={{ wordSpacing: '-0.15em' }}
         >
           <span className="block">Tell me</span>
           <span className="block">how you</span>
           <span className="block">
-            <span className="italic font-serif bg-gradient-to-r from-cyan via-magenta to-yellow bg-clip-text text-transparent lowercase">really</span>{" "}
+            <span className="italic font-serif font-normal bg-gradient-to-r from-cyan via-magenta to-yellow bg-clip-text text-transparent lowercase">really</span>{" "}
             feel
           </span>
         </motion.h1>
