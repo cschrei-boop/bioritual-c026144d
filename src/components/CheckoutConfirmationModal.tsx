@@ -35,8 +35,10 @@ export const CheckoutConfirmationModal = ({
   isLoading = false,
 }: CheckoutConfirmationModalProps) => {
   const [checked, setChecked] = useState<Record<number, boolean>>({});
+  const [consentChecked, setConsentChecked] = useState(false);
 
-  const allChecked = ACKNOWLEDGMENTS.every((_, index) => checked[index]);
+  const allChecked =
+    ACKNOWLEDGMENTS.every((_, index) => checked[index]) && consentChecked;
 
   const handleCheckChange = (index: number, value: boolean) => {
     setChecked((prev) => ({ ...prev, [index]: value }));
@@ -51,6 +53,7 @@ export const CheckoutConfirmationModal = ({
   const handleOpenChange = (open: boolean) => {
     if (!open) {
       setChecked({});
+      setConsentChecked(false);
       onClose();
     }
   };
@@ -111,6 +114,30 @@ export const CheckoutConfirmationModal = ({
                 </div>
               ))}
             </div>
+
+            {/* Consent Checkbox */}
+            <div className="flex items-start gap-3 pt-2 border-t border-border">
+              <Checkbox
+                id="consent-acknowledgment"
+                checked={consentChecked}
+                onCheckedChange={(value) => setConsentChecked(value === true)}
+                className="mt-0.5"
+              />
+              <Label
+                htmlFor="consent-acknowledgment"
+                className="text-sm leading-relaxed cursor-pointer"
+              >
+                I have read and agree to the Bio Signals{" "}
+                <Link
+                  to="/consent"
+                  className="underline hover:text-muted-foreground"
+                  target="_blank"
+                >
+                  Consent & Acknowledgment
+                </Link>
+                .
+              </Label>
+            </div>
           </div>
 
           {/* Final Statement */}
@@ -126,14 +153,22 @@ export const CheckoutConfirmationModal = ({
                 target="_blank"
               >
                 Terms of Service
-              </Link>{" "}
-              and{" "}
+              </Link>
+              ,{" "}
               <Link
                 to="/fulfillment"
                 className="underline hover:text-foreground"
                 target="_blank"
               >
                 Fulfillment & Shipping Policy
+              </Link>
+              , and{" "}
+              <Link
+                to="/consent"
+                className="underline hover:text-foreground"
+                target="_blank"
+              >
+                Consent & Acknowledgment
               </Link>{" "}
               for full details.
             </p>

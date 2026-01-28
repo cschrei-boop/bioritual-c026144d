@@ -43,7 +43,11 @@ const TermsOfService = () => {
             </p>
             <p className="leading-relaxed mt-3">
               If you do not agree with these Terms, you may not access or use
-              the services provided.
+              the services provided. Please also review our{" "}
+              <Link to="/consent" className="underline hover:no-underline">
+                Consent & Acknowledgment
+              </Link>{" "}
+              which is required for enrollment.
             </p>
           </section>
 
