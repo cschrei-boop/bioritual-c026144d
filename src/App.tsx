@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { useCartSync } from "@/hooks/useCartSync";
 import Index from "./pages/Index";
 import ProductBioSignals from "./pages/ProductBioSignals";
@@ -15,6 +16,7 @@ import ProductAIConcierge from "./pages/ProductAIConcierge";
 import ProductCoaching from "./pages/ProductCoaching";
 import StartHere from "./pages/StartHere";
 import Protocols from "./pages/Protocols";
+import WeightLossLanding from "./pages/WeightLossLanding";
 import TermsOfService from "./pages/TermsOfService";
 import FulfillmentPolicy from "./pages/FulfillmentPolicy";
 import ConsentAcknowledgment from "./pages/ConsentAcknowledgment";
@@ -29,6 +31,7 @@ const AppContent = () => {
       <Route path="/" element={<Index />} />
       <Route path="/start-here" element={<StartHere />} />
       <Route path="/protocols" element={<Protocols />} />
+      <Route path="/weight-loss-structured-wellness" element={<WeightLossLanding />} />
       <Route path="/terms" element={<TermsOfService />} />
       <Route path="/fulfillment" element={<FulfillmentPolicy />} />
       <Route path="/consent" element={<ConsentAcknowledgment />} />
@@ -47,15 +50,17 @@ const AppContent = () => {
 };
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AppContent />
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AppContent />
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;
