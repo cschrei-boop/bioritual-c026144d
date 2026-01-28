@@ -12,6 +12,7 @@ import ProductBioSignalsHairSkin from "./pages/ProductBioSignalsHairSkin";
 import ProductBioSignalsLongevity from "./pages/ProductBioSignalsLongevity";
 import ProductBioSignalsCognition from "./pages/ProductBioSignalsCognition";
 import ProductAIConcierge from "./pages/ProductAIConcierge";
+import ProductCoaching from "./pages/ProductCoaching";
 import Protocols from "./pages/Protocols";
 import TermsOfService from "./pages/TermsOfService";
 import FulfillmentPolicy from "./pages/FulfillmentPolicy";
@@ -36,6 +37,7 @@ const AppContent = () => {
       <Route path="/protocol/bio-signals-longevity" element={<ProductBioSignalsLongevity />} />
       <Route path="/protocol/bio-signals-cognition" element={<ProductBioSignalsCognition />} />
       <Route path="/ai-concierge" element={<ProductAIConcierge />} />
+      <Route path="/coaching" element={<ProductCoaching />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
     </Routes>
