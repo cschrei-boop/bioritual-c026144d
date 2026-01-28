@@ -10,6 +10,7 @@ import ProductBioSignalsEnergy from "./pages/ProductBioSignalsEnergy";
 import ProductBioSignalsPerformance from "./pages/ProductBioSignalsPerformance";
 import ProductBioSignalsHairSkin from "./pages/ProductBioSignalsHairSkin";
 import ProductBioSignalsLongevity from "./pages/ProductBioSignalsLongevity";
+import ProductBioSignalsCognition from "./pages/ProductBioSignalsCognition";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const AppContent = () => {
       <Route path="/protocol/bio-signals-performance-recovery" element={<ProductBioSignalsPerformance />} />
       <Route path="/protocol/bio-signals-hair-skin" element={<ProductBioSignalsHairSkin />} />
       <Route path="/protocol/bio-signals-longevity" element={<ProductBioSignalsLongevity />} />
+      <Route path="/protocol/bio-signals-cognition" element={<ProductBioSignalsCognition />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
     </Routes>
