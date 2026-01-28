@@ -8,28 +8,33 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Link } from "react-router-dom";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const looks = [
   {
-    title: "The Executive Reset",
+    title: "Weight Loss Protocol",
     subtitle: "90-day metabolic optimization",
     image: heroPortrait,
+    href: "/protocol/bio-signals-weight-loss",
   },
   {
-    title: "The Creative Flow",
-    subtitle: "Cognitive enhancement protocol",
+    title: "Cognition Protocol",
+    subtitle: "Focus & mental clarity",
     image: heroPortrait,
+    href: "/protocol/bio-signals-cognition",
   },
   {
-    title: "The Athlete's Edge",
+    title: "Performance Protocol",
     subtitle: "Recovery & performance stack",
     image: heroPortrait,
+    href: "/protocol/bio-signals-performance-recovery",
   },
   {
-    title: "The Longevity Path",
+    title: "Longevity Protocol",
     subtitle: "Anti-aging fundamentals",
     image: heroPortrait,
+    href: "/protocol/bio-signals-longevity",
   },
 ];
 
@@ -66,7 +71,7 @@ const GetTheLook = () => {
             <CarouselContent className="-ml-4">
               {looks.map((look) => (
                 <CarouselItem key={look.title} className="pl-4 md:basis-1/2 lg:basis-1/4">
-                  <a href="#" className="group block">
+                  <Link to={look.href} className="group block">
                     {/* Image */}
                     <div className="aspect-[3/4] mb-4 overflow-hidden">
                       <img
@@ -81,7 +86,7 @@ const GetTheLook = () => {
                       {look.title}
                     </h3>
                     <p className="text-sm text-muted-foreground">{look.subtitle}</p>
-                  </a>
+                  </Link>
                 </CarouselItem>
               ))}
             </CarouselContent>

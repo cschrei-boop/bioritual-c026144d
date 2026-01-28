@@ -8,6 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Link } from "react-router-dom";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const values = [
@@ -70,12 +71,12 @@ const ValueProps = () => {
                     <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                       {value.description}
                     </p>
-                    <a
-                      href="#"
+                    <Link
+                      to="/start-here"
                       className="text-sm border-b border-foreground pb-0.5 hover:opacity-60 transition-opacity"
                     >
                       Learn More
-                    </a>
+                    </Link>
                   </div>
                 </CarouselItem>
               ))}

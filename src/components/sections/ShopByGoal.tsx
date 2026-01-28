@@ -8,33 +8,45 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Link } from "react-router-dom";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const goals = [
   {
-    title: "Metabolic",
-    subtitle: "Energy & Weight",
+    title: "Weight Loss",
+    subtitle: "Metabolic Health",
     image: heroPortrait,
+    href: "/protocol/bio-signals-weight-loss",
   },
   {
-    title: "Cognitive",
-    subtitle: "Focus & Clarity",
+    title: "Energy",
+    subtitle: "Vitality & Focus",
     image: heroPortrait,
+    href: "/protocol/bio-signals-energy",
   },
   {
-    title: "Recovery",
-    subtitle: "Sleep & Repair",
+    title: "Cognition",
+    subtitle: "Brain Health",
     image: heroPortrait,
+    href: "/protocol/bio-signals-cognition",
   },
   {
     title: "Longevity",
     subtitle: "Aging Well",
     image: heroPortrait,
+    href: "/protocol/bio-signals-longevity",
   },
   {
     title: "Performance",
-    subtitle: "Strength & Endurance",
+    subtitle: "Strength & Recovery",
     image: heroPortrait,
+    href: "/protocol/bio-signals-performance-recovery",
+  },
+  {
+    title: "Hair + Skin",
+    subtitle: "Appearance & Vitality",
+    image: heroPortrait,
+    href: "/protocol/bio-signals-hair-skin",
   },
 ];
 
@@ -76,7 +88,7 @@ const ShopByGoal = () => {
             <CarouselContent className="-ml-4">
               {goals.map((goal) => (
                 <CarouselItem key={goal.title} className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/5">
-                  <a href="#" className="group block">
+                  <Link to={goal.href} className="group block">
                     <div className="relative aspect-[3/4] overflow-hidden mb-4">
                       <img
                         src={goal.image}
@@ -91,7 +103,7 @@ const ShopByGoal = () => {
                         <p className="text-xs opacity-80">{goal.subtitle}</p>
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </CarouselItem>
               ))}
             </CarouselContent>

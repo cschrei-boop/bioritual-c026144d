@@ -8,6 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Link } from "react-router-dom";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const pillars = [
@@ -16,18 +17,21 @@ const pillars = [
     subtitle: "Nutrition that works",
     description: "Clear frameworks for metabolic health and sustained energy throughout your day.",
     image: heroPortrait,
+    href: "/protocol/bio-signals-weight-loss",
   },
   {
     title: "SIGNALS",
     subtitle: "Peptide protocols",
     description: "Work with your biology, not against it. Evidence-based signaling optimization.",
     image: heroPortrait,
+    href: "/protocols",
   },
   {
     title: "MOVEMENT",
     subtitle: "Sustainable training",
     description: "Build strength and resilience without burnout. Protocols that fit your life.",
     image: heroPortrait,
+    href: "/protocol/bio-signals-performance-recovery",
   },
 ];
 
@@ -85,12 +89,12 @@ const ThreePillarsCarousel = () => {
                     <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                       {pillar.description}
                     </p>
-                    <a
-                      href="#"
+                    <Link
+                      to={pillar.href}
                       className="text-sm border-b border-foreground pb-0.5 hover:opacity-60 transition-opacity"
                     >
                       Learn More
-                    </a>
+                    </Link>
                   </div>
                 </CarouselItem>
               ))}
