@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Loader2, Bot, BookOpen, Brain, MessageSquare, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { NotSureBlock } from "@/components/sections/NotSureBlock";
 import { useCartStore } from "@/stores/cartStore";
 import { storefrontApiRequest, PRODUCT_BY_HANDLE_QUERY, ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
@@ -515,6 +516,8 @@ const ProductAIConcierge = () => {
           </motion.div>
         </div>
       </section>
+
+      <NotSureBlock />
     </div>
   );
 };

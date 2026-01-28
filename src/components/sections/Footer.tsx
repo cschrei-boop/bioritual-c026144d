@@ -34,15 +34,16 @@ const Footer = () => {
             </nav>
           </motion.div>
 
-          {/* Column 3 - About */}
+          {/* Column 3 - Getting Started */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="text-xs tracking-[0.2em] uppercase mb-4">About</p>
+            <p className="text-xs tracking-[0.2em] uppercase mb-4">Getting Started</p>
             <nav className="flex flex-col gap-3">
+              <Link to="/start-here" className="text-sm text-background/60 hover:text-background transition-colors">Start Here</Link>
               <a href="#" className="text-sm text-background/60 hover:text-background transition-colors">Our Story</a>
               <a href="#" className="text-sm text-background/60 hover:text-background transition-colors">Science</a>
               <a href="#" className="text-sm text-background/60 hover:text-background transition-colors">Contact</a>

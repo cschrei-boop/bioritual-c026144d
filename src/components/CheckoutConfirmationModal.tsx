@@ -140,6 +140,20 @@ export const CheckoutConfirmationModal = ({
             </div>
           </div>
 
+          {/* Confirm This Is Right */}
+          <div className="text-center py-2">
+            <p className="text-xs text-muted-foreground">
+              Want to confirm this is the right level before purchasing?{" "}
+              <Link
+                to="/start-here"
+                className="underline hover:text-foreground"
+                target="_blank"
+              >
+                Compare Bio Signals experiences
+              </Link>
+            </p>
+          </div>
+
           {/* Final Statement */}
           <div className="bg-secondary/30 p-4 rounded-sm border border-border">
             <p className="text-xs text-muted-foreground leading-relaxed">

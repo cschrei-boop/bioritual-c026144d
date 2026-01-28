@@ -35,8 +35,9 @@ const Header = () => {
   const [protocolsOpen, setProtocolsOpen] = useState(false);
 
   const navLinks = [
+    { label: "Start Here", href: "/start-here" },
     { label: "Shop All", href: "#" },
-    { label: "Coaching", href: "#" },
+    { label: "Coaching", href: "/coaching" },
     { label: "About", href: "#" },
   ];
 
