@@ -9,31 +9,34 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import weightLossHero from "@/assets/protocol-weight-loss-hero.jpg";
+import cognitionHero from "@/assets/protocol-cognition-hero.jpg";
+import performanceHero from "@/assets/protocol-performance-hero.jpg";
+import longevityHero from "@/assets/protocol-longevity-hero.jpg";
 
 const looks = [
   {
     title: "Weight Loss Protocol",
     subtitle: "90-day metabolic optimization",
-    image: heroPortrait,
+    image: weightLossHero,
     href: "/protocol/bio-signals-weight-loss",
   },
   {
     title: "Cognition Protocol",
     subtitle: "Focus & mental clarity",
-    image: heroPortrait,
+    image: cognitionHero,
     href: "/protocol/bio-signals-cognition",
   },
   {
     title: "Performance Protocol",
     subtitle: "Recovery & performance stack",
-    image: heroPortrait,
+    image: performanceHero,
     href: "/protocol/bio-signals-performance-recovery",
   },
   {
     title: "Longevity Protocol",
     subtitle: "Anti-aging fundamentals",
-    image: heroPortrait,
+    image: longevityHero,
     href: "/protocol/bio-signals-longevity",
   },
 ];

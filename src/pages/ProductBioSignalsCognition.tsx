@@ -9,7 +9,7 @@ import Footer from "@/components/sections/Footer";
 import { NotSureBlock } from "@/components/sections/NotSureBlock";
 import { useCartStore } from "@/stores/cartStore";
 import { storefrontApiRequest, PRODUCTS_QUERY, ShopifyProduct } from "@/lib/shopify";
-import heroImage from "@/assets/bio-signals-cognition-hero.jpg";
+import heroImage from "@/assets/protocol-cognition-hero.jpg";
 
 const ProductBioSignalsCognition = () => {
   const [product, setProduct] = useState<ShopifyProduct | null>(null);

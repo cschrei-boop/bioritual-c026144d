@@ -9,43 +9,48 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import weightLossHero from "@/assets/protocol-weight-loss-hero.jpg";
+import energyHero from "@/assets/protocol-energy-hero.jpg";
+import cognitionHero from "@/assets/protocol-cognition-hero.jpg";
+import longevityHero from "@/assets/protocol-longevity-hero.jpg";
+import performanceHero from "@/assets/protocol-performance-hero.jpg";
+import hairSkinHero from "@/assets/protocol-hair-skin-hero.jpg";
 
 const goals = [
   {
     title: "Weight Loss",
     subtitle: "Metabolic Health",
-    image: heroPortrait,
+    image: weightLossHero,
     href: "/protocol/bio-signals-weight-loss",
   },
   {
     title: "Energy",
     subtitle: "Vitality & Focus",
-    image: heroPortrait,
+    image: energyHero,
     href: "/protocol/bio-signals-energy",
   },
   {
     title: "Cognition",
     subtitle: "Brain Health",
-    image: heroPortrait,
+    image: cognitionHero,
     href: "/protocol/bio-signals-cognition",
   },
   {
     title: "Longevity",
     subtitle: "Aging Well",
-    image: heroPortrait,
+    image: longevityHero,
     href: "/protocol/bio-signals-longevity",
   },
   {
     title: "Performance",
     subtitle: "Strength & Recovery",
-    image: heroPortrait,
+    image: performanceHero,
     href: "/protocol/bio-signals-performance-recovery",
   },
   {
     title: "Hair + Skin",
     subtitle: "Appearance & Vitality",
-    image: heroPortrait,
+    image: hairSkinHero,
     href: "/protocol/bio-signals-hair-skin",
   },
 ];
