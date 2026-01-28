@@ -1,12 +1,14 @@
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
-import Problem from "@/components/sections/Problem";
-import ThreeLegs from "@/components/sections/ThreeLegs";
-import Peptides from "@/components/sections/Peptides";
-import Categories from "@/components/sections/Categories";
-import Services from "@/components/sections/Services";
-import WhyNinetyDays from "@/components/sections/WhyNinetyDays";
-import BuiltFor from "@/components/sections/BuiltFor";
+import FeaturedServices from "@/components/sections/FeaturedServices";
+import PressQuotes from "@/components/sections/PressQuotes";
+import ShopByGoal from "@/components/sections/ShopByGoal";
+import FounderQuote from "@/components/sections/FounderQuote";
+import FeaturedCollection from "@/components/sections/FeaturedCollection";
+import ThreePillarsCarousel from "@/components/sections/ThreePillarsCarousel";
+import ValueProps from "@/components/sections/ValueProps";
+import ChooseYourPath from "@/components/sections/ChooseYourPath";
+import GetTheLook from "@/components/sections/GetTheLook";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/sections/Footer";
 import StickyEmailFooter from "@/components/sections/StickyEmailFooter";
@@ -16,13 +18,15 @@ const Index = () => {
     <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Header />
       <Hero />
-      <Problem />
-      <ThreeLegs />
-      <Peptides />
-      <Categories />
-      <Services />
-      <WhyNinetyDays />
-      <BuiltFor />
+      <FeaturedServices />
+      <PressQuotes />
+      <ShopByGoal />
+      <FounderQuote />
+      <FeaturedCollection />
+      <ThreePillarsCarousel />
+      <ValueProps />
+      <ChooseYourPath />
+      <GetTheLook />
       <FinalCTA />
       <Footer />
       <StickyEmailFooter />
