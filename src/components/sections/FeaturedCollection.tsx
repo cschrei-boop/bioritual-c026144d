@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import featuredCollection from "@/assets/featured-collection.jpg";
 
 const FeaturedCollection = () => {
   const ref = useRef(null);
@@ -44,7 +44,7 @@ const FeaturedCollection = () => {
           >
             <div className="aspect-[4/3] overflow-hidden">
               <img
-                src={heroPortrait}
+                src={featuredCollection}
                 alt="Peptide Collection"
                 className="w-full h-full object-cover"
               />

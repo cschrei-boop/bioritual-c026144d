@@ -10,7 +10,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import serviceAiConcierge from "@/assets/service-ai-concierge.jpg";
+import serviceProtocols from "@/assets/service-protocols.jpg";
+import serviceCoaching from "@/assets/service-coaching.jpg";
+import serviceStartHere from "@/assets/service-start-here.jpg";
 
 const paths = [
   {
@@ -18,7 +21,7 @@ const paths = [
     description: "24/7 intelligent guidance for your optimization journey. Ask anything, get personalized answers.",
     price: "$10/mo",
     badge: "Most Popular",
-    image: heroPortrait,
+    image: serviceAiConcierge,
     href: "/ai-concierge",
   },
   {
@@ -26,7 +29,7 @@ const paths = [
     description: "Get a custom 90-day protocol designed specifically for your goals and lifestyle.",
     price: "From $199",
     badge: null,
-    image: heroPortrait,
+    image: serviceProtocols,
     href: "/protocols",
   },
   {
@@ -34,7 +37,7 @@ const paths = [
     description: "Weekly check-ins, protocol adjustments, and direct access to our optimization experts.",
     price: "From $2,999",
     badge: "Bestseller",
-    image: heroPortrait,
+    image: serviceCoaching,
     href: "/coaching",
   },
   {
@@ -42,7 +45,7 @@ const paths = [
     description: "Not sure where to begin? Compare all Bio Signals options and find the right fit.",
     price: "Free",
     badge: null,
-    image: heroPortrait,
+    image: serviceStartHere,
     href: "/start-here",
   },
 ];

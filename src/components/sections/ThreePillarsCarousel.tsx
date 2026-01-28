@@ -9,28 +9,30 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import pillarFuel from "@/assets/pillar-fuel.jpg";
+import pillarSignals from "@/assets/pillar-signals.jpg";
+import pillarMovement from "@/assets/pillar-movement.jpg";
 
 const pillars = [
   {
     title: "FUEL",
     subtitle: "Nutrition that works",
     description: "Clear frameworks for metabolic health and sustained energy throughout your day.",
-    image: heroPortrait,
+    image: pillarFuel,
     href: "/protocol/bio-signals-weight-loss",
   },
   {
     title: "SIGNALS",
     subtitle: "Peptide protocols",
     description: "Work with your biology, not against it. Evidence-based signaling optimization.",
-    image: heroPortrait,
+    image: pillarSignals,
     href: "/protocols",
   },
   {
     title: "MOVEMENT",
     subtitle: "Sustainable training",
     description: "Build strength and resilience without burnout. Protocols that fit your life.",
-    image: heroPortrait,
+    image: pillarMovement,
     href: "/protocol/bio-signals-performance-recovery",
   },
 ];
