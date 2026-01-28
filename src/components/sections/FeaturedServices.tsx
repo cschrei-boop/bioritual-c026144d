@@ -10,7 +10,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import serviceAiConcierge from "@/assets/service-ai-concierge.jpg";
+import serviceProtocols from "@/assets/service-protocols.jpg";
+import serviceCoaching from "@/assets/service-coaching.jpg";
+import serviceStartHere from "@/assets/service-start-here.jpg";
 
 const services = [
   {
@@ -18,7 +21,7 @@ const services = [
     description: "24/7 intelligent guidance for your optimization journey.",
     price: "$10/mo",
     badge: "New",
-    image: heroPortrait,
+    image: serviceAiConcierge,
     href: "/ai-concierge",
   },
   {
@@ -26,7 +29,7 @@ const services = [
     description: "Personalized 90-day programs with clear milestones.",
     price: "From $199",
     badge: "Popular",
-    image: heroPortrait,
+    image: serviceProtocols,
     href: "/protocols",
   },
   {
@@ -34,7 +37,7 @@ const services = [
     description: "Weekly check-ins and protocol adjustments.",
     price: "From $2,999",
     badge: "Bestseller",
-    image: heroPortrait,
+    image: serviceCoaching,
     href: "/coaching",
   },
   {
@@ -42,7 +45,7 @@ const services = [
     description: "Not sure where to begin? Find the right level of support.",
     price: "Free",
     badge: null,
-    image: heroPortrait,
+    image: serviceStartHere,
     href: "/start-here",
   },
 ];

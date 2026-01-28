@@ -9,28 +9,31 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import valueSystems from "@/assets/value-systems.jpg";
+import valueClean from "@/assets/value-clean.jpg";
+import valuePerformance from "@/assets/value-performance.jpg";
+import valueBusy from "@/assets/value-busy.jpg";
 
 const values = [
   {
     title: "Better Systems",
     description: "The world doesn't need more motivation. It needs better systems.",
-    image: heroPortrait,
+    image: valueSystems,
   },
   {
     title: "Clean Protocols",
     description: "No pseudoscience, no fads. Just evidence-based optimization strategies.",
-    image: heroPortrait,
+    image: valueClean,
   },
   {
     title: "High Performance",
     description: "The optimization equivalent of a swiss army knife. Easy, adaptable, multi-purpose protocols.",
-    image: heroPortrait,
+    image: valuePerformance,
   },
   {
     title: "Built for Busy",
     description: "Designed for professionals with high cognitive load and inconsistent schedules.",
-    image: heroPortrait,
+    image: valueBusy,
   },
 ];
 
