@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useCartSync } from "@/hooks/useCartSync";
 import Index from "./pages/Index";
 import ProductBioSignals from "./pages/ProductBioSignals";
+import ProductBioSignalsEnergy from "./pages/ProductBioSignalsEnergy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -16,6 +17,7 @@ const AppContent = () => {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/protocol/bio-signals-weight-loss" element={<ProductBioSignals />} />
+      <Route path="/protocol/bio-signals-energy" element={<ProductBioSignalsEnergy />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
     </Routes>
