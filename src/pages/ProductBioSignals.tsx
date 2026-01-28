@@ -8,6 +8,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { useEffect, useState } from "react";
 import { storefrontApiRequest, PRODUCTS_QUERY, ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
+import bioSignalsHero from "@/assets/bio-signals-hero.jpg";
 
 const ProductBioSignals = () => {
   const [product, setProduct] = useState<ShopifyProduct | null>(null);
@@ -118,6 +119,16 @@ const ProductBioSignals = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
+      
+      {/* Hero Image */}
+      <div className="relative w-full h-[40vh] md:h-[50vh] overflow-hidden">
+        <img 
+          src={bioSignalsHero} 
+          alt="Bio Signals Protocol" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+      </div>
       
       <main className="px-6 md:px-12 lg:px-16 py-12 md:py-20">
         <div className="max-w-3xl mx-auto">
