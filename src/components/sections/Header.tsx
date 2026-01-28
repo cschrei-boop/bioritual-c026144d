@@ -6,13 +6,15 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useState } from "react";
+import { CartDrawer } from "@/components/CartDrawer";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
     { label: "Shop All", href: "#" },
-    { label: "Protocols", href: "#" },
+    { label: "Protocols", href: "/protocol/bio-signals-weight-loss" },
     { label: "Coaching", href: "#" },
     { label: "About", href: "#" },
   ];
@@ -39,14 +41,14 @@ const Header = () => {
             <SheetContent side="left" className="w-[280px] pt-12">
               <nav className="flex flex-col gap-6">
                 {navLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.label}
-                    href={link.href}
+                    to={link.href}
                     onClick={() => setIsOpen(false)}
                     className="text-lg tracking-wide hover:opacity-60 transition-opacity"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
                 <a
                   href="mailto:hello@bioritual.com"
@@ -60,26 +62,26 @@ const Header = () => {
           </Sheet>
 
           {/* Logo */}
-          <motion.a
-            href="/"
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="text-xl md:text-2xl font-serif tracking-wide"
           >
-            BIORITUAL
-          </motion.a>
+            <Link to="/" className="text-xl md:text-2xl font-serif tracking-wide">
+              BIORITUAL
+            </Link>
+          </motion.div>
 
           {/* Navigation - Center (Desktop) */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 className="text-sm tracking-wide hover:opacity-60 transition-opacity"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -93,6 +95,7 @@ const Header = () => {
             <button className="hover:opacity-60 transition-opacity">
               <Search className="w-5 h-5" />
             </button>
+            <CartDrawer />
             <button className="hover:opacity-60 transition-opacity hidden sm:block">
               <User className="w-5 h-5" />
             </button>
