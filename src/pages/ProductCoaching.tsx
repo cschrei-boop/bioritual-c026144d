@@ -9,7 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Header from "@/components/sections/Header";
-import { Footer } from "@/components/sections/Footer";
+import Footer from "@/components/sections/Footer";
 import { useCartStore } from "@/stores/cartStore";
 import { storefrontApiRequest, PRODUCT_BY_HANDLE_QUERY, ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
