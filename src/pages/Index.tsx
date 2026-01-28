@@ -10,13 +10,10 @@ import BuiltFor from "@/components/sections/BuiltFor";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/sections/Footer";
 import StickyEmailFooter from "@/components/sections/StickyEmailFooter";
-import ImageBackground from "@/components/ImageBackground";
-import backgroundImage from "@/assets/iridescent-bg.jpg";
 
 const Index = () => {
   return (
-    <main className="relative min-h-screen text-foreground overflow-x-hidden pt-14">
-      <ImageBackground src={backgroundImage} opacity={0.8} overlayOpacity={0.2} />
+    <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Header />
       <Hero />
       <Problem />

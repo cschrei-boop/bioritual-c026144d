@@ -1,58 +1,70 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { TimelineIllustration } from "@/components/illustrations";
+
+const steps = [
+  { num: "01", title: "Adapt", description: "Your body begins to recognize new signals" },
+  { num: "02", title: "Regulate", description: "Systems stabilize and optimize" },
+  { num: "03", title: "Reveal", description: "Real, measurable results emerge" },
+];
 
 const WhyNinetyDays = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-6 md:py-14 px-4 md:px-6 overflow-hidden bg-transparent">
-      <div className="relative z-10 max-w-2xl mx-auto text-center bg-background/70 backdrop-blur-md rounded-3xl p-6">
+    <section ref={ref} className="py-20 md:py-32 px-6 md:px-12">
+      <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          {/* Timeline Illustration */}
-          <div className="w-full max-w-md mx-auto mb-4">
-            <TimelineIllustration />
-          </div>
-
-          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-3">
-            Why <span className="bg-gradient-to-r from-cyan to-magenta bg-clip-text text-transparent">90 Days</span>?
+          <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
+            The Timeline
+          </p>
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6">
+            Why 90 Days?
           </h2>
-          
-          <p className="text-sm text-muted-foreground mb-4 max-w-md mx-auto">
+          <p className="text-muted-foreground max-w-xl mx-auto mb-16">
             Biology responds to sustained signals. Ninety days allows adaptation, regulation, and real results.
           </p>
-
-          <div className="flex justify-center gap-4">
-            {[
-              { num: "1", label: "Adapt", color: "cyan" },
-              { num: "2", label: "Regulate", color: "magenta" },
-              { num: "3", label: "Reveal", color: "yellow" },
-            ].map((item, i) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                className="text-center"
-              >
-                <div className={`w-12 h-12 rounded-xl bg-${item.color}/20 flex items-center justify-center mx-auto mb-2`}>
-                  <span className={`text-xl font-serif text-${item.color}`}>{item.num}</span>
-                </div>
-                <span className="text-xs text-muted-foreground">{item.label}</span>
-              </motion.div>
-            ))}
-          </div>
-
-          <p className="text-sm text-muted-foreground mt-4">
-            It's about building <span className="font-serif italic text-foreground">rituals</span>.
-          </p>
         </motion.div>
+
+        {/* Steps */}
+        <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+              className="relative"
+            >
+              {/* Connector line */}
+              {index < steps.length - 1 && (
+                <div className="hidden md:block absolute top-8 left-1/2 w-full h-px bg-border" />
+              )}
+              
+              <div className="relative z-10 bg-background">
+                <p className="text-4xl md:text-5xl font-serif text-muted-foreground/30 mb-4">
+                  {step.num}
+                </p>
+                <h3 className="text-xl mb-2">{step.title}</h3>
+                <p className="text-sm text-muted-foreground">{step.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-16 font-serif text-xl italic"
+        >
+          It's about building rituals.
+        </motion.p>
       </div>
     </section>
   );

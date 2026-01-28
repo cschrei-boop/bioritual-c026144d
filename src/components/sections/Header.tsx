@@ -1,36 +1,69 @@
 import { motion } from "framer-motion";
-import logo from "@/assets/logo.png";
+import { Search, User } from "lucide-react";
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-navy/70 backdrop-blur-md border-b border-white/10">
-      <div className="flex items-center justify-between px-4 md:px-8 py-3">
-        {/* Logo */}
-        <motion.a
-          href="/"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <img 
-            src={logo} 
-            alt="Logo" 
-            className="w-[50vw] md:w-auto h-auto md:h-10 object-contain"
-          />
-        </motion.a>
-
-        {/* Contact Button */}
-        <motion.a
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          href="mailto:hello@sundayafternoonproject.com"
-          className="px-4 py-2 text-xs md:text-sm text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition-all uppercase tracking-wider font-bold backdrop-blur-sm"
-        >
-          Contact Us
-        </motion.a>
+    <>
+      {/* Announcement Bar */}
+      <div className="bg-foreground text-background text-center py-2 px-4">
+        <p className="text-xs tracking-widest uppercase">
+          Free shipping on orders over $100
+        </p>
       </div>
-    </header>
+
+      {/* Main Header */}
+      <header className="sticky top-0 z-50 w-full bg-background border-b border-border">
+        <div className="flex items-center justify-between px-6 md:px-12 py-4">
+          {/* Logo */}
+          <motion.a
+            href="/"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="text-xl md:text-2xl font-serif tracking-wide"
+          >
+            BIORITUAL
+          </motion.a>
+
+          {/* Navigation - Center */}
+          <nav className="hidden md:flex items-center gap-8">
+            <a href="#" className="text-sm tracking-wide hover:opacity-60 transition-opacity">
+              Shop All
+            </a>
+            <a href="#" className="text-sm tracking-wide hover:opacity-60 transition-opacity">
+              Protocols
+            </a>
+            <a href="#" className="text-sm tracking-wide hover:opacity-60 transition-opacity">
+              Coaching
+            </a>
+            <a href="#" className="text-sm tracking-wide hover:opacity-60 transition-opacity">
+              About
+            </a>
+          </nav>
+
+          {/* Right Icons */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-4"
+          >
+            <button className="hover:opacity-60 transition-opacity">
+              <Search className="w-5 h-5" />
+            </button>
+            <button className="hover:opacity-60 transition-opacity">
+              <User className="w-5 h-5" />
+            </button>
+            <a
+              href="mailto:hello@bioritual.com"
+              className="hidden sm:block text-sm tracking-wide hover:opacity-60 transition-opacity"
+            >
+              Contact
+            </a>
+          </motion.div>
+        </div>
+      </header>
+    </>
   );
 };
 

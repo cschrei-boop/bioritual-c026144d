@@ -1,32 +1,22 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Flame, Zap, Activity } from "lucide-react";
 
 const pillars = [
   {
-    icon: Flame,
     title: "FUEL",
     subtitle: "Nutrition that works",
     description: "Clear frameworks for metabolic health and energy.",
-    color: "cyan",
-    href: "#fuel",
   },
   {
-    icon: Zap,
     title: "SIGNALS",
     subtitle: "Peptide protocols",
     description: "Work with your biology, not against it.",
-    color: "magenta",
-    href: "#signals",
   },
   {
-    icon: Activity,
     title: "MOVEMENT",
     subtitle: "Sustainable training",
     description: "Build strength without burnout.",
-    color: "yellow",
-    href: "#movement",
   },
 ];
 
@@ -35,75 +25,57 @@ const ThreeLegs = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="relative py-6 md:py-14 px-4 md:px-6 overflow-hidden bg-transparent">
-      {/* Decorative background */}
-      <svg className="absolute inset-0 w-full h-full opacity-5" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-          <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-        </pattern>
-        <rect width="100" height="100" fill="url(#grid)" />
-      </svg>
-
-      <div className="relative z-10 max-w-4xl mx-auto bg-background/70 backdrop-blur-md rounded-3xl p-6">
+    <section ref={ref} className="py-20 md:py-32 px-6 md:px-12 bg-secondary">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-6"
+          className="flex items-center justify-between mb-12"
         >
-          <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-2 h-2 rounded-full bg-cyan" />
-            <div className="w-2 h-2 rounded-full bg-magenta" />
-            <div className="w-2 h-2 rounded-full bg-yellow" />
+          <div>
+            <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">
+              Shop by Focus
+            </p>
+            <h2 className="font-serif text-3xl md:text-4xl">
+              The Three Pillars
+            </h2>
           </div>
-          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl mb-2">
-            The Three Pillars
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Structure over willpower.
-          </p>
+          <a href="#" className="text-sm tracking-wide hover:opacity-60 transition-opacity">
+            See All →
+          </a>
         </motion.div>
 
-        {/* Pillars */}
-        <div className="flex flex-col gap-4">
+        {/* Pillars Grid */}
+        <div className="grid md:grid-cols-3 gap-6">
           {pillars.map((pillar, index) => (
             <motion.a
               key={pillar.title}
-              href={pillar.href}
+              href="#"
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-              className="group relative cursor-pointer"
+              className="group relative aspect-square bg-background overflow-hidden"
             >
-              <div className="bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-5 hover:shadow-lg hover:bg-card/80 transition-all">
-                <div className={`w-12 h-12 rounded-xl bg-${pillar.color}/20 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
-                  <pillar.icon className={`w-6 h-6 text-${pillar.color}`} />
-                </div>
-                <h3 className={`font-objektiv text-3xl md:text-4xl lg:text-5xl tracking-wide text-${pillar.color} mb-2 uppercase font-bold`}>
+              {/* Placeholder for image - solid color for now */}
+              <div className="absolute inset-0 bg-muted group-hover:scale-105 transition-transform duration-500" />
+              
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+              
+              {/* Text overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-background">
+                <h3 className="text-2xl md:text-3xl tracking-widest mb-2">
                   {pillar.title}
                 </h3>
-                <p className="text-sm text-muted-foreground">
-                  {pillar.subtitle} — {pillar.description}
+                <p className="text-sm opacity-80">
+                  {pillar.subtitle}
                 </p>
               </div>
             </motion.a>
           ))}
         </div>
-
-        {/* Bottom connector */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex justify-center mt-5"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-px bg-gradient-to-r from-transparent to-cyan" />
-            <div className="w-8 h-px bg-magenta" />
-            <div className="w-8 h-px bg-gradient-to-r from-yellow to-transparent" />
-          </div>
-        </motion.div>
       </div>
     </section>
   );
