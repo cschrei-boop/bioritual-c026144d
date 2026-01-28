@@ -1,190 +1,129 @@
 
+# Bio Signals Product Page Implementation Plan
 
-# Redesign Plan: Jones Road Clean Aesthetic for BioRitual
+## Prerequisites
 
-## Overview
+### Step 1: Enable Shopify Integration
+Before any product page work can begin, we need to enable the Shopify integration. This will:
+- Connect to Shopify's product catalog and checkout system
+- Provide access to product management tools
+- Enable secure payment processing through Shopify's infrastructure
 
-This plan transforms the current BioRitual landing page to match the clean, minimal, editorial aesthetic of Jones Road Beauty. The key design principles we're adopting:
-
-- **Pure white background** — No more iridescent background image
-- **Full-bleed hero images** — Large, edge-to-edge photography
-- **Minimal color palette** — Mostly black, white, and subtle accents
-- **Clean typography** — Simple sans-serif, generous whitespace
-- **No glassmorphism** — Remove frosted glass effects, use solid backgrounds
-- **Editorial layout** — Magazine-style sections with breathing room
-- **Horizontal product/feature grids** — Clean card layouts
+**User action required:** Approve Shopify enablement and choose to either create a new development store or connect an existing one.
 
 ---
 
-## Section-by-Section Redesign
+## Implementation Overview
 
-### 1. Header (Simplified)
-**Current:** Navy frosted glass with logo + Contact button
-**New Design:**
-- Thin announcement bar at the very top (optional, for promos/news)
-- Clean white header with black logo text
-- Simple navigation: Shop All | Protocols | Coaching | About
-- Right side: Search icon, Account icon, Contact
+Once Shopify is enabled, we will create a compliant product page that follows all the positioning rules and disclosure requirements you've outlined.
 
-### 2. Hero Section (Full-Bleed)
-**Current:** Glassmorphic card with text + portrait image inside
-**New Design:**
-- Full-viewport hero with edge-to-edge background image
-- Left-aligned text overlay on the image:
-  - Small tagline above headline
-  - Large serif headline: "Tell me how you really feel"
-  - Brief supporting copy
-  - Single "Shop Now" / "Get Started" button (black, rectangular)
-- Image extends to all edges (no rounded corners, no card container)
+### Step 2: Create Product in Shopify
 
-### 3. Featured Products/Services Row
-**Current:** Spread across multiple sections (Services, Categories)
-**New Design:**
-- Clean heading: "FEATURED SERVICES" with "SEE ALL" link
-- Horizontal scroll or 4-column grid of service cards:
-  - Clean white cards with subtle border
-  - Small image/icon at top
-  - Service name in bold
-  - Brief description
-  - Price/duration badge
-- Minimal hover effect (subtle shadow)
-
-### 4. Social Proof / Press Section
-**Current:** Not present
-**New Design (Jones Road style):**
-- Horizontal row of testimonial quotes from press/clients
-- Logos of publications/certifications below
-- Subtle gray background to differentiate
-
-### 5. Shop by Category (Three Pillars)
-**Current:** Vertical stack with glassmorphic cards, large colored titles
-**New Design:**
-- Heading: "Shop by Focus Area"
-- 3-column grid with large square images
-- Overlay text at bottom of each image:
-  - "FUEL" | "SIGNALS" | "MOVEMENT"
-- Clean hover effect (slight zoom on image)
-
-### 6. Featured Quote / Founder Section
-**Current:** Scattered quotes throughout
-**New Design:**
-- Full-width section with centered quote
-- Founder name and title below
-- Optional small portrait image
-- Clean typography, generous whitespace
-
-### 7. Peptides Section (Educational)
-**Current:** Two-column with applications grid
-**New Design:**
-- Left: Large image (DNA illustration or clean product shot)
-- Right: Clean text content:
-  - Small label: "PEPTIDES"
-  - Headline: "Biology's Native Language"
-  - Body copy
-  - "Learn More" link
-- No background effects, just clean white
-
-### 8. Why 90 Days (Timeline)
-**Current:** Centered card with timeline illustration
-**New Design:**
-- Horizontal 3-step process:
-  - Step 1: Adapt (with icon)
-  - Step 2: Regulate (with icon)
-  - Step 3: Reveal (with icon)
-- Clean lines connecting the steps
-- Minimal, no background colors
-
-### 9. Built For Section
-**Current:** Card with illustration and feature tags
-**New Design:**
-- Two-column layout:
-  - Left: Image of professional/lifestyle
-  - Right: "Built for How You Actually Work"
-  - Bullet points as clean text list
-  - "Get Started" button
-
-### 10. Final CTA
-**Current:** Centered card with gradient B icon
-**New Design:**
-- Full-width clean section
-- Large headline centered
-- Single prominent CTA button
-- Minimal, black on white
-
-### 11. Footer
-**Current:** Glassmorphic card with links
-**New Design:**
-- Clean multi-column footer:
-  - Column 1: Logo + tagline
-  - Column 2: Quick links
-  - Column 3: Contact info
-  - Column 4: Newsletter signup
-- Bottom bar with copyright and legal links
-- Black or dark gray background with white text
-
-### 12. Sticky Email Footer
-**Current:** Navy glassmorphic bar
-**New Design:**
-- Clean white bar with subtle top shadow
-- Black text: "Get the latest signals"
-- White input with black border
-- Black "Subscribe" button
+Create the "Bio Signals: Weight Loss + Metabolic Health" product with:
+- **Title:** Bio Signals: Weight Loss + Metabolic Health
+- **Price:** $699.00 (one-time, not subscription)
+- **Type:** Digital/Service product
+- **Description:** Educational and lifestyle optimization protocol
 
 ---
 
-## Color & Typography Changes
+### Step 3: Create Product Page Component
 
-### Colors
+**New file:** `src/pages/ProductBioSignals.tsx`
+
+A dedicated product page following the exact structure and copy you provided:
+
+#### Page Sections:
+
+1. **Hero/Title Section**
+   - Product title: "Bio Signals: Weight Loss + Metabolic Health"
+   - Subtitle: "A 3-Month Optimization Protocol"
+   - Price display: "$699 · One-time purchase · 3-month duration"
+   - Add to Cart button connecting to Shopify checkout
+
+2. **Overview Section**
+   - Educational protocol positioning
+   - Bio signals explanation
+   - Clear "not medical treatment" language
+
+3. **Who This Is For Section**
+   - Bullet list of ideal participant traits
+   - Disclaimer about diagnosis/treatment
+
+4. **What's Included Sections**
+   - The Bio Signals Protocol (3 Months)
+   - Private Client Wiki
+   - Protocol Materials (with required constraints)
+   - Reminders & Accountability
+   - Educational Context
+
+5. **Pricing Section**
+   - Clear $699 one-time pricing
+   - No subscriptions/add-ons messaging
+
+6. **FAQ Section (Accordion)**
+   - All 8 required FAQs with compliant answers
+   - Using the Accordion component for clean UX
+
+7. **Required Disclosures Section**
+   - Educational disclaimer
+   - No medical provider relationship
+   - Materials disclosure
+   - Individual responsibility
+
+---
+
+### Step 4: Add Route to App
+
+**Modify:** `src/App.tsx`
+
+Add route for the product page:
 ```
-Background: Pure white (#FFFFFF)
-Text: Black/Charcoal (#1a1a1a)
-Accent: Keep subtle CMY for brand identity, but muted
-Borders: Light gray (#e5e5e5)
+/protocol/bio-signals-weight-loss
 ```
 
-### Typography
-- **Headings:** Keep Playfair Display serif, but larger and bolder
-- **Body:** Inter, slightly larger (16px base)
-- **All Caps Labels:** Smaller, wider letter-spacing
+---
+
+### Step 5: Update Navigation
+
+**Modify:** `src/components/sections/Header.tsx`
+
+Update navigation to include link to protocols/products.
 
 ---
 
-## Technical Changes
+## Technical Details
 
-### Files to Modify
+### Design Patterns
+- Match existing clean, editorial aesthetic
+- Use framer-motion for subtle animations
+- Responsive layout with mobile-first approach
+- Typography: Playfair Display headings, Inter body text
 
-1. **src/index.css** — Update CSS variables for white background, darker text
-2. **src/pages/Index.tsx** — Remove ImageBackground component
-3. **src/components/sections/Header.tsx** — White header, simplified nav
-4. **src/components/sections/Hero.tsx** — Full-bleed layout, remove glassmorphism
-5. **src/components/sections/Problem.tsx** — Clean white layout
-6. **src/components/sections/ThreeLegs.tsx** — Image grid with overlays
-7. **src/components/sections/Peptides.tsx** — Two-column clean layout
-8. **src/components/sections/Categories.tsx** — Horizontal pill row or remove
-9. **src/components/sections/Services.tsx** — Clean product grid
-10. **src/components/sections/WhyNinetyDays.tsx** — Horizontal steps
-11. **src/components/sections/BuiltFor.tsx** — Two-column layout
-12. **src/components/sections/FinalCTA.tsx** — Minimal black/white CTA
-13. **src/components/sections/Footer.tsx** — Multi-column dark footer
-14. **src/components/sections/StickyEmailFooter.tsx** — White minimal bar
+### Components Used
+- `Accordion` for FAQ section
+- `Button` for CTA actions
+- Existing layout patterns from current sections
 
-### Components to Remove
-- `ImageBackground.tsx` usage in Index.tsx
-- All `backdrop-blur-md` and `bg-background/70` glassmorphism classes
-- Gradient color effects (keep as subtle accents only)
-
-### New Assets Needed
-- High-quality lifestyle/hero photography (you may need to provide these)
-- Clean product/service icons or illustrations
+### Compliance Features
+- All copy follows your provided language hierarchy
+- No medical claims, outcome guarantees, or itemized materials
+- Visible disclosures section
+- Shopify-safe product structure
 
 ---
 
-## Estimated Scope
+## File Changes Summary
 
-This is a significant visual overhaul affecting 12+ files. The structure and content remain the same, but the visual treatment changes completely.
+| File | Action | Purpose |
+|------|--------|---------|
+| Shopify Integration | Enable | Connect to Shopify for products/checkout |
+| `src/pages/ProductBioSignals.tsx` | Create | Main product page component |
+| `src/App.tsx` | Modify | Add product page route |
+| `src/components/sections/Header.tsx` | Modify | Add navigation link |
 
-**Recommendation:** Implement in phases:
-1. Phase 1: Global styles + Header + Hero (biggest visual impact)
-2. Phase 2: Main content sections
-3. Phase 3: Footer + Final CTA + Sticky bar
+---
 
+## Replication Note
+
+This page structure will serve as a template for other Bio Signals protocols (Energy, Performance, Recovery) with only topic-specific language changes as specified in your requirements.
