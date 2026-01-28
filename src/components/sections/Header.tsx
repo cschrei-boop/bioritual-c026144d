@@ -21,6 +21,7 @@ import { CartDrawer } from "@/components/CartDrawer";
 import { Link } from "react-router-dom";
 
 const protocols = [
+  { label: "View All Protocols", href: "/protocols" },
   { label: "Weight Loss + Metabolic Health", href: "/protocol/bio-signals-weight-loss" },
   { label: "Energy", href: "/protocol/bio-signals-energy" },
   { label: "Performance + Recovery", href: "/protocol/bio-signals-performance-recovery" },
