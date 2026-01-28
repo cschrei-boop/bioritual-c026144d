@@ -13,6 +13,7 @@ import ProductBioSignalsLongevity from "./pages/ProductBioSignalsLongevity";
 import ProductBioSignalsCognition from "./pages/ProductBioSignalsCognition";
 import Protocols from "./pages/Protocols";
 import TermsOfService from "./pages/TermsOfService";
+import FulfillmentPolicy from "./pages/FulfillmentPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const AppContent = () => {
       <Route path="/" element={<Index />} />
       <Route path="/protocols" element={<Protocols />} />
       <Route path="/terms" element={<TermsOfService />} />
+      <Route path="/fulfillment" element={<FulfillmentPolicy />} />
       <Route path="/protocol/bio-signals-weight-loss" element={<ProductBioSignals />} />
       <Route path="/protocol/bio-signals-energy" element={<ProductBioSignalsEnergy />} />
       <Route path="/protocol/bio-signals-performance-recovery" element={<ProductBioSignalsPerformance />} />
