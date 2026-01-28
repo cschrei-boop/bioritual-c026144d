@@ -9,6 +9,9 @@ import { useEffect, useState } from "react";
 import { storefrontApiRequest, PRODUCTS_QUERY, ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
 import bioSignalsHero from "@/assets/bio-signals-hero.jpg";
+import protocolWiki from "@/assets/protocol-wiki.jpg";
+import protocolTracking from "@/assets/protocol-tracking.jpg";
+import protocolMaterials from "@/assets/protocol-materials.jpg";
 
 const ProductBioSignals = () => {
   const [product, setProduct] = useState<ShopifyProduct | null>(null);
@@ -219,6 +222,13 @@ const ProductBioSignals = () => {
             
             {/* The Bio Signals Protocol */}
             <div className="mb-10">
+              <div className="aspect-[3/2] w-full mb-6 overflow-hidden rounded-sm">
+                <img 
+                  src={protocolTracking} 
+                  alt="Bio Signals Protocol tracking and monitoring" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <h3 className="font-serif text-xl mb-4">The Bio Signals Protocol (3 Months)</h3>
               <p className="text-muted-foreground mb-4">
                 A guided protocol focused on:
@@ -238,6 +248,13 @@ const ProductBioSignals = () => {
 
             {/* Private Client Wiki */}
             <div className="mb-10">
+              <div className="aspect-[3/2] w-full mb-6 overflow-hidden rounded-sm">
+                <img 
+                  src={protocolWiki} 
+                  alt="Private client wiki documentation" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <h3 className="font-serif text-xl mb-4">Private Client Wiki</h3>
               <p className="text-muted-foreground mb-4">
                 Each participant receives a private digital workspace used to support the protocol. The wiki includes:
@@ -257,6 +274,13 @@ const ProductBioSignals = () => {
 
             {/* Protocol Materials */}
             <div className="mb-10">
+              <div className="aspect-[3/2] w-full mb-6 overflow-hidden rounded-sm">
+                <img 
+                  src={protocolMaterials} 
+                  alt="Premium protocol materials" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <h3 className="font-serif text-xl mb-4">Protocol Materials</h3>
               <p className="text-muted-foreground mb-4">
                 Certain non-itemized materials may be included or coordinated as part of the protocol to support participation.
