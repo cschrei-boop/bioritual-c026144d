@@ -10,6 +10,7 @@ import ValueProps from "@/components/sections/ValueProps";
 import ChooseYourPath from "@/components/sections/ChooseYourPath";
 import GetTheLook from "@/components/sections/GetTheLook";
 import FinalCTA from "@/components/sections/FinalCTA";
+import { NotSureBlock } from "@/components/sections/NotSureBlock";
 import Footer from "@/components/sections/Footer";
 import StickyEmailFooter from "@/components/sections/StickyEmailFooter";
 
@@ -26,6 +27,7 @@ const Index = () => {
       <ThreePillarsCarousel />
       <ValueProps />
       <ChooseYourPath />
+      <NotSureBlock variant="homepage" />
       <GetTheLook />
       <FinalCTA />
       <Footer />

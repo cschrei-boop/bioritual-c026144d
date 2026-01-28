@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
+import { NotSureBlock } from "@/components/sections/NotSureBlock";
 import { useCartStore } from "@/stores/cartStore";
 import { storefrontApiRequest, PRODUCTS_QUERY, ShopifyProduct } from "@/lib/shopify";
 import heroImage from "@/assets/bio-signals-longevity-hero.jpg";
@@ -403,6 +404,7 @@ const ProductBioSignalsLongevity = () => {
 
       </main>
 
+      <NotSureBlock />
       <Footer />
     </div>
   );

@@ -13,6 +13,7 @@ import ProductBioSignalsLongevity from "./pages/ProductBioSignalsLongevity";
 import ProductBioSignalsCognition from "./pages/ProductBioSignalsCognition";
 import ProductAIConcierge from "./pages/ProductAIConcierge";
 import ProductCoaching from "./pages/ProductCoaching";
+import StartHere from "./pages/StartHere";
 import Protocols from "./pages/Protocols";
 import TermsOfService from "./pages/TermsOfService";
 import FulfillmentPolicy from "./pages/FulfillmentPolicy";
@@ -26,6 +27,7 @@ const AppContent = () => {
   return (
     <Routes>
       <Route path="/" element={<Index />} />
+      <Route path="/start-here" element={<StartHere />} />
       <Route path="/protocols" element={<Protocols />} />
       <Route path="/terms" element={<TermsOfService />} />
       <Route path="/fulfillment" element={<FulfillmentPolicy />} />
