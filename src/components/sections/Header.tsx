@@ -1,20 +1,40 @@
 import { motion } from "framer-motion";
-import { Search, User, Menu } from "lucide-react";
+import { Search, User, Menu, ChevronDown } from "lucide-react";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { useState } from "react";
 import { CartDrawer } from "@/components/CartDrawer";
 import { Link } from "react-router-dom";
 
+const protocols = [
+  { label: "Weight Loss + Metabolic Health", href: "/protocol/bio-signals-weight-loss" },
+  { label: "Energy", href: "/protocol/bio-signals-energy" },
+  { label: "Performance + Recovery", href: "/protocol/bio-signals-performance-recovery" },
+  { label: "Hair + Skin", href: "/protocol/bio-signals-hair-skin" },
+  { label: "Longevity", href: "/protocol/bio-signals-longevity" },
+  { label: "Cognition + Brain Health", href: "/protocol/bio-signals-cognition" },
+];
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [protocolsOpen, setProtocolsOpen] = useState(false);
 
   const navLinks = [
     { label: "Shop All", href: "#" },
-    { label: "Protocols", href: "/protocol/bio-signals-weight-loss" },
     { label: "Coaching", href: "#" },
     { label: "About", href: "#" },
   ];
@@ -50,6 +70,30 @@ const Header = () => {
                     {link.label}
                   </Link>
                 ))}
+                
+                {/* Mobile Protocols Collapsible */}
+                <Collapsible open={protocolsOpen} onOpenChange={setProtocolsOpen}>
+                  <CollapsibleTrigger className="flex items-center justify-between w-full text-lg tracking-wide hover:opacity-60 transition-opacity">
+                    Protocols
+                    <ChevronDown className={`w-4 h-4 transition-transform ${protocolsOpen ? 'rotate-180' : ''}`} />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="pl-4 pt-3 space-y-3">
+                    {protocols.map((protocol) => (
+                      <Link
+                        key={protocol.href}
+                        to={protocol.href}
+                        onClick={() => {
+                          setIsOpen(false);
+                          setProtocolsOpen(false);
+                        }}
+                        className="block text-base text-foreground/80 hover:text-foreground transition-colors"
+                      >
+                        {protocol.label}
+                      </Link>
+                    ))}
+                  </CollapsibleContent>
+                </Collapsible>
+
                 <a
                   href="mailto:hello@bioritual.com"
                   onClick={() => setIsOpen(false)}
@@ -83,6 +127,29 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
+            
+            {/* Desktop Protocols Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 text-sm tracking-wide hover:opacity-60 transition-opacity outline-none">
+                Protocols
+                <ChevronDown className="w-3 h-3" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent 
+                align="center" 
+                className="w-56 bg-background border border-border shadow-lg z-50"
+              >
+                {protocols.map((protocol) => (
+                  <DropdownMenuItem key={protocol.href} asChild>
+                    <Link
+                      to={protocol.href}
+                      className="w-full cursor-pointer"
+                    >
+                      {protocol.label}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
 
           {/* Right Icons */}
