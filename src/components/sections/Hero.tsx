@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const Hero = () => {
@@ -60,8 +61,9 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-8 py-6 text-sm tracking-widest uppercase"
+              asChild
             >
-              Get Started
+              <Link to="/start-here">Get Started</Link>
             </Button>
           </motion.div>
         </div>

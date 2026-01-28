@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const FinalCTA = () => {
   const ref = useRef(null);
@@ -27,8 +28,9 @@ const FinalCTA = () => {
           <Button 
             size="lg"
             className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-12 py-6 text-sm tracking-widest uppercase"
+            asChild
           >
-            Get Started
+            <Link to="/start-here">Get Started</Link>
           </Button>
         </motion.div>
       </div>

@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Link } from "react-router-dom";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const services = [
@@ -18,27 +19,31 @@ const services = [
     price: "$10/mo",
     badge: "New",
     image: heroPortrait,
+    href: "/ai-concierge",
   },
   {
-    title: "Protocol Design",
+    title: "Bio Signals Protocols",
     description: "Personalized 90-day programs with clear milestones.",
     price: "From $199",
     badge: "Popular",
     image: heroPortrait,
+    href: "/protocols",
   },
   {
     title: "1-on-1 Coaching",
     description: "Weekly check-ins and protocol adjustments.",
-    price: "3 months",
+    price: "From $2,999",
     badge: "Bestseller",
     image: heroPortrait,
+    href: "/coaching",
   },
   {
-    title: "Group Sprint",
-    description: "Community-driven 90-day transformation.",
-    price: "$499",
+    title: "Start Here",
+    description: "Not sure where to begin? Find the right level of support.",
+    price: "Free",
     badge: null,
     image: heroPortrait,
+    href: "/start-here",
   },
 ];
 
@@ -57,9 +62,9 @@ const FeaturedServices = () => {
           className="flex items-center justify-between mb-8"
         >
           <h2 className="text-xs tracking-[0.3em] uppercase">Featured Services</h2>
-          <a href="#" className="text-xs tracking-[0.2em] uppercase hover:opacity-60 transition-opacity">
+          <Link to="/start-here" className="text-xs tracking-[0.2em] uppercase hover:opacity-60 transition-opacity">
             See All
-          </a>
+          </Link>
         </motion.div>
 
         {/* Carousel */}
@@ -101,8 +106,9 @@ const FeaturedServices = () => {
                       variant="outline"
                       size="sm"
                       className="rounded-none border-foreground hover:bg-foreground hover:text-background text-xs tracking-wider"
+                      asChild
                     >
-                      Learn More
+                      <Link to={service.href}>Learn More</Link>
                     </Button>
                   </div>
                 </CarouselItem>

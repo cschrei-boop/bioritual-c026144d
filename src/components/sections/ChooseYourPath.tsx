@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Link } from "react-router-dom";
 import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const paths = [
@@ -18,27 +19,31 @@ const paths = [
     price: "$10/mo",
     badge: "Most Popular",
     image: heroPortrait,
+    href: "/ai-concierge",
   },
   {
-    title: "Protocol Design",
+    title: "Bio Signals Protocols",
     description: "Get a custom 90-day protocol designed specifically for your goals and lifestyle.",
     price: "From $199",
     badge: null,
     image: heroPortrait,
+    href: "/protocols",
   },
   {
     title: "1-on-1 Coaching",
     description: "Weekly check-ins, protocol adjustments, and direct access to our optimization experts.",
-    price: "3 months",
+    price: "From $2,999",
     badge: "Bestseller",
     image: heroPortrait,
+    href: "/coaching",
   },
   {
-    title: "Group Sprint",
-    description: "Join a community of like-minded professionals on a 90-day transformation journey.",
-    price: "$499",
+    title: "Start Here",
+    description: "Not sure where to begin? Compare all Bio Signals options and find the right fit.",
+    price: "Free",
     badge: null,
     image: heroPortrait,
+    href: "/start-here",
   },
 ];
 
@@ -62,9 +67,9 @@ const ChooseYourPath = () => {
             </p>
             <h2 className="font-serif text-3xl md:text-4xl">Choose Your Path</h2>
           </div>
-          <a href="#" className="text-xs tracking-[0.2em] uppercase hover:opacity-60 transition-opacity">
+          <Link to="/start-here" className="text-xs tracking-[0.2em] uppercase hover:opacity-60 transition-opacity">
             See All
-          </a>
+          </Link>
         </motion.div>
 
         {/* Carousel */}
@@ -110,8 +115,9 @@ const ChooseYourPath = () => {
                     <Button
                       variant="outline"
                       className="w-full rounded-none border-foreground hover:bg-foreground hover:text-background text-xs tracking-wider"
+                      asChild
                     >
-                      Learn More
+                      <Link to={path.href}>Learn More</Link>
                     </Button>
                   </div>
                 </CarouselItem>
