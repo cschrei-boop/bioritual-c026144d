@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -27,7 +28,7 @@ const Footer = () => {
           >
             <p className="text-xs tracking-[0.2em] uppercase mb-4">Shop</p>
             <nav className="flex flex-col gap-3">
-              <a href="#" className="text-sm text-background/60 hover:text-background transition-colors">All Protocols</a>
+              <Link to="/protocols" className="text-sm text-background/60 hover:text-background transition-colors">All Protocols</Link>
               <a href="#" className="text-sm text-background/60 hover:text-background transition-colors">Coaching</a>
               <a href="#" className="text-sm text-background/60 hover:text-background transition-colors">AI Coach</a>
             </nav>
@@ -78,7 +79,7 @@ const Footer = () => {
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-xs text-background/40 hover:text-background transition-colors">Privacy</a>
-            <a href="#" className="text-xs text-background/40 hover:text-background transition-colors">Terms</a>
+            <Link to="/terms" className="text-xs text-background/40 hover:text-background transition-colors">Terms</Link>
           </div>
         </motion.div>
       </div>
