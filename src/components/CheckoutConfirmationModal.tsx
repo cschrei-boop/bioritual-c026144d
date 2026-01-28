@@ -127,6 +127,14 @@ export const CheckoutConfirmationModal = ({
               >
                 Terms of Service
               </Link>{" "}
+              and{" "}
+              <Link
+                to="/fulfillment"
+                className="underline hover:text-foreground"
+                target="_blank"
+              >
+                Fulfillment & Shipping Policy
+              </Link>{" "}
               for full details.
             </p>
           </div>

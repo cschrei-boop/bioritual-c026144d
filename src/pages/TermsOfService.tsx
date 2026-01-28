@@ -147,6 +147,11 @@ const TermsOfService = () => {
             </ul>
             <p className="leading-relaxed mt-3">
               Access to materials may be contingent upon onboarding completion.
+              For full details, see our{" "}
+              <Link to="/fulfillment" className="underline hover:no-underline">
+                Fulfillment & Shipping Policy
+              </Link>
+              .
             </p>
           </section>
 
