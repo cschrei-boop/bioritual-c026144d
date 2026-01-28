@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Dialog,
   DialogContent,
@@ -118,7 +119,15 @@ export const CheckoutConfirmationModal = ({
               By completing this purchase, you acknowledge that you are
               enrolling in an educational optimization protocol that includes
               guided structure, digital tools, and protocol materials — not a
-              medical service or retail product.
+              medical service or retail product. See our{" "}
+              <Link
+                to="/terms"
+                className="underline hover:text-foreground"
+                target="_blank"
+              >
+                Terms of Service
+              </Link>{" "}
+              for full details.
             </p>
           </div>
         </div>
