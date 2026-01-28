@@ -9,7 +9,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { useEffect, useState } from "react";
 import { storefrontApiRequest, PRODUCTS_QUERY, ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
-import heroImage from "@/assets/bio-signals-energy-hero.jpg";
+import heroImage from "@/assets/protocol-energy-hero.jpg";
 import protocolWiki from "@/assets/protocol-wiki.jpg";
 import protocolTracking from "@/assets/protocol-tracking.jpg";
 import protocolMaterials from "@/assets/protocol-materials.jpg";
