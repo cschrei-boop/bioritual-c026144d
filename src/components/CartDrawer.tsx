@@ -4,9 +4,11 @@ import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
+import { CheckoutConfirmationModal } from "./CheckoutConfirmationModal";
 
 export const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl, syncCart } = useCartStore();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
@@ -15,10 +17,15 @@ export const CartDrawer = () => {
     if (isOpen) syncCart(); 
   }, [isOpen, syncCart]);
 
-  const handleCheckout = () => {
+  const handleCheckoutClick = () => {
+    setShowConfirmation(true);
+  };
+
+  const handleConfirmCheckout = () => {
     const checkoutUrl = getCheckoutUrl();
     if (checkoutUrl) {
       window.open(checkoutUrl, '_blank');
+      setShowConfirmation(false);
       setIsOpen(false);
     }
   };
@@ -113,7 +120,7 @@ export const CartDrawer = () => {
                   <span className="text-xl font-bold">${totalPrice.toFixed(2)}</span>
                 </div>
                 <Button 
-                  onClick={handleCheckout} 
+                  onClick={handleCheckoutClick} 
                   className="w-full bg-foreground text-background hover:bg-foreground/90 rounded-none" 
                   size="lg" 
                   disabled={items.length === 0 || isLoading || isSyncing}
@@ -132,6 +139,13 @@ export const CartDrawer = () => {
           )}
         </div>
       </SheetContent>
+
+      <CheckoutConfirmationModal
+        isOpen={showConfirmation}
+        onClose={() => setShowConfirmation(false)}
+        onConfirm={handleConfirmCheckout}
+        isLoading={isLoading || isSyncing}
+      />
     </Sheet>
   );
 };
