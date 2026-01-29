@@ -20,7 +20,6 @@ import WeightLossLanding from "./pages/WeightLossLanding";
 import TermsOfService from "./pages/TermsOfService";
 import FulfillmentPolicy from "./pages/FulfillmentPolicy";
 import ConsentAcknowledgment from "./pages/ConsentAcknowledgment";
-import AIConcierge from "./pages/AIConcierge";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,8 +41,7 @@ const AppContent = () => {
       <Route path="/protocol/bio-signals-hair-skin" element={<ProductBioSignalsHairSkin />} />
       <Route path="/protocol/bio-signals-longevity" element={<ProductBioSignalsLongevity />} />
       <Route path="/protocol/bio-signals-cognition" element={<ProductBioSignalsCognition />} />
-      <Route path="/ai-concierge" element={<AIConcierge />} />
-      <Route path="/coaching" element={<ProductCoaching />} />
+      <Route path="/ai-concierge" element={<ProductAIConcierge />} />
       <Route path="/coaching" element={<ProductCoaching />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
