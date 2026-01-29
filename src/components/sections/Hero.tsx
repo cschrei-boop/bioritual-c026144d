@@ -9,7 +9,7 @@ const Hero = () => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.75; // Slow down for cinematic effect
+      videoRef.current.playbackRate = 0.4; // Extra slow for cinematic effect
     }
   }, []);
 
@@ -59,7 +59,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-muted-foreground mb-8 max-w-xl space-y-4"
+            className="text-foreground mb-8 max-w-xl space-y-4"
           >
             <p>
               It's responding to signals — stress, age, sleep, nutrition, training.
@@ -94,7 +94,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-12 pt-8 border-t border-foreground/20 max-w-lg"
           >
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-foreground text-sm leading-relaxed">
               Most people don't need more supplements.<br />
               They need better signals — and a plan that tells their body what to do next.
             </p>
