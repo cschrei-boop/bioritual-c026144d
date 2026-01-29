@@ -1,76 +1,139 @@
 
-# Unified Product Page Template
+# Redesigned "Start Here" Section
 
-## ✅ COMPLETED
+## Overview
+Create a new visually compelling, highly clickable "Start Here" section as a reusable component that replaces the current hero and comparison table sections on the `/start-here` page.
 
-Implementation completed on 2026-01-29.
+## Component Architecture
 
-## Summary
+### New File
+**`src/components/sections/StartHereSection.tsx`** - A standalone, reusable component (~200 lines)
 
-Created a unified `ProductPageTemplate` component that accepts configuration props, reducing each product page from ~300-500 lines to ~60-100 lines of content configuration.
+### Modified File
+**`src/pages/StartHere.tsx`** - Replace current hero + comparison table with the new component
 
-## Files Created
+## Visual Structure
 
-| File | Purpose |
-|------|---------|
-| `src/components/product/ProductPageTemplate.tsx` | Reusable template (~280 lines) |
-| `src/data/product-content.ts` | Shared FAQs, disclosures, and types |
+```
++----------------------------------------------------------+
+| SECTION LABEL: "START HERE"                              |
++----------------------------------------------------------+
+| HEADLINE: "Your body isn't random. It's sending signals."|
++----------------------------------------------------------+
+| SUBHEAD: Bio Signals turns signals into clear protocols  |
++----------------------------------------------------------+
+| MICRO-INSTRUCTION: Choose the level of support...        |
++----------------------------------------------------------+
+|                                                          |
+|   CONTINUUM BAR (horizontal line with 3 nodes)           |
+|   ○ Learn  ────────  ○ Focus  ────────  ○ Guided         |
+|                                                          |
++----------------------------------------------------------+
+|                                                          |
+|  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   |
+|  │  💬 Icon     │  │  ✓ Icon      │  │  🧭 Icon     │   |
+|  │              │  │              │  │              │   |
+|  │ AI Concierge │  │  Protocols   │  │  Coaching    │   |
+|  │              │  │              │  │    Sprint    │   |
+|  │ Learn &      │  │ One goal,    │  │ Full         │   |
+|  │ understand   │  │ structured   │  │ guidance     │   |
+|  │              │  │ plan         │  │              │   |
+|  │ Explore...   │  │ 3-month...   │  │ Founder-led  │   |
+|  │              │  │              │  │              │   |
+|  │ Best if:...  │  │ Best if:...  │  │ Best if:...  │   |
+|  │              │  │              │  │              │   |
+|  │ [CTA →]      │  │ [CTA →]      │  │ [CTA →]      │   |
+|  └──────────────┘  └──────────────┘  └──────────────┘   |
+|                                                          |
+|  WAVEFORM ACCENT (subtle SVG background)                 |
+|                                                          |
++----------------------------------------------------------+
+| FOOTER: "No 'best' option—just the right one..."         |
++----------------------------------------------------------+
+```
 
-## Files Refactored
+## Technical Implementation
 
-| File | Before | After | Reduction |
-|------|--------|-------|-----------|
-| `ProductCoaching.tsx` | 326 lines | ~65 lines | 80% |
-| `ProductAIConcierge.tsx` | 525 lines | ~115 lines | 78% |
-| `ProductBioSignals.tsx` | 304 lines | ~80 lines | 74% |
-| `ProductBioSignalsEnergy.tsx` | 494 lines | ~85 lines | 83% |
-| `ProductBioSignalsPerformance.tsx` | 494 lines | ~85 lines | 83% |
-| `ProductBioSignalsHairSkin.tsx` | 413 lines | ~85 lines | 79% |
-| `ProductBioSignalsLongevity.tsx` | 413 lines | ~85 lines | 79% |
-| `ProductBioSignalsCognition.tsx` | 413 lines | ~85 lines | 79% |
+### 1. Card Data Structure
+```typescript
+interface StartHereCard {
+  id: string;
+  title: string;
+  tagline: string;
+  body: string;
+  bestIf: string;
+  ctaLabel: string;
+  href: string;
+  icon: LucideIcon;
+}
+```
 
-**Total: ~3,382 lines → ~685 lines (80% reduction)**
+### 2. Continuum Navigation
+- Horizontal line with 3 clickable nodes
+- Click scrolls/focuses the relevant card
+- Nodes linked to Learn/Focus/Guided terminology
+- Visual indicator showing progression
 
-## Template Features
+### 3. Full-Card Clickability
+- Entire card wrapped in `<Link>` component
+- Button styled inside but navigation handled by card wrapper
+- Proper `tabIndex` and `aria-label` for accessibility
 
-### 1. Shopify Integration (Built-in)
-- Automatic product fetching by handle via `PRODUCT_BY_HANDLE_QUERY`
-- Price display with loading states
-- Variant selection (for coaching 3mo/6mo)
-- Cart integration via `useCartStore`
+### 4. Hover/Focus States
+- Card: `transform: translateY(-4px)` + subtle shadow
+- CTA label: underline animation
+- Focus: visible ring (outline-2 outline-offset-2)
 
-### 2. Image Gallery
-- Uses `ProductImageGallery` component
-- Loading skeleton while fetching
+### 5. Signal Motif (SVG Background)
+- Subtle sine wave pattern behind cards
+- Very low opacity (~5-8%)
+- Positioned absolute, non-interactive
 
-### 3. Accordion Sections
-All content organized in collapsible accordions:
-- Product Description
-- What's Included
-- Who This Is For
-- FAQ
-- Required Disclosures
+### 6. Icons (Lucide)
+- AI Concierge: `MessageSquare` or `Sparkles`
+- Protocols: `ClipboardList` or `Route`
+- Coaching: `Compass` or `HandHelping`
 
-### 4. Shared Components
-- Header/Footer
-- NotSureBlock
-- Customizable trust badges
+### 7. Animations (Framer Motion)
+- Section entrance: `fadeInUp` with staggered children
+- Cards: `whileInView` trigger
+- Hover: `whileHover={{ y: -4, boxShadow: "..." }}`
 
-## Shared Data
+## Content Mapping (Exact Copy)
 
-`src/data/product-content.ts` exports:
-- `standardProtocolFaqs` - 8 standard FAQ items for all Bio Signals protocols
-- `standardProtocolDisclosures` - 4 standard disclosure items
-- `coachingFaqs` - 8 coaching-specific FAQ items
-- `coachingDisclosures` - 4 coaching-specific disclosure items
-- TypeScript interfaces: `FAQ`, `Disclosure`, `IncludedSection`
+| Card | Title | Tagline | Body | Best If | CTA | Link |
+|------|-------|---------|------|---------|-----|------|
+| 1 | AI Concierge | Learn & understand | Explore peptides + supplements in plain language. | "I want to understand this before acting." | Learn with the AI Concierge → | /ai-concierge |
+| 2 | Bio Signals Protocols | One goal, structured plan | 3-month systems for a specific priority... | "I know what I want to work on." | Explore Protocols → | /protocols |
+| 3 | 3-Month Coaching Sprint | Full guidance & orientation | Founder-led, weekly sessions to build BioRitual... | "I don't know where to start." | See the Coaching Sprint → | /coaching |
 
-## Benefits Achieved
+## Responsive Behavior
 
-| Metric | Before | After |
-|--------|--------|-------|
-| Total lines (8 pages) | ~3,382 | ~685 |
-| Average lines per page | 423 | 86 |
-| Duplicated code | High | None |
-| Consistency | Variable | Guaranteed |
-| Maintenance | 8 files | 1 template |
+### Desktop (lg+)
+- 3-column grid: `grid-cols-3`
+- Continuum bar visible
+- Cards side-by-side
+
+### Tablet (md)
+- 3-column grid maintained
+- Reduced padding
+
+### Mobile (sm)
+- Single column: stacked cards
+- Continuum bar simplified or hidden
+- Full-width cards with preserved hierarchy
+
+## Accessibility Checklist
+- Proper heading hierarchy (h2, h3)
+- ARIA labels on card links
+- Keyboard-navigable (tab order)
+- High contrast text (foreground/80 minimum)
+- Focus-visible rings
+- Screen reader friendly CTA text
+
+## Files Summary
+
+| Action | File | Changes |
+|--------|------|---------|
+| CREATE | `src/components/sections/StartHereSection.tsx` | New reusable component |
+| MODIFY | `src/pages/StartHere.tsx` | Replace hero/table with new component, keep detail sections below |
