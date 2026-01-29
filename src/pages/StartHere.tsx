@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import StartHereSection from "@/components/sections/StartHereSection";
+import { Button } from "@/components/ui/button";
 
 const StartHere = () => {
   return (
@@ -54,13 +55,12 @@ const StartHere = () => {
                 </p>
               </div>
 
-              <Link
-                to="/ai-concierge"
-                className="inline-flex items-center gap-2 text-foreground hover:opacity-70 transition-opacity"
-              >
-                Learn more about the AI Concierge
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              <Button variant="outline" className="rounded-none" asChild>
+                <Link to="/ai-concierge">
+                  Learn more about the AI Concierge
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
             </motion.div>
           </div>
         </section>
@@ -106,13 +106,12 @@ const StartHere = () => {
                 </p>
               </div>
 
-              <Link
-                to="/protocols"
-                className="inline-flex items-center gap-2 text-foreground hover:opacity-70 transition-opacity"
-              >
-                Explore Bio Signals Protocols
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              <Button variant="outline" className="rounded-none" asChild>
+                <Link to="/protocols">
+                  Explore Bio Signals Protocols
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
             </motion.div>
           </div>
         </section>
@@ -165,13 +164,12 @@ const StartHere = () => {
                 </p>
               </div>
 
-              <Link
-                to="/coaching"
-                className="inline-flex items-center gap-2 text-foreground hover:opacity-70 transition-opacity"
-              >
-                Learn more about the Coaching Sprint
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              <Button variant="outline" className="rounded-none" asChild>
+                <Link to="/coaching">
+                  Learn more about the Coaching Sprint
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
             </motion.div>
           </div>
         </section>
