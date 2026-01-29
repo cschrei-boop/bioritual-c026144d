@@ -1,189 +1,202 @@
 
+# Unified Product Page Template
 
-# Product Page Redesign: Jones Road Beauty Style
+## Problem
+Currently, each product page is written from scratch (~300-500 lines each), duplicating:
+- Shopify data fetching logic
+- Cart integration
+- Layout structure  
+- Styling patterns
+- FAQs and disclosures
 
-## Overview
-
-Redesign the product pages to match the modern e-commerce layout of Jones Road Beauty, featuring a two-column layout with an image gallery sourced directly from Shopify product images.
-
----
-
-## Reference Layout Analysis
-
-Based on the Jones Road Beauty product page:
-
-```text
-+------------------+------------------------+
-|  [Thumb 1]       |                        |
-|  [Thumb 2]       |    MAIN PRODUCT        |
-|  [Thumb 3]       |      IMAGE             |
-|  [Thumb 4]       |                        |
-+------------------+------------------------+
-                   | Product Title          |
-                   | Price + Add to Cart    |
-                   | Trust badges           |
-                   |------------------------|
-                   | [+] Product Description|
-                   | [+] What's Included    |
-                   | [+] How It Works       |
-                   | [+] FAQ                |
-                   +------------------------+
-```
+## Solution
+Create a single `ProductPageTemplate` component that accepts configuration props, reducing each product page to ~50-100 lines of content configuration.
 
 ---
 
-## Key Changes
+## Template Component Design
 
-### 1. Two-Column Layout (Desktop)
-- **Left Column (60%)**: Image gallery with thumbnail strip
-- **Right Column (40%)**: Product info, pricing, CTA, and collapsible accordions
-- **Mobile**: Stack vertically with swipeable image carousel
-
-### 2. Image Gallery Component
-- Pulls images directly from Shopify product data (`product.node.images.edges`)
-- Vertical thumbnail strip on the left (desktop) / horizontal dots on mobile
-- Click thumbnail to change main image
-- Main image takes majority of left column
-
-### 3. Product Info Section (Right Column)
-- Product title (clean, no icon)
-- Price display with strike-through for compare prices
-- Prominent "Add to Cart" button
-- Trust badges (below CTA)
-
-### 4. Collapsible Content Sections
-Convert existing content into accordion sections:
-- **Product Description**: Overview content
-- **What's Included**: Features/benefits list
-- **Who This Is For**: Target audience
-- **How It Works**: Process explanation
-- **FAQ**: Existing FAQ content
-- **Required Disclosures**: Compliance content
-
----
-
-## Technical Implementation
-
-### Files to Modify
-
-| File | Changes |
-|------|---------|
-| `src/pages/ProductCoaching.tsx` | Complete layout redesign |
-| `src/lib/shopify.ts` | Increase image fetch limit to 10 |
-
-### New Component Structure
-
-```tsx
-// ProductCoaching.tsx structure
-<Header />
-<main>
-  <div className="grid lg:grid-cols-[1fr_400px]">
-    {/* Left: Image Gallery */}
-    <ProductImageGallery images={product.node.images.edges} />
-    
-    {/* Right: Product Info */}
-    <div className="sticky top-0">
-      <h1>{product.node.title}</h1>
-      <PriceDisplay />
-      <AddToCartButton />
-      <TrustBadges />
-      
-      <Accordion>
-        <AccordionItem>Product Description</AccordionItem>
-        <AccordionItem>What's Included</AccordionItem>
-        <AccordionItem>Who This Is For</AccordionItem>
-        <AccordionItem>FAQ</AccordionItem>
-        <AccordionItem>Required Disclosures</AccordionItem>
-      </Accordion>
-    </div>
-  </div>
-</main>
-<Footer />
-```
-
-### Image Gallery Component
-
-```tsx
-// Inline component for image gallery
-const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-const images = product?.node.images.edges || [];
-
-<div className="flex gap-4">
-  {/* Thumbnails */}
-  <div className="flex flex-col gap-2">
-    {images.map((img, idx) => (
-      <button onClick={() => setSelectedImageIndex(idx)}>
-        <img src={img.node.url} />
-      </button>
-    ))}
-  </div>
+### Props Interface
+```typescript
+interface ProductPageTemplateProps {
+  // Shopify
+  productHandle: string;
   
-  {/* Main Image */}
-  <div className="flex-1">
-    <img src={images[selectedImageIndex]?.node.url} />
-  </div>
-</div>
+  // Hero
+  heroImage?: string;
+  heroIcon?: React.ComponentType;
+  tagline: string;  // e.g., "3-Month Optimization Protocol"
+  subtitle?: string;
+  
+  // Content Sections
+  overview: React.ReactNode;
+  whoIsFor: string[];
+  whatsIncluded: IncludedSection[];
+  progressMetrics?: string[];
+  
+  // FAQ & Disclosures  
+  faqs: { question: string; answer: string }[];
+  disclosures: { title: string; content: string }[];
+  
+  // CTA
+  ctaText?: string;  // defaults to "Enroll Now"
+  priceNote?: string;  // e.g., "One-time purchase · 3-month duration"
+}
+```
+
+### Template Structure (Coaching Layout)
+The template will use the two-column e-commerce layout from ProductCoaching:
+```text
++--------------------------------------------------+
+| Header                                           |
++------------------------+-------------------------+
+|                        | Title                   |
+|   ProductImageGallery  | Price                   |
+|   (from Shopify)       | [Enroll Now]            |
+|                        | Trust Badges            |
+|                        +-------------------------+
+|                        | [+] Description         |
+|                        | [+] What's Included     |
+|                        | [+] Who This Is For     |
+|                        | [+] FAQ                 |
+|                        | [+] Disclosures         |
++------------------------+-------------------------+
+| NotSureBlock                                     |
+| Footer                                           |
++--------------------------------------------------+
 ```
 
 ---
 
-## Shopify Image Management
+## Files to Create/Modify
 
-### How Images Work
-
-- Images uploaded in Shopify Admin will automatically appear in the gallery
-- The GraphQL query already fetches `images(first: 5)` - will increase to 10
-- Image order in Shopify determines gallery order
-- First image = default selected image
-
-### Recommended Image Setup in Shopify
-
-For best results, upload images to your Shopify product in this order:
-1. Hero/lifestyle shot (main image)
-2. Product details
-3. What's included visualization
-4. Process/how it works
-5. Additional lifestyle shots
+| Action | File | Purpose |
+|--------|------|---------|
+| CREATE | `src/components/product/ProductPageTemplate.tsx` | Reusable template (~200 lines) |
+| MODIFY | `src/pages/ProductCoaching.tsx` | Reduce to config only (~80 lines) |
+| MODIFY | `src/pages/ProductAIConcierge.tsx` | Reduce to config only (~80 lines) |
+| MODIFY | `src/pages/ProductBioSignals.tsx` | Reduce to config only (~100 lines) |
+| MODIFY | `src/pages/ProductBioSignalsEnergy.tsx` | Reduce to config only (~100 lines) |
+| MODIFY | `src/pages/ProductBioSignalsPerformance.tsx` | Reduce to config only |
+| MODIFY | `src/pages/ProductBioSignalsHairSkin.tsx` | Reduce to config only |
+| MODIFY | `src/pages/ProductBioSignalsLongevity.tsx` | Reduce to config only |
+| MODIFY | `src/pages/ProductBioSignalsCognition.tsx` | Reduce to config only |
 
 ---
 
-## Responsive Behavior
+## Example: Before vs After
 
-### Desktop (lg+)
-- Side-by-side two-column layout
-- Vertical thumbnail strip
-- Sticky product info panel
+### Before (ProductBioSignalsEnergy.tsx - 494 lines)
+```tsx
+const ProductBioSignalsEnergy = () => {
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  // ... 50+ lines of Shopify fetching
+  // ... 100+ lines of content arrays
+  // ... 300+ lines of JSX layout
+};
+```
 
-### Tablet (md)
-- Stacked layout
-- Horizontal thumbnail carousel
-- Full-width sections
+### After (~80 lines)
+```tsx
+import ProductPageTemplate from "@/components/product/ProductPageTemplate";
+import heroImage from "@/assets/protocol-energy-hero.jpg";
 
-### Mobile (sm)
-- Single column
-- Swipeable image carousel with dots
-- Collapsed accordions
+const ProductBioSignalsEnergy = () => (
+  <ProductPageTemplate
+    productHandle="bio-signals-energy"
+    heroImage={heroImage}
+    tagline="3-Month Optimization Protocol"
+    subtitle="Support baseline energy, daily consistency, and resilience"
+    overview={
+      <p>This protocol uses bio signals and behavioral frameworks...</p>
+    }
+    whoIsFor={[
+      "Feel functional but consistently low-energy",
+      "Experience energy crashes or wide daily swings",
+      // ...
+    ]}
+    whatsIncluded={[
+      {
+        title: "The Bio Signals Protocol (3 Months)",
+        items: ["Energy signaling awareness", "Circadian alignment", ...]
+      },
+      // ...
+    ]}
+    faqs={energyFaqs}
+    disclosures={standardDisclosures}
+  />
+);
+```
 
 ---
 
-## Styling Details
+## Template Features
 
-- Clean, minimal aesthetic matching Jones Road
-- No rounded corners on images (square/rectangular)
-- Subtle hover states on thumbnails
-- Accordion with plus/minus icons
-- Trust badges with icons (shipping, returns)
+### 1. Shopify Integration (Built-in)
+- Automatic product fetching by handle
+- Price display with loading states
+- Variant selection (for coaching 3mo/6mo)
+- Cart integration via `useCartStore`
+
+### 2. Image Gallery
+- Uses `ProductImageGallery` component
+- Falls back to hero image if no Shopify images
+
+### 3. Accordion Sections
+All content organized in collapsible accordions:
+- Product Description (from `overview` prop)
+- What's Included (from `whatsIncluded` prop)
+- Who This Is For (from `whoIsFor` prop)
+- FAQ (from `faqs` prop)
+- Required Disclosures (from `disclosures` prop)
+
+### 4. Shared Components
+- Header/Footer
+- NotSureBlock
+- Trust badges
 
 ---
 
-## Scope
+## Shared Data Files
 
-This redesign applies to `ProductCoaching.tsx` first as the template. Once approved, the same pattern can be applied to:
-- `ProductBioSignals.tsx`
-- `ProductBioSignalsEnergy.tsx`
-- `ProductBioSignalsPerformance.tsx`
-- `ProductBioSignalsHairSkin.tsx`
-- `ProductBioSignalsLongevity.tsx`
-- `ProductBioSignalsCognition.tsx`
-- `ProductAIConcierge.tsx`
+Create shared content that's reused across protocols:
 
+```typescript
+// src/data/product-content.ts
+export const standardDisclosures = [
+  {
+    title: "Educational Disclaimer",
+    content: "This protocol provides educational and lifestyle support only..."
+  },
+  // ... 4 standard disclosures
+];
+
+export const standardFaqBase = [
+  { question: "Is this a medical program?", answer: "..." },
+  { question: "Are peptides being sold?", answer: "..." },
+  // ... common FAQs
+];
+```
+
+---
+
+## Benefits
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Total lines (8 pages) | ~3,500 | ~800 |
+| Lines per page | 300-500 | 50-100 |
+| Duplicated code | High | None |
+| Consistency | Variable | Guaranteed |
+| Maintenance | 8 files | 1 template |
+
+---
+
+## Technical Notes
+
+- Template handles all state management internally
+- Product-specific content passed as props or JSX children
+- Variant selector shown automatically when `variants.length > 1`
+- Mobile-responsive using existing Tailwind breakpoints
+- All animations/transitions handled by template
