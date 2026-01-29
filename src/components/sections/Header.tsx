@@ -35,8 +35,8 @@ const Header = () => {
   const [protocolsOpen, setProtocolsOpen] = useState(false);
 
   const navLinks = [
-    { label: "Start Here", href: "/start-here" },
-    { label: "Coaching", href: "/coaching" },
+    { label: "AI Companion", href: "/ai-concierge" },
+    { label: "1:1 Coaching", href: "/coaching" },
   ];
 
   return (
@@ -74,7 +74,7 @@ const Header = () => {
                 {/* Mobile Protocols Collapsible */}
                 <Collapsible open={protocolsOpen} onOpenChange={setProtocolsOpen}>
                   <CollapsibleTrigger className="flex items-center justify-between w-full text-lg tracking-wide hover:opacity-60 transition-opacity">
-                    Protocols
+                    Guided Protocols by Goal
                     <ChevronDown className={`w-4 h-4 transition-transform ${protocolsOpen ? 'rotate-180' : ''}`} />
                   </CollapsibleTrigger>
                   <CollapsibleContent className="pl-4 pt-3 space-y-3">
@@ -131,7 +131,7 @@ const Header = () => {
             {/* Desktop Protocols Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1 text-sm tracking-wide hover:opacity-60 transition-opacity outline-none">
-                Protocols
+                Guided Protocols by Goal
                 <ChevronDown className="w-3 h-3" />
               </DropdownMenuTrigger>
               <DropdownMenuContent 
