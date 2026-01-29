@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Sparkles, Route, Compass, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import heroPortrait from "@/assets/hero-portrait.jpg";
 
 const cards = [
   {
@@ -86,8 +87,19 @@ const ContinuumBar = () => (
 
 const StartHereSection = () => {
   return (
-    <section className="relative px-6 md:px-12 lg:px-24 py-16 md:py-24 overflow-hidden">
-      <WaveformBackground />
+    <>
+      {/* Hero Header Image */}
+      <div className="relative h-[40vh] md:h-[50vh]">
+        <img
+          src={heroPortrait}
+          alt="Bio Signals wellness"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+      </div>
+
+      <section className="relative px-6 md:px-12 lg:px-24 py-16 md:py-24 overflow-hidden -mt-24">
+        <WaveformBackground />
       
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Section Label */}
@@ -214,6 +226,7 @@ const StartHereSection = () => {
         </motion.p>
       </div>
     </section>
+    </>
   );
 };
 
