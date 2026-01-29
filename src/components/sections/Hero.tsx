@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import backgroundVideo from "@/assets/background-video.mp4";
+import backgroundVideo from "@/assets/hero-video.mp4";
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
