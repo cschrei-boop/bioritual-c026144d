@@ -10,10 +10,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
-import serviceAiConcierge from "@/assets/service-ai-concierge.jpg";
-import serviceProtocols from "@/assets/service-protocols.jpg";
-import serviceCoaching from "@/assets/service-coaching.jpg";
-import serviceStartHere from "@/assets/service-start-here.jpg";
+import serviceAiConcierge from "@/assets/service-ai-concierge-new.png";
+import serviceProtocols from "@/assets/service-protocols-new.png";
+import serviceCoaching from "@/assets/service-coaching-new.png";
+import serviceStartHere from "@/assets/service-start-here-new.png";
 
 const services = [
   {
