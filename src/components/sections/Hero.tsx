@@ -9,7 +9,7 @@ const Hero = () => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.4; // Extra slow for cinematic effect
+      videoRef.current.playbackRate = 0.75; // Slow down for cinematic effect
     }
   }, []);
 
