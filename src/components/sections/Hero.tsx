@@ -1,18 +1,32 @@
 import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import backgroundVideo from "@/assets/background-video.mp4";
 
 const Hero = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.75; // Slow down for cinematic effect
+    }
+  }, []);
+
   return (
     <section className="relative min-h-[90vh] flex items-center">
-      {/* Full-bleed background image */}
+      {/* Full-bleed background video */}
       <div className="absolute inset-0">
-        <img
-          src={heroPortrait}
-          alt="Hero"
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover"
-        />
+        >
+          <source src={backgroundVideo} type="video/mp4" />
+        </video>
         {/* Subtle overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/40 to-transparent" />
       </div>
