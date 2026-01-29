@@ -55,7 +55,7 @@ const StartHere = () => {
                 </p>
               </div>
 
-              <Button variant="outline" className="rounded-none" asChild>
+              <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-none" asChild>
                 <Link to="/ai-concierge">
                   Learn more about the AI Concierge
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -106,7 +106,7 @@ const StartHere = () => {
                 </p>
               </div>
 
-              <Button variant="outline" className="rounded-none" asChild>
+              <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-none" asChild>
                 <Link to="/protocols">
                   Explore Bio Signals Protocols
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -164,7 +164,7 @@ const StartHere = () => {
                 </p>
               </div>
 
-              <Button variant="outline" className="rounded-none" asChild>
+              <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-none" asChild>
                 <Link to="/coaching">
                   Learn more about the Coaching Sprint
                   <ArrowRight className="w-4 h-4 ml-2" />
