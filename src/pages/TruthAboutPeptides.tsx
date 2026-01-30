@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
-import featuredCollection from "@/assets/featured-collection.jpg";
+import truthAboutPeptidesHero from "@/assets/truth-about-peptides-hero.png";
 
 const Section = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
   const ref = useRef(null);
@@ -44,7 +44,7 @@ const TruthAboutPeptides = () => {
         <section className="relative min-h-[70vh] flex items-center">
           <div className="absolute inset-0">
             <img
-              src={featuredCollection}
+              src={truthAboutPeptidesHero}
               alt="The Truth About Peptides"
               className="w-full h-full object-cover"
             />
