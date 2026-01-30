@@ -23,33 +23,37 @@ import TermsOfService from "./pages/TermsOfService";
 import FulfillmentPolicy from "./pages/FulfillmentPolicy";
 import ConsentAcknowledgment from "./pages/ConsentAcknowledgment";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
 const AppContent = () => {
   useCartSync();
   return (
-    <Routes>
-      <Route path="/" element={<Index />} />
-      <Route path="/start-here" element={<StartHere />} />
-      <Route path="/protocols" element={<Protocols />} />
-      <Route path="/collection/protocols" element={<ProtocolsCollection />} />
-      <Route path="/weight-loss-structured-wellness" element={<WeightLossLanding />} />
-      <Route path="/truth-about-peptides" element={<TruthAboutPeptides />} />
-      <Route path="/terms" element={<TermsOfService />} />
-      <Route path="/fulfillment" element={<FulfillmentPolicy />} />
-      <Route path="/consent" element={<ConsentAcknowledgment />} />
-      <Route path="/protocol/bio-signals-weight-loss" element={<ProductBioSignals />} />
-      <Route path="/protocol/bio-signals-energy" element={<ProductBioSignalsEnergy />} />
-      <Route path="/protocol/bio-signals-performance-recovery" element={<ProductBioSignalsPerformance />} />
-      <Route path="/protocol/bio-signals-hair-skin" element={<ProductBioSignalsHairSkin />} />
-      <Route path="/protocol/bio-signals-longevity" element={<ProductBioSignalsLongevity />} />
-      <Route path="/protocol/bio-signals-cognition" element={<ProductBioSignalsCognition />} />
-      <Route path="/ai-concierge" element={<ProductAIConcierge />} />
-      <Route path="/coaching" element={<ProductCoaching />} />
-      {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/start-here" element={<StartHere />} />
+        <Route path="/protocols" element={<Protocols />} />
+        <Route path="/collection/protocols" element={<ProtocolsCollection />} />
+        <Route path="/weight-loss-structured-wellness" element={<WeightLossLanding />} />
+        <Route path="/truth-about-peptides" element={<TruthAboutPeptides />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/fulfillment" element={<FulfillmentPolicy />} />
+        <Route path="/consent" element={<ConsentAcknowledgment />} />
+        <Route path="/protocol/bio-signals-weight-loss" element={<ProductBioSignals />} />
+        <Route path="/protocol/bio-signals-energy" element={<ProductBioSignalsEnergy />} />
+        <Route path="/protocol/bio-signals-performance-recovery" element={<ProductBioSignalsPerformance />} />
+        <Route path="/protocol/bio-signals-hair-skin" element={<ProductBioSignalsHairSkin />} />
+        <Route path="/protocol/bio-signals-longevity" element={<ProductBioSignalsLongevity />} />
+        <Route path="/protocol/bio-signals-cognition" element={<ProductBioSignalsCognition />} />
+        <Route path="/ai-concierge" element={<ProductAIConcierge />} />
+        <Route path="/coaching" element={<ProductCoaching />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 };
 
