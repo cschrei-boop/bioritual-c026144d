@@ -7,7 +7,7 @@ const FounderQuote = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-20 md:py-32 px-6 md:px-12 bg-secondary">
+    <section ref={ref} className="py-12 md:py-20 px-6 md:px-12 bg-secondary">
       <div className="max-w-3xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

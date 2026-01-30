@@ -37,7 +37,7 @@ const PressQuotes = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-16 md:py-24 px-6 md:px-12 bg-secondary">
+    <section ref={ref} className="py-10 md:py-16 px-6 md:px-12 bg-secondary">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div

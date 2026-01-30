@@ -8,7 +8,7 @@ interface NotSureBlockProps {
 export const NotSureBlock = ({ variant = "product" }: NotSureBlockProps) => {
   if (variant === "homepage") {
     return (
-      <section className="px-6 md:px-12 lg:px-24 py-16 md:py-24 border-t border-border">
+      <section className="px-6 md:px-12 lg:px-24 py-10 md:py-16 border-t border-border">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="font-serif text-2xl md:text-3xl mb-4">
             Not sure where to start?
