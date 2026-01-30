@@ -17,10 +17,16 @@ import serviceStartHere from "@/assets/service-start-here-new.png";
 
 const services = [
   {
+    title: "Start Here",
+    description: "Not sure where to begin? Find the right level of support.",
+    price: "Free",
+    image: serviceStartHere,
+    href: "/start-here",
+  },
+  {
     title: "AI Concierge",
     description: "24/7 intelligent guidance for your optimization journey.",
     price: "$10/mo",
-    badge: "New",
     image: serviceAiConcierge,
     href: "/ai-concierge",
   },
@@ -28,7 +34,6 @@ const services = [
     title: "Bio Signals Protocols",
     description: "Personalized 90-day programs with clear milestones.",
     price: "From $199",
-    badge: "Popular",
     image: serviceProtocols,
     href: "/protocols",
   },
@@ -36,17 +41,8 @@ const services = [
     title: "1-on-1 Coaching",
     description: "Weekly check-ins and protocol adjustments.",
     price: "From $2,999",
-    badge: "Bestseller",
     image: serviceCoaching,
     href: "/coaching",
-  },
-  {
-    title: "Start Here",
-    description: "Not sure where to begin? Find the right level of support.",
-    price: "Free",
-    badge: null,
-    image: serviceStartHere,
-    href: "/start-here",
   },
 ];
 
@@ -94,11 +90,6 @@ const FeaturedServices = () => {
                         alt={service.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      {service.badge && (
-                        <span className="absolute top-3 right-3 text-[10px] tracking-[0.2em] uppercase bg-background px-2 py-1">
-                          {service.badge}
-                        </span>
-                      )}
                     </div>
 
                     {/* Content */}
