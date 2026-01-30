@@ -2,9 +2,9 @@ import { toast } from "sonner";
 
 // Shopify Storefront API Configuration
 const SHOPIFY_API_VERSION = '2025-07';
-const SHOPIFY_STORE_PERMANENT_DOMAIN = 'welcome-mat-maker-79-ft9cs.myshopify.com';
+const SHOPIFY_STORE_PERMANENT_DOMAIN = 'sundayafternoonproject.myshopify.com';
 const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
-const SHOPIFY_STOREFRONT_TOKEN = 'b97ad998eee8e8bb1b7b4896cf885607';
+const SHOPIFY_STOREFRONT_TOKEN = 'bdb8a7e49aa7c9494a218628b8a233cb';
 
 // Types
 export interface ShopifyProduct {
