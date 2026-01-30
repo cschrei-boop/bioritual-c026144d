@@ -1,84 +1,69 @@
 
-# Product Link & Handle Audit - Correction Plan
 
-## Summary
-After auditing all product links and Shopify handle mappings across the codebase, I found **2 critical mismatches** between the handles used in product pages vs. the handles expected in navigation/carousel components.
+# Dynamic Header Protocols Dropdown
 
----
+## Problem
+The "Guided Protocols by Goal" dropdown in the header uses hardcoded links that don't automatically sync with your Shopify store. If a product handle changes or new protocols are added, the header won't reflect those changes.
 
-## Issues Found
-
-### Issue 1: Performance Protocol Handle Mismatch
-| Location | Handle Used |
-|----------|-------------|
-| `ProductBioSignalsPerformance.tsx` | `bio-signals-performance` |
-| `ShopByGoal.tsx` mapping | `bio-signals-performance-recovery` |
-
-**Problem:** The product page tries to fetch a different handle than what the carousel expects from Shopify.
-
-### Issue 2: Cognition Protocol Handle Mismatch  
-| Location | Handle Used |
-|----------|-------------|
-| `ProductBioSignalsCognition.tsx` | `bio-signals-cognition` |
-| `ShopByGoal.tsx` mapping | `bio-signals-cognition-brain-health` |
-
-**Problem:** Same issue - inconsistent handle naming.
+## Solution
+Make the header dropdown dynamically fetch products from the Shopify "protocols" collection - the same data source used by the homepage carousel.
 
 ---
 
-## Files to Update
+## What Will Change
 
-### 1. `src/pages/ProductBioSignalsPerformance.tsx`
-Change `productHandle` from `"bio-signals-performance"` to `"bio-signals-performance-recovery"` to match the expected Shopify handle.
+### User Experience
+- The dropdown will show the actual protocol products from your Shopify store
+- A "View All Protocols" link will appear at the top of the dropdown
+- While loading, users will see a brief loading indicator
+- If fetch fails, the dropdown falls back to the static list (graceful degradation)
 
-### 2. `src/pages/ProductBioSignalsCognition.tsx`
-Change `productHandle` from `"bio-signals-cognition"` to `"bio-signals-cognition-brain-health"` to match the expected Shopify handle.
-
----
-
-## Expected Shopify Product Handles
-After correction, the application will expect these 8 products in your Shopify store:
-
-| Product | Expected Shopify Handle |
-|---------|------------------------|
-| Weight Loss Protocol | `bio-signals-weight-loss-metabolic-health` |
-| Energy Protocol | `bio-signals-energy` |
-| Performance Protocol | `bio-signals-performance-recovery` |
-| Hair + Skin Protocol | `bio-signals-hair-skin` |
-| Longevity Protocol | `bio-signals-longevity` |
-| Cognition Protocol | `bio-signals-cognition-brain-health` |
-| AI Concierge | `bio-signals-ai-concierge` |
-| 1:1 Coaching | `1-1-optimization-coaching` |
+### Both Desktop and Mobile
+The fix applies to both:
+- Desktop: Dropdown menu under "Guided Protocols by Goal"
+- Mobile: Collapsible menu in the hamburger navigation
 
 ---
 
-## Navigation Links Audit (All Correct)
-The following navigation links in `Header.tsx` and `Protocols.tsx` are correctly configured:
-- `/protocol/bio-signals-weight-loss`
-- `/protocol/bio-signals-energy`
-- `/protocol/bio-signals-performance-recovery`
-- `/protocol/bio-signals-hair-skin`
-- `/protocol/bio-signals-longevity`
-- `/protocol/bio-signals-cognition`
-- `/protocols`
-- `/ai-concierge`
-- `/coaching`
+## Technical Details
+
+### 1. Create a Shared Hook: `useProtocolsNavigation`
+A new custom hook in `src/hooks/useProtocolsNavigation.ts` that:
+- Fetches the "protocols" collection from Shopify
+- Maps Shopify product handles to internal routes using the same mapping from ShopByGoal
+- Returns a list of `{ label, href }` items for navigation
+- Caches results to prevent redundant API calls
+
+### 2. Update `Header.tsx`
+- Import and use the new `useProtocolsNavigation` hook
+- Replace the hardcoded `protocols` array with the dynamic data
+- Add loading state handling for the dropdown
+- Always include "View All Protocols" as the first item
+
+### Handle-to-Route Mapping
+The mapping will be centralized and shared:
+
+| Shopify Handle | App Route |
+|----------------|-----------|
+| `bio-signals-weight-loss-metabolic-health` | `/protocol/bio-signals-weight-loss` |
+| `bio-signals-energy` | `/protocol/bio-signals-energy` |
+| `bio-signals-performance-recovery` | `/protocol/bio-signals-performance-recovery` |
+| `bio-signals-hair-skin` | `/protocol/bio-signals-hair-skin` |
+| `bio-signals-longevity` | `/protocol/bio-signals-longevity` |
+| `bio-signals-cognition-brain-health` | `/protocol/bio-signals-cognition` |
 
 ---
 
-## Important Note
-The 401 UNAUTHORIZED errors in your network requests suggest the Storefront API token may not have all required scopes enabled yet. Once you verify the token has the correct permissions (product listings, collection listings, checkouts), and I apply these handle corrections, the products should load properly.
+## Files to Create/Modify
+
+| File | Action |
+|------|--------|
+| `src/hooks/useProtocolsNavigation.ts` | Create - new shared hook |
+| `src/components/sections/Header.tsx` | Modify - use dynamic data |
+| `src/components/sections/ShopByGoal.tsx` | Modify - import shared mapping |
 
 ---
 
-## Technical Changes
+## Fallback Behavior
+If the Shopify API request fails, the header will still show the original hardcoded list to ensure navigation always works.
 
-```text
-File: src/pages/ProductBioSignalsPerformance.tsx
-Line 69: productHandle="bio-signals-performance"
-      -> productHandle="bio-signals-performance-recovery"
-
-File: src/pages/ProductBioSignalsCognition.tsx  
-Line 69: productHandle="bio-signals-cognition"
-      -> productHandle="bio-signals-cognition-brain-health"
-```
