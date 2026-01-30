@@ -42,7 +42,7 @@ const ValueProps = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="py-16 md:py-24 px-6 md:px-12 border-y border-border">
+    <section ref={ref} className="py-10 md:py-16 px-6 md:px-12 border-y border-border">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
