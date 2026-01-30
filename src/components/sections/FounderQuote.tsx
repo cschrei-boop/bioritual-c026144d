@@ -7,7 +7,7 @@ const FounderQuote = () => {
     once: true,
     margin: "-100px"
   });
-  return <section ref={ref} className="py-12 px-6 md:px-12 bg-secondary md:py-[24px] rounded-3xl">
+  return <section ref={ref} className="py-12 px-6 md:px-12 md:py-[24px] rounded-3xl bg-secondary">
       <div className="max-w-3xl mx-auto text-center">
         <motion.div initial={{
         opacity: 0,

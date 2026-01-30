@@ -39,7 +39,7 @@ const FeaturedServices = () => {
     once: true,
     margin: "-100px"
   });
-  return <section ref={ref} className="py-10 px-6 md:px-12 md:py-[24px] bg-secondary rounded-3xl">
+  return <section ref={ref} className="py-10 px-6 md:px-12 md:py-[24px] rounded-3xl bg-secondary">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div initial={{

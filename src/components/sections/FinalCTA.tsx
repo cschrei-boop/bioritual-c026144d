@@ -9,7 +9,7 @@ const FinalCTA = () => {
     once: true,
     margin: "-100px"
   });
-  return <section ref={ref} className="py-16 px-6 md:px-12 md:py-[26px]">
+  return <section ref={ref} className="py-16 px-6 md:px-12 md:py-[26px] bg-secondary rounded-3xl pb-[59px]">
       <div className="max-w-3xl mx-auto text-center">
         <motion.div initial={{
         opacity: 0,

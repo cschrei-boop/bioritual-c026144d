@@ -84,7 +84,7 @@ const ShopByGoal = () => {
           <Skeleton className="h-4 w-1/2 mt-2" />
         </div>)}
     </div>;
-  return <section ref={ref} className="py-10 px-6 md:px-[24px] md:py-[24px]">
+  return <section ref={ref} className="py-10 px-6 md:px-[24px] md:py-[24px] rounded-3xl bg-primary-foreground">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div initial={{
