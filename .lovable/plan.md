@@ -1,43 +1,81 @@
 
-# Replace Hero Image with Video Background
+# The Truth About Peptides - Landing Page Implementation
 
 ## Overview
-Replace the static hero image on the homepage with a looping video background. The project already has a video file (`background-video.mp4`) and a `VideoBackground` component ready to use.
+Transform the "Meet The Peptide Collection" homepage section into "The Truth About Peptides" and create a dedicated article landing page. The homepage block and landing page hero will share the same image for visual continuity.
 
-## Implementation
+## Changes Summary
 
-### File to Modify
-**`src/components/sections/Hero.tsx`**
+### 1. Update Homepage Section
+**File:** `src/components/sections/FeaturedCollection.tsx`
 
-### Changes
-1. Remove the static image import (`hero-portrait.jpg`)
-2. Replace the `<img>` element with a `<video>` element that:
-   - Auto-plays, loops, and is muted (required for autoplay)
-   - Uses `playsInline` for mobile compatibility
-   - Covers the full hero section with `object-cover`
-   - Has a slightly reduced playback rate for a subtle, cinematic feel
-3. Keep the existing gradient overlay for text readability
-4. Import the video from `@/assets/background-video.mp4`
+- Change title from "Meet The Peptide Collection" to "The Truth About Peptides"
+- Update description text to match article context (e.g., "Peptides are everywhere in longevity conversations—but clarity is rare. Here's what they actually are, how they work, and what you should know.")
+- Change button text from "Learn More" to "Read Article"
+- Update link destination from `/protocols` to `/truth-about-peptides`
 
-### Technical Approach
+### 2. Create New Landing Page
+**File:** `src/pages/TruthAboutPeptides.tsx`
+
+Structure following the existing editorial pattern:
+
 ```text
-┌─────────────────────────────────────┐
-│ Hero Section                        │
-│ ┌─────────────────────────────────┐ │
-│ │ Video (absolute, object-cover)  │ │
-│ │ autoPlay, loop, muted           │ │
-│ └─────────────────────────────────┘ │
-│ ┌─────────────────────────────────┐ │
-│ │ Gradient Overlay (for text)     │ │
-│ └─────────────────────────────────┘ │
-│ ┌─────────────────────────────────┐ │
-│ │ Content (tagline, headline,     │ │
-│ │ copy, CTA button)               │ │
-│ └─────────────────────────────────┘ │
-└─────────────────────────────────────┘
+┌────────────────────────────────────────────────┐
+│  HEADER (shared navigation)                    │
+├────────────────────────────────────────────────┤
+│                                                │
+│  HERO SECTION                                  │
+│  - Uses same featured-collection.jpg image    │
+│  - Title: "The Truth About Peptides"          │
+│  - Subtitle with educational context          │
+│                                                │
+├────────────────────────────────────────────────┤
+│                                                │
+│  ARTICLE CONTENT                               │
+│  (Placeholder sections awaiting your content) │
+│                                                │
+├────────────────────────────────────────────────┤
+│  FOOTER                                        │
+└────────────────────────────────────────────────┘
 ```
 
-### Notes
-- The video will be contained within the Hero section only (not fixed to the viewport)
-- Mobile users will see the video with `playsInline` to prevent fullscreen takeover
-- The existing gradient overlay will ensure text remains readable
+Hero styling will match `WeightLossLanding.tsx`:
+- Full-width header image with gradient overlay
+- Minimum height of 70vh
+- Animated title and subtitle
+
+### 3. Add Route
+**File:** `src/App.tsx`
+
+Add new route: `/truth-about-peptides` → `TruthAboutPeptides`
+
+## Image Linkage
+Both the homepage "article block" and the landing page hero will use:
+- **Image path:** `src/assets/featured-collection.jpg`
+
+This ensures visual continuity when users click through from the homepage.
+
+## Technical Details
+
+### Page Template Structure
+The new page will include:
+- SEO meta tags via `react-helmet-async`
+- Motion animations consistent with other landing pages
+- Reusable `Section` component for animated content blocks
+- Shared Header and Footer components
+- Placeholder article sections that you can populate with your content
+
+### Files Modified
+| File | Action |
+|------|--------|
+| `src/components/sections/FeaturedCollection.tsx` | Edit title, description, link |
+| `src/pages/TruthAboutPeptides.tsx` | Create new page |
+| `src/App.tsx` | Add route |
+
+## Next Steps After Implementation
+Once this structure is in place, you can share the article content and I'll populate the landing page with:
+- Article sections with proper headings
+- Educational content blocks
+- Internal links to protocols/services
+- FAQ section if needed
+- Call-to-action sections
