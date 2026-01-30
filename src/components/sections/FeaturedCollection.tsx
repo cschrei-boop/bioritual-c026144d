@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import featuredCollection from "@/assets/featured-collection.jpg";
+import truthAboutPeptidesHero from "@/assets/truth-about-peptides-hero.png";
 const FeaturedCollection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
@@ -46,7 +46,7 @@ const FeaturedCollection = () => {
           delay: 0.2
         }} className="order-1 md:order-2">
             <div className="aspect-[4/3] overflow-hidden">
-              <img src={featuredCollection} alt="Peptide Collection" className="w-full h-full object-cover" />
+              <img src={truthAboutPeptidesHero} alt="The Truth About Peptides" className="w-full h-full object-cover" />
             </div>
           </motion.div>
         </div>
