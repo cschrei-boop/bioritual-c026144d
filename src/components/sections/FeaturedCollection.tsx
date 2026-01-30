@@ -23,14 +23,14 @@ const FeaturedCollection = () => {
         } : {}} transition={{
           duration: 0.8
         }} className="order-2 md:order-1">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6">
-              Meet The Peptide Collection
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6">
+              The Truth About Peptides
             </h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              Five intentional formulas designed to optimize recovery, enhance cognition, and support overall biological health. Each protocol is backed by research and designed for real-world results.
+              Peptides are everywhere in longevity conversations—but clarity is rare. Here's what they actually are, how they work, and what you should know.
             </p>
             <Button size="lg" className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-8 text-sm tracking-widest uppercase" asChild>
-              <Link to="/protocols">Learn More</Link>
+              <Link to="/truth-about-peptides">Read Article</Link>
             </Button>
           </motion.div>
 

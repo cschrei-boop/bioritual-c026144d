@@ -17,6 +17,7 @@ import ProductCoaching from "./pages/ProductCoaching";
 import StartHere from "./pages/StartHere";
 import Protocols from "./pages/Protocols";
 import WeightLossLanding from "./pages/WeightLossLanding";
+import TruthAboutPeptides from "./pages/TruthAboutPeptides";
 import TermsOfService from "./pages/TermsOfService";
 import FulfillmentPolicy from "./pages/FulfillmentPolicy";
 import ConsentAcknowledgment from "./pages/ConsentAcknowledgment";
@@ -32,6 +33,7 @@ const AppContent = () => {
       <Route path="/start-here" element={<StartHere />} />
       <Route path="/protocols" element={<Protocols />} />
       <Route path="/weight-loss-structured-wellness" element={<WeightLossLanding />} />
+      <Route path="/truth-about-peptides" element={<TruthAboutPeptides />} />
       <Route path="/terms" element={<TermsOfService />} />
       <Route path="/fulfillment" element={<FulfillmentPolicy />} />
       <Route path="/consent" element={<ConsentAcknowledgment />} />
