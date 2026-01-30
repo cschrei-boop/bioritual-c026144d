@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, Loader2, Truck, RotateCcw } from "lucide-react";
+import { Check, Loader2, Truck, RotateCcw, AlertTriangle } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -55,20 +55,26 @@ const ProductPageTemplate = ({
 }: ProductPageTemplateProps) => {
   const [product, setProduct] = useState<ShopifyProduct | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const { addItem, isLoading } = useCartStore();
 
   useEffect(() => {
     const fetchProduct = async () => {
+      setError(null);
       try {
         const data = await storefrontApiRequest(PRODUCT_BY_HANDLE_QUERY, {
           handle: productHandle,
         });
         if (data?.data?.productByHandle) {
           setProduct({ node: data.data.productByHandle });
+        } else {
+          console.error(`[Shopify] Product not found with handle: "${productHandle}"`);
+          setError(`Product "${productHandle}" not found in Shopify store.`);
         }
-      } catch (error) {
-        console.error("Failed to fetch product:", error);
+      } catch (err) {
+        console.error("Failed to fetch product:", err);
+        setError("Failed to load product. Please try again.");
       } finally {
         setLoading(false);
       }
@@ -109,7 +115,22 @@ const ProductPageTemplate = ({
       <Header />
 
       <main className="pt-6 md:pt-12">
+        {/* Error State */}
+        {error && (
+          <div className="px-4 md:px-8 lg:px-16 pb-12">
+            <div className="max-w-2xl mx-auto bg-destructive/10 border border-destructive/20 rounded-lg p-6 text-center">
+              <AlertTriangle className="w-10 h-10 text-destructive mx-auto mb-4" />
+              <h2 className="font-serif text-2xl mb-2">Product Unavailable</h2>
+              <p className="text-muted-foreground mb-4">{error}</p>
+              <Button variant="outline" onClick={() => window.location.href = "/protocols"}>
+                Browse All Protocols
+              </Button>
+            </div>
+          </div>
+        )}
+
         {/* Main Product Section - Two Column Layout */}
+        {!error && (
         <section className="px-4 md:px-8 lg:px-16 pb-12 md:pb-16">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-[1fr_420px] gap-8 lg:gap-12">
@@ -303,6 +324,7 @@ const ProductPageTemplate = ({
             </div>
           </div>
         </section>
+        )}
       </main>
 
       <NotSureBlock />

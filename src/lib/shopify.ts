@@ -92,6 +92,38 @@ export async function storefrontApiRequest(query: string, variables: Record<stri
   return data;
 }
 
+// Query to fetch all products for debugging handle mismatches
+export const ALL_PRODUCTS_QUERY = `
+  query GetAllProducts($first: Int!) {
+    products(first: $first) {
+      edges {
+        node {
+          id
+          title
+          handle
+        }
+      }
+    }
+  }
+`;
+
+// Helper function to fetch and log all products from the store
+export async function debugFetchAllProducts(): Promise<{ handle: string; title: string }[]> {
+  try {
+    const data = await storefrontApiRequest(ALL_PRODUCTS_QUERY, { first: 50 });
+    const products = data?.data?.products?.edges || [];
+    const productList = products.map((edge: { node: { handle: string; title: string } }) => ({
+      handle: edge.node.handle,
+      title: edge.node.title,
+    }));
+    console.log('[Shopify Debug] All products in store:', productList);
+    return productList;
+  } catch (error) {
+    console.error('[Shopify Debug] Failed to fetch products:', error);
+    return [];
+  }
+}
+
 // GraphQL Queries
 export const PRODUCTS_QUERY = `
   query GetProducts($first: Int!, $query: String) {
