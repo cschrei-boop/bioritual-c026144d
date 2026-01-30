@@ -31,7 +31,7 @@ const ThreePillarsCarousel = () => {
     once: true,
     margin: "-100px"
   });
-  return <section ref={ref} className="py-10 px-6 md:px-12 bg-secondary md:py-[24px]">
+  return <section ref={ref} className="py-10 px-6 md:px-12 bg-secondary md:py-[24px] rounded-3xl">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div initial={{
