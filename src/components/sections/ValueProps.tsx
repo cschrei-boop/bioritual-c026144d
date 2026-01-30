@@ -1,72 +1,56 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
 import valueSystems from "@/assets/value-systems.jpg";
 import valueClean from "@/assets/value-clean.jpg";
 import valuePerformance from "@/assets/value-performance.jpg";
 import valueBusy from "@/assets/value-busy.jpg";
-
-const values = [
-  {
-    title: "Better Systems",
-    description: "The world doesn't need more motivation. It needs better systems.",
-    image: valueSystems,
-  },
-  {
-    title: "Clean Protocols",
-    description: "No pseudoscience, no fads. Just evidence-based optimization strategies.",
-    image: valueClean,
-  },
-  {
-    title: "High Performance",
-    description: "The optimization equivalent of a swiss army knife. Easy, adaptable, multi-purpose protocols.",
-    image: valuePerformance,
-  },
-  {
-    title: "Built for Busy",
-    description: "Designed for professionals with high cognitive load and inconsistent schedules.",
-    image: valueBusy,
-  },
-];
-
+const values = [{
+  title: "Better Systems",
+  description: "The world doesn't need more motivation. It needs better systems.",
+  image: valueSystems
+}, {
+  title: "Clean Protocols",
+  description: "No pseudoscience, no fads. Just evidence-based optimization strategies.",
+  image: valueClean
+}, {
+  title: "High Performance",
+  description: "The optimization equivalent of a swiss army knife. Easy, adaptable, multi-purpose protocols.",
+  image: valuePerformance
+}, {
+  title: "Built for Busy",
+  description: "Designed for professionals with high cognitive load and inconsistent schedules.",
+  image: valueBusy
+}];
 const ValueProps = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  return (
-    <section ref={ref} className="py-10 md:py-16 px-6 md:px-12 border-y border-border">
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-100px"
+  });
+  return <section ref={ref} className="py-10 px-6 md:px-12 border-y border-border md:py-[24px]">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
+        <motion.div initial={{
+        opacity: 0,
+        y: 30
+      }} animate={isInView ? {
+        opacity: 1,
+        y: 0
+      } : {}} transition={{
+        duration: 0.8
+      }}>
+          <Carousel opts={{
+          align: "start",
+          loop: true
+        }} className="w-full">
             <CarouselContent className="-ml-6">
-              {values.map((value) => (
-                <CarouselItem key={value.title} className="pl-6 md:basis-1/2 lg:basis-1/4">
+              {values.map(value => <CarouselItem key={value.title} className="pl-6 md:basis-1/2 lg:basis-1/4">
                   <div className="group">
                     {/* Image */}
                     <div className="aspect-square mb-6 overflow-hidden">
-                      <img
-                        src={value.image}
-                        alt={value.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
+                      <img src={value.image} alt={value.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
 
                     {/* Content */}
@@ -74,15 +58,11 @@ const ValueProps = () => {
                     <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                       {value.description}
                     </p>
-                    <Link
-                      to="/start-here"
-                      className="text-sm border-b border-foreground pb-0.5 hover:opacity-60 transition-opacity"
-                    >
+                    <Link to="/start-here" className="text-sm border-b border-foreground pb-0.5 hover:opacity-60 transition-opacity">
                       Learn More
                     </Link>
                   </div>
-                </CarouselItem>
-              ))}
+                </CarouselItem>)}
             </CarouselContent>
             <div className="flex justify-between items-center mt-8">
               <div className="text-sm text-muted-foreground">
@@ -96,8 +76,6 @@ const ValueProps = () => {
           </Carousel>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ValueProps;
