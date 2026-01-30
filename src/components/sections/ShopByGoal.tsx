@@ -5,16 +5,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Link } from "react-router-dom";
 import { storefrontApiRequest, COLLECTION_BY_HANDLE_QUERY, ShopifyProduct } from "@/lib/shopify";
 import { Skeleton } from "@/components/ui/skeleton";
-
-// Mapping from Shopify handle to local route
-const handleToRoute: Record<string, string> = {
-  "bio-signals-weight-loss-metabolic-health": "/protocol/bio-signals-weight-loss",
-  "bio-signals-energy": "/protocol/bio-signals-energy",
-  "bio-signals-cognition-brain-health": "/protocol/bio-signals-cognition",
-  "bio-signals-longevity": "/protocol/bio-signals-longevity",
-  "bio-signals-performance-recovery": "/protocol/bio-signals-performance-recovery",
-  "bio-signals-hair-skin": "/protocol/bio-signals-hair-skin"
-};
+import { handleToRoute } from "@/hooks/useProtocolsNavigation";
 
 // Subtitle mapping based on handle
 const handleToSubtitle: Record<string, string> = {

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Search, User, Menu, ChevronDown } from "lucide-react";
+import { Search, User, Menu, ChevronDown, Loader2 } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -19,20 +19,12 @@ import {
 import { useState } from "react";
 import { CartDrawer } from "@/components/CartDrawer";
 import { Link } from "react-router-dom";
-
-const protocols = [
-  { label: "View All Protocols", href: "/protocols" },
-  { label: "Weight Loss + Metabolic Health", href: "/protocol/bio-signals-weight-loss" },
-  { label: "Energy", href: "/protocol/bio-signals-energy" },
-  { label: "Performance + Recovery", href: "/protocol/bio-signals-performance-recovery" },
-  { label: "Hair + Skin", href: "/protocol/bio-signals-hair-skin" },
-  { label: "Longevity", href: "/protocol/bio-signals-longevity" },
-  { label: "Cognition + Brain Health", href: "/protocol/bio-signals-cognition" },
-];
+import { useProtocolsNavigation } from "@/hooks/useProtocolsNavigation";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [protocolsOpen, setProtocolsOpen] = useState(false);
+  const { protocols, isLoading: protocolsLoading } = useProtocolsNavigation();
 
   const navLinks = [
     { label: "AI Companion", href: "/ai-concierge" },
