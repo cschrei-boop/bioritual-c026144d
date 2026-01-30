@@ -83,7 +83,7 @@ const Hero = () => {
               className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-8 py-6 text-sm tracking-wider"
               asChild
             >
-              <Link to="/start-here">→ Start with a protocol designed for you</Link>
+              <Link to="/protocols">→ Start with a protocol designed for you</Link>
             </Button>
           </motion.div>
 
