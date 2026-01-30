@@ -16,6 +16,7 @@ import ProductAIConcierge from "./pages/ProductAIConcierge";
 import ProductCoaching from "./pages/ProductCoaching";
 import StartHere from "./pages/StartHere";
 import Protocols from "./pages/Protocols";
+import ProtocolsCollection from "./pages/ProtocolsCollection";
 import WeightLossLanding from "./pages/WeightLossLanding";
 import TruthAboutPeptides from "./pages/TruthAboutPeptides";
 import TermsOfService from "./pages/TermsOfService";
@@ -32,6 +33,7 @@ const AppContent = () => {
       <Route path="/" element={<Index />} />
       <Route path="/start-here" element={<StartHere />} />
       <Route path="/protocols" element={<Protocols />} />
+      <Route path="/collection/protocols" element={<ProtocolsCollection />} />
       <Route path="/weight-loss-structured-wellness" element={<WeightLossLanding />} />
       <Route path="/truth-about-peptides" element={<TruthAboutPeptides />} />
       <Route path="/terms" element={<TermsOfService />} />
