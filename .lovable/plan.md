@@ -1,69 +1,40 @@
 
+# Update Weight Loss Protocol Description
 
-# Dynamic Header Protocols Dropdown
+## Summary
+Replace the current product description on the Bio Signals Weight Loss page with the new compelling copy that focuses on the educational and systems-based approach to weight management.
 
-## Problem
-The "Guided Protocols by Goal" dropdown in the header uses hardcoded links that don't automatically sync with your Shopify store. If a product handle changes or new protocols are added, the header won't reflect those changes.
+## Changes Required
 
-## Solution
-Make the header dropdown dynamically fetch products from the Shopify "protocols" collection - the same data source used by the homepage carousel.
+### File: `src/pages/ProductBioSignals.tsx`
 
----
+Update the `description` variable (lines 5-16) with the new copy, structured as follows:
 
-## What Will Change
+**New Description Content:**
 
-### User Experience
-- The dropdown will show the actual protocol products from your Shopify store
-- A "View All Protocols" link will appear at the top of the dropdown
-- While loading, users will see a brief loading indicator
-- If fetch fails, the dropdown falls back to the static list (graceful degradation)
+1. **Opening Hook**: "Weight loss isn't one molecule. It's navigating many signals—without breaking your metabolism."
 
-### Both Desktop and Mobile
-The fix applies to both:
-- Desktop: Dropdown menu under "Guided Protocols by Goal"
-- Mobile: Collapsible menu in the hamburger navigation
+2. **Problem Statement**: Explain the landscape of peptides/supplements and how most people are given one compound without support.
 
----
+3. **Bio Signals Approach**: Position the protocol as a navigation system that integrates multiple elements:
+   - GLP-1-based peptides (including retatrutide-style approaches)
+   - Supportive supplementation for lean mass, energy, and recovery
+   - Nutrition strategies that work with appetite signals
 
-## Technical Details
+4. **Closing Statement**: "Not 'take this and hope.' A structured system that actually holds together."
 
-### 1. Create a Shared Hook: `useProtocolsNavigation`
-A new custom hook in `src/hooks/useProtocolsNavigation.ts` that:
-- Fetches the "protocols" collection from Shopify
-- Maps Shopify product handles to internal routes using the same mapping from ShopByGoal
-- Returns a list of `{ label, href }` items for navigation
-- Caches results to prevent redundant API calls
+5. **Compliance Footer** (retained): Educational protocol disclaimer
 
-### 2. Update `Header.tsx`
-- Import and use the new `useProtocolsNavigation` hook
-- Replace the hardcoded `protocols` array with the dynamic data
-- Add loading state handling for the dropdown
-- Always include "View All Protocols" as the first item
+## Technical Implementation
 
-### Handle-to-Route Mapping
-The mapping will be centralized and shared:
+The description will use:
+- `<p className="mb-3">` for standard paragraphs
+- `<p className="mb-4 font-medium text-foreground">` for the opening hook
+- `<ul className="list-disc pl-5 mb-4 space-y-1">` for the bullet list
+- Maintain the final compliance disclaimer with `font-medium text-foreground` styling
 
-| Shopify Handle | App Route |
-|----------------|-----------|
-| `bio-signals-weight-loss-metabolic-health` | `/protocol/bio-signals-weight-loss` |
-| `bio-signals-energy` | `/protocol/bio-signals-energy` |
-| `bio-signals-performance-recovery` | `/protocol/bio-signals-performance-recovery` |
-| `bio-signals-hair-skin` | `/protocol/bio-signals-hair-skin` |
-| `bio-signals-longevity` | `/protocol/bio-signals-longevity` |
-| `bio-signals-cognition-brain-health` | `/protocol/bio-signals-cognition` |
-
----
-
-## Files to Create/Modify
-
-| File | Action |
-|------|--------|
-| `src/hooks/useProtocolsNavigation.ts` | Create - new shared hook |
-| `src/components/sections/Header.tsx` | Modify - use dynamic data |
-| `src/components/sections/ShopByGoal.tsx` | Modify - import shared mapping |
-
----
-
-## Fallback Behavior
-If the Shopify API request fails, the header will still show the original hardcoded list to ensure navigation always works.
-
+## Compliance Notes
+- The copy uses educational framing ("help you navigate," "educational context")
+- References compounds in an educational context, not as products for sale
+- Maintains the required enrollment disclaimer at the end
+- Aligns with brand guidelines: "Clarity over Conversion"
