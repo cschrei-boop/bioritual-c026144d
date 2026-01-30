@@ -66,7 +66,7 @@ const ProductBioSignalsPerformance = () => {
 
   return (
     <ProductPageTemplate
-      productHandle="bio-signals-performance"
+      productHandle="bio-signals-performance-recovery"
       fallbackTitle="Bio Signals: Performance + Recovery"
       tagline="3-Month Optimization Protocol"
       description={description}
