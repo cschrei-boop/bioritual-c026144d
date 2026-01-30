@@ -29,8 +29,8 @@ const Footer = () => {
             <p className="text-xs tracking-[0.2em] uppercase mb-4">Shop</p>
             <nav className="flex flex-col gap-3">
               <Link to="/protocols" className="text-sm text-background/60 hover:text-background transition-colors">All Protocols</Link>
-              <a href="#" className="text-sm text-background/60 hover:text-background transition-colors">Coaching</a>
-              <a href="#" className="text-sm text-background/60 hover:text-background transition-colors">AI Coach</a>
+              <Link to="/coaching" className="text-sm text-background/60 hover:text-background transition-colors">Coaching</Link>
+              <Link to="/ai-concierge" className="text-sm text-background/60 hover:text-background transition-colors">AI Concierge</Link>
             </nav>
           </motion.div>
 
@@ -44,9 +44,8 @@ const Footer = () => {
             <p className="text-xs tracking-[0.2em] uppercase mb-4">Getting Started</p>
             <nav className="flex flex-col gap-3">
               <Link to="/start-here" className="text-sm text-background/60 hover:text-background transition-colors">Start Here</Link>
-              <a href="#" className="text-sm text-background/60 hover:text-background transition-colors">Our Story</a>
-              <a href="#" className="text-sm text-background/60 hover:text-background transition-colors">Science</a>
-              <a href="#" className="text-sm text-background/60 hover:text-background transition-colors">Contact</a>
+              <Link to="/truth-about-peptides" className="text-sm text-background/60 hover:text-background transition-colors">The Science</Link>
+              <a href="mailto:hello@bioritual.com" className="text-sm text-background/60 hover:text-background transition-colors">Contact</a>
             </nav>
           </motion.div>
 
@@ -79,7 +78,7 @@ const Footer = () => {
             © 2026 BIORITUAL. Research peptides are for research purposes only. Educational content is not medical advice.
           </p>
           <div className="flex flex-wrap gap-4 md:gap-6">
-            <a href="#" className="text-xs text-background/40 hover:text-background transition-colors">Privacy</a>
+            <Link to="/terms" className="text-xs text-background/40 hover:text-background transition-colors">Privacy</Link>
             <Link to="/terms" className="text-xs text-background/40 hover:text-background transition-colors">Terms</Link>
             <Link to="/fulfillment" className="text-xs text-background/40 hover:text-background transition-colors">Shipping</Link>
             <Link to="/consent" className="text-xs text-background/40 hover:text-background transition-colors">Consent</Link>
