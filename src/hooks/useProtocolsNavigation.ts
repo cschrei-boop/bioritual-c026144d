@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { storefrontApiRequest, COLLECTION_BY_HANDLE_QUERY, ShopifyProduct } from "@/lib/shopify";
+import { storefrontApiRequest, PROTOCOL_PRODUCTS_QUERY, ShopifyProduct } from "@/lib/shopify";
 
 // Centralized handle-to-route mapping
 export const handleToRoute: Record<string, string> = {
@@ -13,7 +13,7 @@ export const handleToRoute: Record<string, string> = {
 
 // Fallback static protocols for when API fails
 const fallbackProtocols = [
-  { label: "View All Protocols", href: "/protocols" },
+  { label: "View All Protocols", href: "/collection/protocols" },
   { label: "Weight Loss + Metabolic Health", href: "/protocol/bio-signals-weight-loss" },
   { label: "Energy", href: "/protocol/bio-signals-energy" },
   { label: "Performance + Recovery", href: "/protocol/bio-signals-performance-recovery" },
@@ -34,18 +34,17 @@ export function useProtocolsNavigation() {
   useEffect(() => {
     async function fetchProtocols() {
       try {
-        const data = await storefrontApiRequest(COLLECTION_BY_HANDLE_QUERY, {
-          handle: "protocols",
+        const data = await storefrontApiRequest(PROTOCOL_PRODUCTS_QUERY, {
           first: 20
         });
 
-        const collectionProducts = data?.data?.collectionByHandle?.products?.edges || [];
+        const protocolProducts = data?.data?.protocols?.edges || [];
         
         const dynamicProtocols: ProtocolNavItem[] = [
-          { label: "View All Protocols", href: "/protocols" }
+          { label: "View All Protocols", href: "/collection/protocols" }
         ];
 
-        collectionProducts.forEach((edge: { node: ShopifyProduct["node"] }) => {
+        protocolProducts.forEach((edge: { node: ShopifyProduct["node"] }) => {
           const product = edge.node;
           const route = handleToRoute[product.handle];
           

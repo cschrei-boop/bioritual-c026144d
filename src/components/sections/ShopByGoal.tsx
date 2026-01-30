@@ -3,7 +3,7 @@ import { useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Link } from "react-router-dom";
-import { storefrontApiRequest, COLLECTION_BY_HANDLE_QUERY, ShopifyProduct } from "@/lib/shopify";
+import { storefrontApiRequest, PROTOCOL_PRODUCTS_QUERY, ShopifyProduct } from "@/lib/shopify";
 import { Skeleton } from "@/components/ui/skeleton";
 import { handleToRoute } from "@/hooks/useProtocolsNavigation";
 
@@ -35,12 +35,11 @@ const ShopByGoal = () => {
   useEffect(() => {
     async function fetchProtocols() {
       try {
-        const data = await storefrontApiRequest(COLLECTION_BY_HANDLE_QUERY, {
-          handle: "protocols",
+        const data = await storefrontApiRequest(PROTOCOL_PRODUCTS_QUERY, {
           first: 20
         });
-        const collectionProducts = data?.data?.collectionByHandle?.products?.edges || [];
-        const formattedProducts: CollectionProduct[] = collectionProducts.map((edge: {
+        const protocolProducts = data?.data?.protocols?.edges || [];
+        const formattedProducts: CollectionProduct[] = protocolProducts.map((edge: {
           node: ShopifyProduct["node"];
         }) => {
           const product = edge.node;
@@ -59,7 +58,7 @@ const ShopByGoal = () => {
         }).filter(Boolean) as CollectionProduct[];
         setProducts(formattedProducts);
       } catch (error) {
-        console.error("Failed to fetch protocols collection:", error);
+        console.error("Failed to fetch protocols:", error);
       } finally {
         setIsLoading(false);
       }
