@@ -134,6 +134,59 @@ export const PRODUCTS_QUERY = `
           title
           description
           handle
+          productType
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+          images(first: 10) {
+            edges {
+              node {
+                url
+                altText
+              }
+            }
+          }
+          variants(first: 10) {
+            edges {
+              node {
+                id
+                title
+                price {
+                  amount
+                  currencyCode
+                }
+                availableForSale
+                selectedOptions {
+                  name
+                  value
+                }
+              }
+            }
+          }
+          options {
+            name
+            values
+          }
+        }
+      }
+    }
+  }
+`;
+
+// Query to fetch protocol products (products with type "Protocol" or "Digital Protocol")
+export const PROTOCOL_PRODUCTS_QUERY = `
+  query GetProtocolProducts($first: Int!) {
+    protocols: products(first: $first, query: "product_type:Protocol OR product_type:'Digital Protocol'") {
+      edges {
+        node {
+          id
+          title
+          description
+          handle
+          productType
           priceRange {
             minVariantPrice {
               amount

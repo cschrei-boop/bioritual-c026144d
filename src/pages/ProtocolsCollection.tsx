@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
-import { storefrontApiRequest, COLLECTION_BY_HANDLE_QUERY, ShopifyProduct } from "@/lib/shopify";
+import { storefrontApiRequest, PROTOCOL_PRODUCTS_QUERY, ShopifyProduct } from "@/lib/shopify";
 import { handleToRoute } from "@/hooks/useProtocolsNavigation";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -24,14 +24,13 @@ const ProtocolsCollection = () => {
   useEffect(() => {
     async function fetchProtocols() {
       try {
-        const data = await storefrontApiRequest(COLLECTION_BY_HANDLE_QUERY, {
-          handle: "protocols",
+        const data = await storefrontApiRequest(PROTOCOL_PRODUCTS_QUERY, {
           first: 20
         });
 
-        const collectionProducts = data?.data?.collectionByHandle?.products?.edges || [];
+        const protocolProducts = data?.data?.protocols?.edges || [];
 
-        const formattedProducts: CollectionProduct[] = collectionProducts
+        const formattedProducts: CollectionProduct[] = protocolProducts
           .map((edge: { node: ShopifyProduct["node"] }) => {
             const product = edge.node;
             const route = handleToRoute[product.handle];
@@ -52,7 +51,7 @@ const ProtocolsCollection = () => {
 
         setProducts(formattedProducts);
       } catch (error) {
-        console.error("Failed to fetch protocols collection:", error);
+        console.error("Failed to fetch protocols:", error);
       } finally {
         setIsLoading(false);
       }
