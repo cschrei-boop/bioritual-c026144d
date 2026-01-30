@@ -4,11 +4,28 @@ import { standardProtocolFaqs, standardProtocolDisclosures } from "@/data/produc
 const ProductBioSignals = () => {
   const description = (
     <>
-      <p className="mb-3">
-        This protocol uses bio signals and behavioral frameworks to support metabolic alignment and sustainable weight management.
+      <p className="mb-4 font-medium text-foreground">
+        Weight loss isn't one molecule. It's navigating many signals—without breaking your metabolism.
       </p>
       <p className="mb-3">
-        Bio signals are inputs that guide biological processes through feedback, rather than forcing outcomes. This protocol combines education, structure, tracking, and guided implementation into a single, time-bound system.
+        There are dozens of peptides, supplements, and strategies marketed for weight loss. Some suppress appetite. Some improve insulin sensitivity. Some protect muscle. Some help recovery.
+      </p>
+      <p className="mb-3">
+        Most people are handed one compound and told to figure the rest out.
+      </p>
+      <p className="mb-3">
+        Bio Signals does the opposite.
+      </p>
+      <p className="mb-3">
+        We help you navigate the entire landscape—and design a personalized weight-loss protocol that integrates:
+      </p>
+      <ul className="list-disc pl-5 mb-4 space-y-1">
+        <li>GLP-1–based peptides (including retatrutide-style approaches)</li>
+        <li>Supportive supplementation to protect lean mass, energy, and recovery</li>
+        <li>Nutrition strategies that work with appetite signals instead of fighting them</li>
+      </ul>
+      <p className="mb-4">
+        Not "take this and hope." A structured system that actually holds together.
       </p>
       <p className="font-medium text-foreground">
         You are enrolling in an educational and lifestyle optimization protocol — not purchasing medical treatment or individual products.
