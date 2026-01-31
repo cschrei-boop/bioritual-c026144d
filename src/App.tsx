@@ -19,6 +19,7 @@ import Protocols from "./pages/Protocols";
 import ProtocolsCollection from "./pages/ProtocolsCollection";
 import WeightLossLanding from "./pages/WeightLossLanding";
 import TruthAboutPeptides from "./pages/TruthAboutPeptides";
+import GLP1RetratutideGuide from "./pages/GLP1RetratutideGuide";
 import TermsOfService from "./pages/TermsOfService";
 import FulfillmentPolicy from "./pages/FulfillmentPolicy";
 import ConsentAcknowledgment from "./pages/ConsentAcknowledgment";
@@ -39,6 +40,7 @@ const AppContent = () => {
         <Route path="/collection/protocols" element={<ProtocolsCollection />} />
         <Route path="/weight-loss-structured-wellness" element={<WeightLossLanding />} />
         <Route path="/truth-about-peptides" element={<TruthAboutPeptides />} />
+        <Route path="/glp-1-retratutide-guide" element={<GLP1RetratutideGuide />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/fulfillment" element={<FulfillmentPolicy />} />
         <Route path="/consent" element={<ConsentAcknowledgment />} />
