@@ -41,7 +41,7 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className="text-xs tracking-[0.3em] uppercase mb-6"
           >
-            Simple. Structured. Personalized Wellness.
+            Simple. Structured. Educational Wellness Frameworks.
           </motion.p>
 
           {/* Main headline */}
@@ -51,7 +51,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight mb-6"
           >
-            Your body isn't broken.
+            Your body is constantly adapting.
           </motion.h1>
 
           {/* Supporting copy */}
@@ -62,13 +62,13 @@ const Hero = () => {
             className="text-foreground mb-8 max-w-xl space-y-4"
           >
             <p>
-              It's responding to signals — stress, age, sleep, nutrition, training.
+              This framework focuses on understanding context, patterns, and inputs — not fixing the body.
             </p>
             <p>
-              We design personalized protocols that align those signals by combining peptides, supplements, and nutrition into one clear, adaptive system — built for your biology, goals, and lifestyle.
+              BioRitual presents educational frameworks for thinking about wellness-related choices. It does not recommend, prescribe, or design personalized interventions.
             </p>
             <p className="font-medium text-foreground">
-              No guesswork. No trends. Just structure.
+              BioRitual is not a medical service and does not provide medical advice, diagnosis, or treatment.
             </p>
           </motion.div>
 
@@ -83,7 +83,7 @@ const Hero = () => {
               className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-8 py-6 text-sm tracking-wider"
               asChild
             >
-              <Link to="/collection/protocols">→ Start with a protocol designed for you</Link>
+              <Link to="/start-here">→ Learn how the framework is structured</Link>
             </Button>
           </motion.div>
 
@@ -96,7 +96,7 @@ const Hero = () => {
           >
             <p className="text-foreground text-sm leading-relaxed">
               Most people don't need more supplements.<br />
-              They need better signals — and a plan that tells their body what to do next.
+              They need clearer frameworks to help them think through what to do next.
             </p>
             <p className="text-foreground text-sm mt-3 font-medium">
               That's where we come in.
