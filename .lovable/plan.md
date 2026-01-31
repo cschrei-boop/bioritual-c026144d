@@ -1,40 +1,58 @@
 
-# Update Weight Loss Protocol Description
+# Improve AI Crawler Access & SEO
 
 ## Summary
-Replace the current product description on the Bio Signals Weight Loss page with the new compelling copy that focuses on the educational and systems-based approach to weight management.
+Update the site to allow ChatGPT and other AI crawlers to access your content, and add a sitemap to help with discoverability.
 
 ## Changes Required
 
-### File: `src/pages/ProductBioSignals.tsx`
+### 1. Update `public/robots.txt`
+Add explicit entries for AI crawlers:
+- **GPTBot** - OpenAI's web crawler for training and browsing
+- **ChatGPT-User** - ChatGPT's live browsing feature
+- **Claude-Web** - Anthropic's crawler
+- **PerplexityBot** - Perplexity AI's crawler
+- **Bytespider** - ByteDance/TikTok AI crawler
+- **CCBot** - Common Crawl (used by many AI systems)
 
-Update the `description` variable (lines 5-16) with the new copy, structured as follows:
+### 2. Create `public/sitemap.xml`
+Add a sitemap listing all your pages so crawlers can discover them:
+- Homepage
+- All protocol pages (Weight Loss, Energy, Performance, Cognition, etc.)
+- The Truth About Peptides
+- Start Here
+- Protocols Collection
+- Terms, Fulfillment Policy, Consent pages
 
-**New Description Content:**
+### 3. Update `index.html`
+Add a reference to the sitemap in the HTML head for better discoverability.
 
-1. **Opening Hook**: "Weight loss isn't one molecule. It's navigating many signals—without breaking your metabolism."
-
-2. **Problem Statement**: Explain the landscape of peptides/supplements and how most people are given one compound without support.
-
-3. **Bio Signals Approach**: Position the protocol as a navigation system that integrates multiple elements:
-   - GLP-1-based peptides (including retatrutide-style approaches)
-   - Supportive supplementation for lean mass, energy, and recovery
-   - Nutrition strategies that work with appetite signals
-
-4. **Closing Statement**: "Not 'take this and hope.' A structured system that actually holds together."
-
-5. **Compliance Footer** (retained): Educational protocol disclaimer
+## Important Note
+Even with these changes, some AI tools may still have trouble fully reading your SPA content because they don't execute JavaScript. The robots.txt and sitemap improvements help with crawlers that DO support JavaScript rendering. For full static content (which search engines and AI can always read), you would need to add server-side rendering (SSR) or static site generation (SSG) - but that would require moving to a framework like Next.js.
 
 ## Technical Implementation
 
-The description will use:
-- `<p className="mb-3">` for standard paragraphs
-- `<p className="mb-4 font-medium text-foreground">` for the opening hook
-- `<ul className="list-disc pl-5 mb-4 space-y-1">` for the bullet list
-- Maintain the final compliance disclaimer with `font-medium text-foreground` styling
+**robots.txt additions:**
+```
+User-agent: GPTBot
+Allow: /
 
-## Compliance Notes
-- The copy uses educational framing ("help you navigate," "educational context")
-- References compounds in an educational context, not as products for sale
-- Maintains the required enrollment disclaimer at the end
-- Aligns with brand guidelines: "Clarity over Conversion"
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+```
+
+**sitemap.xml structure:**
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://bioritual.lovable.app/</loc></url>
+  <url><loc>https://bioritual.lovable.app/protocols</loc></url>
+  <!-- ... all pages -->
+</urlset>
+```
