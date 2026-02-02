@@ -1,43 +1,30 @@
 import { motion } from "framer-motion";
 import { Search, User, Menu, ChevronDown, Loader2 } from "lucide-react";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { useState } from "react";
 import { CartDrawer } from "@/components/CartDrawer";
 import { Link } from "react-router-dom";
 import { useProtocolsNavigation } from "@/hooks/useProtocolsNavigation";
-
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [protocolsOpen, setProtocolsOpen] = useState(false);
-  const { protocols, isLoading: protocolsLoading } = useProtocolsNavigation();
-
-  const navLinks = [
-    { label: "AI Companion", href: "/ai-concierge" },
-    { label: "1:1 Coaching", href: "/coaching" },
-  ];
-
-  return (
-    <>
+  const {
+    protocols,
+    isLoading: protocolsLoading
+  } = useProtocolsNavigation();
+  const navLinks = [{
+    label: "AI Companion",
+    href: "/ai-concierge"
+  }, {
+    label: "1:1 Coaching",
+    href: "/coaching"
+  }];
+  return <>
       {/* Announcement Bar */}
       <div className="bg-foreground text-background text-center py-2 px-4">
-        <p className="text-xs tracking-widest uppercase">
-          Free shipping on orders over $100
-        </p>
+        <p className="tracking-widest uppercase text-lg font-bold">PRE-LAUNCH MEMBERS GET AN EVERGREEN $100 DISCOUNT</p>
       </div>
 
       {/* Main Header */}
@@ -52,16 +39,9 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent side="left" className="w-[280px] pt-12">
               <nav className="flex flex-col gap-6">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.label}
-                    to={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="text-lg tracking-wide hover:opacity-60 transition-opacity"
-                  >
+                {navLinks.map(link => <Link key={link.label} to={link.href} onClick={() => setIsOpen(false)} className="text-lg tracking-wide hover:opacity-60 transition-opacity">
                     {link.label}
-                  </Link>
-                ))}
+                  </Link>)}
                 
                 {/* Mobile Protocols Collapsible */}
                 <Collapsible open={protocolsOpen} onOpenChange={setProtocolsOpen}>
@@ -70,27 +50,16 @@ const Header = () => {
                     <ChevronDown className={`w-4 h-4 transition-transform ${protocolsOpen ? 'rotate-180' : ''}`} />
                   </CollapsibleTrigger>
                   <CollapsibleContent className="pl-4 pt-3 space-y-3">
-                    {protocols.map((protocol) => (
-                      <Link
-                        key={protocol.href}
-                        to={protocol.href}
-                        onClick={() => {
-                          setIsOpen(false);
-                          setProtocolsOpen(false);
-                        }}
-                        className="block text-base text-foreground/80 hover:text-foreground transition-colors"
-                      >
+                    {protocols.map(protocol => <Link key={protocol.href} to={protocol.href} onClick={() => {
+                    setIsOpen(false);
+                    setProtocolsOpen(false);
+                  }} className="block text-base text-foreground/80 hover:text-foreground transition-colors">
                         {protocol.label}
-                      </Link>
-                    ))}
+                      </Link>)}
                   </CollapsibleContent>
                 </Collapsible>
 
-                <a
-                  href="mailto:hello@bioritual.com"
-                  onClick={() => setIsOpen(false)}
-                  className="text-lg tracking-wide hover:opacity-60 transition-opacity"
-                >
+                <a href="mailto:hello@bioritual.com" onClick={() => setIsOpen(false)} className="text-lg tracking-wide hover:opacity-60 transition-opacity">
                   Contact
                 </a>
               </nav>
@@ -98,11 +67,13 @@ const Header = () => {
           </Sheet>
 
           {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
+          <motion.div initial={{
+          opacity: 0
+        }} animate={{
+          opacity: 1
+        }} transition={{
+          duration: 0.6
+        }}>
             <Link to="/" className="text-xl md:text-2xl font-serif tracking-wide">
               BIORITUAL
             </Link>
@@ -110,15 +81,9 @@ const Header = () => {
 
           {/* Navigation - Center (Desktop) */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                to={link.href}
-                className="text-sm tracking-wide hover:opacity-60 transition-opacity"
-              >
+            {navLinks.map(link => <Link key={link.label} to={link.href} className="text-sm tracking-wide hover:opacity-60 transition-opacity">
                 {link.label}
-              </Link>
-            ))}
+              </Link>)}
             
             {/* Desktop Protocols Dropdown */}
             <DropdownMenu>
@@ -126,31 +91,24 @@ const Header = () => {
                 Guided Protocols by Goal
                 <ChevronDown className="w-3 h-3" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent 
-                align="center" 
-                className="w-56 bg-background border border-border shadow-lg z-50"
-              >
-                {protocols.map((protocol) => (
-                  <DropdownMenuItem key={protocol.href} asChild>
-                    <Link
-                      to={protocol.href}
-                      className="w-full cursor-pointer"
-                    >
+              <DropdownMenuContent align="center" className="w-56 bg-background border border-border shadow-lg z-50">
+                {protocols.map(protocol => <DropdownMenuItem key={protocol.href} asChild>
+                    <Link to={protocol.href} className="w-full cursor-pointer">
                       {protocol.label}
                     </Link>
-                  </DropdownMenuItem>
-                ))}
+                  </DropdownMenuItem>)}
               </DropdownMenuContent>
             </DropdownMenu>
           </nav>
 
           {/* Right Icons */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-4"
-          >
+          <motion.div initial={{
+          opacity: 0
+        }} animate={{
+          opacity: 1
+        }} transition={{
+          duration: 0.6
+        }} className="flex items-center gap-4">
             <button className="hover:opacity-60 transition-opacity">
               <Search className="w-5 h-5" />
             </button>
@@ -158,17 +116,12 @@ const Header = () => {
             <button className="hover:opacity-60 transition-opacity hidden sm:block">
               <User className="w-5 h-5" />
             </button>
-            <a
-              href="mailto:hello@bioritual.com"
-              className="hidden md:block text-sm tracking-wide hover:opacity-60 transition-opacity"
-            >
+            <a href="mailto:hello@bioritual.com" className="hidden md:block text-sm tracking-wide hover:opacity-60 transition-opacity">
               Contact
             </a>
           </motion.div>
         </div>
       </header>
-    </>
-  );
+    </>;
 };
-
 export default Header;
