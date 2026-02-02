@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Sparkles, Route, Compass, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import heroPortrait from "@/assets/hero-portrait.jpg";
+import VideoHero from "@/components/sections/VideoHero";
 
 const cards = [
   {
@@ -88,70 +88,25 @@ const ContinuumBar = () => (
 const StartHereSection = () => {
   return (
     <>
-      {/* Hero Header Image */}
-      <div className="relative h-[40vh] md:h-[50vh]">
-        <img
-          src={heroPortrait}
-          alt="Bio Signals wellness"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-      </div>
+      {/* Hero Header Video */}
+      <VideoHero
+        tagline="Start Here"
+        title="Your body isn't random. It's sending signals."
+        subtitle="Bio Signals turns signals (energy, appetite, recovery, focus, body composition) into a clear protocol—combining peptides, supplements, and nutrition into one structured system."
+        description={<p>Choose the level of support that matches your clarity right now:</p>}
+        minHeight="50vh"
+      />
 
-      <section className="relative px-6 md:px-12 lg:px-24 py-16 md:py-24 overflow-hidden -mt-24">
+      <section className="relative px-6 md:px-12 lg:px-24 py-16 md:py-24 overflow-hidden">
         <WaveformBackground />
       
       <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Section Label */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-xs tracking-[0.25em] uppercase text-foreground/50 text-center mb-4"
-        >
-          Start Here
-        </motion.p>
-
-        {/* Headline */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-serif text-3xl md:text-4xl lg:text-5xl text-center mb-6"
-        >
-          Your body isn't random. It's sending signals.
-        </motion.h2>
-
-        {/* Subhead */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-foreground/70 text-center max-w-3xl mx-auto mb-4 text-lg"
-        >
-          Bio Signals turns signals (energy, appetite, recovery, focus, body composition) into a clear protocol—combining peptides, supplements, and nutrition into one structured system.
-        </motion.p>
-
-        {/* Micro-instruction */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-foreground/60 text-center mb-12 text-sm"
-        >
-          Choose the level of support that matches your clarity right now:
-        </motion.p>
-
         {/* Continuum Bar */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.6 }}
         >
           <ContinuumBar />
         </motion.div>
