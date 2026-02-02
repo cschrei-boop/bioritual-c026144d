@@ -3,6 +3,7 @@ import { ArrowRight, Check, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
+import VideoHero from "@/components/sections/VideoHero";
 
 const protocols = [
   { 
@@ -80,26 +81,11 @@ const Protocols = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="py-16 md:py-24 px-6 md:px-12 border-b border-border">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h1 
-            className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Bio Signals Protocols
-          </motion.h1>
-          <motion.p 
-            className="text-lg md:text-xl text-foreground/70"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            Science-backed optimization, explained in plain language.
-          </motion.p>
-        </div>
-      </section>
+      <VideoHero
+        tagline="Bio Signals Protocols"
+        title="Science-backed optimization, explained in plain language."
+        subtitle="Structured 3-month systems that combine education, tracking, and accountability for lasting results."
+      />
 
       <main className="max-w-4xl mx-auto px-6 py-12 md:py-16">
         
