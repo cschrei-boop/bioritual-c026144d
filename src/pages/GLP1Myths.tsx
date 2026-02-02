@@ -62,7 +62,7 @@ const Myth = ({
     y: 0
   } : {}} transition={{
     duration: 0.6
-  }} className="py-10 border-b border-border last:border-b-0">
+  }} className="border-b border-border last:border-b-0 py-[24px]">
       <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
         Myth #{number}
       </p>
