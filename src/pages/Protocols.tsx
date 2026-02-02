@@ -4,88 +4,57 @@ import { Link } from "react-router-dom";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import VideoHero from "@/components/sections/VideoHero";
-
-const protocols = [
-  { 
-    title: "Weight Loss + Metabolic Health", 
-    href: "/protocol/bio-signals-weight-loss",
-    description: "Support metabolic signaling and sustainable weight management"
-  },
-  { 
-    title: "Energy", 
-    href: "/protocol/bio-signals-energy",
-    description: "Optimize energy production and reduce fatigue patterns"
-  },
-  { 
-    title: "Performance + Recovery", 
-    href: "/protocol/bio-signals-performance-recovery",
-    description: "Enhance adaptation and protect recovery capacity"
-  },
-  { 
-    title: "Hair + Skin", 
-    href: "/protocol/bio-signals-hair-skin",
-    description: "Support tissue quality and visible health indicators"
-  },
-  { 
-    title: "Cognition + Brain Health", 
-    href: "/protocol/bio-signals-cognition",
-    description: "Promote mental clarity and long-term brain function"
-  },
-  { 
-    title: "Longevity", 
-    href: "/protocol/bio-signals-longevity",
-    description: "Preserve resilience and functional capacity over time"
-  },
-];
-
-const bioSignalsIs = [
-  "Educational",
-  "Structured",
-  "Feedback-driven",
-  "Time-bound",
-  "Personalized through tracking"
-];
-
-const bioSignalsIsNot = [
-  "A supplement store",
-  "A shortcut",
-  "A medical clinic",
-  "A one-size-fits-all plan"
-];
-
-const whoIsFor = [
-  "Want clarity instead of hype",
-  "Prefer systems over hacks",
-  "Care about long-term outcomes",
-  "Want to understand why something works, not just that it does"
-];
-
-const protocolIncludes = [
-  "A structured optimization protocol",
-  "A private client wiki",
-  "Tracking and accountability tools",
-  "Educational context and explanations",
-  "Protocol-specific materials coordinated as part of the experience"
-];
-
+const protocols = [{
+  title: "Weight Loss + Metabolic Health",
+  href: "/protocol/bio-signals-weight-loss",
+  description: "Support metabolic signaling and sustainable weight management"
+}, {
+  title: "Energy",
+  href: "/protocol/bio-signals-energy",
+  description: "Optimize energy production and reduce fatigue patterns"
+}, {
+  title: "Performance + Recovery",
+  href: "/protocol/bio-signals-performance-recovery",
+  description: "Enhance adaptation and protect recovery capacity"
+}, {
+  title: "Hair + Skin",
+  href: "/protocol/bio-signals-hair-skin",
+  description: "Support tissue quality and visible health indicators"
+}, {
+  title: "Cognition + Brain Health",
+  href: "/protocol/bio-signals-cognition",
+  description: "Promote mental clarity and long-term brain function"
+}, {
+  title: "Longevity",
+  href: "/protocol/bio-signals-longevity",
+  description: "Preserve resilience and functional capacity over time"
+}];
+const bioSignalsIs = ["Educational", "Structured", "Feedback-driven", "Time-bound", "Personalized through tracking"];
+const bioSignalsIsNot = ["A supplement store", "A shortcut", "A medical clinic", "A one-size-fits-all plan"];
+const whoIsFor = ["Want clarity instead of hype", "Prefer systems over hacks", "Care about long-term outcomes", "Want to understand why something works, not just that it does"];
+const protocolIncludes = ["A structured optimization protocol", "A private client wiki", "Tracking and accountability tools", "Educational context and explanations", "Protocol-specific materials coordinated as part of the experience"];
 const Protocols = () => {
   const fadeIn = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6 }
+    initial: {
+      opacity: 0,
+      y: 20
+    },
+    whileInView: {
+      opacity: 1,
+      y: 0
+    },
+    viewport: {
+      once: true
+    },
+    transition: {
+      duration: 0.6
+    }
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section */}
-      <VideoHero
-        tagline="Bio Signals Protocols"
-        title="Science-backed optimization, explained in plain language."
-        subtitle="Structured 3-month systems that combine education, tracking, and accountability for lasting results."
-      />
+      <VideoHero tagline="Bio Signals Protocols" title="Science-backed optimization, explained in plain language." subtitle="Structured 3-month systems that combine education, tracking, and accountability for lasting results." />
 
       <main className="max-w-4xl mx-auto px-6 py-12 md:py-16">
         
@@ -136,11 +105,9 @@ const Protocols = () => {
           <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground mb-6">What We Actually Do</h2>
           <p className="text-foreground/80 mb-4">We develop science-backed protocols that combine:</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            {["Education", "Structure", "Tracking", "Accountability"].map((item) => (
-              <div key={item} className="text-center py-4 border border-border rounded-lg">
+            {["Education", "Structure", "Tracking", "Accountability"].map(item => <div key={item} className="text-center py-4 border border-border rounded-lg">
                 <span className="font-medium text-foreground">{item}</span>
-              </div>
-            ))}
+              </div>)}
           </div>
           <p className="text-foreground/80 mb-6">
             We explain complex concepts — including peptides — in plain language, grounded in biology and real-world feedback.
@@ -158,23 +125,19 @@ const Protocols = () => {
             <div>
               <h3 className="font-semibold text-foreground mb-4">Bio Signals is:</h3>
               <ul className="space-y-3">
-                {bioSignalsIs.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
+                {bioSignalsIs.map(item => <li key={item} className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-foreground/60 mt-0.5 flex-shrink-0" />
                     <span className="text-foreground/80">{item}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
             <div>
               <h3 className="font-semibold text-foreground mb-4">Bio Signals is not:</h3>
               <ul className="space-y-3">
-                {bioSignalsIsNot.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
+                {bioSignalsIsNot.map(item => <li key={item} className="flex items-start gap-3">
                     <X className="w-5 h-5 text-foreground/40 mt-0.5 flex-shrink-0" />
                     <span className="text-foreground/60">{item}</span>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
             </div>
           </div>
@@ -191,30 +154,22 @@ const Protocols = () => {
             Each protocol is a 3-month system, priced at <span className="font-semibold text-foreground">$699</span>, and includes:
           </p>
           <ul className="space-y-2 mb-8">
-            {protocolIncludes.map((item) => (
-              <li key={item} className="flex items-start gap-3">
+            {protocolIncludes.map(item => <li key={item} className="flex items-start gap-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-foreground/40 mt-2 flex-shrink-0" />
                 <span className="text-foreground/80">{item}</span>
-              </li>
-            ))}
+              </li>)}
           </ul>
           
           <p className="text-foreground font-medium mb-6">Choose the protocol that matches your current priority:</p>
           
           <div className="grid gap-4">
-            {protocols.map((protocol) => (
-              <Link
-                key={protocol.href}
-                to={protocol.href}
-                className="group flex items-center justify-between p-6 border border-border rounded-lg hover:border-foreground/30 hover:bg-muted/20 transition-all"
-              >
+            {protocols.map(protocol => <Link key={protocol.href} to={protocol.href} className="group flex items-center justify-between p-6 border border-border rounded-lg hover:border-foreground/30 transition-all text-destructive-foreground bg-[#bfd0fd]">
                 <div>
-                  <h3 className="font-playfair text-lg font-semibold text-foreground mb-1">{protocol.title}</h3>
-                  <p className="text-sm text-foreground/60">{protocol.description}</p>
+                  <h3 className="font-playfair font-semibold mb-1 text-primary-foreground text-2xl">{protocol.title}</h3>
+                  <p className="text-sm text-primary-foreground">{protocol.description}</p>
                 </div>
                 <ArrowRight className="w-5 h-5 text-foreground/40 group-hover:text-foreground group-hover:translate-x-1 transition-all flex-shrink-0" />
-              </Link>
-            ))}
+              </Link>)}
           </div>
           
           <p className="text-sm text-foreground/60 italic mt-6 text-center">
@@ -228,11 +183,9 @@ const Protocols = () => {
           <p className="text-foreground/80 mb-6">Because outcomes don't come from substances alone.</p>
           <p className="text-foreground/80 mb-4">They come from:</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            {["Context", "Consistency", "Feedback", "Adjustment"].map((item) => (
-              <div key={item} className="text-center py-4 border border-border bg-background rounded-lg">
+            {["Context", "Consistency", "Feedback", "Adjustment"].map(item => <div key={item} className="text-center py-4 border border-border bg-background rounded-lg">
                 <span className="font-medium text-foreground">{item}</span>
-              </div>
-            ))}
+              </div>)}
           </div>
           <p className="text-foreground/80">
             Bio Signals protocols are designed to help you understand the signal, apply it responsibly, and evaluate your response — so you're not guessing, stacking, or chasing trends.
@@ -244,12 +197,10 @@ const Protocols = () => {
           <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground mb-6">Who This Is For</h2>
           <p className="text-foreground/80 mb-4">Bio Signals is for people who:</p>
           <ul className="space-y-3 mb-6">
-            {whoIsFor.map((item) => (
-              <li key={item} className="flex items-start gap-3">
+            {whoIsFor.map(item => <li key={item} className="flex items-start gap-3">
                 <Check className="w-5 h-5 text-foreground/60 mt-0.5 flex-shrink-0" />
                 <span className="text-foreground/80">{item}</span>
-              </li>
-            ))}
+              </li>)}
           </ul>
           <p className="text-foreground/60 italic">
             If you're looking for a quick fix or a product checkout, this isn't it.
@@ -269,8 +220,6 @@ const Protocols = () => {
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Protocols;
