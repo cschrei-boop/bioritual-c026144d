@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/protocol-weight-loss-hero.jpg";
+import heroImage from "@/assets/glp1-myths-hero.png";
 
 // Reusable animated section component
 const Section = ({ 
