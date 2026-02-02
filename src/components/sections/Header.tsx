@@ -74,9 +74,7 @@ const Header = () => {
         }} transition={{
           duration: 0.6
         }}>
-            <Link to="/" className="text-xl md:text-2xl font-serif tracking-wide">
-              BIORITUAL
-            </Link>
+            <Link to="/" className="text-xl md:text-2xl tracking-wide font-sans font-extrabold">BIORITUAL™</Link>
           </motion.div>
 
           {/* Navigation - Center (Desktop) */}
