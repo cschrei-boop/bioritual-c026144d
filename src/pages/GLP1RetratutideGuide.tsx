@@ -5,8 +5,8 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
+import VideoHero from "@/components/sections/VideoHero";
 import { Card, CardContent } from "@/components/ui/card";
-import protocolHero from "@/assets/protocol-weight-loss-hero.jpg";
 import pillarSignals from "@/assets/pillar-signals.jpg";
 
 const faqSchema = {
@@ -86,49 +86,12 @@ const GLP1RetratutideGuide = () => {
       <Header />
 
       <main>
-        {/* Hero Section - No buttons */}
-        <section className="relative min-h-[70vh] flex items-center">
-          <div className="absolute inset-0">
-            <img
-              src={protocolHero}
-              alt="Understanding GLP-1s and modern biohacking"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent" />
-          </div>
-          
-          <div className="relative z-10 w-full px-6 md:px-12 lg:px-16 py-20">
-            <div className="max-w-2xl">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4"
-              >
-                Education · Science · Clarity
-              </motion.p>
-              
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 }}
-                className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight mb-6"
-              >
-                The Truth About GLP-1s, Retratutide, and Modern{" "}
-                <span className="italic">Biohacking</span>
-              </motion.h1>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg text-muted-foreground max-w-xl"
-              >
-                Why weight loss works best when you treat biology as a system — not a shortcut.
-              </motion.p>
-            </div>
-          </div>
-        </section>
+        {/* Hero Section - Video Background */}
+        <VideoHero
+          tagline="Education · Science · Clarity"
+          title={<>The Truth About GLP-1s, Retratutide, and Modern{" "}<span className="italic">Biohacking</span></>}
+          subtitle="Why weight loss works best when you treat biology as a system — not a shortcut."
+        />
 
         {/* Introduction - Text Only */}
         <Section className="py-16 md:py-24 px-6 md:px-12 border-b border-border">

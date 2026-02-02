@@ -5,8 +5,8 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
+import VideoHero from "@/components/sections/VideoHero";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/glp1-myths-hero-v2.png";
 
 // Reusable animated section component
 const Section = ({
@@ -160,82 +160,18 @@ const GLP1Myths = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[70vh] flex items-center">
-          <div className="absolute inset-0">
-            <img src={heroImage} alt="Understanding GLP-1 medications" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/50 to-transparent" />
-          </div>
-          
-          <div className="relative z-10 w-full px-6 md:px-12 lg:px-16 py-20">
-            <div className="max-w-2xl">
-              <motion.p initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.6
-            }} className="text-xs tracking-[0.3em] uppercase mb-6">
-                Education · Science · Clarity
-              </motion.p>
-
-              <motion.h1 initial={{
-              opacity: 0,
-              y: 30
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.8,
-              delay: 0.1
-            }} className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
-                We've Heard It All.
-              </motion.h1>
-
-              <motion.p initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.6,
-              delay: 0.2
-            }} className="text-lg md:text-xl text-foreground/90 mb-4 max-w-xl">
-                Everything you've been told about GLP-1s—and why most of it exists to keep you exactly where you are.
-              </motion.p>
-
-              <motion.p initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.6,
-              delay: 0.3
-            }} className="text-muted-foreground mb-8 max-w-xl">
-                Clear, science-based context for adults over 35 who are tired of taking health advice from TikTok.
-              </motion.p>
-
-              <motion.div initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              duration: 0.6,
-              delay: 0.4
-            }}>
-                <Button variant="outline" size="lg" className="rounded-none px-8 py-6 text-sm tracking-wider border-foreground/30 hover:bg-foreground hover:text-background" asChild>
-                  <Link to="/glp-1-retratutide-guide">Learn how we approach GLP-1s as biological signals</Link>
-                </Button>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+        <VideoHero
+          tagline="Education · Science · Clarity"
+          title="We've Heard It All."
+          subtitle="Everything you've been told about GLP-1s—and why most of it exists to keep you exactly where you are."
+          description={
+            <p>Clear, science-based context for adults over 35 who are tired of taking health advice from TikTok.</p>
+          }
+        >
+          <Button variant="outline" size="lg" className="rounded-none px-8 py-6 text-sm tracking-wider border-foreground/30 hover:bg-foreground hover:text-background" asChild>
+            <Link to="/glp-1-retratutide-guide">Learn how we approach GLP-1s as biological signals</Link>
+          </Button>
+        </VideoHero>
 
         {/* Intro Section */}
         <section className="py-16 px-6 md:px-12 md:py-[24px]">
