@@ -27,7 +27,22 @@ export const CartDrawer = () => {
   }, [isOpen, syncCart]);
 
   const handleCheckoutClick = () => {
-    setShowConfirmation(true);
+    // Check if any cart item has the "disclaimer" tag
+    const hasDisclaimerProduct = items.some(item => {
+      const tags = item.product.node.tags || [];
+      return tags.some(tag => tag.toLowerCase() === 'disclaimer');
+    });
+
+    if (hasDisclaimerProduct) {
+      setShowConfirmation(true);
+    } else {
+      // Skip modal, go directly to checkout
+      const checkoutUrl = getCheckoutUrl();
+      if (checkoutUrl) {
+        window.open(checkoutUrl, '_blank');
+        setIsOpen(false);
+      }
+    }
   };
 
   const handleConfirmCheckout = () => {

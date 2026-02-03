@@ -24,6 +24,7 @@ const PRODUCT_BY_VARIANT_QUERY = `
           title
           description
           handle
+          tags
           priceRange {
             minVariantPrice {
               amount
