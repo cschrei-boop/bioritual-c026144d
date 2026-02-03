@@ -429,6 +429,8 @@ export const CART_LINES_REMOVE_MUTATION = `
 function formatCheckoutUrl(checkoutUrl: string): string {
   try {
     const url = new URL(checkoutUrl);
+    // Force HTTPS for secure checkout
+    url.protocol = 'https:';
     url.searchParams.set('channel', 'online_store');
     return url.toString();
   } catch {
