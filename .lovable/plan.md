@@ -1,280 +1,177 @@
 
 
-# Comprehensive Shopify Integration Audit
+# Add Video Support to Product Pages
 
-## Executive Summary
+## Overview
 
-This audit identifies **systemic architectural issues** that prevent the headless storefront from properly reflecting changes made in the Shopify backend. The current implementation relies on manual mappings and hardcoded handles, creating a fragile system where new products or variations are invisible to the site.
+Enable product pages to display videos uploaded to Shopify alongside images. Currently, the gallery only fetches and displays images. This update will query Shopify's `media` field which includes both images and videos, and update the gallery component to render videos with proper playback controls.
 
 ---
 
-## Issues Identified
+## Technical Approach
 
-### 1. CRITICAL: Static Handle-to-Route Mapping
+### Shopify Media Types
 
-**Problem**: Products only appear on the site if they're manually added to hardcoded mappings.
+The Storefront API supports several media types through the `media` field:
+- **MediaImage**: Standard product images
+- **Video**: Shopify-hosted video files with multiple source formats
+- **ExternalVideo**: YouTube/Vimeo embeds
 
-**Current State**:
+We'll support all three types using GraphQL fragments to fetch the appropriate fields for each.
+
+---
+
+## Changes Required
+
+### 1. Update GraphQL Query (src/lib/shopify.ts)
+
+Replace `images` with `media` in the `PRODUCT_BY_HANDLE_QUERY`:
+
 ```text
-// useProtocolsNavigation.ts - Lines 5-12
-handleToRoute = {
-  "bio-signals-weight-loss-metabolic-health": "/protocol/bio-signals-weight-loss",
-  "bio-signals-energy": "/protocol/bio-signals-energy",
-  // ... only 6 handles mapped
+Current:
+  images(first: 10) {
+    edges {
+      node {
+        url
+        altText
+      }
+    }
+  }
+
+New:
+  media(first: 10) {
+    edges {
+      node {
+        mediaContentType
+        alt
+        ... on MediaImage {
+          image {
+            url
+            altText
+          }
+        }
+        ... on Video {
+          sources {
+            url
+            mimeType
+          }
+          previewImage {
+            url
+          }
+        }
+        ... on ExternalVideo {
+          embedUrl
+          host
+          previewImage {
+            url
+          }
+        }
+      }
+    }
+  }
+```
+
+### 2. Update TypeScript Types (src/lib/shopify.ts)
+
+Add new interface for media items:
+
+```text
+interface ProductMedia {
+  node: {
+    mediaContentType: 'IMAGE' | 'VIDEO' | 'EXTERNAL_VIDEO' | 'MODEL_3D';
+    alt: string | null;
+    image?: { url: string; altText: string | null };
+    sources?: Array<{ url: string; mimeType: string }>;
+    embedUrl?: string;
+    host?: 'YOUTUBE' | 'VIMEO';
+    previewImage?: { url: string };
+  };
 }
 ```
 
-**Impact**:
-- `1-1-optimization-coaching-v2` (handle: `1-1-optimization-coaching-v2`, $49.95) is NOT in the mapping
-- When you create a new product in Shopify, it won't appear anywhere until a developer adds it
-- Collection pages filter OUT products without mappings (ProtocolsCollection.tsx line 38: `if (!route) return null`)
+Update `ShopifyProduct` interface to include `media` alongside (or replacing) `images`.
 
-**Shopify Store Reality** (12 products):
-| Product | Handle | In Mapping? |
-|---------|--------|-------------|
-| 1:1 Optimization Coaching | `1-1-optimization-coaching` | Yes (to /coaching) |
-| 1:1 Optimization Coaching V2 | `1-1-optimization-coaching-v2` | Yes (but wrong - same page) |
-| Bio Signals: AI Concierge | `bio-signals-ai-concierge` | Not in protocol mapping |
-| Bio Signals: Weight Loss... | `bio-signals-weight-loss-metabolic-health` | Yes |
-| Bio Signals: Energy | `bio-signals-energy` | Yes |
-| Bio Signals: Cognition... | `bio-signals-cognition-brain-health` | Yes |
-| Bio Signals: Longevity | `bio-signals-longevity` | Yes |
-| Bio Signals: Beauty | `bio-signals-hair-skin` | Yes |
-| Bio Signals: Performance... | `bio-signals-performance-recovery` | Yes |
-| METBOLIC PROTOCOL | Unknown | No |
-| Sample photo pack | Unknown | No |
-| Legendary Romance... | Unknown | No |
+### 3. Rename and Update Gallery Component
 
----
+Rename `ProductImageGallery` to `ProductMediaGallery` (or keep name but update props):
 
-### 2. CRITICAL: Curated Pages Use Hardcoded Handles
-
-**Problem**: Each product page is hardcoded to a single Shopify handle.
-
+**New Props Interface:**
 ```text
-// ProductCoaching.tsx - Line 45
-productHandle="1-1-optimization-coaching"
+interface ProductMediaGalleryProps {
+  media: ProductMedia[];
+  productTitle?: string;
+}
 ```
 
-Even if `/products/1-1-optimization-coaching-v2` redirects to `/coaching`, the page ALWAYS loads data for `1-1-optimization-coaching` ($2,999) instead of the V2 product ($49.95).
+**Rendering Logic:**
+- For `IMAGE`: Render `<img>` as currently done
+- For `VIDEO`: Render `<video>` with controls, muted autoplay on hover (optional)
+- For `EXTERNAL_VIDEO`: Render `<iframe>` for YouTube/Vimeo embeds
 
-**All Affected Pages**:
-| Page | Hardcoded Handle | Price Loaded |
-|------|------------------|--------------|
-| `/coaching` | `1-1-optimization-coaching` | $2,999 |
-| `/protocol/bio-signals-weight-loss` | `bio-signals-weight-loss-metabolic-health` | $699 |
-| `/protocol/bio-signals-energy` | `bio-signals-energy` | $699 |
-| `/protocol/bio-signals-cognition` | `bio-signals-cognition-brain-health` | $699 |
-| `/protocol/bio-signals-longevity` | `bio-signals-longevity` | $699 |
-| `/protocol/bio-signals-performance-recovery` | `bio-signals-performance-recovery` | $699 |
-| `/protocol/bio-signals-hair-skin` | `bio-signals-hair-skin` | $699 |
-| `/ai-concierge` | `bio-signals-ai-concierge` | $9.99 |
+**Thumbnail Handling:**
+- Images: Use the image URL as thumbnail
+- Videos: Use `previewImage.url` as thumbnail, with a play icon overlay
 
----
+### 4. Update DynamicProduct.tsx
 
-### 3. HIGH: /products/:handle Redirects Instead of Displays
-
-**Problem**: ProductRedirect.tsx forces all Shopify URLs through a mapping table.
+Change from passing `images` to passing `media`:
 
 ```text
-// ProductRedirect.tsx - Current behavior
-/products/1-1-optimization-coaching-v2 
-  -> looks up in handleToRoute 
-  -> redirects to /coaching 
-  -> /coaching loads "1-1-optimization-coaching" ($2,999)
-  -> User sees WRONG PRICE
-```
+Current:
+  const images = product?.node.images.edges || [];
+  <ProductImageGallery images={images} .../>
 
-This breaks:
-- Email marketing links from Shopify
-- Direct product shares
-- Shopify-generated URLs
-- Any new product until manually mapped
-
----
-
-### 4. HIGH: Collections Filter Out Unmapped Products
-
-**Problem**: ProtocolsCollection.tsx only shows products with mapped handles.
-
-```text
-// ProtocolsCollection.tsx - Line 38
-if (!route) return null;
-```
-
-If you add a new protocol in Shopify, it won't appear in `/collection/protocols` until a developer adds the mapping AND creates a new page component.
-
----
-
-### 5. MEDIUM: No Dynamic Data Refresh
-
-**Problem**: Product data is fetched on component mount with no caching strategy.
-
-```text
-// ProductPageTemplate.tsx uses useEffect for one-time fetch
-// No React Query, no stale-while-revalidate
-```
-
-If you update a price in Shopify, users may see stale data until they hard-refresh.
-
----
-
-### 6. MEDIUM: Cart Links Don't Auto-Open
-
-**Problem**: `/cart` and `/cart?discount=X` silently redirect to homepage.
-
-```text
-// CartRedirect.tsx - Only stores discount, doesn't trigger drawer
-sessionStorage.setItem("shopify_discount", discount);
-navigate("/", { replace: true });
-```
-
-Users clicking cart links from emails land on homepage with no visual feedback.
-
----
-
-### 7. LOW: Inconsistent Product Type Filtering
-
-**Problem**: PROTOCOL_PRODUCTS_QUERY filters by product_type.
-
-```text
-query: "product_type:Protocol OR product_type:'Digital Protocol'"
-```
-
-Products must have exact type "Protocol" or "Digital Protocol" to appear. Typos or variations (e.g., "Coaching Service") are excluded from protocol listings.
-
----
-
-## Recommended Architecture
-
-### Phase 1: Dynamic Product Resolution (Fixes Issues 1, 2, 3)
-
-Create a universal product page that works for ANY Shopify handle:
-
-```text
-/products/:handle -> DynamicProduct.tsx
-  - Fetches product by exact URL handle
-  - Displays product with generic template
-  - No mapping required
-  - Falls back to /collection/protocols if not found
-```
-
-For curated experiences (rich content, custom layouts), keep existing pages but make them secondary, not required.
-
-### Phase 2: Dynamic Collection Pages (Fixes Issue 4)
-
-Remove filtering by mapped routes:
-
-```text
-ProtocolsCollection.tsx
-  - Show ALL products from Shopify with type "Protocol" or "Digital Protocol"
-  - Link to /products/:handle (dynamic page)
-  - No mapping table needed
-```
-
-### Phase 3: Cart Auto-Open (Fixes Issue 6)
-
-Implement sessionStorage flag system:
-
-```text
-/cart -> CartRedirect.tsx
-  - Set "auto_open_cart" flag
-  - Store discount if present
-  - Redirect to "/"
-  
-CartDrawer.tsx
-  - Check flag on mount
-  - Open drawer automatically
-  - Clear flag
-```
-
-### Phase 4: Data Freshness (Fixes Issue 5)
-
-Migrate Shopify fetches to React Query with appropriate cache settings:
-
-```text
-useQuery({
-  queryKey: ['product', handle],
-  queryFn: () => fetchProductByHandle(handle),
-  staleTime: 1000 * 60 * 5, // 5 minutes
-  refetchOnWindowFocus: true
-})
+New:
+  const media = product?.node.media.edges || [];
+  <ProductMediaGallery media={media} .../>
 ```
 
 ---
 
-## Implementation Plan
+## Implementation Details
 
-### Files to Create
+### Video Player Behavior
 
-| File | Purpose |
-|------|---------|
-| `src/pages/DynamicProduct.tsx` | Universal product page for any Shopify handle |
-| `src/hooks/useShopifyProduct.ts` | React Query hook for product fetching |
-| `src/hooks/useShopifyCollection.ts` | React Query hook for collection fetching |
+- Videos will autoplay muted when selected (common e-commerce pattern)
+- Play/pause controls visible
+- Loop enabled for product showcase videos
+- Falls back to poster image (previewImage) before load
 
-### Files to Modify
+### Mobile Carousel
+
+- Videos work in swipeable carousel
+- Tap to play/pause
+- Video pauses when swiping away
+
+### Desktop Gallery
+
+- Video thumbnail shows play icon overlay
+- Clicking thumbnail starts video in main view
+- Video controls visible on hover
+
+---
+
+## Files to Modify
 
 | File | Changes |
 |------|---------|
-| `src/App.tsx` | Route `/products/:handle` to DynamicProduct |
-| `src/pages/CartRedirect.tsx` | Add auto-open cart flag |
-| `src/components/CartDrawer.tsx` | Check for auto-open flag on mount |
-| `src/pages/ProtocolsCollection.tsx` | Remove handleToRoute filtering, link to dynamic pages |
-| `src/components/sections/ShopByGoal.tsx` | Link to dynamic pages instead of curated routes |
-| `src/hooks/useProtocolsNavigation.ts` | Remove route mapping, just provide navigation data |
-
-### Files to Delete
-
-| File | Reason |
-|------|--------|
-| `src/pages/ProductRedirect.tsx` | Replaced by DynamicProduct |
+| `src/lib/shopify.ts` | Update `PRODUCT_BY_HANDLE_QUERY` to fetch `media` instead of `images`, add `ProductMedia` type, update `ShopifyProduct` interface |
+| `src/hooks/useShopifyProduct.ts` | Update `ProductNode` interface to include `media` field |
+| `src/components/product/ProductImageGallery.tsx` | Rename to `ProductMediaGallery`, update props and rendering logic for images, videos, and external videos |
+| `src/pages/DynamicProduct.tsx` | Pass `media` instead of `images` to gallery component |
 
 ---
 
-## Technical Details
+## Backward Compatibility
 
-### DynamicProduct.tsx Structure
-
-```text
-1. Extract handle from URL params
-2. Fetch product using React Query + PRODUCT_BY_HANDLE_QUERY
-3. Handle states:
-   - Loading: Skeleton UI
-   - Not found: Redirect to /collection/protocols
-   - Success: Display with generic template
-     - Image gallery
-     - Title, description from Shopify
-     - Price, variants
-     - Add to cart
-4. Add to cart uses exact variant IDs from fetched product
-```
-
-### Curated Pages Integration
-
-Existing curated pages (`/coaching`, `/protocol/*`) remain available for direct navigation. They provide rich, custom content. The dynamic page provides a fallback for any handle, ensuring all Shopify products are purchasable.
-
-### Collection Page Flow
-
-```text
-User visits /collection/protocols
-  -> Fetch ALL products with type "Protocol" or "Digital Protocol"
-  -> Display grid with Shopify titles, images, prices
-  -> Each card links to /products/:handle
-  -> Clicking loads DynamicProduct with correct data
-```
+The `media` field includes all images, so existing products with only images will continue to work. Products with videos will now display them in the gallery.
 
 ---
 
-## Outcome
+## Example Output
 
-After implementation:
-
-- Any product created in Shopify is immediately accessible via `/products/:handle`
-- No code changes needed to add new products
-- Shopify URLs in emails work correctly
-- Prices always match Shopify (V2 shows $49.95, original shows $2,999)
-- Cart links auto-open the drawer
-- Collection pages show all protocols dynamically
-- Curated pages still work for direct navigation with rich content
+For a product with 2 images and 1 video:
+- Desktop: Thumbnail strip shows 3 items (2 images + 1 video with play icon)
+- Mobile: Carousel with 3 slides, dots indicator shows 3 items
+- Clicking video thumbnail plays the video in the main view
 
