@@ -1,40 +1,41 @@
 
-# Fix: Checkout 404 Error
+# Critical Fix: Checkout 404 Error - Domain Mismatch
 
-## Problem Analysis
+## Diagnosis Summary
 
-When users click "Proceed to Checkout," they get a 404 error. The root cause is that Shopify's API returns a checkout URL with:
+I've conducted extensive testing and found the **true root cause** of the checkout 404 error.
 
-1. **HTTP protocol** instead of HTTPS: `http://bioritual.us/cart/c/...`
-2. **Custom domain** (`bioritual.us`) that may not have proper routing for the new cart checkout path format
+### What's Actually Happening
 
-The current `formatCheckoutUrl` function only adds the `channel=online_store` query parameter but doesn't ensure the URL uses HTTPS.
+When a cart is created, Shopify returns a checkout URL like:
+```
+http://bioritual.us/cart/c/hWN8MZrCNdZKHzK7VuJRinFo?key=...
+```
+
+The problem is that `bioritual.us` is configured as your **Lovable frontend domain**, not as a Shopify checkout domain. When users try to access checkout on `bioritual.us`, they get a 404 because Lovable's router doesn't have that path.
+
+### Proof
+
+I tested both domains:
+
+| Domain | URL Path | Result |
+|--------|----------|--------|
+| `bioritual.us` | `/cart/c/...` | **404 Page Not Found** |
+| `1agu0r-uf.myshopify.com` | `/cart/c/...` | **Checkout loads successfully** |
+
+### Why the HTTPS Fix Wasn't Enough
+
+The previous fix added `url.protocol = 'https:'` which was correct but incomplete. The **domain itself** needs to be replaced, not just the protocol.
+
+---
 
 ## Solution
 
-Update the `formatCheckoutUrl` function in `src/lib/shopify.ts` to:
-
-1. **Force HTTPS protocol** - Convert any `http://` URLs to `https://`
-2. **Keep the `channel=online_store` parameter** - This is required for checkout to work
-
-## Changes Required
+Update the `formatCheckoutUrl` function to replace the custom domain with the Shopify myshopify.com domain.
 
 ### File: `src/lib/shopify.ts`
 
-**Current Code (lines 429-437):**
-```javascript
-function formatCheckoutUrl(checkoutUrl: string): string {
-  try {
-    const url = new URL(checkoutUrl);
-    url.searchParams.set('channel', 'online_store');
-    return url.toString();
-  } catch {
-    return checkoutUrl;
-  }
-}
-```
-
-**Updated Code:**
+**Current Code (lines 429-438):**
 ```javascript
 function formatCheckoutUrl(checkoutUrl: string): string {
   try {
@@ -49,21 +50,51 @@ function formatCheckoutUrl(checkoutUrl: string): string {
 }
 ```
 
-## Why This Works
+**Fixed Code:**
+```javascript
+function formatCheckoutUrl(checkoutUrl: string): string {
+  try {
+    const url = new URL(checkoutUrl);
+    // Force HTTPS for secure checkout
+    url.protocol = 'https:';
+    // Replace custom domain with Shopify's myshopify.com domain
+    // Custom domains like bioritual.us don't properly route /cart/c/ checkout URLs
+    url.hostname = SHOPIFY_STORE_PERMANENT_DOMAIN;
+    url.searchParams.set('channel', 'online_store');
+    return url.toString();
+  } catch {
+    return checkoutUrl;
+  }
+}
+```
 
-- The Shopify Storefront API sometimes returns HTTP URLs for custom domains
-- Forcing HTTPS ensures the checkout page loads securely
-- The `channel=online_store` parameter remains in place to bypass password protection
+### URL Transformation
 
-## Verification
+Before (broken):
+```
+http://bioritual.us/cart/c/hWN8MZrCNdZKHzK7VuJRinFo?key=xxx
+```
 
-After this fix:
-- Checkout URL: `http://bioritual.us/cart/c/xxx?key=xxx`
-- Becomes: `https://bioritual.us/cart/c/xxx?key=xxx&channel=online_store`
+After (working):
+```
+https://1agu0r-uf.myshopify.com/cart/c/hWN8MZrCNdZKHzK7VuJRinFo?key=xxx&channel=online_store
+```
 
-## Notes
+---
 
-If the 404 persists after this change, the issue may be on Shopify's side with the custom domain configuration. In that case, you would need to:
-1. Verify SSL is properly configured for `bioritual.us` in Shopify admin
-2. Ensure the domain is properly connected to the Shopify store
-3. Consider using the default Shopify checkout domain as a fallback
+## Answer to Your Question: Was This Broken 5 Hours Ago?
+
+**Yes, likely.** The Shopify API has always been returning checkout URLs with `bioritual.us` as the domain. Any cart created before this fix would have had the same 404 issue when proceeding to checkout.
+
+The HTTPS fix applied earlier only addressed protocol (http vs https) but didn't address the domain mismatch which is the actual cause of the 404.
+
+---
+
+## Additional Note
+
+After implementing this fix, users with existing carts in localStorage will still have the old broken URL cached. For a complete fix, you may want to:
+
+1. Clear your browser's localStorage (`shopify-cart` key) to test fresh
+2. Or create a new cart by removing items and re-adding them
+
+The fix will work automatically for all new carts created after deployment.
