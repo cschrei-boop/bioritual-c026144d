@@ -7,6 +7,20 @@ const SHOPIFY_STOREFRONT_URL = `https://${SHOPIFY_STORE_PERMANENT_DOMAIN}/api/${
 const SHOPIFY_STOREFRONT_TOKEN = 'b04b33b7cc6c448dc747c1acbd742b2c';
 
 // Types
+export type MediaContentType = 'IMAGE' | 'VIDEO' | 'EXTERNAL_VIDEO' | 'MODEL_3D';
+
+export interface ProductMedia {
+  node: {
+    mediaContentType: MediaContentType;
+    alt: string | null;
+    image?: { url: string; altText: string | null };
+    sources?: Array<{ url: string; mimeType: string }>;
+    embedUrl?: string;
+    host?: 'YOUTUBE' | 'VIMEO';
+    previewImage?: { url: string };
+  };
+}
+
 export interface ShopifyProduct {
   node: {
     id: string;
@@ -26,6 +40,9 @@ export interface ShopifyProduct {
           altText: string | null;
         };
       }>;
+    };
+    media: {
+      edges: ProductMedia[];
     };
     variants: {
       edges: Array<{
@@ -246,6 +263,36 @@ export const PRODUCT_BY_HANDLE_QUERY = `
           node {
             url
             altText
+          }
+        }
+      }
+      media(first: 10) {
+        edges {
+          node {
+            mediaContentType
+            alt
+            ... on MediaImage {
+              image {
+                url
+                altText
+              }
+            }
+            ... on Video {
+              sources {
+                url
+                mimeType
+              }
+              previewImage {
+                url
+              }
+            }
+            ... on ExternalVideo {
+              embedUrl
+              host
+              previewImage {
+                url
+              }
+            }
           }
         }
       }

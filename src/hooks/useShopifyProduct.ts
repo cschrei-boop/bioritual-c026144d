@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { storefrontApiRequest, PRODUCT_BY_HANDLE_QUERY, ShopifyProduct } from "@/lib/shopify";
 
+import type { ProductMedia, MediaContentType } from "@/lib/shopify";
+
 export interface ProductNode {
   id: string;
   title: string;
@@ -19,6 +21,9 @@ export interface ProductNode {
         altText: string | null;
       };
     }>;
+  };
+  media: {
+    edges: ProductMedia[];
   };
   variants: {
     edges: Array<{
@@ -42,6 +47,8 @@ export interface ProductNode {
     values: string[];
   }>;
 }
+
+export type { ProductMedia, MediaContentType };
 
 async function fetchProductByHandle(handle: string): Promise<ShopifyProduct | null> {
   const data = await storefrontApiRequest(PRODUCT_BY_HANDLE_QUERY, { handle });

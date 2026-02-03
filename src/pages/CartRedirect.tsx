@@ -38,6 +38,36 @@ const PRODUCT_BY_VARIANT_QUERY = `
               }
             }
           }
+          media(first: 10) {
+            edges {
+              node {
+                mediaContentType
+                alt
+                ... on MediaImage {
+                  image {
+                    url
+                    altText
+                  }
+                }
+                ... on Video {
+                  sources {
+                    url
+                    mimeType
+                  }
+                  previewImage {
+                    url
+                  }
+                }
+                ... on ExternalVideo {
+                  embedUrl
+                  host
+                  previewImage {
+                    url
+                  }
+                }
+              }
+            }
+          }
           variants(first: 10) {
             edges {
               node {
@@ -104,6 +134,7 @@ const CartRedirect = () => {
                   handle: variant.product.handle,
                   priceRange: variant.product.priceRange,
                   images: variant.product.images,
+                  media: variant.product.media,
                   variants: variant.product.variants,
                   options: variant.product.options,
                 }
