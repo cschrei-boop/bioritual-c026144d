@@ -59,6 +59,7 @@ const AppContent = () => {
         {/* Dynamic Shopify product pages - works for ANY handle */}
         <Route path="/products/:handle" element={<DynamicProduct />} />
         <Route path="/cart" element={<CartRedirect />} />
+        <Route path="/cart/:variantInfo" element={<CartRedirect />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
