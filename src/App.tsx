@@ -24,7 +24,7 @@ import GLP1Myths from "./pages/GLP1Myths";
 import TermsOfService from "./pages/TermsOfService";
 import FulfillmentPolicy from "./pages/FulfillmentPolicy";
 import ConsentAcknowledgment from "./pages/ConsentAcknowledgment";
-import ProductRedirect from "./pages/ProductRedirect";
+import DynamicProduct from "./pages/DynamicProduct";
 import CartRedirect from "./pages/CartRedirect";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
@@ -56,8 +56,8 @@ const AppContent = () => {
         <Route path="/protocol/bio-signals-cognition" element={<ProductBioSignalsCognition />} />
         <Route path="/ai-concierge" element={<ProductAIConcierge />} />
         <Route path="/coaching" element={<ProductCoaching />} />
-        {/* Shopify URL redirects */}
-        <Route path="/products/:handle" element={<ProductRedirect />} />
+        {/* Dynamic Shopify product pages - works for ANY handle */}
+        <Route path="/products/:handle" element={<DynamicProduct />} />
         <Route path="/cart" element={<CartRedirect />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />

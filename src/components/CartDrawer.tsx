@@ -13,6 +13,15 @@ export const CartDrawer = () => {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
 
+  // Check for auto-open flag on mount (from /cart redirects)
+  useEffect(() => {
+    const shouldAutoOpen = sessionStorage.getItem("auto_open_cart");
+    if (shouldAutoOpen === "true") {
+      sessionStorage.removeItem("auto_open_cart");
+      setIsOpen(true);
+    }
+  }, []);
+
   useEffect(() => { 
     if (isOpen) syncCart(); 
   }, [isOpen, syncCart]);

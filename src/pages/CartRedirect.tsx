@@ -12,7 +12,10 @@ const CartRedirect = () => {
       sessionStorage.setItem("shopify_discount", discount);
     }
     
-    // Redirect to home - the cart drawer is accessible from the header
+    // Always set auto-open flag for any /cart link
+    sessionStorage.setItem("auto_open_cart", "true");
+    
+    // Redirect to home - the cart drawer will auto-open
     navigate("/", { replace: true });
   }, [navigate, searchParams]);
 
