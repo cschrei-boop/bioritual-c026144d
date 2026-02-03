@@ -14,7 +14,7 @@ import { NotSureBlock } from "@/components/sections/NotSureBlock";
 import { useCartStore } from "@/stores/cartStore";
 import { useShopifyProduct } from "@/hooks/useShopifyProduct";
 import { toast } from "sonner";
-import { ProductImageGallery } from "@/components/product/ProductImageGallery";
+import { ProductMediaGallery } from "@/components/product/ProductMediaGallery";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -37,7 +37,7 @@ const DynamicProduct = () => {
 
   const variants = product?.node.variants.edges || [];
   const selectedVariant = variants[selectedVariantIndex]?.node;
-  const images = product?.node.images.edges || [];
+  const media = product?.node.media?.edges || [];
 
   const handleAddToCart = async () => {
     if (!product || !selectedVariant) return;
@@ -118,10 +118,10 @@ const DynamicProduct = () => {
         <section className="px-4 md:px-8 lg:px-16 pb-12 md:pb-16">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-[1fr_420px] gap-8 lg:gap-12">
-              {/* Left Column - Image Gallery */}
+              {/* Left Column - Media Gallery */}
               <div className="w-full">
-                <ProductImageGallery 
-                  images={images} 
+                <ProductMediaGallery 
+                  media={media} 
                   productTitle={product.node.title} 
                 />
               </div>
