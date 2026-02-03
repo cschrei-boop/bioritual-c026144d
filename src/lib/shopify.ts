@@ -431,6 +431,9 @@ function formatCheckoutUrl(checkoutUrl: string): string {
     const url = new URL(checkoutUrl);
     // Force HTTPS for secure checkout
     url.protocol = 'https:';
+    // Replace custom domain with Shopify's myshopify.com domain
+    // Custom domains like bioritual.us don't properly route /cart/c/ checkout URLs
+    url.hostname = SHOPIFY_STORE_PERMANENT_DOMAIN;
     url.searchParams.set('channel', 'online_store');
     return url.toString();
   } catch {
