@@ -13,6 +13,7 @@ const handleToRoute: Record<string, string> = {
   // Services
   "bio-signals-ai-concierge": "/ai-concierge",
   "1-1-optimization-coaching": "/coaching",
+  "1-1-optimization-coaching-v2": "/coaching",
 };
 
 const ProductRedirect = () => {
