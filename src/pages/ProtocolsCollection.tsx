@@ -1,64 +1,12 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
-import { storefrontApiRequest, PROTOCOL_PRODUCTS_QUERY, ShopifyProduct } from "@/lib/shopify";
-import { handleToRoute } from "@/hooks/useProtocolsNavigation";
+import { useProtocolProducts } from "@/hooks/useShopifyCollection";
 import { Skeleton } from "@/components/ui/skeleton";
 
-interface CollectionProduct {
-  id: string;
-  title: string;
-  handle: string;
-  description: string;
-  image: string | null;
-  price: string;
-  href: string;
-}
-
 const ProtocolsCollection = () => {
-  const [products, setProducts] = useState<CollectionProduct[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchProtocols() {
-      try {
-        const data = await storefrontApiRequest(PROTOCOL_PRODUCTS_QUERY, {
-          first: 20
-        });
-
-        const protocolProducts = data?.data?.protocols?.edges || [];
-
-        const formattedProducts: CollectionProduct[] = protocolProducts
-          .map((edge: { node: ShopifyProduct["node"] }) => {
-            const product = edge.node;
-            const route = handleToRoute[product.handle];
-
-            if (!route) return null;
-
-            return {
-              id: product.id,
-              title: product.title,
-              handle: product.handle,
-              description: product.description || "",
-              image: product.images?.edges?.[0]?.node?.url || null,
-              price: product.priceRange?.minVariantPrice?.amount || "699.00",
-              href: route
-            };
-          })
-          .filter(Boolean) as CollectionProduct[];
-
-        setProducts(formattedProducts);
-      } catch (error) {
-        console.error("Failed to fetch protocols:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    fetchProtocols();
-  }, []);
+  const { data: products = [], isLoading } = useProtocolProducts();
 
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
@@ -124,7 +72,7 @@ const ProtocolsCollection = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Link
-                  to={product.href}
+                  to={`/products/${product.handle}`}
                   className="group block"
                 >
                   {/* Product Image */}
