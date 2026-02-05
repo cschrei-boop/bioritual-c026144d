@@ -1,100 +1,126 @@
 
-# Critical Fix: Checkout 404 Error - Domain Mismatch
 
-## Diagnosis Summary
+# Remove Hardcoded Protocol Pages and Use Dynamic Product Pages
 
-I've conducted extensive testing and found the **true root cause** of the checkout 404 error.
+## Overview
 
-### What's Actually Happening
+Currently there are two separate routes for protocol products:
+- `/protocol/bio-signals-longevity` - Uses `ProductPageTemplate` with rich editorial content
+- `/products/bio-signals-longevity` - Uses `DynamicProduct` with only basic Shopify data
 
-When a cart is created, Shopify returns a checkout URL like:
-```
-http://bioritual.us/cart/c/hWN8MZrCNdZKHzK7VuJRinFo?key=...
-```
-
-The problem is that `bioritual.us` is configured as your **Lovable frontend domain**, not as a Shopify checkout domain. When users try to access checkout on `bioritual.us`, they get a 404 because Lovable's router doesn't have that path.
-
-### Proof
-
-I tested both domains:
-
-| Domain | URL Path | Result |
-|--------|----------|--------|
-| `bioritual.us` | `/cart/c/...` | **404 Page Not Found** |
-| `1agu0r-uf.myshopify.com` | `/cart/c/...` | **Checkout loads successfully** |
-
-### Why the HTTPS Fix Wasn't Enough
-
-The previous fix added `url.protocol = 'https:'` which was correct but incomplete. The **domain itself** needs to be replaced, not just the protocol.
-
----
+You want to consolidate to just `/products/:handle` for all products, including protocols with their full editorial content.
 
 ## Solution
 
-Update the `formatCheckoutUrl` function to replace the custom domain with the Shopify myshopify.com domain.
+Enhance `DynamicProduct.tsx` to detect when a product handle matches a known protocol, and render the rich `ProductPageTemplate` with all the editorial content (description, what's included, who it's for, FAQs, disclosures).
 
-### File: `src/lib/shopify.ts`
+## Files to Modify
 
-**Current Code (lines 429-438):**
-```javascript
-function formatCheckoutUrl(checkoutUrl: string): string {
-  try {
-    const url = new URL(checkoutUrl);
-    // Force HTTPS for secure checkout
-    url.protocol = 'https:';
-    url.searchParams.set('channel', 'online_store');
-    return url.toString();
-  } catch {
-    return checkoutUrl;
+| File | Change |
+|------|--------|
+| `src/App.tsx` | Remove 6 hardcoded `/protocol/*` routes |
+| `src/data/protocol-content.ts` | New file - centralize editorial content for all 6 protocols |
+| `src/pages/DynamicProduct.tsx` | Check handle against protocol map, render `ProductPageTemplate` if match |
+
+## Protocol Handle Mapping
+
+| Shopify Handle | Editorial Content Key |
+|----------------|----------------------|
+| `bio-signals-weight-loss-metabolic-health` | Weight Loss |
+| `bio-signals-energy` | Energy |
+| `bio-signals-performance-recovery` | Performance |
+| `bio-signals-hair-skin` | Hair + Skin |
+| `bio-signals-longevity` | Longevity |
+| `bio-signals-cognition-brain-health` | Cognition |
+
+## Technical Implementation
+
+### 1. Create `src/data/protocol-content.ts`
+
+This file will export a map of `handle -> editorial content`:
+
+```typescript
+export const protocolEditorialContent: Record<string, {
+  fallbackTitle: string;
+  tagline: string;
+  description: ReactNode;
+  whatsIncluded: IncludedSection[];
+  whoIsFor: string[];
+}> = {
+  "bio-signals-longevity": {
+    fallbackTitle: "Bio Signals: Longevity",
+    tagline: "3-Month Optimization Protocol",
+    description: <JSX content>,
+    whatsIncluded: [...],
+    whoIsFor: [...]
+  },
+  // ... other 5 protocols
+};
+```
+
+### 2. Update `DynamicProduct.tsx`
+
+```typescript
+import { protocolEditorialContent } from "@/data/protocol-content";
+import ProductPageTemplate from "@/components/product/ProductPageTemplate";
+
+const DynamicProduct = () => {
+  const { handle } = useParams();
+  
+  // Check if this handle has editorial content
+  const editorialContent = handle ? protocolEditorialContent[handle] : null;
+  
+  if (editorialContent) {
+    // Render rich protocol page
+    return (
+      <ProductPageTemplate
+        productHandle={handle}
+        fallbackTitle={editorialContent.fallbackTitle}
+        tagline={editorialContent.tagline}
+        description={editorialContent.description}
+        whatsIncluded={editorialContent.whatsIncluded}
+        whoIsFor={editorialContent.whoIsFor}
+        faqs={standardProtocolFaqs}
+        disclosures={standardProtocolDisclosures}
+      />
+    );
   }
-}
+  
+  // Otherwise render basic dynamic product page
+  return <BasicDynamicProductLayout ... />;
+};
 ```
 
-**Fixed Code:**
-```javascript
-function formatCheckoutUrl(checkoutUrl: string): string {
-  try {
-    const url = new URL(checkoutUrl);
-    // Force HTTPS for secure checkout
-    url.protocol = 'https:';
-    // Replace custom domain with Shopify's myshopify.com domain
-    // Custom domains like bioritual.us don't properly route /cart/c/ checkout URLs
-    url.hostname = SHOPIFY_STORE_PERMANENT_DOMAIN;
-    url.searchParams.set('channel', 'online_store');
-    return url.toString();
-  } catch {
-    return checkoutUrl;
-  }
-}
+### 3. Update `App.tsx`
+
+Remove these 6 routes:
+```tsx
+// DELETE THESE LINES:
+<Route path="/protocol/bio-signals-weight-loss" element={<ProductBioSignals />} />
+<Route path="/protocol/bio-signals-energy" element={<ProductBioSignalsEnergy />} />
+<Route path="/protocol/bio-signals-performance-recovery" element={<ProductBioSignalsPerformance />} />
+<Route path="/protocol/bio-signals-hair-skin" element={<ProductBioSignalsHairSkin />} />
+<Route path="/protocol/bio-signals-longevity" element={<ProductBioSignalsLongevity />} />
+<Route path="/protocol/bio-signals-cognition" element={<ProductBioSignalsCognition />} />
 ```
 
-### URL Transformation
+## Files to Delete (After Implementation)
 
-Before (broken):
-```
-http://bioritual.us/cart/c/hWN8MZrCNdZKHzK7VuJRinFo?key=xxx
-```
+These individual page files will no longer be needed:
+- `src/pages/ProductBioSignals.tsx`
+- `src/pages/ProductBioSignalsEnergy.tsx`
+- `src/pages/ProductBioSignalsPerformance.tsx`
+- `src/pages/ProductBioSignalsHairSkin.tsx`
+- `src/pages/ProductBioSignalsLongevity.tsx`
+- `src/pages/ProductBioSignalsCognition.tsx`
 
-After (working):
-```
-https://1agu0r-uf.myshopify.com/cart/c/hWN8MZrCNdZKHzK7VuJRinFo?key=xxx&channel=online_store
-```
+## Result
 
----
+| URL | Before | After |
+|-----|--------|-------|
+| `/products/bio-signals-longevity` | Basic Shopify layout | Full editorial + template |
+| `/protocol/bio-signals-longevity` | Full editorial | 404 (removed) |
+| `/products/1-1-optimization-coaching` | Basic Shopify layout | Basic Shopify layout (no editorial) |
 
-## Answer to Your Question: Was This Broken 5 Hours Ago?
+All Shopify links will now work correctly with `/products/:handle`, and protocol products will automatically get the rich editorial content.
 
-**Yes, likely.** The Shopify API has always been returning checkout URLs with `bioritual.us` as the domain. Any cart created before this fix would have had the same 404 issue when proceeding to checkout.
-
-The HTTPS fix applied earlier only addressed protocol (http vs https) but didn't address the domain mismatch which is the actual cause of the 404.
-
----
-
-## Additional Note
-
-After implementing this fix, users with existing carts in localStorage will still have the old broken URL cached. For a complete fix, you may want to:
-
-1. Clear your browser's localStorage (`shopify-cart` key) to test fresh
-2. Or create a new cart by removing items and re-adding them
-
-The fix will work automatically for all new carts created after deployment.
