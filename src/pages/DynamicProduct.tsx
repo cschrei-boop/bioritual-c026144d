@@ -18,23 +18,23 @@ import { ProductMediaGallery } from "@/components/product/ProductMediaGallery";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import ProductPageTemplate from "@/components/product/ProductPageTemplate";
-import { protocolEditorialContent } from "@/data/protocol-content";
+import { protocolEditorialContent, resolveProtocolHandle } from "@/data/protocol-content";
 import { standardProtocolFaqs, standardProtocolDisclosures } from "@/data/product-content";
 
 const DynamicProduct = () => {
   const { handle } = useParams<{ handle: string }>();
-  const navigate = useNavigate();
-  const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
-  const { addItem, isLoading: cartLoading } = useCartStore();
+
+  // Resolve legacy slugs to canonical Shopify handles
+  const canonicalHandle = resolveProtocolHandle(handle);
 
   // Check if this handle has editorial content for the rich template
-  const editorialContent = handle ? protocolEditorialContent[handle] : null;
+  const editorialContent = canonicalHandle ? protocolEditorialContent[canonicalHandle] : null;
 
   // If it's a protocol with editorial content, render the rich template
-  if (editorialContent && handle) {
+  if (editorialContent && canonicalHandle) {
     return (
       <ProductPageTemplate
-        productHandle={handle}
+        productHandle={canonicalHandle}
         fallbackTitle={editorialContent.fallbackTitle}
         tagline={editorialContent.tagline}
         description={editorialContent.description}
@@ -47,7 +47,7 @@ const DynamicProduct = () => {
   }
 
   // Otherwise, render the basic dynamic product page
-  return <BasicDynamicProductPage handle={handle} />;
+  return <BasicDynamicProductPage handle={canonicalHandle} />;
 };
 
 // Extracted component for basic product pages

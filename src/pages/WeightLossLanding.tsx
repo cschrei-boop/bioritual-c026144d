@@ -169,7 +169,7 @@ const WeightLossLanding = () => {
                   className="rounded-none px-8 py-6 text-sm tracking-widest uppercase border-foreground"
                   asChild
                 >
-                  <Link to="/protocol/bio-signals-weight-loss">View Protocol</Link>
+                  <Link to="/products/bio-signals-weight-loss-metabolic-health">View Protocol</Link>
                 </Button>
               </motion.div>
             </div>
@@ -234,7 +234,7 @@ const WeightLossLanding = () => {
             </div>
             <div className="mt-8">
               <Link 
-                to="/protocol/bio-signals-weight-loss" 
+                to="/products/bio-signals-weight-loss-metabolic-health" 
                 className="text-foreground border-b border-foreground pb-1 hover:opacity-70 transition-opacity"
               >
                 Explore our structured weight loss protocol →
@@ -363,7 +363,7 @@ const WeightLossLanding = () => {
                 </p>
                 <p className="font-medium">$699</p>
                 <Link 
-                  to="/protocol/bio-signals-weight-loss" 
+                  to="/products/bio-signals-weight-loss-metabolic-health" 
                   className="inline-block text-sm border-b border-foreground pb-1 hover:opacity-70 transition-opacity"
                 >
                   View protocol →
