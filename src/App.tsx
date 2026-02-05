@@ -6,12 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { useCartSync } from "@/hooks/useCartSync";
 import Index from "./pages/Index";
-import ProductBioSignals from "./pages/ProductBioSignals";
-import ProductBioSignalsEnergy from "./pages/ProductBioSignalsEnergy";
-import ProductBioSignalsPerformance from "./pages/ProductBioSignalsPerformance";
-import ProductBioSignalsHairSkin from "./pages/ProductBioSignalsHairSkin";
-import ProductBioSignalsLongevity from "./pages/ProductBioSignalsLongevity";
-import ProductBioSignalsCognition from "./pages/ProductBioSignalsCognition";
 import ProductAIConcierge from "./pages/ProductAIConcierge";
 import ProductCoaching from "./pages/ProductCoaching";
 import StartHere from "./pages/StartHere";
@@ -48,12 +42,6 @@ const AppContent = () => {
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/fulfillment" element={<FulfillmentPolicy />} />
         <Route path="/consent" element={<ConsentAcknowledgment />} />
-        <Route path="/protocol/bio-signals-weight-loss" element={<ProductBioSignals />} />
-        <Route path="/protocol/bio-signals-energy" element={<ProductBioSignalsEnergy />} />
-        <Route path="/protocol/bio-signals-performance-recovery" element={<ProductBioSignalsPerformance />} />
-        <Route path="/protocol/bio-signals-hair-skin" element={<ProductBioSignalsHairSkin />} />
-        <Route path="/protocol/bio-signals-longevity" element={<ProductBioSignalsLongevity />} />
-        <Route path="/protocol/bio-signals-cognition" element={<ProductBioSignalsCognition />} />
         <Route path="/ai-concierge" element={<ProductAIConcierge />} />
         <Route path="/coaching" element={<ProductCoaching />} />
         {/* Dynamic Shopify product pages - works for ANY handle */}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Check, Loader2, Truck, RotateCcw, ArrowLeft } from "lucide-react";
+import { Loader2, Truck, RotateCcw, ArrowLeft } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -17,9 +17,41 @@ import { toast } from "sonner";
 import { ProductMediaGallery } from "@/components/product/ProductMediaGallery";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
+import ProductPageTemplate from "@/components/product/ProductPageTemplate";
+import { protocolEditorialContent } from "@/data/protocol-content";
+import { standardProtocolFaqs, standardProtocolDisclosures } from "@/data/product-content";
 
 const DynamicProduct = () => {
   const { handle } = useParams<{ handle: string }>();
+  const navigate = useNavigate();
+  const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
+  const { addItem, isLoading: cartLoading } = useCartStore();
+
+  // Check if this handle has editorial content for the rich template
+  const editorialContent = handle ? protocolEditorialContent[handle] : null;
+
+  // If it's a protocol with editorial content, render the rich template
+  if (editorialContent && handle) {
+    return (
+      <ProductPageTemplate
+        productHandle={handle}
+        fallbackTitle={editorialContent.fallbackTitle}
+        tagline={editorialContent.tagline}
+        description={editorialContent.description}
+        whatsIncluded={editorialContent.whatsIncluded}
+        whoIsFor={editorialContent.whoIsFor}
+        faqs={standardProtocolFaqs}
+        disclosures={standardProtocolDisclosures}
+      />
+    );
+  }
+
+  // Otherwise, render the basic dynamic product page
+  return <BasicDynamicProductPage handle={handle} />;
+};
+
+// Extracted component for basic product pages
+const BasicDynamicProductPage = ({ handle }: { handle?: string }) => {
   const navigate = useNavigate();
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const { addItem, isLoading: cartLoading } = useCartStore();
@@ -29,7 +61,6 @@ const DynamicProduct = () => {
   // Redirect to collection if product not found after loading completes
   useEffect(() => {
     if (!isLoading && !product && !isError) {
-      // Product not found
       console.warn(`Product not found: ${handle}`);
       navigate("/collection/protocols", { replace: true });
     }
