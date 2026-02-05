@@ -1,126 +1,89 @@
 
+Goal: Make all six protocol product pages show the same clean, sectioned (collapsible) layout as the old protocol pages—without bringing back separate hardcoded “page components”.
 
-# Remove Hardcoded Protocol Pages and Use Dynamic Product Pages
+What I found (from the current codebase)
+- The “rich” protocol layout already exists: `src/components/product/ProductPageTemplate.tsx` renders multiple accordion sections:
+  - Product Description
+  - What’s Included
+  - Who This Is For
+  - FAQ
+  - Required Disclosures
+- The generic dynamic product layout (`BasicDynamicProductPage` inside `src/pages/DynamicProduct.tsx`) only has a single “Product Description” accordion, so if a protocol ever falls back to this basic view, the Shopify description (often containing headings like “What’s Included…”) looks “crammed” into one section.
+- Your site still has internal links pointing to `/protocol/...` (e.g. `src/pages/Protocols.tsx`, `src/pages/WeightLossLanding.tsx`), and those legacy slugs don’t always match the actual Shopify handles (notably:
+  - `/protocol/bio-signals-weight-loss` vs Shopify handle `bio-signals-weight-loss-metabolic-health`
+  - `/protocol/bio-signals-cognition` vs Shopify handle `bio-signals-cognition-brain-health`)
+  This increases the chance users end up on a route/handle that doesn’t trigger the rich protocol template.
 
-## Overview
+Likely root cause of what you’re seeing
+- You’re landing on a protocol URL/slug that is not being resolved to the canonical protocol handle (or not being detected as a protocol), so the app renders the basic dynamic product page.
+- The basic page shows the entire Shopify description in a single accordion (“Product Description”), which reads as “all copy crammed together”.
 
-Currently there are two separate routes for protocol products:
-- `/protocol/bio-signals-longevity` - Uses `ProductPageTemplate` with rich editorial content
-- `/products/bio-signals-longevity` - Uses `DynamicProduct` with only basic Shopify data
+Implementation plan (no separate hardcoded protocol page components)
+1) Add a “canonical handle resolver” for protocol slugs
+   - Create a small mapping of legacy protocol slugs → canonical Shopify handles, e.g.:
+     - `bio-signals-weight-loss` → `bio-signals-weight-loss-metabolic-health`
+     - `bio-signals-cognition` → `bio-signals-cognition-brain-health`
+     - others map to themselves
+   - Normalize incoming params: `trim()`, `toLowerCase()`
 
-You want to consolidate to just `/products/:handle` for all products, including protocols with their full editorial content.
+2) Ensure protocol detection is robust (so protocols never fall back to the basic one-accordion layout)
+   - In `DynamicProduct.tsx`, resolve `canonicalHandle` first, then use it consistently:
+     - for looking up protocol editorial content
+     - for passing into `ProductPageTemplate`
+   - Optional safety net: if the product is fetched and has tag `protocol` (you already have tags in the storefront queries for the disclaimer work), treat it as a protocol even if the handle wasn’t in the map (helps future-proof v2 handles).
+   - Result: any protocol always renders `ProductPageTemplate` (multi-accordion), not `BasicDynamicProductPage`.
 
-## Solution
+3) Make `/protocol/:handle` and `/products/:handle` both work, but keep `/products/:handle` as the “real” canonical route
+   - Add a route in `src/App.tsx`:
+     - `/protocol/:handle` should render the same `DynamicProduct` component (or redirect to `/products/:canonicalHandle`).
+   - This removes ambiguity when users navigate from older internal links or bookmarks.
 
-Enhance `DynamicProduct.tsx` to detect when a product handle matches a known protocol, and render the rich `ProductPageTemplate` with all the editorial content (description, what's included, who it's for, FAQs, disclosures).
+4) Fix internal links so the site primarily uses `/products/<canonicalHandle>`
+   - Update:
+     - `src/pages/Protocols.tsx` protocol cards/CTAs from `/protocol/...` → `/products/...`
+     - `src/pages/WeightLossLanding.tsx` links from `/protocol/...` → `/products/...`
+     - Search the codebase for any remaining `"/protocol/"` occurrences and update them similarly.
+   - Even if we keep `/protocol/:handle` working, this prevents users from entering the legacy path in the first place.
 
-## Files to Modify
+5) QA checklist (verify the exact issue is resolved)
+   For each protocol, verify BOTH URLs show the multi-accordion layout and the copy is separated correctly:
+   - Longevity
+     - `/products/bio-signals-longevity`
+     - `/protocol/bio-signals-longevity`
+   - Energy
+     - `/products/bio-signals-energy`
+     - `/protocol/bio-signals-energy`
+   - Performance + Recovery
+     - `/products/bio-signals-performance-recovery`
+     - `/protocol/bio-signals-performance-recovery`
+   - Hair + Skin
+     - `/products/bio-signals-hair-skin`
+     - `/protocol/bio-signals-hair-skin`
+   - Cognition (legacy slug should resolve correctly)
+     - `/products/bio-signals-cognition-brain-health`
+     - `/protocol/bio-signals-cognition` (should resolve/redirect)
+   - Weight Loss (legacy slug should resolve correctly)
+     - `/products/bio-signals-weight-loss-metabolic-health`
+     - `/protocol/bio-signals-weight-loss` (should resolve/redirect)
+   Also verify non-protocol products still use the basic dynamic product page.
 
-| File | Change |
-|------|--------|
-| `src/App.tsx` | Remove 6 hardcoded `/protocol/*` routes |
-| `src/data/protocol-content.ts` | New file - centralize editorial content for all 6 protocols |
-| `src/pages/DynamicProduct.tsx` | Check handle against protocol map, render `ProductPageTemplate` if match |
+Notes on the “no hardcoded pages” requirement
+- This plan does not reintroduce per-protocol page components/routes with custom React pages.
+- It does keep protocol editorial structure/content centralized (currently in `src/data/protocol-content.tsx`) to power the richer accordion sections.
+- If you want to go further and avoid hardcoding editorial copy in the codebase entirely, the next step would be moving the structured protocol content into Shopify (metafields) and having `DynamicProduct` populate the template from those fields. That’s a follow-on enhancement after we fix the immediate “crammed copy” UX.
 
-## Protocol Handle Mapping
+Files that will be changed (implementation phase)
+- `src/pages/DynamicProduct.tsx`
+  - Add canonical handle resolution
+  - Ensure protocol products always render `ProductPageTemplate`
+- `src/App.tsx`
+  - Add `/protocol/:handle` route (render or redirect)
+- `src/pages/Protocols.tsx`
+  - Update protocol links to `/products/...`
+- `src/pages/WeightLossLanding.tsx`
+  - Update links to `/products/...`
+- (Potentially others found via search for `"/protocol/"`)
 
-| Shopify Handle | Editorial Content Key |
-|----------------|----------------------|
-| `bio-signals-weight-loss-metabolic-health` | Weight Loss |
-| `bio-signals-energy` | Energy |
-| `bio-signals-performance-recovery` | Performance |
-| `bio-signals-hair-skin` | Hair + Skin |
-| `bio-signals-longevity` | Longevity |
-| `bio-signals-cognition-brain-health` | Cognition |
-
-## Technical Implementation
-
-### 1. Create `src/data/protocol-content.ts`
-
-This file will export a map of `handle -> editorial content`:
-
-```typescript
-export const protocolEditorialContent: Record<string, {
-  fallbackTitle: string;
-  tagline: string;
-  description: ReactNode;
-  whatsIncluded: IncludedSection[];
-  whoIsFor: string[];
-}> = {
-  "bio-signals-longevity": {
-    fallbackTitle: "Bio Signals: Longevity",
-    tagline: "3-Month Optimization Protocol",
-    description: <JSX content>,
-    whatsIncluded: [...],
-    whoIsFor: [...]
-  },
-  // ... other 5 protocols
-};
-```
-
-### 2. Update `DynamicProduct.tsx`
-
-```typescript
-import { protocolEditorialContent } from "@/data/protocol-content";
-import ProductPageTemplate from "@/components/product/ProductPageTemplate";
-
-const DynamicProduct = () => {
-  const { handle } = useParams();
-  
-  // Check if this handle has editorial content
-  const editorialContent = handle ? protocolEditorialContent[handle] : null;
-  
-  if (editorialContent) {
-    // Render rich protocol page
-    return (
-      <ProductPageTemplate
-        productHandle={handle}
-        fallbackTitle={editorialContent.fallbackTitle}
-        tagline={editorialContent.tagline}
-        description={editorialContent.description}
-        whatsIncluded={editorialContent.whatsIncluded}
-        whoIsFor={editorialContent.whoIsFor}
-        faqs={standardProtocolFaqs}
-        disclosures={standardProtocolDisclosures}
-      />
-    );
-  }
-  
-  // Otherwise render basic dynamic product page
-  return <BasicDynamicProductLayout ... />;
-};
-```
-
-### 3. Update `App.tsx`
-
-Remove these 6 routes:
-```tsx
-// DELETE THESE LINES:
-<Route path="/protocol/bio-signals-weight-loss" element={<ProductBioSignals />} />
-<Route path="/protocol/bio-signals-energy" element={<ProductBioSignalsEnergy />} />
-<Route path="/protocol/bio-signals-performance-recovery" element={<ProductBioSignalsPerformance />} />
-<Route path="/protocol/bio-signals-hair-skin" element={<ProductBioSignalsHairSkin />} />
-<Route path="/protocol/bio-signals-longevity" element={<ProductBioSignalsLongevity />} />
-<Route path="/protocol/bio-signals-cognition" element={<ProductBioSignalsCognition />} />
-```
-
-## Files to Delete (After Implementation)
-
-These individual page files will no longer be needed:
-- `src/pages/ProductBioSignals.tsx`
-- `src/pages/ProductBioSignalsEnergy.tsx`
-- `src/pages/ProductBioSignalsPerformance.tsx`
-- `src/pages/ProductBioSignalsHairSkin.tsx`
-- `src/pages/ProductBioSignalsLongevity.tsx`
-- `src/pages/ProductBioSignalsCognition.tsx`
-
-## Result
-
-| URL | Before | After |
-|-----|--------|-------|
-| `/products/bio-signals-longevity` | Basic Shopify layout | Full editorial + template |
-| `/protocol/bio-signals-longevity` | Full editorial | 404 (removed) |
-| `/products/1-1-optimization-coaching` | Basic Shopify layout | Basic Shopify layout (no editorial) |
-
-All Shopify links will now work correctly with `/products/:handle`, and protocol products will automatically get the rich editorial content.
-
+Expected outcome
+- All six protocol products render with the same multi-section accordion layout (no more “everything in one accordion”).
+- Legacy `/protocol/...` paths won’t lead to the wrong layout (or 404), and internal navigation will consistently use `/products/...`.
