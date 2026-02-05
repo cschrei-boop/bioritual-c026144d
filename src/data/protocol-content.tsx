@@ -9,6 +9,20 @@ export interface ProtocolEditorialContent {
   whoIsFor: string[];
 }
 
+// Map legacy protocol slugs → canonical Shopify handles
+export const protocolSlugMap: Record<string, string> = {
+  "bio-signals-weight-loss": "bio-signals-weight-loss-metabolic-health",
+  "bio-signals-cognition": "bio-signals-cognition-brain-health",
+  // Others map to themselves (no redirect needed)
+};
+
+// Resolve a handle to its canonical form
+export function resolveProtocolHandle(handle: string | undefined): string | undefined {
+  if (!handle) return undefined;
+  const normalized = handle.trim().toLowerCase();
+  return protocolSlugMap[normalized] || normalized;
+}
+
 export const protocolEditorialContent: Record<string, ProtocolEditorialContent> = {
   // Weight Loss Protocol
   "bio-signals-weight-loss-metabolic-health": {

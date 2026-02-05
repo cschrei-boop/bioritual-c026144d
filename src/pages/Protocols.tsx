@@ -6,27 +6,27 @@ import Footer from "@/components/sections/Footer";
 import VideoHero from "@/components/sections/VideoHero";
 const protocols = [{
   title: "Weight Loss + Metabolic Health",
-  href: "/protocol/bio-signals-weight-loss",
+  href: "/products/bio-signals-weight-loss-metabolic-health",
   description: "Support metabolic signaling and sustainable weight management"
 }, {
   title: "Energy",
-  href: "/protocol/bio-signals-energy",
+  href: "/products/bio-signals-energy",
   description: "Optimize energy production and reduce fatigue patterns"
 }, {
   title: "Performance + Recovery",
-  href: "/protocol/bio-signals-performance-recovery",
+  href: "/products/bio-signals-performance-recovery",
   description: "Enhance adaptation and protect recovery capacity"
 }, {
   title: "Hair + Skin",
-  href: "/protocol/bio-signals-hair-skin",
+  href: "/products/bio-signals-hair-skin",
   description: "Support tissue quality and visible health indicators"
 }, {
   title: "Cognition + Brain Health",
-  href: "/protocol/bio-signals-cognition",
+  href: "/products/bio-signals-cognition-brain-health",
   description: "Promote mental clarity and long-term brain function"
 }, {
   title: "Longevity",
-  href: "/protocol/bio-signals-longevity",
+  href: "/products/bio-signals-longevity",
   description: "Preserve resilience and functional capacity over time"
 }];
 const bioSignalsIs = ["Educational", "Structured", "Feedback-driven", "Time-bound", "Personalized through tracking"];
