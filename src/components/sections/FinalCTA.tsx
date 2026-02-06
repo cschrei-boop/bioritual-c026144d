@@ -31,7 +31,7 @@ const FinalCTA = ({
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
             {headline}{" "}
             <span className="italic">{italicWord}</span>
           </h2>

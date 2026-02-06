@@ -49,7 +49,7 @@ const BlogCTASection = ({
               {tagline}
             </p>
           )}
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight mb-6">
             {title}
           </h2>
           {description && (
