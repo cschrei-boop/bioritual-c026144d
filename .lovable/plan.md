@@ -1,136 +1,74 @@
 
-# Landing Page Variant System -- Updated with Hero Background Control
 
-## Overview
+# Add "Millennial" Landing Page Variant
 
-Build a data-driven landing page system where each audience variant is the **exact same homepage** with only the **text and hero background swapped out**. No new visual components, no layout changes -- just a config file and a template page.
+## What This Does
 
-Adding a new landing page = adding one object to a config array. It goes live at `/lp/your-slug` instantly.
+Adds a single new entry to `src/data/landing-pages.ts` with the slug `millennial`, using the verbatim copy from the PDF. The page will be live at `/lp/millennial` immediately -- no new files, no new components, no route changes.
 
-## What stays the same across all variants
+## How the PDF Copy Maps to the Config
 
-- Section order and layout
-- All images in non-hero sections (value props, featured collection, etc.)
-- Header, Footer, StickyEmailFooter
-- Medical disclaimer (always present in the Hero)
-- All navigation and links
-- Animations, styling, typography
+The existing landing page config supports string-based fields. The PDF copy will be mapped verbatim into those fields. Where the PDF uses bullet lists or multi-line formatting, those will be preserved using newline characters (`\n`) and bullet markers within the strings.
 
-## What changes per variant
+| PDF Section | Config Field(s) | Verbatim Copy |
+|---|---|---|
+| Hero headline | `hero.headline` | "This shouldn't be this confusing.\nIt's exhausting because too many people are confidently full of B.S." |
+| Hero body | `hero.bodyParagraphs` | 6 paragraphs from the PDF, each as a separate array item |
+| Hero CTA | `hero.ctaText` | "Start with clarity" |
+| "Let's be specific" | `founderQuote.quote` | Full section text including bullets rendered with bullet characters |
+| "What we actually do" | `featuredCollection.headline` + `featuredCollection.description` | Headline and body text |
+| Peptides / GLP-1s | `threePillars.title` + `description1` + `description2` | Section heading and two description blocks |
+| Value Props | `valueProps.values` | 4 cards derived from the PDF's key themes |
+| Final CTA | `finalCTA.headline` + `finalCTA.description` + `finalCTA.buttonText` | Verbatim closing copy |
 
-| Section | Overridable content |
-|---------|-------------------|
-| **Hero** | Background (video or image), tagline, headline, body copy, CTA button text, sub-hero text |
-| **Founder Quote** | Quote text, attribution |
-| **Featured Collection** | Headline, description |
-| **Three Pillars** | Subtitle label, heading, description lines |
-| **Value Props** | Title and description for each of the 4 cards |
-| **Final CTA** | Headline, description, button text |
+## Important Limitations (String-Only Fields)
 
-## Hero Background: How It Works
+The current components render these fields as plain text in `<p>` and `<blockquote>` tags. This means:
 
-The Hero component will support **three background modes**, controlled from the config:
+- Bullet lists from the PDF will be rendered as inline text with bullet characters (e.g., "- You've had at least one quiet...")
+- Multi-line formatting relies on `\n` characters, which only render as line breaks if the component uses `whitespace-pre-line` styling
+- The Hero component already renders `bodyParagraphs` as separate `<p>` tags (one per array item), so that section will preserve paragraph breaks naturally
 
-| Mode | Config value | Result |
-|------|-------------|--------|
-| Default video | _(no background specified)_ | Uses `hero-video.mp4` -- identical to the current homepage |
-| Custom image | `backgroundImage: "/assets/protocol-energy-hero.jpg"` | Full-bleed static image with the same gradient overlay |
-| Custom video | `backgroundVideo: "/assets/other-video.mp4"` | Full-bleed video with the same cinematic playback |
+If you want full bullet-list and rich formatting support in these sections, that would require updating the components (a separate task). For now, the text goes in verbatim as strings.
 
-The gradient overlay, text positioning, and animations remain identical regardless of background type. Only the media source changes.
+## Verbatim Content for Each Field
 
-**Available image assets that could be used as hero backgrounds today:**
-- `hero-portrait.jpg`
-- `bio-signals-hero.jpg`, `bio-signals-energy-hero.jpg`, `bio-signals-performance-hero.jpg`, etc.
-- `protocol-energy-hero.jpg`, `protocol-cognition-hero.jpg`, `protocol-longevity-hero.jpg`, etc.
-- Any new images uploaded later
+### Hero
+- **tagline**: "" (empty -- no tagline in the PDF)
+- **headline**: "This shouldn't be this confusing.\nIt's exhausting because too many people are confidently full of B.S."
+- **bodyParagraphs**: Array of 6 strings matching each paragraph from the PDF
+- **ctaText**: "Start with clarity"
+- **subHeroLine1**: "" (empty)
+- **subHeroLine2**: "" (empty)
 
-## Shared Component Behavior
+### Founder Quote (maps to "Let's be specific")
+- **quote**: The full "Let's be specific" text block, including bullet items as dash-prefixed lines
+- **attribution**: "" (empty -- no attribution in the PDF for this section)
 
-Since all variants use the **same** Hero component:
+### Featured Collection (maps to "What we actually do")
+- **headline**: "What we actually do"
+- **description**: Full body text including the bullet list items
 
-- **Structural changes** (gradient style, animation timing, layout) apply to all variants and the homepage -- this keeps everything visually consistent
-- **Content changes** (background, text, CTA) are per-variant via props
-- The homepage (`Index.tsx`) passes no props, so it always uses the current defaults
+### Three Pillars (maps to "A grown-up word about peptides and GLP-1s")
+- **title**: "A grown-up word about peptides and GLP-1s"
+- **subtitle**: "" (empty)
+- **description1**: First block of paragraphs (Yes/No statements + "They are biological signals" + "Used conservatively..." paragraph)
+- **description2**: "The problem is not the tool.\nThe problem is pretending tools exist outside of context."
 
-## Initial 5 Audience Variants
+### Value Props
+4 cards with titles and descriptions drawn from the PDF's core themes (the PDF doesn't define explicit value-prop cards, so these will be derived from the key messages while preserving the PDF's language)
 
-| Slug | Audience | Hero Headline | Background |
-|------|----------|---------------|------------|
-| `busy-professionals` | Time-strapped professionals | "You don't need more time. You need a better system." | Default video |
-| `athletes` | Athletes / fitness enthusiasts | "Recovery is where performance begins." | `bio-signals-performance-hero.jpg` |
-| `beginners` | Newcomers to wellness frameworks | "No jargon. No overwhelm. Just a clear starting point." | Default video |
-| `parents-over-40` | Health-conscious parents 40+ | "Your body changed. Your framework should too." | `hero-portrait.jpg` |
-| `executives` | C-suite / high-performers | "The same rigor you bring to business, applied to biology." | `bio-signals-energy-hero.jpg` |
+### Final CTA
+- **headline**: "You don't need to reinvent yourself."
+- **italicWord**: "" (empty)
+- **description**: "You just need to stop letting the loudest voice decide for you."
+- **buttonText**: "Start with clarity"
 
-Each variant will also have tailored text for all six overridable sections, maintaining the BioRitual educational tone and including the medical disclaimer.
+### SEO
+- **title**: "BioRitual | This Shouldn't Be This Confusing"
+- **description**: "Peptides. Hormones. Supplements. GLP-1s. BioRitual exists for people who are tired of noise — not tired of health."
 
-## How to Add More Variants Later
+## File Modified
 
-1. Open `src/data/landing-pages.ts`
-2. Copy an existing config object
-3. Change the slug, text, and optionally the background
-4. It is immediately live at `/lp/new-slug`
+**`src/data/landing-pages.ts`** -- Add one new object to the `landingPages` array. No other files change.
 
-No new files, routes, or components needed.
-
----
-
-## Technical Details
-
-### Files Created (2 new files)
-
-**`src/data/landing-pages.ts`**
-- TypeScript type `LandingPageConfig` with all overridable fields, including:
-  - `hero.backgroundImage?: string` -- path to a static image
-  - `hero.backgroundVideo?: string` -- path to a video (defaults to `hero-video.mp4` if neither is set)
-- Array of 5 initial configs
-- `getLandingPageBySlug(slug)` helper function
-
-**`src/pages/LandingPage.tsx`**
-- Reads `:slug` from the URL using `useParams`
-- Looks up config from registry
-- Renders the same section lineup as `Index.tsx`: Header, Hero, FounderQuote, FeaturedCollection, ThreePillarsCarousel, ValueProps, FinalCTA, Footer, StickyEmailFooter
-- Passes content + background overrides as props to each section
-- Includes per-variant SEO metadata via `react-helmet-async`
-- Shows 404 if slug does not match
-
-### Files Modified (7 existing files)
-
-**`src/App.tsx`**
-- Add one route: `/lp/:slug` pointing to `LandingPage`
-
-**`src/components/sections/Hero.tsx`**
-- Add optional props: `tagline`, `headline`, `bodyParagraphs` (array of strings), `ctaText`, `ctaLink`, `subHeroLine1`, `subHeroLine2`, `backgroundImage`, `backgroundVideo`
-- When `backgroundImage` is provided: render a full-bleed `<img>` instead of `<video>`
-- When `backgroundVideo` is provided: use that video source instead of the default
-- When neither is provided: use `hero-video.mp4` (current behavior)
-- Gradient overlay remains the same in all cases
-- Homepage passes no props, so it renders identically to today
-
-**`src/components/sections/FounderQuote.tsx`**
-- Add optional props: `quote`, `attribution`
-- Defaults to current hardcoded text
-
-**`src/components/sections/FeaturedCollection.tsx`**
-- Add optional props: `headline`, `description`
-- Defaults to current text
-
-**`src/components/sections/ThreePillarsCarousel.tsx`**
-- Add optional props: `subtitle`, `title`, `description1`, `description2`
-- Defaults to current text
-
-**`src/components/sections/ValueProps.tsx`**
-- Add optional prop: `values` (array of `{ title, description }`)
-- Falls back to existing hardcoded array; images remain the same regardless
-
-**`src/components/sections/FinalCTA.tsx`**
-- Add optional props: `headline`, `italicWord`, `description`, `buttonText`
-- Defaults to current text
-
-### Not Modified
-
-- `src/pages/Index.tsx` -- homepage is completely untouched
-- All styling, layout, animations -- zero visual changes
-- Header, Footer, StickyEmailFooter -- used as-is
-- Blog system, Shopify integration, article carousel -- unaffected
