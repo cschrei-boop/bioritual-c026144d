@@ -44,14 +44,14 @@ const LandingPage = () => {
           <FounderQuote>
             {/* Zone 1: Intro label + qualifying bullets */}
             {config.founderQuote.introLabel && (
-              <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-6">
+              <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4">
                 {config.founderQuote.introLabel}
               </p>
             )}
-            <p className="text-lg md:text-xl mb-6 font-serif">This is for you if:</p>
-            <ul className="text-left max-w-xl mx-auto space-y-3 mb-10">
+            <p className="text-lg md:text-xl mb-4 font-serif">This is for you if:</p>
+            <ul className="text-left max-w-xl mx-auto space-y-2 mb-8">
               {config.founderQuote.qualifiers.map((q, i) => (
-                <li key={i} className="text-base md:text-lg leading-relaxed text-foreground/85 flex gap-3">
+                <li key={i} className="text-base md:text-lg leading-normal text-foreground/85 flex gap-3">
                   <span className="text-muted-foreground mt-1 shrink-0">—</span>
                   <span>{q}</span>
                 </li>
@@ -59,16 +59,16 @@ const LandingPage = () => {
             </ul>
 
             {/* Zone 2: Divider */}
-            <div className="w-16 h-px bg-border mx-auto my-10" />
+            <div className="w-16 h-px bg-border mx-auto my-8" />
 
             {/* Zone 3: Manifesto closer */}
             {config.founderQuote.manifestoLines && (
-              <div className="space-y-1">
+              <div className="space-y-0">
                 {config.founderQuote.manifestoLines.map((line, i) => (
                   <h2
                     key={i}
                     className={`text-3xl md:text-4xl lg:text-5xl uppercase tracking-wide ${
-                      i === 1 || i === 3 ? "mb-6" : ""
+                      i === 1 || i === 3 ? "mb-4" : ""
                     }`}
                   >
                     {line}
