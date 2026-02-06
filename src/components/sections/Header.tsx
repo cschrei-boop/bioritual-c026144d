@@ -20,6 +20,9 @@ const Header = () => {
   }, {
     label: "1:1 Coaching",
     href: "/coaching"
+  }, {
+    label: "Blog",
+    href: "/blog"
   }];
   return <>
       {/* Announcement Bar */}
