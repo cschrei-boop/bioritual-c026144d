@@ -50,7 +50,7 @@ const WhyNinetyDays = () => {
                 <p className="text-4xl md:text-5xl font-serif text-muted-foreground/30 mb-4">
                   {step.num}
                 </p>
-                <h3 className="text-xl mb-2">{step.title}</h3>
+                <h3 className="font-serif text-xl mb-2">{step.title}</h3>
                 <p className="text-sm text-muted-foreground">{step.description}</p>
               </div>
             </motion.div>

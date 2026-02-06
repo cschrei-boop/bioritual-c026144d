@@ -66,7 +66,7 @@ const Services = () => {
               {service.featured && (
                 <p className="text-xs tracking-[0.2em] uppercase mb-4">Most Popular</p>
               )}
-              <h3 className="text-xl mb-3">{service.title}</h3>
+              <h3 className="font-serif text-xl mb-3">{service.title}</h3>
               <p className="text-sm text-muted-foreground mb-6">{service.description}</p>
               <p className="text-sm font-medium mb-6">{service.price}</p>
               <Button

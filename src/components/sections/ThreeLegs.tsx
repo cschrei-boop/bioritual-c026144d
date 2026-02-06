@@ -66,7 +66,7 @@ const ThreeLegs = () => {
               
               {/* Text overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-6 text-background">
-                <h3 className="text-2xl md:text-3xl tracking-widest mb-2">
+                <h3 className="font-serif text-2xl md:text-3xl tracking-widest mb-2">
                   {pillar.title}
                 </h3>
                 <p className="text-sm opacity-80">
