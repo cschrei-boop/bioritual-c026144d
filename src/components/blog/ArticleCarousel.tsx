@@ -40,7 +40,7 @@ const ArticleCarousel = ({ currentHref }: ArticleCarouselProps) => {
         >
           <div className="text-center flex-1">
             <h2 className="font-serif text-3xl md:text-4xl mb-2">
-              Keep Reading
+              Blog: All You Wanted to Know About Biohacking
             </h2>
           </div>
           <Link
@@ -84,9 +84,12 @@ const ArticleCarousel = ({ currentHref }: ArticleCarouselProps) => {
                         <h3 className="text-lg tracking-wide mb-1">
                           {article.title}
                         </h3>
-                        <p className="text-xs opacity-80">
+                        <p className="text-xs opacity-80 mb-3">
                           {article.subtitle}
                         </p>
+                        <span className="inline-block text-xs tracking-[0.15em] uppercase border border-background/60 px-4 py-1.5 hover:bg-background hover:text-foreground transition-colors">
+                          Read More
+                        </span>
                       </div>
                     </div>
                   </Link>
