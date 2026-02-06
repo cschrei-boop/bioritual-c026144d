@@ -131,7 +131,7 @@ const ProductCarousel = ({
                         <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
                         {/* Text */}
                         <div className="absolute bottom-0 left-0 right-0 p-4 text-background">
-                          <h3 className="text-lg tracking-wide mb-1">
+                          <h3 className="font-serif text-lg tracking-wide mb-1">
                             {product.title}
                           </h3>
                           {product.subtitle && (
