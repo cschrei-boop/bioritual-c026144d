@@ -2,7 +2,15 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-const FounderQuote = () => {
+interface FounderQuoteProps {
+  quote?: string;
+  attribution?: string;
+}
+
+const FounderQuote = ({
+  quote = "Clear, strategic frameworks that apply to every body type and lifestyle — and that are as simple to follow as they are to understand. BIORITUAL is a lifetime of wellness knowledge, distilled.",
+  attribution = "— The BIORITUAL Team",
+}: FounderQuoteProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
@@ -18,10 +26,10 @@ const FounderQuote = () => {
           transition={{ duration: 0.8 }}
         >
           <blockquote className="font-serif text-2xl md:text-3xl lg:text-4xl leading-relaxed mb-8">
-            Clear, strategic frameworks that apply to every body type and lifestyle — and that are as simple to follow as they are to understand. BIORITUAL is a lifetime of wellness knowledge, distilled.
+            {quote}
           </blockquote>
           <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground">
-            — The BIORITUAL Team
+            {attribution}
           </p>
         </motion.div>
       </div>

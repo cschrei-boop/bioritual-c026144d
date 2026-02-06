@@ -2,31 +2,71 @@ import { motion } from "framer-motion";
 import { useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import backgroundVideo from "@/assets/hero-video.mp4";
+import defaultBackgroundVideo from "@/assets/hero-video.mp4";
 
-const Hero = () => {
+interface HeroProps {
+  tagline?: string;
+  headline?: string;
+  bodyParagraphs?: string[];
+  ctaText?: string;
+  ctaLink?: string;
+  subHeroLine1?: string;
+  subHeroLine2?: string;
+  backgroundImage?: string;
+  backgroundVideo?: string;
+}
+
+const Hero = ({
+  tagline = "Simple. Structured. Educational Wellness Frameworks.",
+  headline = "Your body is constantly adapting.",
+  bodyParagraphs,
+  ctaText = "→ Learn how the framework is structured",
+  ctaLink = "/start-here",
+  subHeroLine1 = "Most people don't need more supplements.",
+  subHeroLine2 = "That's where we come in.",
+  backgroundImage,
+  backgroundVideo,
+}: HeroProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const videoSrc = backgroundVideo || defaultBackgroundVideo;
+  const useImage = !!backgroundImage;
+
+  const defaultBody = [
+    "This framework focuses on understanding context, patterns, and inputs — not fixing the body.",
+    "BioRitual presents educational frameworks for thinking about wellness-related choices. It does not recommend, prescribe, or design personalized interventions.",
+    "BioRitual is not a medical service and does not provide medical advice, diagnosis, or treatment.",
+  ];
+
+  const paragraphs = bodyParagraphs || defaultBody;
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.playbackRate = 0.75; // Slow down for cinematic effect
+      videoRef.current.playbackRate = 0.75;
     }
   }, []);
 
   return (
     <section className="relative min-h-[90vh] flex items-center">
-      {/* Full-bleed background video */}
+      {/* Full-bleed background */}
       <div className="absolute inset-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover object-center"
-        >
-          <source src={backgroundVideo} type="video/mp4" />
-        </video>
+        {useImage ? (
+          <img
+            src={backgroundImage}
+            alt=""
+            className="w-full h-full object-cover object-center"
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover object-center"
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+        )}
         {/* Subtle overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-background/30 to-transparent" />
       </div>
@@ -41,7 +81,7 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
             className="text-xs tracking-[0.3em] uppercase mb-6"
           >
-            Simple. Structured. Educational Wellness Frameworks.
+            {tagline}
           </motion.p>
 
           {/* Main headline */}
@@ -51,7 +91,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight mb-6"
           >
-            Your body is constantly adapting.
+            {headline}
           </motion.h1>
 
           {/* Supporting copy */}
@@ -61,15 +101,15 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-foreground mb-8 max-w-xl space-y-4"
           >
-            <p>
-              This framework focuses on understanding context, patterns, and inputs — not fixing the body.
-            </p>
-            <p>
-              BioRitual presents educational frameworks for thinking about wellness-related choices. It does not recommend, prescribe, or design personalized interventions.
-            </p>
-            <p className="font-medium text-foreground">
-              BioRitual is not a medical service and does not provide medical advice, diagnosis, or treatment.
-            </p>
+            {paragraphs.map((p, i) => {
+              // Last paragraph with medical disclaimer gets bold styling
+              const isMedicalDisclaimer = p.includes("not a medical service");
+              return (
+                <p key={i} className={isMedicalDisclaimer ? "font-medium text-foreground" : ""}>
+                  {p}
+                </p>
+              );
+            })}
           </motion.div>
 
           {/* CTA Button */}
@@ -83,7 +123,7 @@ const Hero = () => {
               className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-8 py-6 text-sm tracking-wider"
               asChild
             >
-              <Link to="/start-here">→ Learn how the framework is structured</Link>
+              <Link to={ctaLink}>{ctaText}</Link>
             </Button>
           </motion.div>
 
@@ -95,11 +135,12 @@ const Hero = () => {
             className="mt-12 pt-8 border-t border-foreground/20 max-w-lg"
           >
             <p className="text-foreground text-sm leading-relaxed">
-              Most people don't need more supplements.<br />
+              {subHeroLine1}
+              <br />
               They need clearer frameworks to help them think through what to do next.
             </p>
             <p className="text-foreground text-sm mt-3 font-medium">
-              That's where we come in.
+              {subHeroLine2}
             </p>
           </motion.div>
         </div>

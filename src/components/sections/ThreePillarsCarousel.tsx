@@ -2,7 +2,19 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-const ThreePillarsCarousel = () => {
+interface ThreePillarsCarouselProps {
+  subtitle?: string;
+  title?: string;
+  description1?: string;
+  description2?: string;
+}
+
+const ThreePillarsCarousel = ({
+  subtitle = "The Foundation",
+  title = "Areas of Exploration",
+  description1 = "Examples of topics people often seek to understand more clearly.",
+  description2 = "BioRitual does not provide treatment-based or outcome-driven programs.",
+}: ThreePillarsCarouselProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
@@ -19,10 +31,10 @@ const ThreePillarsCarousel = () => {
           className="mb-6"
         >
           <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
-            The Foundation
+            {subtitle}
           </p>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6">
-            Areas of Exploration
+            {title}
           </h2>
         </motion.div>
 
@@ -32,10 +44,10 @@ const ThreePillarsCarousel = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <p className="text-muted-foreground mb-4 leading-relaxed">
-            Examples of topics people often seek to understand more clearly.
+            {description1}
           </p>
           <p className="text-muted-foreground leading-relaxed">
-            BioRitual does not provide treatment-based or outcome-driven programs.
+            {description2}
           </p>
         </motion.div>
       </div>

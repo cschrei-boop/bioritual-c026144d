@@ -8,7 +8,7 @@ import valueClean from "@/assets/value-clean.jpg";
 import valuePerformance from "@/assets/value-performance.jpg";
 import valueBusy from "@/assets/value-busy.jpg";
 
-const values = [
+const defaultValues = [
   {
     title: "Better Systems",
     description: "The world doesn't need more motivation. It needs better systems.",
@@ -31,7 +31,16 @@ const values = [
   }
 ];
 
-const ValueProps = () => {
+const images = [valueSystems, valueClean, valuePerformance, valueBusy];
+
+interface ValuePropsProps {
+  values?: { title: string; description: string }[];
+}
+
+const ValueProps = ({ values }: ValuePropsProps) => {
+  const displayValues = values
+    ? values.map((v, i) => ({ ...v, image: images[i] || images[0] }))
+    : defaultValues;
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
@@ -54,7 +63,7 @@ const ValueProps = () => {
             className="w-full"
           >
             <CarouselContent className="-ml-6">
-              {values.map(value => (
+              {displayValues.map(value => (
                 <CarouselItem key={value.title} className="pl-6 md:basis-1/2 lg:basis-1/4">
                   <div className="group">
                     {/* Image */}

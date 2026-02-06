@@ -5,7 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import truthAboutPeptidesHero from "@/assets/truth-about-peptides-hero.png";
 
-const FeaturedCollection = () => {
+interface FeaturedCollectionProps {
+  headline?: string;
+  description?: string;
+}
+
+const FeaturedCollection = ({
+  headline = "Understanding Signaling Concepts",
+  description = "This section explores how signaling is discussed in wellness contexts, without recommendations or prescriptions.",
+}: FeaturedCollectionProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
@@ -24,10 +32,10 @@ const FeaturedCollection = () => {
             className="order-2 md:order-1"
           >
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6">
-              Understanding Signaling Concepts
+              {headline}
             </h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              This section explores how signaling is discussed in wellness contexts, without recommendations or prescriptions.
+              {description}
             </p>
             <Button
               size="lg"
