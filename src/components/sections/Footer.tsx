@@ -43,7 +43,6 @@ const Footer = () => {
               <nav className="flex flex-col gap-3">
                 <Link to="/protocols" className="text-sm text-background/60 hover:text-background transition-colors">All Frameworks</Link>
                 <Link to="/blog" className="text-sm text-background/60 hover:text-background transition-colors">Blog</Link>
-                <Link to="/truth-about-peptides" className="text-sm text-background/60 hover:text-background transition-colors">Educational Content</Link>
               </nav>
             </motion.div>
 
