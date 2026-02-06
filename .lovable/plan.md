@@ -1,74 +1,57 @@
 
 
-# Add "Millennial" Landing Page Variant
+# Tighten Line Spacing and Paragraph Spacing Site-Wide
 
-## What This Does
+## What Changes
 
-Adds a single new entry to `src/data/landing-pages.ts` with the slug `millennial`, using the verbatim copy from the PDF. The page will be live at `/lp/millennial` immediately -- no new files, no new components, no route changes.
+Two global adjustments to reduce both the space between lines within a paragraph (line-height) and the space between separate paragraphs/blocks (margins).
 
-## How the PDF Copy Maps to the Config
+## Changes
 
-The existing landing page config supports string-based fields. The PDF copy will be mapped verbatim into those fields. Where the PDF uses bullet lists or multi-line formatting, those will be preserved using newline characters (`\n`) and bullet markers within the strings.
+### 1. Global line-height (`src/index.css`)
 
-| PDF Section | Config Field(s) | Verbatim Copy |
+Reduce the base body `line-height` from `1.6` to `1.45`. This tightens every paragraph, heading, and text block across the site in one change.
+
+### 2. Replace `leading-relaxed` with `leading-normal` across all section components
+
+Tailwind's `leading-relaxed` sets `line-height: 1.625` -- even looser than the current body default. Swapping to `leading-normal` (`line-height: 1.5`) brings these elements in line with the tighter global setting. This affects roughly 15 instances across these files:
+
+- `src/components/sections/Hero.tsx`
+- `src/components/sections/FounderQuote.tsx`
+- `src/components/sections/FeaturedCollection.tsx`
+- `src/components/sections/ThreePillarsCarousel.tsx`
+- `src/components/sections/Footer.tsx`
+- `src/components/sections/ValueProps.tsx`
+- `src/components/sections/PressQuotes.tsx`
+- `src/components/sections/Peptides.tsx`
+- `src/components/sections/BuiltFor.tsx`
+- `src/components/sections/StartHereSection.tsx`
+- `src/components/blog/BlogDisclaimer.tsx`
+- `src/components/blog/BlogQuoteBlock.tsx`
+- `src/components/blog/BlogCTASection.tsx`
+- `src/components/product/ProductPageTemplate.tsx`
+
+### 3. Reduce paragraph spacing in key containers
+
+- **Hero body paragraphs**: Change `space-y-4` (16px gap) to `space-y-2` (8px gap)
+- **Peptides section**: Change `space-y-6` to `space-y-4`
+- **BuiltFor section**: Change `space-y-6` to `space-y-4`
+- **Problem list**: Change `space-y-4` to `space-y-3`
+
+### 4. Reduce whitespace-pre-line paragraph gaps
+
+Add a small global CSS rule so that `\n`-based line breaks in `whitespace-pre-line` blocks don't create oversized gaps. This is already handled by the line-height reduction -- no extra rule needed.
+
+## Summary
+
+| Property | Before | After |
 |---|---|---|
-| Hero headline | `hero.headline` | "This shouldn't be this confusing.\nIt's exhausting because too many people are confidently full of B.S." |
-| Hero body | `hero.bodyParagraphs` | 6 paragraphs from the PDF, each as a separate array item |
-| Hero CTA | `hero.ctaText` | "Start with clarity" |
-| "Let's be specific" | `founderQuote.quote` | Full section text including bullets rendered with bullet characters |
-| "What we actually do" | `featuredCollection.headline` + `featuredCollection.description` | Headline and body text |
-| Peptides / GLP-1s | `threePillars.title` + `description1` + `description2` | Section heading and two description blocks |
-| Value Props | `valueProps.values` | 4 cards derived from the PDF's key themes |
-| Final CTA | `finalCTA.headline` + `finalCTA.description` + `finalCTA.buttonText` | Verbatim closing copy |
+| Body line-height | 1.6 | 1.45 |
+| Component line-height | leading-relaxed (1.625) | leading-normal (1.5) |
+| Hero paragraph gap | space-y-4 (16px) | space-y-2 (8px) |
+| Peptides/BuiltFor gap | space-y-6 (24px) | space-y-4 (16px) |
+| Problem list gap | space-y-4 (16px) | space-y-3 (12px) |
 
-## Important Limitations (String-Only Fields)
+## Impact
 
-The current components render these fields as plain text in `<p>` and `<blockquote>` tags. This means:
-
-- Bullet lists from the PDF will be rendered as inline text with bullet characters (e.g., "- You've had at least one quiet...")
-- Multi-line formatting relies on `\n` characters, which only render as line breaks if the component uses `whitespace-pre-line` styling
-- The Hero component already renders `bodyParagraphs` as separate `<p>` tags (one per array item), so that section will preserve paragraph breaks naturally
-
-If you want full bullet-list and rich formatting support in these sections, that would require updating the components (a separate task). For now, the text goes in verbatim as strings.
-
-## Verbatim Content for Each Field
-
-### Hero
-- **tagline**: "" (empty -- no tagline in the PDF)
-- **headline**: "This shouldn't be this confusing.\nIt's exhausting because too many people are confidently full of B.S."
-- **bodyParagraphs**: Array of 6 strings matching each paragraph from the PDF
-- **ctaText**: "Start with clarity"
-- **subHeroLine1**: "" (empty)
-- **subHeroLine2**: "" (empty)
-
-### Founder Quote (maps to "Let's be specific")
-- **quote**: The full "Let's be specific" text block, including bullet items as dash-prefixed lines
-- **attribution**: "" (empty -- no attribution in the PDF for this section)
-
-### Featured Collection (maps to "What we actually do")
-- **headline**: "What we actually do"
-- **description**: Full body text including the bullet list items
-
-### Three Pillars (maps to "A grown-up word about peptides and GLP-1s")
-- **title**: "A grown-up word about peptides and GLP-1s"
-- **subtitle**: "" (empty)
-- **description1**: First block of paragraphs (Yes/No statements + "They are biological signals" + "Used conservatively..." paragraph)
-- **description2**: "The problem is not the tool.\nThe problem is pretending tools exist outside of context."
-
-### Value Props
-4 cards with titles and descriptions drawn from the PDF's core themes (the PDF doesn't define explicit value-prop cards, so these will be derived from the key messages while preserving the PDF's language)
-
-### Final CTA
-- **headline**: "You don't need to reinvent yourself."
-- **italicWord**: "" (empty)
-- **description**: "You just need to stop letting the loudest voice decide for you."
-- **buttonText**: "Start with clarity"
-
-### SEO
-- **title**: "BioRitual | This Shouldn't Be This Confusing"
-- **description**: "Peptides. Hormones. Supplements. GLP-1s. BioRitual exists for people who are tired of noise — not tired of health."
-
-## File Modified
-
-**`src/data/landing-pages.ts`** -- Add one new object to the `landingPages` array. No other files change.
-
+Every page on the site gets tighter text. No content, layout, or component structure changes -- purely spacing adjustments.
