@@ -34,7 +34,7 @@ const FeaturedCollection = ({
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6">
               {headline}
             </h2>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-muted-foreground mb-8 leading-relaxed whitespace-pre-line">
               {description}
             </p>
             <Button
