@@ -89,7 +89,7 @@ const Hero = ({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight mb-6 whitespace-pre-line"
+            className="font-display text-4xl md:text-5xl lg:text-6xl leading-none mb-6 whitespace-pre-line uppercase"
           >
             {headline}
           </motion.h1>
