@@ -283,6 +283,56 @@ export const landingPages: LandingPageConfig[] = [
       buttonText: "Explore the framework",
     },
   },
+  {
+    slug: "millennial",
+    seo: {
+      title: "BioRitual | This Shouldn't Be This Confusing",
+      description: "Peptides. Hormones. Supplements. GLP-1s. BioRitual exists for people who are tired of noise — not tired of health.",
+    },
+    hero: {
+      tagline: "",
+      headline: "This shouldn't be this confusing.\nIt's exhausting because too many people are confidently full of B.S.",
+      bodyParagraphs: [
+        "Peptides. Hormones. Supplements. GLP-1s.\nEvery week there's a new hero, a new villain, and a new podcast guest who \"finally explains everything.\"",
+        "You've seen this before.",
+        "You're old enough to remember when wellness meant a magazine in a waiting room. Then it became blogs. Then influencers. Then \"biohackers.\" Then TikTok doctors. Then the algorithm.",
+        "Now every decision feels louder than it needs to be.",
+        "BioRitual exists for people who are tired of that.",
+        "Not tired of health.\nTired of noise.",
+      ],
+      ctaText: "Start with clarity",
+      subHeroLine1: "",
+      subHeroLine2: "",
+    },
+    founderQuote: {
+      quote: "Let's be specific.\n\nThis is for you if:\n\n- You've had at least one quiet \"oh… shit\" moment about aging.\n- Your body doesn't respond the way it did at 28.\n- You're skeptical of pharma hype and influencer hype.\n- You listen to podcasts with interest — and with raised eyebrows.\n- You've tried \"just be consistent\" and discovered that biology does not care about motivational quotes.\n\nYou are not anti-science.\nYou are anti-nonsense.\n\nYou don't want a miracle.\nYou want to stop making avoidable mistakes.",
+      attribution: "",
+    },
+    featuredCollection: {
+      headline: "What we actually do",
+      description: "We help you think clearly about your health.\n\nNot by giving you a reset button.\nNot by promising to \"optimize\" you into a superhero.\nBut by helping you understand what matters, what doesn't, and what comes next.\n\nWe organize decisions around:\n\n- Lifestyle and recovery\n- Training and muscle retention\n- Supplements\n- Peptides and metabolic signaling — including GLP-1s\n\nBecause certainty sells.\nClarity lasts.",
+    },
+    threePillars: {
+      subtitle: "",
+      title: "A grown-up word about peptides and GLP-1s",
+      description1: "Yes, we work with peptides.\nYes, we discuss GLP-1 medications.\n\nNo, they are not magic.\nAnd no, they are not moral failures.\n\nThey are biological signals.\n\nUsed conservatively, sequenced properly, and supported with the right habits, they can help regulate appetite, improve metabolic flexibility, support recovery, and make long-term change possible.",
+      description2: "The problem is not the tool.\nThe problem is pretending tools exist outside of context.",
+    },
+    valueProps: {
+      values: [
+        { title: "Tired of Noise", description: "You don't need another podcast hero. You need a framework that respects your intelligence and your time." },
+        { title: "Anti-Nonsense", description: "You're not anti-science. You're anti-B.S. We organize decisions, not hype cycles." },
+        { title: "Context Over Magic", description: "Peptides and GLP-1s aren't miracles or moral failures. They're tools — and tools need context." },
+        { title: "Clarity Over Certainty", description: "Because certainty sells. Clarity lasts. We help you think clearly, not follow blindly." },
+      ],
+    },
+    finalCTA: {
+      headline: "You don't need to reinvent yourself.",
+      italicWord: "",
+      description: "You just need to stop letting the loudest voice decide for you.",
+      buttonText: "Start with clarity",
+    },
+  },
 ];
 
 export function getLandingPageBySlug(slug: string): LandingPageConfig | undefined {
