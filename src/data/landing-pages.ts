@@ -22,6 +22,9 @@ export interface LandingPageConfig {
   founderQuote?: {
     quote?: string;
     attribution?: string;
+    introLabel?: string;
+    qualifiers?: string[];
+    manifestoLines?: string[];
   };
   featuredCollection?: {
     headline?: string;
@@ -305,7 +308,20 @@ export const landingPages: LandingPageConfig[] = [
       subHeroLine2: "",
     },
     founderQuote: {
-      quote: "Let's be specific.\n\nThis is for you if:\n\n- You've had at least one quiet \"oh… shit\" moment about aging.\n- Your body doesn't respond the way it did at 28.\n- You're skeptical of pharma hype and influencer hype.\n- You listen to podcasts with interest — and with raised eyebrows.\n- You've tried \"just be consistent\" and discovered that biology does not care about motivational quotes.\n\nYou are not anti-science.\nYou are anti-nonsense.\n\nYou don't want a miracle.\nYou want to stop making avoidable mistakes.",
+      introLabel: "Let's be specific.",
+      qualifiers: [
+        "You've had at least one quiet \"oh… shit\" moment about aging.",
+        "Your body doesn't respond the way it did at 28.",
+        "You're skeptical of pharma hype and influencer hype.",
+        "You listen to podcasts with interest — and with raised eyebrows.",
+        "You've tried \"just be consistent\" and discovered that biology does not care about motivational quotes.",
+      ],
+      manifestoLines: [
+        "You are not anti-science.",
+        "You are anti-nonsense.",
+        "You don't want a miracle.",
+        "You want to stop making avoidable mistakes.",
+      ],
       attribution: "",
     },
     featuredCollection: {
