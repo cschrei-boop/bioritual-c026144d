@@ -40,10 +40,49 @@ const LandingPage = () => {
           backgroundImage={config.hero?.backgroundImage}
           backgroundVideo={config.hero?.backgroundVideo}
         />
-        <FounderQuote
-          quote={config.founderQuote?.quote}
-          attribution={config.founderQuote?.attribution}
-        />
+        {config.founderQuote?.qualifiers ? (
+          <FounderQuote>
+            {/* Zone 1: Intro label + qualifying bullets */}
+            {config.founderQuote.introLabel && (
+              <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-6">
+                {config.founderQuote.introLabel}
+              </p>
+            )}
+            <p className="text-lg md:text-xl mb-6 font-serif">This is for you if:</p>
+            <ul className="text-left max-w-xl mx-auto space-y-3 mb-10">
+              {config.founderQuote.qualifiers.map((q, i) => (
+                <li key={i} className="text-base md:text-lg leading-relaxed text-foreground/85 flex gap-3">
+                  <span className="text-muted-foreground mt-1 shrink-0">—</span>
+                  <span>{q}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Zone 2: Divider */}
+            <div className="w-16 h-px bg-border mx-auto my-10" />
+
+            {/* Zone 3: Manifesto closer */}
+            {config.founderQuote.manifestoLines && (
+              <div className="space-y-1">
+                {config.founderQuote.manifestoLines.map((line, i) => (
+                  <h2
+                    key={i}
+                    className={`text-3xl md:text-4xl lg:text-5xl uppercase tracking-wide ${
+                      i === 1 || i === 3 ? "mb-6" : ""
+                    }`}
+                  >
+                    {line}
+                  </h2>
+                ))}
+              </div>
+            )}
+          </FounderQuote>
+        ) : (
+          <FounderQuote
+            quote={config.founderQuote?.quote}
+            attribution={config.founderQuote?.attribution}
+          />
+        )}
         <FeaturedCollection
           headline={config.featuredCollection?.headline}
           description={config.featuredCollection?.description}
