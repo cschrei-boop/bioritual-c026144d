@@ -21,6 +21,7 @@ import FulfillmentPolicy from "./pages/FulfillmentPolicy";
 import ConsentAcknowledgment from "./pages/ConsentAcknowledgment";
 import DynamicProduct from "./pages/DynamicProduct";
 import CartRedirect from "./pages/CartRedirect";
+import LandingPage from "./pages/LandingPage";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -50,6 +51,7 @@ const AppContent = () => {
         <Route path="/products/:handle" element={<DynamicProduct />} />
         {/* Legacy protocol URLs - render same DynamicProduct with handle resolution */}
         <Route path="/protocol/:handle" element={<DynamicProduct />} />
+        <Route path="/lp/:slug" element={<LandingPage />} />
         <Route path="/cart" element={<CartRedirect />} />
         <Route path="/cart/:variantInfo" element={<CartRedirect />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
