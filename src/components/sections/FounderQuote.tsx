@@ -25,7 +25,7 @@ const FounderQuote = ({
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <blockquote className="font-serif text-2xl md:text-3xl lg:text-4xl leading-relaxed mb-8 whitespace-pre-line">
+          <blockquote className="font-serif text-2xl md:text-3xl lg:text-4xl leading-normal mb-8 whitespace-pre-line">
             {quote}
           </blockquote>
           {attribution && (

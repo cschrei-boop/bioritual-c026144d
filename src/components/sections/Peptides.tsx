@@ -25,7 +25,7 @@ const Peptides = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6"
+            className="space-y-4"
           >
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground">
               Peptides
@@ -37,7 +37,7 @@ const Peptides = () => {
               Language
             </h2>
             
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-normal">
               Peptides are signaling molecules your body already produces. They communicate with your biology — not override it. They work within existing feedback loops, respect regulatory systems, and require receptor availability.
             </p>
 

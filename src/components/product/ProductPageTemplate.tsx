@@ -228,7 +228,7 @@ const ProductPageTemplate = ({
                     <AccordionTrigger className="py-4 text-sm font-medium hover:no-underline">
                       Product Description
                     </AccordionTrigger>
-                    <AccordionContent className="pb-4 text-sm text-foreground/70 leading-relaxed">
+                    <AccordionContent className="pb-4 text-sm text-foreground/70 leading-normal">
                       {description}
                     </AccordionContent>
                   </AccordionItem>

@@ -41,7 +41,7 @@ const Problem = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {problems.map((problem, index) => (
                 <motion.li
                   key={index}

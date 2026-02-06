@@ -44,13 +44,13 @@ const BlogQuoteBlock = ({
       <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
         {labelPrefix} #{number}
       </p>
-      <blockquote className="font-serif text-xl md:text-2xl leading-relaxed mb-3">
+      <blockquote className="font-serif text-xl md:text-2xl leading-normal mb-3">
         &ldquo;{quote}&rdquo;
       </blockquote>
       <p className="text-sm text-muted-foreground italic mb-6">
         — {attribution}
       </p>
-      <p className="text-muted-foreground leading-relaxed">{explanation}</p>
+      <p className="text-muted-foreground leading-normal">{explanation}</p>
     </motion.div>
   );
 };

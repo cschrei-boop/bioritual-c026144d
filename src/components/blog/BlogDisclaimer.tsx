@@ -12,7 +12,7 @@ const BlogDisclaimer = ({
   return (
     <section className="py-12 px-6 md:px-12 border-t border-border">
       <div className="max-w-3xl mx-auto">
-        <p className="text-xs text-muted-foreground leading-relaxed text-center">
+        <p className="text-xs text-muted-foreground leading-normal text-center">
           {text}
         </p>
       </div>

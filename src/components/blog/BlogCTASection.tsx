@@ -54,7 +54,7 @@ const BlogCTASection = ({
           </h2>
           {description && (
             <p
-              className={`leading-relaxed mb-10 max-w-xl mx-auto ${
+              className={`leading-normal mb-10 max-w-xl mx-auto ${
                 dark ? "text-background/80" : "text-muted-foreground"
               }`}
             >
