@@ -1,57 +1,62 @@
 
 
-# Tighten Line Spacing and Paragraph Spacing Site-Wide
+# Fix: Bebas Neue Not Rendering on Hero Headline
 
-## What Changes
+## The Problem
 
-Two global adjustments to reduce both the space between lines within a paragraph (line-height) and the space between separate paragraphs/blocks (margins).
+There is a global CSS rule in `src/index.css` (lines 106-108) that forces all `h1`, `h2`, `h3` tags to use **Playfair Display**:
 
-## Changes
+```css
+h1, h2, h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+}
+```
 
-### 1. Global line-height (`src/index.css`)
+This overrides the Tailwind `font-display` class on the Hero `<h1>`, so **Bebas Neue never actually renders** -- the browser always falls back to Playfair Display.
 
-Reduce the base body `line-height` from `1.6` to `1.45`. This tightens every paragraph, heading, and text block across the site in one change.
+## The Fix
 
-### 2. Replace `leading-relaxed` with `leading-normal` across all section components
+### 1. Update `src/index.css` (lines 106-109)
 
-Tailwind's `leading-relaxed` sets `line-height: 1.625` -- even looser than the current body default. Swapping to `leading-normal` (`line-height: 1.5`) brings these elements in line with the tighter global setting. This affects roughly 15 instances across these files:
+Remove `font-family` from the global heading rule so Tailwind utility classes can control the font per-component. Keep only `font-weight`:
 
-- `src/components/sections/Hero.tsx`
-- `src/components/sections/FounderQuote.tsx`
-- `src/components/sections/FeaturedCollection.tsx`
-- `src/components/sections/ThreePillarsCarousel.tsx`
-- `src/components/sections/Footer.tsx`
-- `src/components/sections/ValueProps.tsx`
-- `src/components/sections/PressQuotes.tsx`
-- `src/components/sections/Peptides.tsx`
-- `src/components/sections/BuiltFor.tsx`
-- `src/components/sections/StartHereSection.tsx`
-- `src/components/blog/BlogDisclaimer.tsx`
-- `src/components/blog/BlogQuoteBlock.tsx`
-- `src/components/blog/BlogCTASection.tsx`
-- `src/components/product/ProductPageTemplate.tsx`
+```css
+h1, h2, h3 {
+  font-weight: 500;
+}
+```
 
-### 3. Reduce paragraph spacing in key containers
+### 2. Add `font-serif` to headings that should stay Playfair Display
 
-- **Hero body paragraphs**: Change `space-y-4` (16px gap) to `space-y-2` (8px gap)
-- **Peptides section**: Change `space-y-6` to `space-y-4`
-- **BuiltFor section**: Change `space-y-6` to `space-y-4`
-- **Problem list**: Change `space-y-4` to `space-y-3`
+Most section headings currently rely on the global rule to get Playfair Display. After removing it, they need `font-serif` added explicitly. The affected components are:
 
-### 4. Reduce whitespace-pre-line paragraph gaps
+- `FounderQuote.tsx` -- main quote heading
+- `FeaturedCollection.tsx` -- section title
+- `ThreePillarsCarousel.tsx` -- section title
+- `ValueProps.tsx` -- section title
+- `PressQuotes.tsx` -- section title
+- `Peptides.tsx` -- section title
+- `BuiltFor.tsx` -- section title
+- `Problem.tsx` -- section title
+- `ShopByGoal.tsx` -- section title
+- `FinalCTA.tsx` -- section title
+- `StartHereSection.tsx` -- section title
+- `Categories.tsx` -- section title
+- `WhyNinetyDays.tsx` -- section title
+- `ChooseYourPath.tsx` -- section title
+- `NotSureBlock.tsx` -- section title
+- Blog and product templates -- article headings
 
-Add a small global CSS rule so that `\n`-based line breaks in `whitespace-pre-line` blocks don't create oversized gaps. This is already handled by the line-height reduction -- no extra rule needed.
+Each heading `<h2>` or `<h3>` in those files gets `font-serif` added to its className.
 
-## Summary
+### 3. Hero stays as-is
 
-| Property | Before | After |
-|---|---|---|
-| Body line-height | 1.6 | 1.45 |
-| Component line-height | leading-relaxed (1.625) | leading-normal (1.5) |
-| Hero paragraph gap | space-y-4 (16px) | space-y-2 (8px) |
-| Peptides/BuiltFor gap | space-y-6 (24px) | space-y-4 (16px) |
-| Problem list gap | space-y-4 (16px) | space-y-3 (12px) |
+The Hero `<h1>` already has `font-display` which maps to Bebas Neue -- once the global override is removed, it will render correctly.
 
-## Impact
+## Result
 
-Every page on the site gets tighter text. No content, layout, or component structure changes -- purely spacing adjustments.
+- Hero headline renders in **Bebas Neue** (tall, condensed, all-caps)
+- All other section headings keep **Playfair Display** via explicit `font-serif`
+- No visual change anywhere except the Hero, which finally gets the intended font
+
