@@ -99,7 +99,7 @@ const Hero = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-foreground mb-8 max-w-xl space-y-4"
+            className="text-foreground mb-8 max-w-xl space-y-2"
           >
             {paragraphs.map((p, i) => {
               // Last paragraph with medical disclaimer gets bold styling
@@ -134,7 +134,7 @@ const Hero = ({
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-12 pt-8 border-t border-foreground/20 max-w-lg"
           >
-            <p className="text-foreground text-sm leading-relaxed">
+            <p className="text-foreground text-sm leading-normal">
               {subHeroLine1}
               <br />
               They need clearer frameworks to help them think through what to do next.

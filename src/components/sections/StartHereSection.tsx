@@ -149,7 +149,7 @@ const StartHereSection = () => {
                   </p>
 
                   {/* Body */}
-                  <p className="text-foreground/80 mb-4 leading-relaxed">
+                  <p className="text-foreground/80 mb-4 leading-normal">
                     {card.body}
                   </p>
 

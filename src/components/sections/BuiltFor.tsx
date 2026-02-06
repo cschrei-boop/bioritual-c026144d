@@ -33,7 +33,7 @@ const BuiltFor = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6 order-1 md:order-2"
+            className="space-y-4 order-1 md:order-2"
           >
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground">
               For Professionals
@@ -45,7 +45,7 @@ const BuiltFor = () => {
               Work
             </h2>
             
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-normal">
               For busy professionals with high cognitive load and inconsistent schedules.
             </p>
 

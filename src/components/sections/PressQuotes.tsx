@@ -59,7 +59,7 @@ const PressQuotes = () => {
             <CarouselContent>
               {quotes.map((quote, index) => <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="px-4 text-center">
-                    <blockquote className="font-serif text-lg italic mb-4 leading-relaxed">
+                    <blockquote className="font-serif text-lg italic mb-4 leading-normal">
                       "{quote.text}"
                     </blockquote>
                     <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground">

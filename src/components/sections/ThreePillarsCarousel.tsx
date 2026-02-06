@@ -45,10 +45,10 @@ const ThreePillarsCarousel = ({
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <p className="text-muted-foreground mb-4 leading-relaxed whitespace-pre-line">
+          <p className="text-muted-foreground mb-4 leading-normal whitespace-pre-line">
             {description1}
           </p>
-          <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+          <p className="text-muted-foreground leading-normal whitespace-pre-line">
             {description2}
           </p>
         </motion.div>

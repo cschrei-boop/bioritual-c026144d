@@ -79,7 +79,7 @@ const ValueProps = ({ values }: ValuePropsProps) => {
                     <h3 className="text-xl md:text-2xl font-bold uppercase tracking-wide text-foreground mb-2">
                       {value.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                    <p className="text-sm text-muted-foreground mb-4 leading-normal">
                       {value.description}
                     </p>
                     <Link

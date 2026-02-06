@@ -8,7 +8,7 @@ const Footer = () => {
       <section className="bg-background text-foreground py-12 px-6 md:px-12 border-t border-border">
         <div className="max-w-3xl mx-auto text-center">
           <h3 className="text-xs tracking-[0.3em] uppercase mb-4">Important Notice</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-normal">
             All content on this site is provided for informational and educational purposes only.
             <br />
             BioRitual does not provide medical advice, diagnosis, treatment, or prescriptions.
@@ -68,7 +68,7 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <p className="text-xs tracking-[0.2em] uppercase mb-4">Disclaimer</p>
-              <p className="text-sm text-background/60 leading-relaxed">
+              <p className="text-sm text-background/60 leading-normal">
                 BioRitual is an educational platform. It does not replace licensed healthcare professionals. Decisions made based on this information are the responsibility of the individual.
               </p>
             </motion.div>
