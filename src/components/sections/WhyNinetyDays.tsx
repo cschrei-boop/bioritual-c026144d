@@ -23,7 +23,7 @@ const WhyNinetyDays = () => {
           <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
             The Timeline
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6">
             Why 90 Days?
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto mb-16">
@@ -50,7 +50,7 @@ const WhyNinetyDays = () => {
                 <p className="text-4xl md:text-5xl font-serif text-muted-foreground/30 mb-4">
                   {step.num}
                 </p>
-                <h3 className="font-serif text-xl mb-2">{step.title}</h3>
+                <h3 className="text-xl mb-2">{step.title}</h3>
                 <p className="text-sm text-muted-foreground">{step.description}</p>
               </div>
             </motion.div>

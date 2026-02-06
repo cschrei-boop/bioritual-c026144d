@@ -39,7 +39,7 @@ const BuiltFor = () => {
               For Professionals
             </p>
             
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight">
               Built for How You{" "}
               <span className="italic">Actually</span>{" "}
               Work

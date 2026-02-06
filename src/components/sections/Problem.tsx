@@ -26,7 +26,7 @@ const Problem = () => {
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
               The Problem
             </p>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight mb-6">
               You're not broken.{" "}
               <span className="italic">You're overloaded.</span>
             </h2>

@@ -81,7 +81,7 @@ const FeaturedServices = () => {
                     </div>
 
                     {/* Content */}
-                    <h3 className="font-serif text-lg mb-1">{service.title}</h3>
+                    <h3 className="text-lg mb-1">{service.title}</h3>
                     <p className="text-sm text-muted-foreground mb-2">{service.description}</p>
                     <p className="text-sm font-medium mb-3">{service.price}</p>
                     <Button variant="outline" size="sm" className="rounded-none border-foreground hover:bg-foreground hover:text-background text-xs tracking-wider" asChild>

@@ -139,7 +139,7 @@ const StartHereSection = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-serif text-xl lg:text-2xl mb-1">
+                  <h3 className="text-xl lg:text-2xl mb-1">
                     {card.title}
                   </h3>
 

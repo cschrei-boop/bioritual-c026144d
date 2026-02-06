@@ -38,7 +38,7 @@ const ThreeLegs = () => {
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">
               Shop by Focus
             </p>
-            <h2 className="font-serif text-3xl md:text-4xl">
+            <h2 className="text-3xl md:text-4xl">
               The Three Pillars
             </h2>
           </div>
@@ -66,7 +66,7 @@ const ThreeLegs = () => {
               
               {/* Text overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-6 text-background">
-                <h3 className="font-serif text-2xl md:text-3xl tracking-widest mb-2">
+                <h3 className="text-2xl md:text-3xl tracking-widest mb-2">
                   {pillar.title}
                 </h3>
                 <p className="text-sm opacity-80">

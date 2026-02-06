@@ -120,7 +120,7 @@ const ProductPageTemplate = ({
           <div className="px-4 md:px-8 lg:px-16 pb-12">
             <div className="max-w-2xl mx-auto bg-destructive/10 border border-destructive/20 rounded-lg p-6 text-center">
               <AlertTriangle className="w-10 h-10 text-destructive mx-auto mb-4" />
-              <h2 className="font-serif text-2xl mb-2">Product Unavailable</h2>
+              <h2 className="text-2xl mb-2">Product Unavailable</h2>
               <p className="text-muted-foreground mb-4">{error}</p>
               <Button variant="outline" onClick={() => window.location.href = "/protocols"}>
                 Browse All Protocols
@@ -158,7 +158,7 @@ const ProductPageTemplate = ({
                 )}
 
                 {/* Product Title */}
-                <h1 className="font-serif text-3xl md:text-4xl mb-4">
+                <h1 className="text-3xl md:text-4xl mb-4">
                   {product?.node.title || fallbackTitle}
                 </h1>
 
