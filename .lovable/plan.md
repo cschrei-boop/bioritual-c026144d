@@ -1,62 +1,28 @@
 
 
-# Fix: Bebas Neue Not Rendering on Hero Headline
+# Fix: Google Fonts Not Loading (including Bebas Neue)
 
-## The Problem
+## Root Cause
 
-There is a global CSS rule in `src/index.css` (lines 106-108) that forces all `h1`, `h2`, `h3` tags to use **Playfair Display**:
+The `@import url(...)` for Google Fonts on line 5 of `src/index.css` is placed **after** the `@tailwind base/components/utilities` directives (lines 1-3). Per CSS spec, `@import` must appear before all other rules. The Tailwind directives expand into CSS output during build, which causes the `@import` to be silently ignored. This means **none** of the three fonts (Bebas Neue, Inter, Playfair Display) are actually loading from Google Fonts -- the browser uses generic fallbacks for everything.
 
-```css
-h1, h2, h3 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 500;
-}
-```
+## The Fix (2 changes)
 
-This overrides the Tailwind `font-display` class on the Hero `<h1>`, so **Bebas Neue never actually renders** -- the browser always falls back to Playfair Display.
+### 1. Add Google Fonts `<link>` tag in `index.html`
 
-## The Fix
+Move font loading out of CSS entirely and into the HTML `<head>`. This is the most reliable approach -- the browser starts downloading fonts immediately, before any CSS is parsed.
 
-### 1. Update `src/index.css` (lines 106-109)
+Add these two lines inside `<head>` in `index.html`:
+- A `preconnect` link to Google Fonts for faster loading
+- The Google Fonts stylesheet `<link>` (same families and weights currently in the `@import`)
 
-Remove `font-family` from the global heading rule so Tailwind utility classes can control the font per-component. Keep only `font-weight`:
+### 2. Remove the `@import url(...)` from `src/index.css`
 
-```css
-h1, h2, h3 {
-  font-weight: 500;
-}
-```
-
-### 2. Add `font-serif` to headings that should stay Playfair Display
-
-Most section headings currently rely on the global rule to get Playfair Display. After removing it, they need `font-serif` added explicitly. The affected components are:
-
-- `FounderQuote.tsx` -- main quote heading
-- `FeaturedCollection.tsx` -- section title
-- `ThreePillarsCarousel.tsx` -- section title
-- `ValueProps.tsx` -- section title
-- `PressQuotes.tsx` -- section title
-- `Peptides.tsx` -- section title
-- `BuiltFor.tsx` -- section title
-- `Problem.tsx` -- section title
-- `ShopByGoal.tsx` -- section title
-- `FinalCTA.tsx` -- section title
-- `StartHereSection.tsx` -- section title
-- `Categories.tsx` -- section title
-- `WhyNinetyDays.tsx` -- section title
-- `ChooseYourPath.tsx` -- section title
-- `NotSureBlock.tsx` -- section title
-- Blog and product templates -- article headings
-
-Each heading `<h2>` or `<h3>` in those files gets `font-serif` added to its className.
-
-### 3. Hero stays as-is
-
-The Hero `<h1>` already has `font-display` which maps to Bebas Neue -- once the global override is removed, it will render correctly.
+Delete line 5 from `src/index.css` (the `@import url('https://fonts.googleapis.com/css2?...')`) since fonts will now load from the HTML `<link>` tag.
 
 ## Result
 
-- Hero headline renders in **Bebas Neue** (tall, condensed, all-caps)
-- All other section headings keep **Playfair Display** via explicit `font-serif`
-- No visual change anywhere except the Hero, which finally gets the intended font
+- **Bebas Neue** will properly load and render on all `h1`, `h2`, `h3` headings (via the existing global CSS rule)
+- **Inter** and **Playfair Display** will also load correctly for body text and serif elements
+- Font loading is faster and more reliable since the browser starts fetching fonts before CSS is parsed
 
