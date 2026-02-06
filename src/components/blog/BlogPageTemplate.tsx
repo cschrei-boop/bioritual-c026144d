@@ -3,6 +3,7 @@ import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import VideoHero from "@/components/sections/VideoHero";
 import { BlogImageHero, BlogCTASection, BlogDisclaimer } from "@/components/blog";
+import ArticleCarousel from "@/components/blog/ArticleCarousel";
 
 interface BlogCTAButton {
   label: string;
@@ -58,6 +59,8 @@ interface BlogPageTemplateProps {
   disclaimer?: string;
   /** Hide the disclaimer entirely */
   hideDisclaimer?: boolean;
+  /** Hide the article carousel */
+  hideArticleCarousel?: boolean;
 }
 
 /**
@@ -71,6 +74,7 @@ const BlogPageTemplate = ({
   cta,
   disclaimer,
   hideDisclaimer = false,
+  hideArticleCarousel = false,
 }: BlogPageTemplateProps) => {
   return (
     <>
@@ -112,6 +116,11 @@ const BlogPageTemplate = ({
 
         {/* Main Content */}
         {children}
+
+        {/* Article Carousel */}
+        {!hideArticleCarousel && (
+          <ArticleCarousel currentHref={new URL(seo.canonicalUrl).pathname} />
+        )}
 
         {/* CTA Section */}
         {cta && (
