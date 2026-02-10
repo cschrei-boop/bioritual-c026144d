@@ -380,7 +380,7 @@ export const COLLECTION_BY_HANDLE_QUERY = `
 
 export const CART_QUERY = `
   query cart($id: ID!) {
-    cart(id: $id) { id totalQuantity }
+    cart(id: $id) { id totalQuantity checkoutUrl }
   }
 `;
 
@@ -428,7 +428,7 @@ export const CART_LINES_REMOVE_MUTATION = `
 `;
 
 // Cart helpers
-function formatCheckoutUrl(checkoutUrl: string): string {
+export function formatCheckoutUrl(checkoutUrl: string): string {
   try {
     const url = new URL(checkoutUrl);
     // Force HTTPS for secure checkout
