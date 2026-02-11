@@ -1,40 +1,14 @@
 
+# Add Protocols Carousel to BlogPageTemplate
 
-# Add Collection and Blog Blocks to Homepage
+## What Changes
 
-## Overview
+Add the `ShopByGoal` protocols carousel to the `BlogPageTemplate` component, right after the `<Header />`. This will make it appear on all blog/article pages (Truth About Peptides, GLP-1 Myths, etc.) without modifying each page individually.
 
-Three new block placements on the homepage using existing components (no hardcoding):
+## Technical Details
 
-1. **Protocols carousel** right after the Header (before Hero)
-2. **Blog article carousel** right after the "What we actually do" block
-3. **Protocols carousel** again near the bottom (before FinalCTA)
-
-## Section Order (Updated)
-
-```text
-Header
-ShopByGoal (protocols carousel)       <-- NEW
-Hero
-FounderQuote (manifesto)
-FeaturedCollection ("What we actually do")
-ArticleCarousel (blog)                <-- NEW
-ThreePillarsCarousel
-ValueProps
-ShopByGoal (protocols carousel)       <-- NEW
-FinalCTA
-Footer
-StickyEmailFooter
-```
-
-## Changes
-
-### `src/pages/Index.tsx`
+### `src/components/blog/BlogPageTemplate.tsx`
 
 - Import `ShopByGoal` from `@/components/sections/ShopByGoal`
-- Import `ArticleCarousel` from `@/components/blog/ArticleCarousel`
-- Add `<ShopByGoal />` immediately after `<Header />`
-- Add `<ArticleCarousel />` immediately after `<FeaturedCollection />`
-- Add `<ShopByGoal />` immediately before `<FinalCTA />`
-
-Both components are fully dynamic -- `ShopByGoal` fetches protocols from Shopify and `ArticleCarousel` pulls from the article registry. No new files or hardcoded data needed.
+- Insert `<ShopByGoal />` between `<Header />` and `<main>`
+- Add an optional `hideProtocolsCarousel` prop (default `false`) so individual pages can opt out if needed
