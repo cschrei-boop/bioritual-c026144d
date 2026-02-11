@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero";
 import FounderQuote from "@/components/sections/FounderQuote";
 import FeaturedCollection from "@/components/sections/FeaturedCollection";
 import ArticleCarousel from "@/components/blog/ArticleCarousel";
+import StartHereSection from "@/components/sections/StartHereSection";
 import ThreePillarsCarousel from "@/components/sections/ThreePillarsCarousel";
 import ValueProps from "@/components/sections/ValueProps";
 import FinalCTA from "@/components/sections/FinalCTA";
@@ -77,6 +78,7 @@ const Index = () => {
         headline="What we actually do"
         description={"We help you think clearly about your health.\n\nNot by giving you a reset button.\nNot by promising to \"optimize\" you into a superhero.\nBut by helping you understand what matters, what doesn't, and what comes next.\n\nWe organize decisions around:\n\n- Lifestyle and recovery\n- Training and muscle retention\n- Supplements\n- Peptides and metabolic signaling — including GLP-1s\n\nBecause certainty sells.\nClarity lasts."}
       />
+      <StartHereSection showHero={false} />
       <ArticleCarousel />
       <ThreePillarsCarousel
         subtitle=""
