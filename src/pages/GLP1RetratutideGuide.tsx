@@ -40,7 +40,7 @@ const GLP1RetratutideGuide = () => {
       seo={{
         title: "Understanding GLP-1s and Retratutide | Bio Signals Education",
         description: "An educational guide to GLP-1 compounds, retratutide, and why sustainable weight loss requires a systems-based approach. No medical advice or prescriptions.",
-        canonicalUrl: "https://bioritual.lovable.app/glp-1-retratutide-guide",
+        canonicalUrl: "https://bioritual.us/glp-1-retratutide-guide",
         structuredData: faqSchema,
       }}
       hero={{

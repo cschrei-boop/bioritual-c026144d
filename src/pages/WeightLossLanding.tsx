@@ -64,7 +64,7 @@ const WeightLossLanding = () => {
       seo={{
         title: "Simple, Structured Wellness for Weight Loss | Bio Signals",
         description: "A science-backed, structured approach to weight loss. Learn how bio signals, habits, and protocols—including peptides like retatrutide—fit together.",
-        canonicalUrl: "https://bioritual.lovable.app/weight-loss-structured-wellness",
+        canonicalUrl: "https://bioritual.us/weight-loss",
         structuredData: faqSchema,
       }}
       hero={{

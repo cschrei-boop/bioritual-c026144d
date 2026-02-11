@@ -16,7 +16,7 @@ const Blog = () => {
           name="description"
           content="Science-based articles on peptides, GLP-1s, bio signals, and structured wellness. Education without hype."
         />
-        <link rel="canonical" href="https://bioritual.lovable.app/blog" />
+        <link rel="canonical" href="https://bioritual.us/blog" />
       </Helmet>
 
       <Header />

@@ -10,7 +10,7 @@ const TruthAboutPeptides = () => {
         title: "The Truth About Peptides | Bio Signals Education",
         description:
           "What peptides actually are, how they work, and what you should know before exploring them. An educational deep dive into bio signals and longevity science.",
-        canonicalUrl: "https://bioritual.lovable.app/truth-about-peptides",
+        canonicalUrl: "https://bioritual.us/truth-about-peptides",
       }}
       hero={{
         type: "image",

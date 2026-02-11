@@ -25,7 +25,7 @@ const LandingPage = () => {
       <Helmet>
         <title>{config.seo.title}</title>
         <meta name="description" content={config.seo.description} />
-        <link rel="canonical" href={`https://bioritual.lovable.app/lp/${config.slug}`} />
+        <link rel="canonical" href={`https://bioritual.us/lp/${config.slug}`} />
       </Helmet>
       <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
         <Header />
