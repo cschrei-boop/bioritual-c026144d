@@ -39,7 +39,7 @@ const Index = () => {
           "Not tired of health.\nTired of noise.",
         ]}
         ctaText="Start with clarity"
-        ctaLink="/ai-concierge"
+        ctaLink="/collection/protocols"
         subHeroLine1=""
         subHeroLine2=""
       />
