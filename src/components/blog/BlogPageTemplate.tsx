@@ -4,6 +4,7 @@ import Footer from "@/components/sections/Footer";
 import VideoHero from "@/components/sections/VideoHero";
 import { BlogImageHero, BlogCTASection, BlogDisclaimer } from "@/components/blog";
 import ArticleCarousel from "@/components/blog/ArticleCarousel";
+import ShopByGoal from "@/components/sections/ShopByGoal";
 
 interface BlogCTAButton {
   label: string;
@@ -61,6 +62,8 @@ interface BlogPageTemplateProps {
   hideDisclaimer?: boolean;
   /** Hide the article carousel */
   hideArticleCarousel?: boolean;
+  /** Hide the protocols carousel */
+  hideProtocolsCarousel?: boolean;
 }
 
 /**
@@ -75,6 +78,7 @@ const BlogPageTemplate = ({
   disclaimer,
   hideDisclaimer = false,
   hideArticleCarousel = false,
+  hideProtocolsCarousel = false,
 }: BlogPageTemplateProps) => {
   return (
     <>
@@ -90,6 +94,8 @@ const BlogPageTemplate = ({
       </Helmet>
 
       <Header />
+
+      {!hideProtocolsCarousel && <ShopByGoal />}
 
       <main>
         {/* Hero Section */}
