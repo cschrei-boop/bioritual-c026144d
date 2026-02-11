@@ -29,7 +29,6 @@ const Index = () => {
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Header />
-      <ShopByGoal />
       <Hero
         tagline=""
         headline={"This shouldn't be this confusing.\nIt's exhausting because too many people are confidently full of B.S."}
@@ -46,6 +45,7 @@ const Index = () => {
         subHeroLine1=""
         subHeroLine2=""
       />
+      <ShopByGoal />
       <FounderQuote>
         <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4">
           Let's be specific.
