@@ -1,80 +1,40 @@
 
 
-# Email Popup with Interest Selection and Database Storage
+# Add Collection and Blog Blocks to Homepage
 
-## What It Does
+## Overview
 
-A popup appears 5 seconds after the page loads, asking visitors for their email and optionally which health areas interest them. Submissions are stored in a database table so you can access and export them later.
+Three new block placements on the homepage using existing components (no hardcoding):
 
-## Popup Content
+1. **Protocols carousel** right after the Header (before Hero)
+2. **Blog article carousel** right after the "What we actually do" block
+3. **Protocols carousel** again near the bottom (before FinalCTA)
 
-- Headline: "Stay in the loop"
-- Subtitle: Brief copy about getting the latest signals
-- Email input field (required)
-- Optional checkboxes for health interest areas:
-  - Weight Loss / Metabolic Health
-  - Energy / Vitality
-  - Cognition / Brain Health
-  - Longevity
-  - Performance / Recovery
-  - Hair and Skin
-- Submit button
-- Small marketing disclaimer text at the bottom (e.g., "By subscribing, you agree to receive marketing emails from BioRitual. You can unsubscribe at any time.")
-- Close (X) button
+## Section Order (Updated)
 
-## Behavior
-
-- 5-second delay before appearing
-- Dismissed via close button or clicking outside
-- Stores a flag in localStorage so it only shows once per visitor
-- On submit: saves email + selected interests to the database, then closes
-- Existing sticky email footer bar remains unchanged
-
----
-
-## Technical Plan
-
-### 1. Database: Create `email_subscribers` table
-
-A new migration to create the table:
-
-```sql
-CREATE TABLE public.email_subscribers (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  email TEXT NOT NULL,
-  interests TEXT[] DEFAULT '{}',
-  created_at TIMESTAMPTZ DEFAULT now()
-);
-
-ALTER TABLE public.email_subscribers ENABLE ROW LEVEL SECURITY;
-
--- Allow anonymous inserts (public signup form)
-CREATE POLICY "Allow anonymous insert" ON public.email_subscribers
-  FOR INSERT TO anon WITH CHECK (true);
+```text
+Header
+ShopByGoal (protocols carousel)       <-- NEW
+Hero
+FounderQuote (manifesto)
+FeaturedCollection ("What we actually do")
+ArticleCarousel (blog)                <-- NEW
+ThreePillarsCarousel
+ValueProps
+ShopByGoal (protocols carousel)       <-- NEW
+FinalCTA
+Footer
+StickyEmailFooter
 ```
 
-No SELECT/UPDATE/DELETE policies for anon -- only you (via backend admin) can view or manage the data.
+## Changes
 
-### 2. New file: `src/components/sections/EmailPopup.tsx`
+### `src/pages/Index.tsx`
 
-- Uses the existing `Dialog` component
-- Email input (required) + 6 checkbox options for interest areas
-- On submit: inserts into `email_subscribers` table via Supabase client
-- Marketing disclaimer in small text below the form
-- localStorage check to show only once
+- Import `ShopByGoal` from `@/components/sections/ShopByGoal`
+- Import `ArticleCarousel` from `@/components/blog/ArticleCarousel`
+- Add `<ShopByGoal />` immediately after `<Header />`
+- Add `<ArticleCarousel />` immediately after `<FeaturedCollection />`
+- Add `<ShopByGoal />` immediately before `<FinalCTA />`
 
-### 3. Modified file: `src/pages/Index.tsx`
-
-- Import and render `<EmailPopup />` alongside `<StickyEmailFooter />`
-
-### Interest Categories (checkbox labels)
-
-| Label | Value stored |
-|---|---|
-| Weight Loss / Metabolic Health | `weight-loss` |
-| Energy / Vitality | `energy` |
-| Cognition / Brain Health | `cognition` |
-| Longevity | `longevity` |
-| Performance / Recovery | `performance` |
-| Hair and Skin | `hair-skin` |
-
+Both components are fully dynamic -- `ShopByGoal` fetches protocols from Shopify and `ArticleCarousel` pulls from the article registry. No new files or hardcoded data needed.
