@@ -3,15 +3,32 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { X, ArrowRight } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 
 const StickyEmailFooter = () => {
   const [email, setEmail] = useState("");
   const [isVisible, setIsVisible] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Email submitted:", email);
-    setEmail("");
+    if (!email.trim() || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase.from("email_subscribers" as any).insert({
+        email: email.trim(),
+        interests: [],
+      } as any);
+      if (error) throw error;
+      toast({ title: "You're in!", description: "Thanks for subscribing." });
+      setEmail("");
+    } catch {
+      toast({ title: "Something went wrong", description: "Please try again.", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -49,9 +66,10 @@ const StickyEmailFooter = () => {
                 />
                 <Button
                   type="submit"
+                  disabled={isSubmitting}
                   className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-6"
                 >
-                  <span className="hidden sm:inline mr-2">Subscribe</span>
+                  <span className="hidden sm:inline mr-2">{isSubmitting ? "..." : "Subscribe"}</span>
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </form>
