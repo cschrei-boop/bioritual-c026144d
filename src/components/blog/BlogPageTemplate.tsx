@@ -95,8 +95,6 @@ const BlogPageTemplate = ({
 
       <Header />
 
-      {!hideProtocolsCarousel && <ShopByGoal />}
-
       <main>
         {/* Hero Section */}
         {hero.type === "video" ? (
@@ -127,6 +125,9 @@ const BlogPageTemplate = ({
         {!hideArticleCarousel && (
           <ArticleCarousel currentHref={new URL(seo.canonicalUrl).pathname} />
         )}
+
+        {/* Protocols Carousel */}
+        {!hideProtocolsCarousel && <ShopByGoal />}
 
         {/* CTA Section */}
         {cta && (
