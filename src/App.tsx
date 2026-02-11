@@ -22,6 +22,7 @@ import ConsentAcknowledgment from "./pages/ConsentAcknowledgment";
 import DynamicProduct from "./pages/DynamicProduct";
 import CartRedirect from "./pages/CartRedirect";
 import LandingPage from "./pages/LandingPage";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import EmailPopup from "./components/sections/EmailPopup";
@@ -48,6 +49,7 @@ const AppContent = () => {
         <Route path="/consent" element={<ConsentAcknowledgment />} />
         <Route path="/ai-concierge" element={<ProductAIConcierge />} />
         <Route path="/coaching" element={<ProductCoaching />} />
+        <Route path="/about" element={<About />} />
         {/* Dynamic Shopify product pages - works for ANY handle */}
         <Route path="/products/:handle" element={<DynamicProduct />} />
         {/* Legacy protocol URLs - render same DynamicProduct with handle resolution */}

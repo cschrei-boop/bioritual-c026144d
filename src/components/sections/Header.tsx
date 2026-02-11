@@ -23,6 +23,9 @@ const Header = () => {
   }, {
     label: "Blog",
     href: "/blog"
+  }, {
+    label: "About",
+    href: "/about"
   }];
   return <>
       {/* Announcement Bar */}
