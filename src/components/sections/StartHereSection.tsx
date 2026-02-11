@@ -1,10 +1,22 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Sparkles, Route, Compass, ArrowRight } from "lucide-react";
+import { Sparkles, Route, Compass, ArrowRight, LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import VideoHero from "@/components/sections/VideoHero";
 
-const cards = [
+export interface CardData {
+  id: string;
+  title: string;
+  tagline: string;
+  body: string;
+  bestIf: string;
+  ctaLabel: string;
+  href: string;
+  icon: LucideIcon;
+  node: string;
+}
+
+export const defaultStartHereCards: CardData[] = [
   {
     id: "learn",
     title: "AI Concierge",
@@ -64,7 +76,7 @@ const WaveformBackground = () => (
   </svg>
 );
 
-const ContinuumBar = () => (
+const ContinuumBar = ({ cards }: { cards: CardData[] }) => (
   <div className="hidden md:flex items-center justify-center gap-0 mb-12">
     {cards.map((card, index) => (
       <div key={card.id} className="flex items-center">
@@ -85,17 +97,28 @@ const ContinuumBar = () => (
   </div>
 );
 
-const StartHereSection = () => {
+interface StartHereSectionProps {
+  cards?: CardData[];
+  footerText?: string;
+  showHero?: boolean;
+}
+
+const StartHereSection = ({
+  cards = defaultStartHereCards,
+  footerText = "No \"best\" option—just the right one for right now. You can move between levels anytime.",
+  showHero = true,
+}: StartHereSectionProps) => {
   return (
     <>
-      {/* Hero Header Video */}
-      <VideoHero
-        tagline="Start Here"
-        title="Your body isn't random. It's sending signals."
-        subtitle="Bio Signals turns signals (energy, appetite, recovery, focus, body composition) into a clear protocol—combining peptides, supplements, and nutrition into one structured system."
-        description={<p>Choose the level of support that matches your clarity right now:</p>}
-        minHeight="50vh"
-      />
+      {showHero && (
+        <VideoHero
+          tagline="Start Here"
+          title="Your body isn't random. It's sending signals."
+          subtitle="Bio Signals turns signals (energy, appetite, recovery, focus, body composition) into a clear protocol—combining peptides, supplements, and nutrition into one structured system."
+          description={<p>Choose the level of support that matches your clarity right now:</p>}
+          minHeight="50vh"
+        />
+      )}
 
       <section className="relative px-6 md:px-12 lg:px-24 py-16 md:py-24 overflow-hidden">
         <WaveformBackground />
@@ -108,7 +131,7 @@ const StartHereSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <ContinuumBar />
+          <ContinuumBar cards={cards} />
         </motion.div>
 
         {/* Cards Grid */}
@@ -177,7 +200,7 @@ const StartHereSection = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-center text-foreground/50 text-sm mt-12"
         >
-          No "best" option—just the right one for right now. You can move between levels anytime.
+          {footerText}
         </motion.p>
       </div>
     </section>
