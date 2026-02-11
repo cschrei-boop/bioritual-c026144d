@@ -9,38 +9,38 @@ import valuePerformance from "@/assets/value-performance.jpg";
 import valueBusy from "@/assets/value-busy.jpg";
 
 const defaultValues = [
-  {
-    title: "Better Systems",
-    description: "The world doesn't need more motivation. It needs better systems.",
-    image: valueSystems
-  },
-  {
-    title: "Clear Frameworks",
-    description: "No pseudoscience, no fads. Just evidence-based decision-making approaches.",
-    image: valueClean
-  },
-  {
-    title: "Structured Thinking",
-    description: "Easy, adaptable, multi-purpose frameworks for understanding wellness.",
-    image: valuePerformance
-  },
-  {
-    title: "Built for Busy",
-    description: "Designed for professionals with high cognitive load and inconsistent schedules.",
-    image: valueBusy
-  }
-];
+{
+  title: "Better Systems",
+  description: "The world doesn't need more motivation. It needs better systems.",
+  image: valueSystems
+},
+{
+  title: "Clear Frameworks",
+  description: "No pseudoscience, no fads. Just evidence-based decision-making approaches.",
+  image: valueClean
+},
+{
+  title: "Structured Thinking",
+  description: "Easy, adaptable, multi-purpose frameworks for understanding wellness.",
+  image: valuePerformance
+},
+{
+  title: "Built for Busy",
+  description: "Designed for professionals with high cognitive load and inconsistent schedules.",
+  image: valueBusy
+}];
+
 
 const images = [valueSystems, valueClean, valuePerformance, valueBusy];
 
 interface ValuePropsProps {
-  values?: { title: string; description: string }[];
+  values?: {title: string;description: string;}[];
 }
 
 const ValueProps = ({ values }: ValuePropsProps) => {
-  const displayValues = values
-    ? values.map((v, i) => ({ ...v, image: images[i] || images[0] }))
-    : defaultValues;
+  const displayValues = values ?
+  values.map((v, i) => ({ ...v, image: images[i] || images[0] })) :
+  defaultValues;
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
@@ -53,26 +53,26 @@ const ValueProps = ({ values }: ValuePropsProps) => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
+          transition={{ duration: 0.8 }}>
+
           <Carousel
             opts={{
               align: "start",
               loop: true
             }}
-            className="w-full"
-          >
+            className="w-full">
+
             <CarouselContent className="-ml-6">
-              {displayValues.map(value => (
-                <CarouselItem key={value.title} className="pl-6 md:basis-1/2 lg:basis-1/4">
+              {displayValues.map((value) =>
+              <CarouselItem key={value.title} className="pl-6 md:basis-1/2 lg:basis-1/4">
                   <div className="group">
                     {/* Image */}
                     <div className="aspect-square mb-6 overflow-hidden">
                       <img
-                        src={value.image}
-                        alt={value.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
+                      src={value.image}
+                      alt={value.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+
                     </div>
 
                     {/* Content */}
@@ -82,15 +82,15 @@ const ValueProps = ({ values }: ValuePropsProps) => {
                     <p className="text-sm text-muted-foreground mb-4 leading-normal">
                       {value.description}
                     </p>
-                    <Link
-                      to="/start-here"
-                      className="text-sm border-b border-foreground pb-0.5 hover:opacity-60 transition-opacity"
-                    >
-                      Learn More
-                    </Link>
+                    
+
+
+
+
+
                   </div>
                 </CarouselItem>
-              ))}
+              )}
             </CarouselContent>
             <div className="flex justify-between items-center mt-8">
               <div className="text-sm text-muted-foreground">
@@ -104,8 +104,8 @@ const ValueProps = ({ values }: ValuePropsProps) => {
           </Carousel>
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default ValueProps;
