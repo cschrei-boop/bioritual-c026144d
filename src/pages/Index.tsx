@@ -7,7 +7,7 @@ import ValueProps from "@/components/sections/ValueProps";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/sections/Footer";
 import StickyEmailFooter from "@/components/sections/StickyEmailFooter";
-import EmailPopup from "@/components/sections/EmailPopup";
+
 
 const Index = () => {
   return (
@@ -21,7 +21,7 @@ const Index = () => {
       <FinalCTA />
       <Footer />
       <StickyEmailFooter />
-      <EmailPopup />
+      
     </main>
   );
 };
