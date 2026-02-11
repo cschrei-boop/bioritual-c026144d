@@ -1,35 +1,80 @@
 
 
-# Tighten Line Spacing and Paragraph Spacing in the Manifesto Block
+# Email Popup with Interest Selection and Database Storage
 
-## What Changes
+## What It Does
 
-All spacing adjustments are in **one file**: `src/pages/LandingPage.tsx`, within the manifesto JSX block (lines 43-79).
+A popup appears 5 seconds after the page loads, asking visitors for their email and optionally which health areas interest them. Submissions are stored in a database table so you can access and export them later.
 
-### Zone 1 -- Qualifying List
+## Popup Content
 
-| Element | Current | New |
-|---------|---------|-----|
-| Intro label bottom margin | `mb-6` | `mb-4` |
-| "This is for you if:" bottom margin | `mb-6` | `mb-4` |
-| Bullet list vertical spacing | `space-y-3` | `space-y-2` |
-| Bullet list bottom margin | `mb-10` | `mb-8` |
-| Bullet item line-height | `leading-relaxed` (1.625) | `leading-normal` (1.5) |
+- Headline: "Stay in the loop"
+- Subtitle: Brief copy about getting the latest signals
+- Email input field (required)
+- Optional checkboxes for health interest areas:
+  - Weight Loss / Metabolic Health
+  - Energy / Vitality
+  - Cognition / Brain Health
+  - Longevity
+  - Performance / Recovery
+  - Hair and Skin
+- Submit button
+- Small marketing disclaimer text at the bottom (e.g., "By subscribing, you agree to receive marketing emails from BioRitual. You can unsubscribe at any time.")
+- Close (X) button
 
-### Zone 2 -- Divider
+## Behavior
 
-| Element | Current | New |
-|---------|---------|-----|
-| Divider vertical margin | `my-10` | `my-8` |
+- 5-second delay before appearing
+- Dismissed via close button or clicking outside
+- Stores a flag in localStorage so it only shows once per visitor
+- On submit: saves email + selected interests to the database, then closes
+- Existing sticky email footer bar remains unchanged
 
-### Zone 3 -- Manifesto Closer
+---
 
-| Element | Current | New |
-|---------|---------|-----|
-| Lines container spacing | `space-y-1` | `space-y-0` (Bebas Neue already has tight metrics; removing inter-line gaps makes the paired couplets read as cohesive blocks) |
-| Pair gap (after lines 2 and 4) | `mb-6` | `mb-4` |
+## Technical Plan
 
-## Result
+### 1. Database: Create `email_subscribers` table
 
-The block will feel noticeably more compact and editorially tight, consistent with the site's existing spacing guidelines (body line-height 1.45, `leading-normal`, reduced `space-y` values). No font sizes or font families change.
+A new migration to create the table:
+
+```sql
+CREATE TABLE public.email_subscribers (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  email TEXT NOT NULL,
+  interests TEXT[] DEFAULT '{}',
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+ALTER TABLE public.email_subscribers ENABLE ROW LEVEL SECURITY;
+
+-- Allow anonymous inserts (public signup form)
+CREATE POLICY "Allow anonymous insert" ON public.email_subscribers
+  FOR INSERT TO anon WITH CHECK (true);
+```
+
+No SELECT/UPDATE/DELETE policies for anon -- only you (via backend admin) can view or manage the data.
+
+### 2. New file: `src/components/sections/EmailPopup.tsx`
+
+- Uses the existing `Dialog` component
+- Email input (required) + 6 checkbox options for interest areas
+- On submit: inserts into `email_subscribers` table via Supabase client
+- Marketing disclaimer in small text below the form
+- localStorage check to show only once
+
+### 3. Modified file: `src/pages/Index.tsx`
+
+- Import and render `<EmailPopup />` alongside `<StickyEmailFooter />`
+
+### Interest Categories (checkbox labels)
+
+| Label | Value stored |
+|---|---|
+| Weight Loss / Metabolic Health | `weight-loss` |
+| Energy / Vitality | `energy` |
+| Cognition / Brain Health | `cognition` |
+| Longevity | `longevity` |
+| Performance / Recovery | `performance` |
+| Hair and Skin | `hair-skin` |
 
