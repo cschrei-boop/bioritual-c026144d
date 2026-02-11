@@ -24,7 +24,7 @@ import CartRedirect from "./pages/CartRedirect";
 import LandingPage from "./pages/LandingPage";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
-
+import EmailPopup from "./components/sections/EmailPopup";
 const queryClient = new QueryClient();
 
 const AppContent = () => {
@@ -32,6 +32,7 @@ const AppContent = () => {
   return (
     <>
       <ScrollToTop />
+      <EmailPopup />
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/start-here" element={<StartHere />} />
