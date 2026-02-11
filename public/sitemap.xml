@@ -1,92 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bioritual.lovable.app/</loc>
+    <loc>https://bioritual.us/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://bioritual.lovable.app/start-here</loc>
+    <loc>https://bioritual.us/start-here</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bioritual.lovable.app/protocols</loc>
+    <loc>https://bioritual.us/protocols</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://bioritual.lovable.app/weight-loss</loc>
+    <loc>https://bioritual.us/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bioritual.lovable.app/bio-signals</loc>
+    <loc>https://bioritual.us/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bioritual.us/collection/protocols</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bioritual.us/weight-loss</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bioritual.lovable.app/bio-signals/energy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://bioritual.lovable.app/bio-signals/performance</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://bioritual.lovable.app/bio-signals/cognition</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://bioritual.lovable.app/bio-signals/longevity</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://bioritual.lovable.app/bio-signals/hair-skin</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://bioritual.lovable.app/truth-about-peptides</loc>
+    <loc>https://bioritual.us/bio-signals</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bioritual.lovable.app/glp-1-retratutide-guide</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bioritual.lovable.app/glp-1-myths</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bioritual.lovable.app/coaching</loc>
+    <loc>https://bioritual.us/bio-signals/energy</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bioritual.lovable.app/ai-concierge</loc>
+    <loc>https://bioritual.us/bio-signals/performance</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bioritual.lovable.app/terms-of-service</loc>
+    <loc>https://bioritual.us/bio-signals/cognition</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bioritual.us/bio-signals/longevity</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bioritual.us/bio-signals/hair-skin</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bioritual.us/truth-about-peptides</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bioritual.us/glp-1-retratutide-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bioritual.us/glp-1-myths</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://bioritual.us/coaching</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bioritual.us/ai-concierge</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bioritual.us/terms-of-service</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://bioritual.lovable.app/fulfillment-policy</loc>
+    <loc>https://bioritual.us/fulfillment-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://bioritual.lovable.app/consent-acknowledgment</loc>
+    <loc>https://bioritual.us/consent-acknowledgment</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

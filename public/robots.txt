@@ -35,4 +35,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://bioritual.lovable.app/sitemap.xml
+Sitemap: https://bioritual.us/sitemap.xml

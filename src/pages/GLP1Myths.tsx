@@ -64,7 +64,7 @@ const GLP1Myths = () => {
         headline: "GLP-1 Myths, Side Effects & Safety | We've Heard It All",
         description: "Tired of conflicting advice about GLP-1 weight loss drugs? We break down the most common GLP-1 myths, side effects, and safety concerns—without hype or shame.",
         author: { "@type": "Organization", name: "BioRitual" },
-        publisher: { "@type": "Organization", name: "BioRitual", url: "https://bioritual.lovable.app" },
+        publisher: { "@type": "Organization", name: "BioRitual", url: "https://bioritual.us" },
       },
       {
         "@type": "FAQPage",
@@ -82,7 +82,7 @@ const GLP1Myths = () => {
       seo={{
         title: "GLP-1 Myths, Side Effects & Safety | We've Heard It All",
         description: "Tired of conflicting advice about GLP-1 weight loss drugs? We break down the most common GLP-1 myths, side effects, and safety concerns—without hype or shame.",
-        canonicalUrl: "https://bioritual.lovable.app/glp-1-myths",
+        canonicalUrl: "https://bioritual.us/glp-1-myths",
         structuredData,
       }}
       hero={{

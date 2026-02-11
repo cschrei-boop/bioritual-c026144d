@@ -7,7 +7,7 @@ const About = () => {
         title: "BioRitual | About Us",
         description:
           "The story behind BioRitual — from depression and ADHD to structured biological signaling, peptides, and ownership of your health.",
-        canonicalUrl: "https://bioritual.lovable.app/about",
+        canonicalUrl: "https://bioritual.us/about",
       }}
       hero={{
         type: "video",
