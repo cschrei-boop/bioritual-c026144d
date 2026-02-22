@@ -1,0 +1,49 @@
+Name,Type,Category,File Path,Used In,Status
+Header.tsx,Reusable Block,Layout,src/components/sections/Header.tsx,"Index.tsx; Blog.tsx; Protocols.tsx; ProtocolsCollection.tsx; StartHere.tsx; LandingPage.tsx; ProductPageTemplate.tsx; BlogPageTemplate.tsx; DynamicProduct.tsx",Active
+Footer.tsx,Reusable Block,Layout,src/components/sections/Footer.tsx,"Index.tsx; Blog.tsx; Protocols.tsx; ProtocolsCollection.tsx; StartHere.tsx; LandingPage.tsx; ProductPageTemplate.tsx; BlogPageTemplate.tsx; DynamicProduct.tsx",Active
+Hero.tsx,Reusable Block,Marketing,src/components/sections/Hero.tsx,"Index.tsx; LandingPage.tsx",Active
+VideoHero.tsx,Reusable Block,Marketing,src/components/sections/VideoHero.tsx,"BlogPageTemplate.tsx; Protocols.tsx; StartHereSection.tsx",Active
+CartDrawer.tsx,Reusable Block,Layout,src/components/CartDrawer.tsx,Header.tsx,Active
+ScrollToTop.tsx,Reusable Block,Layout,src/components/ScrollToTop.tsx,App.tsx,Active
+EmailPopup.tsx,Reusable Block,Marketing,src/components/sections/EmailPopup.tsx,App.tsx,Active
+StickyEmailFooter.tsx,Reusable Block,Marketing,src/components/sections/StickyEmailFooter.tsx,"Index.tsx; LandingPage.tsx",Active
+FounderQuote.tsx,Reusable Block,Marketing,src/components/sections/FounderQuote.tsx,"Index.tsx; LandingPage.tsx",Active
+FeaturedCollection.tsx,Reusable Block,Marketing,src/components/sections/FeaturedCollection.tsx,"Index.tsx; LandingPage.tsx",Active
+ThreePillarsCarousel.tsx,Reusable Block,Marketing,src/components/sections/ThreePillarsCarousel.tsx,"Index.tsx; LandingPage.tsx",Active
+ValueProps.tsx,Reusable Block,Marketing,src/components/sections/ValueProps.tsx,"Index.tsx; LandingPage.tsx",Active
+FinalCTA.tsx,Reusable Block,Marketing,src/components/sections/FinalCTA.tsx,"Index.tsx; LandingPage.tsx",Active
+StartHereSection.tsx,Reusable Block,Marketing,src/components/sections/StartHereSection.tsx,"Index.tsx; StartHere.tsx",Active
+ShopByGoal.tsx,Reusable Block,Product,src/components/sections/ShopByGoal.tsx,"BlogPageTemplate.tsx; GetTheLook.tsx",Active
+ProductCarousel.tsx,Reusable Block,Product,src/components/sections/ProductCarousel.tsx,ShopByGoal.tsx,Active
+NotSureBlock.tsx,Reusable Block,Product,src/components/sections/NotSureBlock.tsx,"ProductPageTemplate.tsx; DynamicProduct.tsx; WeightLossLanding.tsx",Active
+ArticleCarousel.tsx,Reusable Block,Blog,src/components/blog/ArticleCarousel.tsx,"Index.tsx; BlogPageTemplate.tsx",Active
+AnimatedSection.tsx,Reusable Block,Blog,src/components/blog/AnimatedSection.tsx,"BlogCTASection.tsx; GLP1Myths.tsx; GLP1RetratutideGuide.tsx; TruthAboutPeptides.tsx; WeightLossLanding.tsx (via index barrel)",Active
+BlogCTASection.tsx,Reusable Block,Blog,src/components/blog/BlogCTASection.tsx,BlogPageTemplate.tsx (via index barrel),Active
+BlogDisclaimer.tsx,Reusable Block,Blog,src/components/blog/BlogDisclaimer.tsx,BlogPageTemplate.tsx (via index barrel),Active
+BlogQuoteBlock.tsx,Reusable Block,Blog,src/components/blog/BlogQuoteBlock.tsx,GLP1Myths.tsx (via index barrel),Active
+BlogImageHero.tsx,Reusable Block,Blog,src/components/blog/BlogImageHero.tsx,BlogPageTemplate.tsx (via index barrel),Active
+BlogPageTemplate.tsx,Template,Blog,src/components/blog/BlogPageTemplate.tsx,"About.tsx; GLP1Myths.tsx; GLP1RetratutideGuide.tsx; TruthAboutPeptides.tsx; WeightLossLanding.tsx",Active
+ProductPageTemplate.tsx,Template,Product,src/components/product/ProductPageTemplate.tsx,"ProductAIConcierge.tsx; ProductCoaching.tsx; DynamicProduct.tsx",Active
+LandingPage.tsx,Template,Marketing,src/pages/LandingPage.tsx,App.tsx (route),Active
+ProductImageGallery.tsx,Reusable Block,Product,src/components/product/ProductImageGallery.tsx,ProductPageTemplate.tsx,Active
+ProductMediaGallery.tsx,Reusable Block,Product,src/components/product/ProductMediaGallery.tsx,DynamicProduct.tsx,Active
+CheckoutConfirmationModal.tsx,Page-Specific,Product,src/components/CheckoutConfirmationModal.tsx,CartDrawer.tsx,Internal
+NavLink.tsx,Page-Specific,Layout,src/components/NavLink.tsx,None,Orphaned
+ImageBackground.tsx,Page-Specific,Layout,src/components/ImageBackground.tsx,None,Orphaned
+VideoBackground.tsx,Page-Specific,Layout,src/components/VideoBackground.tsx,None,Orphaned
+BuiltFor.tsx,Page-Specific,Marketing,src/components/sections/BuiltFor.tsx,None,Orphaned
+Categories.tsx,Page-Specific,Marketing,src/components/sections/Categories.tsx,None,Orphaned
+WhyNinetyDays.tsx,Page-Specific,Marketing,src/components/sections/WhyNinetyDays.tsx,None,Orphaned
+Peptides.tsx,Page-Specific,Marketing,src/components/sections/Peptides.tsx,None,Orphaned
+PressQuotes.tsx,Page-Specific,Marketing,src/components/sections/PressQuotes.tsx,None,Orphaned
+Problem.tsx,Page-Specific,Marketing,src/components/sections/Problem.tsx,None,Orphaned
+Services.tsx,Page-Specific,Marketing,src/components/sections/Services.tsx,None,Orphaned
+ThreeLegs.tsx,Page-Specific,Marketing,src/components/sections/ThreeLegs.tsx,None,Orphaned
+FeaturedServices.tsx,Page-Specific,Marketing,src/components/sections/FeaturedServices.tsx,ChooseYourPath.tsx,Orphaned
+ChooseYourPath.tsx,Page-Specific,Marketing,src/components/sections/ChooseYourPath.tsx,None,Orphaned
+GetTheLook.tsx,Page-Specific,Marketing,src/components/sections/GetTheLook.tsx,None,Orphaned
+HeroIllustration.tsx,Page-Specific,Illustration,src/components/illustrations/HeroIllustration.tsx,None,Orphaned
+ProblemIllustration.tsx,Page-Specific,Illustration,src/components/illustrations/ProblemIllustration.tsx,None,Orphaned
+PeptidesIllustration.tsx,Page-Specific,Illustration,src/components/illustrations/PeptidesIllustration.tsx,None,Orphaned
+TimelineIllustration.tsx,Page-Specific,Illustration,src/components/illustrations/TimelineIllustration.tsx,None,Orphaned
+ProfessionalIllustration.tsx,Page-Specific,Illustration,src/components/illustrations/ProfessionalIllustration.tsx,None,Orphaned
