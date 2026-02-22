@@ -1,14 +1,30 @@
 
-# Add Protocols Carousel to BlogPageTemplate
 
-## What Changes
+## CSV Component Inventory
 
-Add the `ShopByGoal` protocols carousel to the `BlogPageTemplate` component, right after the `<Header />`. This will make it appear on all blog/article pages (Truth About Peptides, GLP-1 Myths, etc.) without modifying each page individually.
+Create a CSV file at `public/component-inventory.csv` with columns:
 
-## Technical Details
+| Column | Description |
+|--------|-------------|
+| Name | Component filename |
+| Type | Template, Reusable Block, or Page-Specific |
+| Category | e.g. Layout, Marketing, Blog, Product, Illustration |
+| File Path | Full path in repo |
+| Used In | Pages/components that import it |
+| Status | Active, Orphaned, or Internal |
 
-### `src/components/blog/BlogPageTemplate.tsx`
+### Data source
 
-- Import `ShopByGoal` from `@/components/sections/ShopByGoal`
-- Insert `<ShopByGoal />` between `<Header />` and `<main>`
-- Add an optional `hideProtocolsCarousel` prop (default `false`) so individual pages can opt out if needed
+The inventory from the previous audit covers ~45 components across:
+- 3 Templates
+- ~22 Reusable Blocks
+- ~12 Page-Specific / Orphaned components
+- 6 Illustrations
+
+I'll scan imports to confirm usage status for each, then output a single CSV file.
+
+### Technical details
+- File location: `public/component-inventory.csv`
+- Standard CSV with header row, comma-delimited, double-quote escaped values
+- "Used In" column will list all importing files separated by semicolons
+
