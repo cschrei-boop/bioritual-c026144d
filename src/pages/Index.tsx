@@ -1,12 +1,12 @@
 import Header from "@/components/sections/Header";
-import ShopByGoal from "@/components/sections/ShopByGoal";
 import Hero from "@/components/sections/Hero";
 import FounderQuote from "@/components/sections/FounderQuote";
-import FeaturedCollection from "@/components/sections/FeaturedCollection";
-import ArticleCarousel from "@/components/blog/ArticleCarousel";
-import StartHereSection from "@/components/sections/StartHereSection";
+import JourneySnippet from "@/components/sections/JourneySnippet";
+import HowItWorksCondensed from "@/components/sections/HowItWorksCondensed";
+import JesseIntro from "@/components/sections/JesseIntro";
+import ProtocolGrid from "@/components/sections/ProtocolGrid";
 import ThreePillarsCarousel from "@/components/sections/ThreePillarsCarousel";
-import ValueProps from "@/components/sections/ValueProps";
+import ArticleCarousel from "@/components/blog/ArticleCarousel";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/sections/Footer";
 import StickyEmailFooter from "@/components/sections/StickyEmailFooter";
@@ -14,9 +14,10 @@ import StickyEmailFooter from "@/components/sections/StickyEmailFooter";
 const qualifiers = [
   "You've had at least one quiet \"oh… shit\" moment about aging.",
   "Your body doesn't respond the way it did at 28.",
-  "You're skeptical of pharma hype and influencer hype.",
-  "You listen to podcasts with interest — and with raised eyebrows.",
+  "You're skeptical of pharma hype and influencer hype in equal measure.",
+  "You listen to podcasts with interest — and raised eyebrows.",
   "You've tried \"just be consistent\" and discovered that biology does not care about motivational quotes.",
+  "You suspect the story you're telling about your health isn't the one you actually want to be living.",
 ];
 
 const manifestoLines = [
@@ -41,17 +42,17 @@ const Index = () => {
           "BioRitual exists for people who are tired of that.",
           "Not tired of health.\nTired of noise.",
         ]}
-        ctaText="Start with clarity"
-        ctaLink="/collection/protocols"
+        ctaText="See how it works"
+        ctaLink="/how-it-works"
+        ctaText2="Talk to Jesse — your personal AI coach"
+        ctaLink2="/ai-concierge"
         subHeroLine1=""
         subHeroLine2=""
       />
-      <ShopByGoal />
       <FounderQuote>
         <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4">
-          Let's be specific.
+          Let's be specific. This is for you if:
         </p>
-        <p className="text-lg md:text-xl mb-4 font-serif">This is for you if:</p>
         <ul className="text-left max-w-xl mx-auto space-y-2 mb-8">
           {qualifiers.map((q, i) => (
             <li key={i} className="text-base md:text-lg leading-normal text-foreground/85 flex gap-3">
@@ -74,32 +75,28 @@ const Index = () => {
           ))}
         </div>
       </FounderQuote>
-      <FeaturedCollection
-        headline="What we actually do"
-        description={"We help you think clearly about your health.\n\nNot by giving you a reset button.\nNot by promising to \"optimize\" you into a superhero.\nBut by helping you understand what matters, what doesn't, and what comes next.\n\nWe organize decisions around:\n\n- Lifestyle and recovery\n- Training and muscle retention\n- Supplements\n- Peptides and metabolic signaling — including GLP-1s\n\nBecause certainty sells.\nClarity lasts."}
-      />
-      <StartHereSection showHero={false} />
-      <ArticleCarousel />
+      <JourneySnippet />
+      <HowItWorksCondensed />
+      <JesseIntro />
+      <ProtocolGrid />
       <ThreePillarsCarousel
         subtitle=""
-        title="A grown-up word about peptides and GLP-1s"
-        description1={"Yes, we work with peptides.\nYes, we discuss GLP-1 medications.\n\nNo, they are not magic.\nAnd no, they are not moral failures.\n\nThey are biological signals.\n\nUsed conservatively, sequenced properly, and supported with the right habits, they can help regulate appetite, improve metabolic flexibility, support recovery, and make long-term change possible."}
-        description2={"The problem is not the tool.\nThe problem is pretending tools exist outside of context."}
+        title="A grown-up word about peptides and GLP-1s."
+        description1={"Yes, we work with peptides. Yes, we discuss GLP-1 medications. No, they are not magic. And no, they are not moral failures.\n\nThey are biological signals. Used conservatively, sequenced properly, and supported with the right habits, they can help regulate appetite, improve metabolic flexibility, support recovery, and make long-term change possible."}
+        description2={"The problem is not the tool. The problem is pretending tools exist outside of context."}
       />
-      <ValueProps
-        values={[
-          { title: "Tired of Noise", description: "You don't need another podcast hero. You need a framework that respects your intelligence and your time." },
-          { title: "Anti-Nonsense", description: "You're not anti-science. You're anti-B.S. We organize decisions, not hype cycles." },
-          { title: "Context Over Magic", description: "Peptides and GLP-1s aren't miracles or moral failures. They're tools — and tools need context." },
-          { title: "Clarity Over Certainty", description: "Because certainty sells. Clarity lasts. We help you think clearly, not follow blindly." },
-        ]}
-      />
-      <ShopByGoal />
+      <ArticleCarousel />
       <FinalCTA
         headline="You don't need to reinvent yourself."
         italicWord=""
-        description="You just need to stop letting the loudest voice decide for you."
-        buttonText="Start with clarity"
+        subheadline="You just need to stop letting the loudest voice decide for you."
+        description=""
+        body="Start wherever you are. Talk to Jesse first if you're not sure. Move into a protocol when you're ready. Bring in the founders if you want a human in the room. There's no wrong entry point."
+        buttons={[
+          { text: "Talk to Jesse — your personal AI coach", href: "/ai-concierge", variant: "link" },
+          { text: "See protocols", href: "/collection/protocols", variant: "link" },
+          { text: "How it works", href: "/how-it-works", variant: "link" },
+        ]}
       />
       <Footer />
       <StickyEmailFooter />

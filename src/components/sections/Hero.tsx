@@ -10,6 +10,8 @@ interface HeroProps {
   bodyParagraphs?: string[];
   ctaText?: string;
   ctaLink?: string;
+  ctaText2?: string;
+  ctaLink2?: string;
   subHeroLine1?: string;
   subHeroLine2?: string;
   backgroundImage?: string;
@@ -22,6 +24,8 @@ const Hero = ({
   bodyParagraphs,
   ctaText = "→ Learn how the framework is structured",
   ctaLink = "/start-here",
+  ctaText2,
+  ctaLink2,
   subHeroLine1 = "Most people don't need more supplements.",
   subHeroLine2 = "That's where we come in.",
   backgroundImage,
@@ -75,14 +79,16 @@ const Hero = ({
       <div className="relative z-10 w-full px-6 md:px-12 lg:px-16 py-20">
         <div className="max-w-2xl">
           {/* Tagline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-xs tracking-[0.3em] uppercase mb-6"
-          >
-            {tagline}
-          </motion.p>
+          {tagline && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-xs tracking-[0.3em] uppercase mb-6"
+            >
+              {tagline}
+            </motion.p>
+          )}
 
           {/* Main headline */}
           <motion.h1
@@ -102,7 +108,6 @@ const Hero = ({
             className="text-foreground mb-8 max-w-xl space-y-2"
           >
             {paragraphs.map((p, i) => {
-              // Last paragraph with medical disclaimer gets bold styling
               const isMedicalDisclaimer = p.includes("not a medical service");
               return (
                 <p key={i} className={isMedicalDisclaimer ? "font-medium text-foreground" : ""}>
@@ -112,11 +117,12 @@ const Hero = ({
             })}
           </motion.div>
 
-          {/* CTA Button */}
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4"
           >
             <Button 
               size="lg" 
@@ -125,24 +131,38 @@ const Hero = ({
             >
               <Link to={ctaLink}>{ctaText}</Link>
             </Button>
+            {ctaText2 && ctaLink2 && (
+              <Link
+                to={ctaLink2}
+                className="inline-flex items-center text-sm tracking-wider hover:opacity-60 transition-opacity underline underline-offset-4 px-2 py-3"
+              >
+                {ctaText2}
+              </Link>
+            )}
           </motion.div>
 
           {/* Sub-hero clarifier */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 pt-8 border-t border-foreground/20 max-w-lg"
-          >
-            <p className="text-foreground text-sm leading-normal">
-              {subHeroLine1}
-              <br />
-              They need clearer frameworks to help them think through what to do next.
-            </p>
-            <p className="text-foreground text-sm mt-3 font-medium">
-              {subHeroLine2}
-            </p>
-          </motion.div>
+          {(subHeroLine1 || subHeroLine2) && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-12 pt-8 border-t border-foreground/20 max-w-lg"
+            >
+              {subHeroLine1 && (
+                <p className="text-foreground text-sm leading-normal">
+                  {subHeroLine1}
+                  <br />
+                  They need clearer frameworks to help them think through what to do next.
+                </p>
+              )}
+              {subHeroLine2 && (
+                <p className="text-foreground text-sm mt-3 font-medium">
+                  {subHeroLine2}
+                </p>
+              )}
+            </motion.div>
+          )}
         </div>
       </div>
     </section>
