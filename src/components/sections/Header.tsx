@@ -16,7 +16,7 @@ const Header = () => {
     isLoading: protocolsLoading
   } = useProtocolsNavigation();
   const navLinks = [
-    { label: "Jesse", href: "/ai-concierge" },
+    { label: "Jesse™", href: "/ai-concierge" },
     { label: "How It Works", href: "/how-it-works" },
     { label: "The Journey", href: "/the-journey" },
     { label: "1:1 Coaching", href: "/coaching" },

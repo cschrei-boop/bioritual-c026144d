@@ -22,11 +22,11 @@ interface PathCard {
 const paths: PathCard[] = [
   {
     id: "jesse",
-    title: "Talk to Jesse first",
+    title: "Talk to Jesse™ first",
     bestIf: "I want to understand this before I commit to anything.",
-    body: "Jesse — your personal AI coach — lives in your WhatsApp or iMessage. Ask it anything about peptides, GLP-1s, longevity science, or metabolic health. It'll give you straight answers, tell you when the evidence is thin, and help you figure out whether any of this makes sense for your situation.",
+    body: "Jesse™ — your personal AI coach — lives in your WhatsApp or iMessage. Ask it anything about peptides, GLP-1s, longevity science, or metabolic health. It'll give you straight answers, tell you when the evidence is thin, and help you figure out whether any of this makes sense for your situation.",
     extra: "No protocol. No peptides. Just clarity.",
-    ctaLabel: "Meet Jesse",
+    ctaLabel: "Meet Jesse™",
     href: "/ai-concierge",
     icon: Sparkles,
   },
@@ -34,7 +34,7 @@ const paths: PathCard[] = [
     id: "protocols",
     title: "Bio Signals Protocols",
     bestIf: "I know what I want to work on. I want a structured system to do it.",
-    body: "A 3-month protocol built around your specific goal. Jesse — your personal AI coach — handles your intake, your protocol is confirmed, everything ships, and Jesse stays with you.",
+    body: "A 3-month protocol built around your specific goal. Jesse™ — your personal AI coach — handles your intake, your protocol is confirmed, everything ships, and Jesse™ stays with you.",
     extra: "Six goal areas: Weight Loss, Energy, Performance + Recovery, Hair + Skin, Cognition, Longevity.",
     ctaLabel: "See protocols",
     href: "/collection/protocols",
@@ -44,7 +44,7 @@ const paths: PathCard[] = [
     id: "coaching",
     title: "3-Month Coaching Sprint",
     bestIf: "I want a human in the room. Someone who built this and knows it cold.",
-    body: "Everything in a Bio Signals Protocol, plus direct access to Hans and Luis — the founders — via weekly video calls and ongoing oversight. Jesse — your personal AI coach — is still part of the experience. This adds the human layer for people who want it.",
+    body: "Everything in a Bio Signals Protocol, plus direct access to Hans and Luis — the founders — via weekly video calls and ongoing oversight. Jesse™ — your personal AI coach — is still part of the experience. This adds the human layer for people who want it.",
     extra: "Not everyone needs this. If you're unsure, start with a protocol. We'll tell you if you should escalate.",
     ctaLabel: "Learn about the Coaching Sprint",
     href: "/coaching",
@@ -93,16 +93,16 @@ const StartHere = () => {
         <section className="py-12 px-6 md:px-12 lg:px-16 bg-secondary rounded-3xl">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl mb-4">Not sure which path?</h2>
-            <p className="text-foreground/70 leading-normal mb-6">Ask Jesse. Seriously. Describe your situation and Jesse — your personal AI coach — will tell you which path makes sense and why. It has no incentive to push you toward the most expensive option. If a lower tier is right for you, that's what it'll say.</p>
-            <Link to="/ai-concierge" className="inline-block text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity">→ Talk to Jesse</Link>
+            <p className="text-foreground/70 leading-normal mb-6">Ask Jesse™. Seriously. Describe your situation and Jesse™ — your personal AI coach — will tell you which path makes sense and why. It has no incentive to push you toward the most expensive option. If a lower tier is right for you, that's what it'll say.</p>
+            <Link to="/ai-concierge" className="inline-block text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity">→ Talk to Jesse™</Link>
           </div>
         </section>
         <section className="py-12 px-6 md:px-12 lg:px-16">
           <div className="max-w-3xl">
             <h2 className="text-3xl md:text-4xl mb-6">How it all connects</h2>
             <div className="space-y-4 text-foreground/80 leading-normal">
-              <p>Jesse exists at every level. At the entry tier, Jesse is the product — your thinking partner for navigating the wellness noise. In a protocol, Jesse runs your intake, tracks your progress, and maintains your Notion log for 3 months. In the Coaching Sprint, Jesse does all of that while Hans and Luis provide direct oversight.</p>
-              <p>You can start anywhere. People move between paths as their needs change. Starting with Jesse and upgrading to a protocol mid-conversation is common. There's no wrong entry point.</p>
+              <p>Jesse™ exists at every level. At the entry tier, Jesse™ is the product — your thinking partner for navigating the wellness noise. In a protocol, Jesse™ runs your intake, tracks your progress, and maintains your Notion log for 3 months. In the Coaching Sprint, Jesse™ does all of that while Hans and Luis provide direct oversight.</p>
+              <p>You can start anywhere. People move between paths as their needs change. Starting with Jesse™ and upgrading to a protocol mid-conversation is common. There's no wrong entry point.</p>
             </div>
             <div className="mt-8">
               <Link to="/how-it-works" className="inline-block text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity">→ See how it works</Link>

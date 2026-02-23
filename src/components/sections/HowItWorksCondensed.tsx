@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 const steps = [
   {
     num: "1",
-    title: "Talk to Jesse",
+    title: "Talk to Jesse™",
     description:
-      "Jesse — your personal AI coach — reaches out via WhatsApp or iMessage. No forms. Just questions, until the picture is clear.",
+      "Jesse™ — your personal AI coach — reaches out via WhatsApp or iMessage. No forms. Just questions, until the picture is clear.",
   },
   {
     num: "2",
@@ -24,7 +24,7 @@ const steps = [
   },
   {
     num: "4",
-    title: "Jesse stays with you",
+    title: "Jesse™ stays with you",
     description:
       "Weekly insights. Real-time flags. A private Notion log that builds itself through your conversations over 3 months.",
   },

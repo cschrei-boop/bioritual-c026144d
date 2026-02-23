@@ -80,7 +80,7 @@ const sections = [
     id: "how-bioritual-fits",
     title: "How BioRitual fits into this",
     paragraphs: [
-      "Jesse — your personal AI coach — is the thinking partner for the journey. Not a cheerleader. Not a drill sergeant. Something closer to a sharp colleague who has processed an enormous amount of information about biology, behavior, and habit formation, and has no interest in telling you what you want to hear.",
+      "Jesse™ — your personal AI coach — is the thinking partner for the journey. Not a cheerleader. Not a drill sergeant. Something closer to a sharp colleague who has processed an enormous amount of information about biology, behavior, and habit formation, and has no interest in telling you what you want to hear.",
       "The protocols give the journey structure in three-month units. The peptides are tools within that structure — biological signals that support the work you're doing, not substitutes for doing it.",
       "The coaching sprint adds human oversight for people who want founders directly involved in the navigation.",
       "None of it works without the journey. All of it works better because of it.",
@@ -105,7 +105,7 @@ const JourneyPage = () => {
           bodyParagraphs={["Most people haven't chosen that story deliberately. BioRitual exists for people who are ready to."]}
           ctaText="See how it works"
           ctaLink="/how-it-works"
-          ctaText2="Talk to Jesse — your personal AI coach"
+          ctaText2="Talk to Jesse™ — your personal AI coach"
           ctaLink2="/ai-concierge"
           subHeroLine1=""
           subHeroLine2=""
@@ -149,7 +149,7 @@ const JourneyPage = () => {
           description="You don't need to know where it ends. You just need to know where you are now."
           buttons={[
             { text: "See protocols", href: "/collection/protocols", variant: "primary" },
-            { text: "Talk to Jesse first", href: "/ai-concierge", variant: "link" },
+            { text: "Talk to Jesse™ first", href: "/ai-concierge", variant: "link" },
           ]}
         />
         <ShopByGoal />

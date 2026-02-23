@@ -30,7 +30,7 @@ const ProductCoaching = () => {
             <h2 className="text-3xl md:text-4xl mb-6">What this is</h2>
             <div className="space-y-4 text-foreground/80 leading-normal">
               <p>This is not a managed service where someone checks in on you once a week and calls it coaching. This is Hans and Luis — directly involved in your protocol, available for real questions, and present enough to notice when something isn't working.</p>
-              <p>Jesse — your personal AI coach — is still part of this. It handles your intake, tracks your progress, maintains your Notion log, and stays active in your WhatsApp or iMessage throughout the 3 months. The Coaching Sprint adds a layer on top of that: two founders with direct experience in everything BioRitual does, available for weekly video calls and ongoing oversight.</p>
+              <p>Jesse™ — your personal AI coach — is still part of this. It handles your intake, tracks your progress, maintains your Notion log, and stays active in your WhatsApp or iMessage throughout the 3 months. The Coaching Sprint adds a layer on top of that: two founders with direct experience in everything BioRitual does, available for weekly video calls and ongoing oversight.</p>
               <p>If you've been through the noise long enough to know you want someone accountable on the other end, this is that.</p>
             </div>
           </div>
@@ -39,7 +39,7 @@ const ProductCoaching = () => {
           <div className="max-w-3xl">
             <h2 className="text-3xl md:text-4xl mb-8">What's included</h2>
             <div className="space-y-8">
-              <div><h3 className="text-xl font-medium mb-2">Everything in a Bio Signals Protocol</h3><p className="text-foreground/70 leading-normal">Your intake consultation with Jesse — your personal AI coach — your personalized protocol, the peptides and supplies shipped directly to you, your private client wiki, and Jesse active for the full 3 months.</p></div>
+              <div><h3 className="text-xl font-medium mb-2">Everything in a Bio Signals Protocol</h3><p className="text-foreground/70 leading-normal">Your intake consultation with Jesse™ — your personal AI coach — your personalized protocol, the peptides and supplies shipped directly to you, your private client wiki, and Jesse™ active for the full 3 months.</p></div>
               <div><h3 className="text-xl font-medium mb-2">Weekly video calls with Hans and Luis</h3><p className="text-foreground/70 leading-normal">Not a check-in call. A working session. We review what's happening, what's shifting, and what needs adjusting. You come with questions. We come with observations.</p></div>
               <div><h3 className="text-xl font-medium mb-2">Ongoing async access to the founders</h3><p className="text-foreground/70 leading-normal">Between calls, Hans and Luis are reachable. Not response-guaranteed-in-five-minutes, but genuinely available for things that can't wait until next week.</p></div>
               <div><h3 className="text-xl font-medium mb-2">Protocol adjustments as needed</h3><p className="text-foreground/70 leading-normal">Three months is long enough for the picture to change. If something isn't working or something new emerges, the protocol adapts. That's not an upsell — it's part of what you're paying for.</p></div>
@@ -59,11 +59,11 @@ const ProductCoaching = () => {
           <div className="max-w-3xl">
             <h2 className="text-3xl md:text-4xl mb-6">A direct note</h2>
             <div className="space-y-4 text-foreground/80 leading-normal">
-              <p>Not everyone needs this. If a Bio Signals Protocol with Jesse is sufficient for your situation, that's what we'll tell you. The goal is the right level of support for your specific starting point — not the most expensive option by default.</p>
-              <p>If you're unsure, start with a protocol or talk to Jesse first. You can always move up. We'll tell you if it makes sense.</p>
+              <p>Not everyone needs this. If a Bio Signals Protocol with Jesse™ is sufficient for your situation, that's what we'll tell you. The goal is the right level of support for your specific starting point — not the most expensive option by default.</p>
+              <p>If you're unsure, start with a protocol or talk to Jesse™ first. You can always move up. We'll tell you if it makes sense.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <Link to="/ai-concierge" className="text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity">→ Talk to Jesse — your personal AI coach</Link>
+              <Link to="/ai-concierge" className="text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity">→ Talk to Jesse™ — your personal AI coach</Link>
               <Link to="/collection/protocols" className="text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity">→ See Bio Signals Protocols</Link>
             </div>
           </div>

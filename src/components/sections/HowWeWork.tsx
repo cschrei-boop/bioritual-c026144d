@@ -5,8 +5,8 @@ import { useRef } from "react";
 const steps = [
   {
     num: "1",
-    title: "You talk. Jesse listens.",
-    body: "After purchase, Jesse — your personal AI coach — reaches out via WhatsApp or iMessage to start your intake. No forms. Jesse asks questions until it has a clear picture of your history, your goal, and your starting point.",
+    title: "You talk. Jesse™ listens.",
+    body: "After purchase, Jesse™ — your personal AI coach — reaches out via WhatsApp or iMessage to start your intake. No forms. Jesse™ asks questions until it has a clear picture of your history, your goal, and your starting point.",
   },
   {
     num: "2",
@@ -20,8 +20,8 @@ const steps = [
   },
   {
     num: "4",
-    title: "Jesse tracks as you go.",
-    body: "Jesse — your personal AI coach — stays with you for the full 3 months. Weekly insights. Real-time flags when something shifts. A private Notion log that builds itself through your conversations — you don't fill out anything.",
+    title: "Jesse™ tracks as you go.",
+    body: "Jesse™ — your personal AI coach — stays with you for the full 3 months. Weekly insights. Real-time flags when something shifts. A private Notion log that builds itself through your conversations — you don't fill out anything.",
   },
   {
     num: "5",

@@ -19,11 +19,11 @@ export interface CardData {
 export const defaultStartHereCards: CardData[] = [
   {
     id: "learn",
-    title: "Jesse",
+    title: "Jesse™",
     tagline: "Learn & understand",
     body: "Your personal AI coach. Ask anything about peptides, GLP-1s, or longevity science — in plain language.",
     bestIf: "I want to understand this before acting.",
-    ctaLabel: "Meet Jesse",
+    ctaLabel: "Meet Jesse™",
     href: "/ai-concierge",
     icon: Sparkles,
     node: "Learn",
@@ -43,7 +43,7 @@ export const defaultStartHereCards: CardData[] = [
     id: "guided",
     title: "3-Month Coaching Sprint",
     tagline: "Full guidance & orientation",
-    body: "Direct access to the founders — weekly sessions, ongoing oversight, and Jesse running alongside.",
+    body: "Direct access to the founders — weekly sessions, ongoing oversight, and Jesse™ running alongside.",
     bestIf: "I don't know where to start.",
     ctaLabel: "See the Coaching Sprint",
     href: "/coaching",
