@@ -1,6 +1,6 @@
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
-import { motion } from "framer-motion";
+import Hero from "@/components/sections/Hero";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
@@ -15,14 +15,15 @@ const ProductCoaching = () => {
       </Helmet>
       <Header />
       <main>
-        <section className="py-20 px-6 md:px-12 lg:px-16">
-          <div className="max-w-3xl">
-            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight uppercase mb-6">For people who want a human in the room.</h1>
-              <p className="text-lg text-foreground/70">A 3-month protocol with direct access to the founders — the people who built this, tested it, and know it cold.</p>
-            </motion.div>
-          </div>
-        </section>
+        <Hero
+          tagline=""
+          headline="For people who want a human in the room."
+          bodyParagraphs={["A 3-month protocol with direct access to the founders — the people who built this, tested it, and know it cold."]}
+          ctaText=""
+          ctaLink=""
+          subHeroLine1=""
+          subHeroLine2=""
+        />
         <section className="py-12 px-6 md:px-12 lg:px-16">
           <div className="max-w-3xl">
             <h2 className="text-3xl md:text-4xl mb-6">What this is</h2>

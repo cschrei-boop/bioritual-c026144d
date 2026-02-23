@@ -1,6 +1,6 @@
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
-import { motion } from "framer-motion";
+import Hero from "@/components/sections/Hero";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
@@ -15,20 +15,15 @@ const About = () => {
       <Header />
 
       <main>
-        {/* Hero */}
-        <section className="py-20 px-6 md:px-12 lg:px-16">
-          <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight uppercase mb-6">
-                About BioRitual
-              </h1>
-            </motion.div>
-          </div>
-        </section>
+        <Hero
+          tagline=""
+          headline="About BioRitual"
+          bodyParagraphs={[]}
+          ctaText=""
+          ctaLink=""
+          subHeroLine1=""
+          subHeroLine2=""
+        />
 
         {/* Section 1 — Opening */}
         <section className="py-12 px-6 md:px-12 lg:px-16">
