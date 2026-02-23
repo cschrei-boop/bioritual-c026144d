@@ -12,31 +12,31 @@ import bioSignalsLongevityHero from "@/assets/bio-signals-longevity-hero.jpg";
 const protocols = [
   {
     title: "Weight Loss + Metabolic Health",
-    description: "Six systems, working together.",
+    description: "Six systems — appetite, metabolism, lean mass, energy, recovery, hormones — working together.",
     href: "/products/bio-signals-weight-loss-metabolic-health",
     image: bioSignalsWeightLossHero,
   },
   {
     title: "Energy",
-    description: "Restore the baseline, not the stimulant.",
+    description: "Restore the baseline. Not the stimulant.",
     href: "/products/bio-signals-energy",
     image: bioSignalsEnergyHero,
   },
   {
     title: "Performance + Recovery",
-    description: "Output requires recovery. This protocol addresses both.",
+    description: "Output requires recovery. This protocol addresses both sides of the cycle.",
     href: "/products/bio-signals-performance-recovery",
     image: bioSignalsPerformanceHero,
   },
   {
     title: "Hair + Skin",
-    description: "Visible health is internal health.",
+    description: "Visible health is internal health. This protocol works on both.",
     href: "/products/bio-signals-hair-skin",
     image: bioSignalsHairSkinHero,
   },
   {
     title: "Cognition + Brain Health",
-    description: "Clarity over activation.",
+    description: "Clarity over activation. For minds working hard and not getting the output they expect.",
     href: "/products/bio-signals-cognition-brain-health",
     image: bioSignalsCognitionHero,
   },
@@ -48,7 +48,17 @@ const protocols = [
   },
 ];
 
-const ProtocolGrid = () => {
+interface ProtocolGridProps {
+  title?: string;
+  subtitle?: string;
+  showBottomLink?: boolean;
+}
+
+const ProtocolGrid = ({
+  title = "Six protocols. One framework.",
+  subtitle = "Each one built around a specific goal, confirmed through a Jesse™ intake conversation, and supported for the full three months.",
+  showBottomLink = true,
+}: ProtocolGridProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -62,10 +72,10 @@ const ProtocolGrid = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl mb-4">
-            Six protocols. One framework.
+            {title}
           </h2>
           <p className="text-foreground/70 max-w-2xl mx-auto">
-            Each one built around a specific goal, confirmed through a Jesse intake conversation, and supported for the full three months.
+            {subtitle}
           </p>
         </motion.div>
 
@@ -102,19 +112,21 @@ const ProtocolGrid = () => {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center mt-10"
-        >
-          <Link
-            to="/collection/protocols"
-            className="inline-block text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity"
+        {showBottomLink && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="text-center mt-10"
           >
-            → See all protocols
-          </Link>
-        </motion.div>
+            <Link
+              to="/protocols"
+              className="inline-block text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity"
+            >
+              → See all protocols
+            </Link>
+          </motion.div>
+        )}
       </div>
     </section>
   );
