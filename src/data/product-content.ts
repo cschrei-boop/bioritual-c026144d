@@ -28,8 +28,8 @@ export const standardProtocolFaqs: FAQ[] = [
     answer: "No. No individual compounds, substances, or peptides are sold, itemized, or priced on this site."
   },
   {
-    question: 'What does "protocol materials" mean?',
-    answer: "Protocol materials refer to non-itemized resources that may be included or coordinated as part of the overall educational and concierge experience. These materials are not available for individual purchase."
+    question: "What's included?",
+    answer: "Everything you need is included — the peptides, the supplies, Jesse for the full 3 months, your private Notion log, and your client wiki. Nothing is sold separately."
   },
   {
     question: "Do I need a prescription?",
@@ -64,8 +64,8 @@ export const standardProtocolDisclosures: Disclosure[] = [
     content: "Participation does not create a doctor–patient, clinician–patient, or other healthcare provider relationship. You are responsible for consulting licensed healthcare professionals as appropriate."
   },
   {
-    title: "Materials Disclosure",
-    content: "Any materials provided are included as part of a broader protocol experience and are not sold individually. No substances are itemized or priced."
+    title: "What's Included",
+    content: "Everything specified in the protocol is included — peptides, supplies, Jesse, Notion log, and client wiki. Nothing is sold separately or priced individually."
   },
   {
     title: "No Guaranteed Outcomes",
@@ -129,47 +129,42 @@ export const coachingFaqs: FAQ[] = [
   }
 ];
 
-// Standard "What's Included" sections for protocols
+// Standard "What's Included" sections for protocols (legacy fallback — protocol-content.tsx now uses verbatim blocks)
 export const standardProtocolIncludes: IncludedSection[] = [
   {
-    title: "The Bio Signals Protocol (3 Months)",
+    title: "The peptides and everything you need to use them",
     items: [
-      "Signaling awareness and alignment",
-      "Habit and behavior design",
-      "Recovery and stress-load management",
-      "Ongoing adjustment based on feedback"
+      "The compounds, the supplies, and the materials arrive directly to you",
+      "You don't source anything separately or figure out dosing alone",
+      "Your protocol specifies what, how much, and when",
     ],
-    note: "The protocol is iterative and adapts based on participation and response."
   },
   {
-    title: "Private Client Wiki",
-    description: "Each participant receives a private digital workspace used to support the protocol.",
+    title: "A consultation before anything ships",
     items: [
-      "Personalized protocol documentation",
-      "Progress tracking over time",
-      "Notes and adjustments",
-      "Educational references relevant to the protocol"
+      "Jesse — your personal AI coach — walks you through an intake conversation first",
+      "It builds a picture of your history, your goal, and your starting point before your protocol is confirmed",
     ],
-    note: "The wiki functions as a central reference point throughout the protocol period."
   },
   {
-    title: "Protocol Materials",
-    description: "Certain non-itemized materials may be included or coordinated as part of the protocol to support participation.",
+    title: "Jesse, for the full 3 months",
     items: [
-      "Materials are not sold separately",
-      "Materials are not assigned individual prices",
-      "Materials are provided only within the context of the protocol"
+      "Your personal AI coach, available in WhatsApp or iMessage throughout the protocol",
+      "Jesse tracks what's changing, flags what's worth paying attention to, and shares weekly insights",
     ],
-    note: "Access to materials is contingent on active participation in the protocol."
   },
   {
-    title: "Reminders & Accountability",
-    description: "Participants may opt into:",
+    title: "Your private Notion log",
     items: [
-      "SMS and/or email reminders",
-      "Periodic check-ins",
-      "Prompts for tracking and consistency"
+      "Jesse maintains a structured record of your protocol",
+      "You don't fill it out. Jesse builds it through your conversations",
     ],
-    note: "These tools are designed to support adherence and awareness."
-  }
+  },
+  {
+    title: "A private client wiki",
+    items: [
+      "Educational context for every element of your protocol",
+      "What each compound does, why it's included, and what you're watching for",
+    ],
+  },
 ];

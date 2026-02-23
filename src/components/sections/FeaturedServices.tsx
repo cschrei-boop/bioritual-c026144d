@@ -15,7 +15,7 @@ const services = [{
   image: serviceStartHere,
   href: "/start-here"
 }, {
-  title: "AI Concierge",
+  title: "Jesse",
   description: "24/7 intelligent guidance for your optimization journey.",
   price: "$10/mo",
   image: serviceAiConcierge,

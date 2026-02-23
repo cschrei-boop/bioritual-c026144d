@@ -259,7 +259,7 @@ const WeightLossLanding = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-background p-8 space-y-4">
               <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground">Learning</p>
-              <h3 className="font-serif text-2xl">AI Concierge</h3>
+              <h3 className="font-serif text-2xl">Jesse</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 Research-guided answers to your questions about peptides, protocols, and longevity science.
               </p>
@@ -291,7 +291,7 @@ const WeightLossLanding = () => {
               <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground">Guidance</p>
               <h3 className="font-serif text-2xl">Coaching Sprint</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                Founder-led 1:1 coaching with weekly sessions, async support, and personalized protocols.
+                1:1 coaching with the founders — weekly sessions, async support, and personalized protocols.
               </p>
               <p className="font-medium">From $2,999</p>
               <Link 

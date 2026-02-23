@@ -279,7 +279,7 @@ const GLP1RetratutideGuide = () => {
             <Card className="rounded-none border-border bg-background">
               <CardContent className="p-8 space-y-4">
                 <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground">Learning</p>
-                <h3 className="font-serif text-2xl">Learn with the AI Concierge</h3>
+                <h3 className="font-serif text-2xl">Talk to Jesse</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   Explore questions about signaling compounds, frameworks, and longevity science 
                   at your own pace. Educational and self-guided.
@@ -315,7 +315,7 @@ const GLP1RetratutideGuide = () => {
                 <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground">Guidance</p>
                 <h3 className="font-serif text-2xl">Start with the Coaching Sprint</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Founder-led guidance for those who want direct support in building and 
+                  Direct access to the founders for those who want support in building and 
                   understanding their approach.
                 </p>
                 <Link 

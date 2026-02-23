@@ -42,6 +42,8 @@ const DynamicProduct = () => {
         whoIsFor={editorialContent.whoIsFor}
         faqs={standardProtocolFaqs}
         disclosures={standardProtocolDisclosures}
+        showHowWeWork
+        showCoachingCallout
       />
     );
   }
