@@ -3,6 +3,7 @@ import Footer from "@/components/sections/Footer";
 import CoachingCallout from "@/components/sections/CoachingCallout";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Hero from "@/components/sections/Hero";
+import ShopByGoal from "@/components/sections/ShopByGoal";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 
@@ -137,6 +138,7 @@ const HowItWorks = () => {
             { text: "Talk to Jesse first", href: "/ai-concierge", variant: "link" },
           ]}
         />
+        <ShopByGoal />
       </main>
 
       <Footer />

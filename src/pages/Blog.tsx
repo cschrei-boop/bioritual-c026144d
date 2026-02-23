@@ -5,6 +5,7 @@ import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import Hero from "@/components/sections/Hero";
 import { articles } from "@/data/article-content";
+import ShopByGoal from "@/components/sections/ShopByGoal";
 
 const Blog = () => {
   const displayed = articles.slice(0, 6);
@@ -69,6 +70,8 @@ const Blog = () => {
             </div>
           </div>
         </section>
+
+        <ShopByGoal />
       </main>
 
       <Footer />

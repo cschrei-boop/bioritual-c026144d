@@ -5,6 +5,7 @@ import Footer from "@/components/sections/Footer";
 import Hero from "@/components/sections/Hero";
 import { useProtocolProducts } from "@/hooks/useShopifyCollection";
 import { Skeleton } from "@/components/ui/skeleton";
+import ShopByGoal from "@/components/sections/ShopByGoal";
 
 const ProtocolsCollection = () => {
   const { data: products = [], isLoading } = useProtocolProducts();
@@ -110,6 +111,7 @@ const ProtocolsCollection = () => {
             Learn about our approach →
           </Link>
         </motion.div>
+        <ShopByGoal />
       </main>
 
       <Footer />

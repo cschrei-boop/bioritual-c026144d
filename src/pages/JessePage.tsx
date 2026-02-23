@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
+import ShopByGoal from "@/components/sections/ShopByGoal";
 
 const JessePage = () => {
   return (
@@ -132,6 +133,7 @@ const JessePage = () => {
             </Button>
           </div>
         </section>
+        <ShopByGoal />
       </main>
 
       <Footer />
