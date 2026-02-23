@@ -44,7 +44,7 @@ const Index = () => {
         ]}
         ctaText="See how it works"
         ctaLink="/how-it-works"
-        ctaText2="Talk to Jesse — your personal AI coach"
+        ctaText2="Talk to Jesse™ — your personal AI coach"
         ctaLink2="/ai-concierge"
         subHeroLine1=""
         subHeroLine2=""
@@ -91,9 +91,9 @@ const Index = () => {
         italicWord=""
         subheadline="You just need to stop letting the loudest voice decide for you."
         description=""
-        body="Start wherever you are. Talk to Jesse first if you're not sure. Move into a protocol when you're ready. Bring in the founders if you want a human in the room. There's no wrong entry point."
+        body="Start wherever you are. Talk to Jesse™ first if you're not sure. Move into a protocol when you're ready. Bring in the founders if you want a human in the room. There's no wrong entry point."
         buttons={[
-          { text: "Talk to Jesse — your personal AI coach", href: "/ai-concierge", variant: "link" },
+          { text: "Talk to Jesse™ — your personal AI coach", href: "/ai-concierge", variant: "link" },
           { text: "See protocols", href: "/collection/protocols", variant: "link" },
           { text: "How it works", href: "/how-it-works", variant: "link" },
         ]}

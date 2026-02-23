@@ -68,11 +68,11 @@ const About = () => {
               What Hans discovered — and what took longer to articulate than to live — was that anchoring his days around health gave him something ADHD had always made elusive: a reliable structure that didn't depend on motivation.
             </p>
             <p>Not a rigid schedule. Not a perfect routine. A set of signals, consistently enough maintained, that his days had shape even when his brain didn't cooperate.</p>
-            <p>That insight is what eventually became Jesse.</p>
+            <p>That insight is what eventually became Jesse™.</p>
             <p>
-              Jesse — your personal AI coach — is in many ways the product of Hans's own experience navigating health with an ADHD brain. The questions Jesse asks are the questions Hans learned to ask himself. The way Jesse tracks without demanding perfect consistency is the way Hans learned to track his own progress. The way Jesse responds to a break — without judgment, with immediate forward orientation — is the response Hans needed and rarely got.
+              Jesse™ — your personal AI coach — is in many ways the product of Hans's own experience navigating health with an ADHD brain. The questions Jesse™ asks are the questions Hans learned to ask himself. The way Jesse™ tracks without demanding perfect consistency is the way Hans learned to track his own progress. The way Jesse™ responds to a break — without judgment, with immediate forward orientation — is the response Hans needed and rarely got.
             </p>
-            <p>Building Jesse wasn't a technology decision. It was a personal one.</p>
+            <p>Building Jesse™ wasn't a technology decision. It was a personal one.</p>
           </div>
         </section>
 
@@ -149,7 +149,7 @@ const About = () => {
             <p>This isn't about perfection. It's not about six-packs or moral superiority.</p>
             <p>It's about signals. It's about structure. It's about reclaiming authorship of your own story.</p>
             <p>
-              Hans is the obsessive researcher. The systems architect. The person who needed to understand why something works before he could trust it enough to use it — and who built Jesse because he needed something like Jesse and it didn't exist yet.
+              Hans is the obsessive researcher. The systems architect. The person who needed to understand why something works before he could trust it enough to use it — and who built Jesse™ because he needed something like Jesse™ and it didn't exist yet.
             </p>
             <p>
               Luis is the connector. The person in the room who understands what's actually keeping you from starting, and who makes sure the methodology accounts for that reality.
@@ -168,7 +168,7 @@ const About = () => {
               to="/ai-concierge"
               className="text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity"
             >
-              → Meet Jesse — your personal AI coach
+              → Meet Jesse™ — your personal AI coach
             </Link>
             <Link
               to="/how-it-works"

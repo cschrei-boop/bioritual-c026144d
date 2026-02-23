@@ -37,24 +37,24 @@ const universalWhatsIncluded: IncludedSection[] = [
   {
     title: "A consultation before anything ships",
     items: [
-      "Jesse — your personal AI coach — walks you through an intake conversation first",
+      "Jesse™ — your personal AI coach — walks you through an intake conversation first",
       "Not a form — a dialogue",
       "It builds a picture of your history, your goal, and your starting point before your protocol is confirmed and materials are sent",
     ],
   },
   {
-    title: "Jesse, for the full 3 months",
+    title: "Jesse™, for the full 3 months",
     items: [
       "Your personal AI coach, available in WhatsApp or iMessage throughout the protocol",
-      "Jesse tracks what's changing, flags what's worth paying attention to, and shares weekly insights — or real-time ones when something notable happens",
+      "Jesse™ tracks what's changing, flags what's worth paying attention to, and shares weekly insights — or real-time ones when something notable happens",
       "It asks more than it tells. That's intentional",
     ],
   },
   {
     title: "Your private Notion log",
     items: [
-      "Jesse maintains a structured record of your protocol — what you're taking, what you're tracking, what's shifting",
-      "You don't fill it out. Jesse builds it through your conversations",
+      "Jesse™ maintains a structured record of your protocol — what you're taking, what you're tracking, what's shifting",
+      "You don't fill it out. Jesse™ builds it through your conversations",
       "At any point you have a clear, organized picture of where you are",
     ],
   },
@@ -99,7 +99,7 @@ export const protocolEditorialContent: Record<string, ProtocolEditorialContent> 
           Here's the unsexy version: they work when they're part of a system. They don't work as a substitute for one.
         </p>
         <p className="mb-3">
-          This protocol is built around your specific metabolic picture — not a generic stack. Jesse — your personal AI coach — starts by understanding your history, your starting point, and what you've already tried. The peptide approach follows from that conversation, not before it.
+          This protocol is built around your specific metabolic picture — not a generic stack. Jesse™ — your personal AI coach — starts by understanding your history, your starting point, and what you've already tried. The peptide approach follows from that conversation, not before it.
         </p>
         <p className="mb-3">
           Compounds we work with in this area include GLP-1 based peptides such as retatrutide-style approaches, alongside supportive compounds for lean mass retention, energy, and recovery. What's right for you depends on your situation. That's what the consultation is for.
@@ -134,10 +134,10 @@ export const protocolEditorialContent: Record<string, ProtocolEditorialContent> 
           Stimulants manage the symptom. This protocol looks at what's producing it.
         </p>
         <p className="mb-3">
-          Jesse — your personal AI coach — will ask about your sleep, your stress load, your training, your diet, and your current inputs before anything is recommended. The goal is to restore a baseline that doesn't require constant management — energy that's there without forcing it.
+          Jesse™ — your personal AI coach — will ask about your sleep, your stress load, your training, your diet, and your current inputs before anything is recommended. The goal is to restore a baseline that doesn't require constant management — energy that's there without forcing it.
         </p>
         <p className="mb-3">
-          Compounds in this area support mitochondrial function, cortisol regulation, and recovery signaling. The specific approach depends on what Jesse finds in your intake.
+          Compounds in this area support mitochondrial function, cortisol regulation, and recovery signaling. The specific approach depends on what Jesse™ finds in your intake.
         </p>
       </>
     ),
@@ -166,10 +166,10 @@ export const protocolEditorialContent: Record<string, ProtocolEditorialContent> 
           The adaptation happens during recovery, not during the session. If recovery is incomplete, training accumulates as stress rather than stimulus. More volume doesn't fix that. Better recovery does.
         </p>
         <p className="mb-3">
-          Jesse — your personal AI coach — will assess your training load, your sleep, your nutrition, and your current recovery inputs before anything is recommended. The protocol is built around restoring the balance between output and adaptation.
+          Jesse™ — your personal AI coach — will assess your training load, your sleep, your nutrition, and your current recovery inputs before anything is recommended. The protocol is built around restoring the balance between output and adaptation.
         </p>
         <p className="mb-3">
-          Compounds in this area support tissue repair, growth hormone signaling, and recovery capacity. The specific approach depends on what Jesse identifies in your intake.
+          Compounds in this area support tissue repair, growth hormone signaling, and recovery capacity. The specific approach depends on what Jesse™ identifies in your intake.
         </p>
       </>
     ),
@@ -201,7 +201,7 @@ export const protocolEditorialContent: Record<string, ProtocolEditorialContent> 
           This protocol supports the signaling pathways that influence tissue quality and regeneration, while addressing recovery, nutrition, and lifestyle inputs that affect them. Compounds in this area include peptides that support collagen synthesis and tissue repair.
         </p>
         <p className="mb-3">
-          Jesse — your personal AI coach — will ask about your history — hormonal shifts, recent changes, current health context — before the protocol is confirmed. Visible results take time. Three months gives the system enough runway to produce something measurable.
+          Jesse™ — your personal AI coach — will ask about your history — hormonal shifts, recent changes, current health context — before the protocol is confirmed. Visible results take time. Three months gives the system enough runway to produce something measurable.
         </p>
       </>
     ),
@@ -232,7 +232,7 @@ export const protocolEditorialContent: Record<string, ProtocolEditorialContent> 
           This protocol starts from a different question: what inputs, consistently maintained, give your biology the best chance of staying functional over time? Cellular repair, inflammation management, metabolic flexibility, and recovery capacity are the variables that matter most at 40, 45, and 50.
         </p>
         <p className="mb-3">
-          Compounds in this area support autophagy, cellular repair signaling, and metabolic resilience. Jesse — your personal AI coach — will assess your current baseline, your risk factors, and your priorities before anything is confirmed. This is a long game. Three months is the beginning of the framework, not the finish.
+          Compounds in this area support autophagy, cellular repair signaling, and metabolic resilience. Jesse™ — your personal AI coach — will assess your current baseline, your risk factors, and your priorities before anything is confirmed. This is a long game. Three months is the beginning of the framework, not the finish.
         </p>
       </>
     ),
@@ -261,7 +261,7 @@ export const protocolEditorialContent: Record<string, ProtocolEditorialContent> 
           Cognition is downstream of sleep, stress, gut health, inflammation, and metabolic function. Stimulants override the signal. This protocol works on the signal.
         </p>
         <p className="mb-3">
-          The gut-brain axis, neuroinflammation, and sleep quality are frequent culprits in cognitive inconsistency — especially in people operating under sustained high load. Compounds in this area support neuroprotection, neuroplasticity, and recovery signaling. The specific approach depends on what Jesse — your personal AI coach — identifies in your intake.
+          The gut-brain axis, neuroinflammation, and sleep quality are frequent culprits in cognitive inconsistency — especially in people operating under sustained high load. Compounds in this area support neuroprotection, neuroplasticity, and recovery signaling. The specific approach depends on what Jesse™ — your personal AI coach — identifies in your intake.
         </p>
         <p className="mb-3">
           This protocol is particularly relevant for people with ADHD patterns, high cognitive workload, or anyone who suspects their current baseline is meaningfully below their actual capacity.

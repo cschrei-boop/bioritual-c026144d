@@ -29,7 +29,7 @@ export const standardProtocolFaqs: FAQ[] = [
   },
   {
     question: "What's included?",
-    answer: "Everything you need is included — the peptides, the supplies, Jesse for the full 3 months, your private Notion log, and your client wiki. Nothing is sold separately."
+    answer: "Everything you need is included — the peptides, the supplies, Jesse™ for the full 3 months, your private Notion log, and your client wiki. Nothing is sold separately."
   },
   {
     question: "Do I need a prescription?",
@@ -65,7 +65,7 @@ export const standardProtocolDisclosures: Disclosure[] = [
   },
   {
     title: "What's Included",
-    content: "Everything specified in the protocol is included — peptides, supplies, Jesse, Notion log, and client wiki. Nothing is sold separately or priced individually."
+    content: "Everything specified in the protocol is included — peptides, supplies, Jesse™, Notion log, and client wiki. Nothing is sold separately or priced individually."
   },
   {
     title: "No Guaranteed Outcomes",
@@ -142,22 +142,22 @@ export const standardProtocolIncludes: IncludedSection[] = [
   {
     title: "A consultation before anything ships",
     items: [
-      "Jesse — your personal AI coach — walks you through an intake conversation first",
+      "Jesse™ — your personal AI coach — walks you through an intake conversation first",
       "It builds a picture of your history, your goal, and your starting point before your protocol is confirmed",
     ],
   },
   {
-    title: "Jesse, for the full 3 months",
+    title: "Jesse™, for the full 3 months",
     items: [
       "Your personal AI coach, available in WhatsApp or iMessage throughout the protocol",
-      "Jesse tracks what's changing, flags what's worth paying attention to, and shares weekly insights",
+      "Jesse™ tracks what's changing, flags what's worth paying attention to, and shares weekly insights",
     ],
   },
   {
     title: "Your private Notion log",
     items: [
-      "Jesse maintains a structured record of your protocol",
-      "You don't fill it out. Jesse builds it through your conversations",
+      "Jesse™ maintains a structured record of your protocol",
+      "You don't fill it out. Jesse™ builds it through your conversations",
     ],
   },
   {

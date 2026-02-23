@@ -17,7 +17,7 @@ const CoachingCallout = () => {
         >
           <h3 className="text-2xl md:text-3xl mb-4">What about the Coaching Sprint?</h3>
           <p className="text-foreground/70 leading-normal mb-4">
-            The 3-Month Coaching Sprint adds direct access to the founders — Hans and Luis — via weekly video calls and ongoing oversight. Jesse is still part of the experience. The difference is that two humans who built this are also in the room.
+            The 3-Month Coaching Sprint adds direct access to the founders — Hans and Luis — via weekly video calls and ongoing oversight. Jesse™ is still part of the experience. The difference is that two humans who built this are also in the room.
           </p>
           <p className="text-foreground/70 leading-normal mb-8">
             Not everyone needs that. We'll tell you if you don't.
