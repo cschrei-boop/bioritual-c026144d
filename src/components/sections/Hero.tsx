@@ -118,28 +118,32 @@ const Hero = ({
           </motion.div>
 
           {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
-            <Button 
-              size="lg" 
-              className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-8 py-6 text-sm tracking-wider"
-              asChild
+          {(ctaText || (ctaText2 && ctaLink2)) && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4"
             >
-              <Link to={ctaLink}>{ctaText}</Link>
-            </Button>
-            {ctaText2 && ctaLink2 && (
-              <Link
-                to={ctaLink2}
-                className="inline-flex items-center text-sm tracking-wider hover:opacity-60 transition-opacity underline underline-offset-4 px-2 py-3"
-              >
-                {ctaText2}
-              </Link>
-            )}
-          </motion.div>
+              {ctaText && (
+                <Button 
+                  size="lg" 
+                  className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-8 py-6 text-sm tracking-wider"
+                  asChild
+                >
+                  <Link to={ctaLink}>{ctaText}</Link>
+                </Button>
+              )}
+              {ctaText2 && ctaLink2 && (
+                <Link
+                  to={ctaLink2}
+                  className="inline-flex items-center text-sm tracking-wider hover:opacity-60 transition-opacity underline underline-offset-4 px-2 py-3"
+                >
+                  {ctaText2}
+                </Link>
+              )}
+            </motion.div>
+          )}
 
           {/* Sub-hero clarifier */}
           {(subHeroLine1 || subHeroLine2) && (
