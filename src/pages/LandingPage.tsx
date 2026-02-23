@@ -10,6 +10,7 @@ import ValueProps from "@/components/sections/ValueProps";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/sections/Footer";
 import StickyEmailFooter from "@/components/sections/StickyEmailFooter";
+import ShopByGoal from "@/components/sections/ShopByGoal";
 import NotFound from "@/pages/NotFound";
 
 const LandingPage = () => {
@@ -100,6 +101,7 @@ const LandingPage = () => {
           description={config.finalCTA?.description}
           buttonText={config.finalCTA?.buttonText}
         />
+        <ShopByGoal />
         <Footer />
         <StickyEmailFooter />
       </main>

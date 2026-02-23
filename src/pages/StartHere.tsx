@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Sparkles, Route, Compass, ArrowRight, LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Helmet } from "react-helmet-async";
+import ShopByGoal from "@/components/sections/ShopByGoal";
 
 interface PathCard {
   id: string;
@@ -108,6 +109,7 @@ const StartHere = () => {
             </div>
           </div>
         </section>
+        <ShopByGoal />
       </main>
       <Footer />
     </div>

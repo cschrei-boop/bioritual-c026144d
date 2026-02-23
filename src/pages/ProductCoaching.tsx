@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
+import ShopByGoal from "@/components/sections/ShopByGoal";
 
 const ProductCoaching = () => {
   return (
@@ -75,6 +76,7 @@ const ProductCoaching = () => {
             </Button>
           </div>
         </section>
+        <ShopByGoal />
       </main>
       <Footer />
     </div>

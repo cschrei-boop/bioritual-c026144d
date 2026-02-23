@@ -3,6 +3,7 @@ import { ArrowRight, Check, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
+import ShopByGoal from "@/components/sections/ShopByGoal";
 import VideoHero from "@/components/sections/VideoHero";
 const protocols = [{
   title: "Weight Loss + Metabolic Health",
@@ -217,6 +218,7 @@ const Protocols = () => {
           </p>
         </motion.section>
 
+        <ShopByGoal />
       </main>
 
       <Footer />
