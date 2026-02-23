@@ -1,38 +1,18 @@
 
 
-# Add Protocols Carousel to All Pages
+# Fix CTA Button Visibility in Hero Component
 
-## What Changes
+## Problem
+The primary CTA button in the `Hero` component always renders, even when `ctaText` is passed as an empty string (e.g., on the How It Works page). This produces a dark button (`bg-foreground`) with no visible label, making it look like the font and background are the same color.
 
-Add the `ShopByGoal` protocols carousel to every page that currently lacks it, placed just above the `<Footer />`. Pages that already have it (Homepage via ProtocolGrid, BlogPageTemplate pages) remain unchanged.
+## Fix
 
-## Pages to Update (9)
+**File: `src/components/sections/Hero.tsx`** (lines ~120-133)
 
-| Page | File | Currently Has It? |
-|------|------|-------------------|
-| The Journey | `src/pages/JourneyPage.tsx` | No |
-| How It Works | `src/pages/HowItWorks.tsx` | No |
-| Jesse | `src/pages/JessePage.tsx` | No |
-| Start Here | `src/pages/StartHere.tsx` | No |
-| Coaching | `src/pages/ProductCoaching.tsx` | No |
-| Blog index | `src/pages/Blog.tsx` | No |
-| Protocols Collection | `src/pages/ProtocolsCollection.tsx` | No |
-| About | `src/pages/About.tsx` | No |
-| Protocols Hub | `src/pages/Protocols.tsx` | No |
+Wrap the entire CTA `motion.div` block in a conditional so it only renders when there's actual button text to show:
 
-## Already Covered (no changes needed)
+- Only render the primary `<Button>` when `ctaText` is truthy (non-empty string)
+- Only render the entire CTA container `motion.div` when at least one CTA has text
+- The secondary link already has a guard (`ctaText2 && ctaLink2`), so it's fine
 
-- **Homepage** (`Index.tsx`) -- uses `ProtocolGrid` (deliberate design choice)
-- **Blog article pages** -- `BlogPageTemplate` already renders `ShopByGoal` via `hideProtocolsCarousel` prop (default: shown)
-- **Protocol product pages** -- `DynamicProduct.tsx` / `ProductPageTemplate` already shows protocols context
-- **Landing pages** (`LandingPage.tsx`) -- dynamic configs; will add ShopByGoal here too
-
-## Technical Details
-
-For each of the 9 pages listed above, plus `LandingPage.tsx`:
-
-1. Import `ShopByGoal` from `@/components/sections/ShopByGoal`
-2. Place `<ShopByGoal />` immediately before `<Footer />`
-
-This is a straightforward addition -- no component changes needed. The `ShopByGoal` component fetches protocol products from Shopify and renders them in the `ProductCarousel` format with a "View All Protocols" link.
-
+This is a one-line conditional wrap -- no styling or component changes needed.
