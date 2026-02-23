@@ -144,9 +144,9 @@ const JourneyPage = () => {
         ))}
 
         <FinalCTA
-          headline="Ready to start the first cycle?"
+          headline="Less noise. Better signals. A clearer picture of what your body is actually doing."
           italicWord=""
-          description="You don't need to know where it ends. You just need to know where you are now."
+          description=""
           buttons={[
             { text: "See protocols", href: "/collection/protocols", variant: "primary" },
             { text: "Talk to Jesse™ first", href: "/ai-concierge", variant: "link" },
