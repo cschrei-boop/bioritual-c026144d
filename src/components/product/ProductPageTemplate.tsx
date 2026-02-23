@@ -16,6 +16,8 @@ import { toast } from "sonner";
 import { ProductImageGallery } from "@/components/product/ProductImageGallery";
 import { cn } from "@/lib/utils";
 import type { FAQ, Disclosure, IncludedSection } from "@/data/product-content";
+import HowWeWork from "@/components/sections/HowWeWork";
+import CoachingCallout from "@/components/sections/CoachingCallout";
 
 export interface ProductPageTemplateProps {
   // Shopify
@@ -37,6 +39,10 @@ export interface ProductPageTemplateProps {
   // CTA
   ctaText?: string;
   trustBadges?: { icon: React.ReactNode; text: string }[];
+  
+  // Optional sections
+  showHowWeWork?: boolean;
+  showCoachingCallout?: boolean;
 }
 
 const ProductPageTemplate = ({
@@ -52,6 +58,8 @@ const ProductPageTemplate = ({
   disclosures,
   ctaText = "Enroll Now",
   trustBadges,
+  showHowWeWork = false,
+  showCoachingCallout = false,
 }: ProductPageTemplateProps) => {
   const [product, setProduct] = useState<ShopifyProduct | null>(null);
   const [loading, setLoading] = useState(true);
@@ -327,6 +335,8 @@ const ProductPageTemplate = ({
         )}
       </main>
 
+      {showHowWeWork && <HowWeWork />}
+      {showCoachingCallout && <CoachingCallout />}
       <NotSureBlock />
       <Footer />
     </div>

@@ -7,6 +7,7 @@ export interface ProtocolEditorialContent {
   description: ReactNode;
   whatsIncluded: IncludedSection[];
   whoIsFor: string[];
+  showDexaBlock?: boolean;
 }
 
 // Map legacy protocol slugs → canonical Shopify handles
@@ -23,85 +24,94 @@ export function resolveProtocolHandle(handle: string | undefined): string | unde
   return protocolSlugMap[normalized] || normalized;
 }
 
+// Universal What's Included block — used on all protocol pages
+const universalWhatsIncluded: IncludedSection[] = [
+  {
+    title: "The peptides and everything you need to use them",
+    items: [
+      "The compounds, the supplies, and the materials arrive directly to you",
+      "You don't source anything separately or figure out dosing alone",
+      "Your protocol specifies what, how much, and when",
+    ],
+  },
+  {
+    title: "A consultation before anything ships",
+    items: [
+      "Jesse — your personal AI coach — walks you through an intake conversation first",
+      "Not a form — a dialogue",
+      "It builds a picture of your history, your goal, and your starting point before your protocol is confirmed and materials are sent",
+    ],
+  },
+  {
+    title: "Jesse, for the full 3 months",
+    items: [
+      "Your personal AI coach, available in WhatsApp or iMessage throughout the protocol",
+      "Jesse tracks what's changing, flags what's worth paying attention to, and shares weekly insights — or real-time ones when something notable happens",
+      "It asks more than it tells. That's intentional",
+    ],
+  },
+  {
+    title: "Your private Notion log",
+    items: [
+      "Jesse maintains a structured record of your protocol — what you're taking, what you're tracking, what's shifting",
+      "You don't fill it out. Jesse builds it through your conversations",
+      "At any point you have a clear, organized picture of where you are",
+    ],
+  },
+  {
+    title: "A private client wiki",
+    items: [
+      "Educational context for every element of your protocol",
+      "What each compound does, why it's included for your goal, and what you're watching for over 3 months",
+      "You understand what you're doing and why",
+    ],
+  },
+];
+
+// DEXA block — Weight Loss + Performance only
+const dexaBlock: IncludedSection = {
+  title: "DEXA scan (where available)",
+  items: [
+    "A DEXA scan gives you an objective baseline — body composition, not just weight",
+    "We provide a redemption code for a partner provider near you",
+    "Availability varies by location",
+  ],
+};
+
 export const protocolEditorialContent: Record<string, ProtocolEditorialContent> = {
   // Weight Loss Protocol
   "bio-signals-weight-loss-metabolic-health": {
     fallbackTitle: "Bio Signals: Weight Loss + Metabolic Health",
     tagline: "3-Month Optimization Protocol",
+    showDexaBlock: true,
     description: (
       <>
-        <p className="mb-4 font-medium text-foreground">
-          Weight loss isn't one molecule. It's navigating many signals—without breaking your metabolism.
+        <h3 className="text-xl md:text-2xl mb-3 font-medium text-foreground">
+          Weight loss isn't one problem. It's about six, running simultaneously.
+        </h3>
+        <p className="mb-3 text-foreground/80">
+          Appetite. Metabolism. Lean mass. Energy. Recovery. Hormones. A protocol that only addresses one of them will eventually hit a wall.
         </p>
         <p className="mb-3">
-          There are dozens of peptides, supplements, and strategies marketed for weight loss. Some suppress appetite. Some improve insulin sensitivity. Some protect muscle. Some help recovery.
+          GLP-1 compounds changed what's possible for metabolic health. They also generated approximately one thousand hot takes, half of which exist to sell you something and the other half to shame you for considering it.
         </p>
         <p className="mb-3">
-          Most people are handed one compound and told to figure the rest out.
+          Here's the unsexy version: they work when they're part of a system. They don't work as a substitute for one.
         </p>
         <p className="mb-3">
-          Bio Signals does the opposite.
+          This protocol is built around your specific metabolic picture — not a generic stack. Jesse — your personal AI coach — starts by understanding your history, your starting point, and what you've already tried. The peptide approach follows from that conversation, not before it.
         </p>
         <p className="mb-3">
-          We help you navigate the entire landscape—and design a personalized weight-loss protocol that integrates:
-        </p>
-        <ul className="list-disc pl-5 mb-4 space-y-1">
-          <li>GLP-1–based peptides (including retatrutide-style approaches)</li>
-          <li>Supportive supplementation to protect lean mass, energy, and recovery</li>
-          <li>Nutrition strategies that work with appetite signals instead of fighting them</li>
-        </ul>
-        <p className="mb-4">
-          Not "take this and hope." A structured system that actually holds together.
-        </p>
-        <p className="font-medium text-foreground">
-          You are enrolling in an educational and lifestyle optimization protocol — not purchasing medical treatment or individual products.
+          Compounds we work with in this area include GLP-1 based peptides such as retatrutide-style approaches, alongside supportive compounds for lean mass retention, energy, and recovery. What's right for you depends on your situation. That's what the consultation is for.
         </p>
       </>
     ),
-    whatsIncluded: [
-      {
-        title: "The Bio Signals Protocol (3 Months)",
-        items: [
-          "Weight and metabolic signaling awareness",
-          "Habit and behavior design",
-          "Recovery and stress-load management",
-          "Ongoing adjustment based on feedback",
-        ],
-        note: "The protocol is iterative and adapts based on participation and response.",
-      },
-      {
-        title: "Private Client Wiki",
-        description: "Each participant receives a private digital workspace.",
-        items: [
-          "Personalized protocol documentation",
-          "Weight and metabolic tracking over time",
-          "Notes and adjustments",
-          "Educational references relevant to the protocol",
-        ],
-      },
-      {
-        title: "Protocol Materials",
-        items: [
-          "Non-itemized materials included as part of the protocol",
-          "Materials are not sold separately or priced individually",
-        ],
-        note: "Access contingent on active participation.",
-      },
-      {
-        title: "Reminders & Accountability",
-        items: [
-          "SMS and/or email reminders",
-          "Periodic check-ins",
-          "Prompts for tracking consistency",
-        ],
-      },
-    ],
+    whatsIncluded: [...universalWhatsIncluded, dexaBlock],
     whoIsFor: [
-      "Structured support around weight management",
-      "Clear systems instead of trial-and-error",
-      "Accountability and progress tracking",
-      "A feedback-driven, non-extreme approach",
-      "Education alongside implementation",
+      "You've tried approaches that worked briefly and then stopped",
+      "You're not looking for aggressive or extreme",
+      "You want something that accounts for the whole picture — appetite, energy, muscle, metabolism — and builds from there",
+      "You prefer to understand what you're doing and why",
     ],
   },
 
@@ -111,62 +121,31 @@ export const protocolEditorialContent: Record<string, ProtocolEditorialContent> 
     tagline: "3-Month Optimization Protocol",
     description: (
       <>
-        <p className="mb-3">
-          This protocol uses bio signals and behavioral frameworks to support baseline energy, daily consistency, and resilience.
+        <h3 className="text-xl md:text-2xl mb-3 font-medium text-foreground">
+          If your energy were a stock, it would be flagged for volatility.
+        </h3>
+        <p className="mb-3 text-foreground/80">
+          Crashing by 2pm. Relying on caffeine to feel human. Functional, but barely. This protocol is for that specific kind of tired.
         </p>
         <p className="mb-3">
-          Low or inconsistent energy is often not a motivation problem — it's a signal and recovery problem. This protocol focuses on restoring rhythm, reducing volatility, and aligning lifestyle inputs so energy becomes more predictable and sustainable.
+          Low energy is rarely about motivation. It's usually about signal disruption — sleep quality, cortisol rhythm, recovery debt, or some combination of the three quietly compounding over time.
         </p>
-        <p className="font-medium text-foreground">
-          You are enrolling in an educational and lifestyle optimization protocol — not purchasing medical treatment or individual products.
+        <p className="mb-3">
+          Stimulants manage the symptom. This protocol looks at what's producing it.
+        </p>
+        <p className="mb-3">
+          Jesse — your personal AI coach — will ask about your sleep, your stress load, your training, your diet, and your current inputs before anything is recommended. The goal is to restore a baseline that doesn't require constant management — energy that's there without forcing it.
+        </p>
+        <p className="mb-3">
+          Compounds in this area support mitochondrial function, cortisol regulation, and recovery signaling. The specific approach depends on what Jesse finds in your intake.
         </p>
       </>
     ),
-    whatsIncluded: [
-      {
-        title: "The Bio Signals Protocol (3 Months)",
-        items: [
-          "Energy signaling awareness",
-          "Circadian and rhythm alignment",
-          "Habit and behavior design",
-          "Recovery and stress-load management",
-          "Ongoing adjustment based on feedback",
-        ],
-        note: "The protocol is iterative and adapts based on participation and response.",
-      },
-      {
-        title: "Private Client Wiki",
-        description: "Each participant receives a private digital workspace.",
-        items: [
-          "Personalized protocol documentation",
-          "Energy and rhythm tracking over time",
-          "Notes and adjustments",
-          "Educational references relevant to the protocol",
-        ],
-      },
-      {
-        title: "Protocol Materials",
-        items: [
-          "Non-itemized materials included as part of the protocol",
-          "Materials are not sold separately or priced individually",
-        ],
-        note: "Access contingent on active participation.",
-      },
-      {
-        title: "Reminders & Accountability",
-        items: [
-          "SMS and/or email reminders",
-          "Periodic check-ins",
-          "Prompts for tracking energy patterns and consistency",
-        ],
-      },
-    ],
+    whatsIncluded: [...universalWhatsIncluded],
     whoIsFor: [
-      "Feel functional but consistently low-energy",
-      "Experience energy crashes or wide daily swings",
-      "Rely heavily on stimulants to get through the day",
-      "Want steadier output without forcing intensity",
-      "Prefer systems, structure, and feedback over hacks",
+      "You function. You're not broken",
+      "But you know the difference between this and how you used to feel, and the gap is widening",
+      "You're tired of propping yourself up and want to understand what's actually going on",
     ],
   },
 
@@ -174,64 +153,32 @@ export const protocolEditorialContent: Record<string, ProtocolEditorialContent> 
   "bio-signals-performance-recovery": {
     fallbackTitle: "Bio Signals: Performance + Recovery",
     tagline: "3-Month Optimization Protocol",
+    showDexaBlock: true,
     description: (
       <>
-        <p className="mb-3">
-          This protocol uses bio signals and behavioral frameworks to support physical performance while protecting recovery capacity.
+        <h3 className="text-xl md:text-2xl mb-3 font-medium text-foreground">
+          You're putting in the work. Your recovery isn't keeping up.
+        </h3>
+        <p className="mb-3 text-foreground/80">
+          Plateaus, soreness that lingers, output that isn't matching effort. The problem is usually not the training. It's what happens after.
         </p>
         <p className="mb-3">
-          Performance without recovery leads to stagnation, injury, or burnout. This protocol focuses on output with feedback intact, aligning training, recovery, and lifestyle inputs so adaptation can occur without forcing the system.
+          The adaptation happens during recovery, not during the session. If recovery is incomplete, training accumulates as stress rather than stimulus. More volume doesn't fix that. Better recovery does.
         </p>
-        <p className="font-medium text-foreground">
-          You are enrolling in an educational and lifestyle optimization protocol — not purchasing medical treatment or individual products.
+        <p className="mb-3">
+          Jesse — your personal AI coach — will assess your training load, your sleep, your nutrition, and your current recovery inputs before anything is recommended. The protocol is built around restoring the balance between output and adaptation.
+        </p>
+        <p className="mb-3">
+          Compounds in this area support tissue repair, growth hormone signaling, and recovery capacity. The specific approach depends on what Jesse identifies in your intake.
         </p>
       </>
     ),
-    whatsIncluded: [
-      {
-        title: "The Bio Signals Protocol (3 Months)",
-        items: [
-          "Performance and recovery signaling awareness",
-          "Training load and stress-management frameworks",
-          "Recovery prioritization and rhythm alignment",
-          "Lifestyle inputs that support adaptation",
-          "Ongoing adjustment based on feedback",
-        ],
-        note: "The protocol is iterative and adapts based on participation and response.",
-      },
-      {
-        title: "Private Client Wiki",
-        description: "Each participant receives a private digital workspace.",
-        items: [
-          "Personalized protocol documentation",
-          "Training and recovery tracking over time",
-          "Notes and adjustments",
-          "Educational references relevant to the protocol",
-        ],
-      },
-      {
-        title: "Protocol Materials",
-        items: [
-          "Non-itemized materials included as part of the protocol",
-          "Materials are not sold separately or priced individually",
-        ],
-        note: "Access contingent on active participation.",
-      },
-      {
-        title: "Reminders & Accountability",
-        items: [
-          "SMS and/or email reminders",
-          "Periodic check-ins",
-          "Prompts for training, recovery, and readiness tracking",
-        ],
-      },
-    ],
+    whatsIncluded: [...universalWhatsIncluded, dexaBlock],
     whoIsFor: [
-      "Train consistently and want better adaptation",
-      "Feel under-recovered relative to workload",
-      "Experience performance plateaus",
-      "Want to improve output without increasing strain",
-      "Prefer structured systems over guesswork",
+      "You train consistently and the results aren't matching the effort",
+      "Recovery takes longer than it used to",
+      "You've hit a plateau you can't think your way out of",
+      "You want to understand the mechanism, not just follow a plan",
     ],
   },
 
@@ -241,62 +188,28 @@ export const protocolEditorialContent: Record<string, ProtocolEditorialContent> 
     tagline: "3-Month Optimization Protocol",
     description: (
       <>
-        <p className="mb-3">
-          This protocol uses bio signals and behavioral frameworks to support skin quality, tissue integrity, and hair health over time.
+        <h3 className="text-xl md:text-2xl mb-3 font-medium text-foreground">
+          Hair and skin aren't vanity metrics. They're readouts.
+        </h3>
+        <p className="mb-3 text-foreground/80">
+          What shows up on the outside reflects what's happening on the inside. This protocol works on both.
         </p>
         <p className="mb-3">
-          Hair and skin are outward expressions of internal balance, recovery, and resource allocation. This protocol focuses on supporting signaling pathways that influence tissue quality, while aligning lifestyle, recovery, and consistency.
+          Collagen production, tissue integrity, inflammation load, hormonal balance — these are the upstream variables. Hair thinning and skin quality are often downstream signals of something systemic, not isolated problems with isolated fixes.
         </p>
-        <p className="font-medium text-foreground">
-          You are enrolling in an educational and lifestyle optimization protocol — not purchasing medical treatment or individual products.
+        <p className="mb-3">
+          This protocol supports the signaling pathways that influence tissue quality and regeneration, while addressing recovery, nutrition, and lifestyle inputs that affect them. Compounds in this area include peptides that support collagen synthesis and tissue repair.
+        </p>
+        <p className="mb-3">
+          Jesse — your personal AI coach — will ask about your history — hormonal shifts, recent changes, current health context — before the protocol is confirmed. Visible results take time. Three months gives the system enough runway to produce something measurable.
         </p>
       </>
     ),
-    whatsIncluded: [
-      {
-        title: "The Bio Signals Protocol (3 Months)",
-        items: [
-          "Tissue signaling awareness",
-          "Skin and hair-supportive routines",
-          "Recovery and stress-load alignment",
-          "Lifestyle inputs that influence tissue quality",
-          "Ongoing adjustment based on feedback",
-        ],
-        note: "The protocol is iterative and adapts based on participation and response.",
-      },
-      {
-        title: "Private Client Wiki",
-        description: "Each participant receives a private digital workspace.",
-        items: [
-          "Personalized protocol documentation",
-          "Tracking of routines and observations",
-          "Notes and adjustments",
-          "Educational references relevant to the protocol",
-        ],
-      },
-      {
-        title: "Protocol Materials",
-        items: [
-          "Non-itemized materials included as part of the protocol",
-          "Materials are not sold separately or priced individually",
-        ],
-        note: "Access contingent on active participation.",
-      },
-      {
-        title: "Reminders & Accountability",
-        items: [
-          "SMS and/or email reminders",
-          "Periodic check-ins",
-          "Prompts for routine consistency and reflection",
-        ],
-      },
-    ],
+    whatsIncluded: [...universalWhatsIncluded],
     whoIsFor: [
-      "Care about visible indicators of health and maintenance",
-      "Want to support skin quality and resilience",
-      "Want to support hair health as part of a broader system",
-      "Prefer long-term maintenance over short-term fixes",
-      "Want structure, tracking, and consistency",
+      "You've noticed changes you'd like to slow down or reverse",
+      "You're not chasing dramatic transformation — you want to support what's there and maintain it over time",
+      "You prefer understanding the mechanism to just buying a product and hoping",
     ],
   },
 
@@ -306,62 +219,29 @@ export const protocolEditorialContent: Record<string, ProtocolEditorialContent> 
     tagline: "3-Month Optimization Protocol",
     description: (
       <>
-        <p className="mb-3">
-          This protocol uses bio signals and behavioral frameworks to support long-term health, resilience, and functional capacity over time.
+        <h3 className="text-xl md:text-2xl mb-3 font-medium text-foreground">
+          You're not trying to live forever. You're trying to stay capable.
+        </h3>
+        <p className="mb-3 text-foreground/80">
+          Energy, function, resilience, and recovery — the things that make the next 30 years worth having. This protocol is built around preserving them.
         </p>
         <p className="mb-3">
-          Longevity is not about chasing extremes or short-term interventions. It's about preserving optionality, maintaining recovery capacity, and aligning daily inputs with long-term outcomes. This protocol focuses on structure, feedback, and consistency rather than forcing biological processes.
+          Longevity science has produced a lot of noise. Rapamycin debates. NAD+ discourse. Cold plunge evangelism. Most of it is either premature or irrelevant to anyone not already in excellent baseline health.
         </p>
-        <p className="font-medium text-foreground">
-          You are enrolling in an educational and lifestyle optimization protocol — not purchasing medical treatment or individual products.
+        <p className="mb-3">
+          This protocol starts from a different question: what inputs, consistently maintained, give your biology the best chance of staying functional over time? Cellular repair, inflammation management, metabolic flexibility, and recovery capacity are the variables that matter most at 40, 45, and 50.
+        </p>
+        <p className="mb-3">
+          Compounds in this area support autophagy, cellular repair signaling, and metabolic resilience. Jesse — your personal AI coach — will assess your current baseline, your risk factors, and your priorities before anything is confirmed. This is a long game. Three months is the beginning of the framework, not the finish.
         </p>
       </>
     ),
-    whatsIncluded: [
-      {
-        title: "The Bio Signals Protocol (3 Months)",
-        items: [
-          "Long-term signaling awareness",
-          "Recovery-first lifestyle alignment",
-          "Stress and load management",
-          "Habit design for sustainability",
-          "Ongoing adjustment based on feedback",
-        ],
-        note: "The protocol is iterative and adapts based on participation and response.",
-      },
-      {
-        title: "Private Client Wiki",
-        description: "Each participant receives a private digital workspace.",
-        items: [
-          "Personalized protocol documentation",
-          "Longitudinal tracking and observations",
-          "Notes and adjustments",
-          "Educational references relevant to the protocol",
-        ],
-      },
-      {
-        title: "Protocol Materials",
-        items: [
-          "Non-itemized materials included as part of the protocol",
-          "Materials are not sold separately or priced individually",
-        ],
-        note: "Access contingent on active participation.",
-      },
-      {
-        title: "Reminders & Accountability",
-        items: [
-          "SMS and/or email reminders",
-          "Periodic check-ins",
-          "Prompts for routine consistency and reflection",
-        ],
-      },
-    ],
+    whatsIncluded: [...universalWhatsIncluded],
     whoIsFor: [
-      "Think in multi-year time horizons",
-      "Want to preserve energy, function, and resilience",
-      "Prefer maintenance and prevention frameworks",
-      "Value consistency over intensity",
-      "Want systems that age with them",
+      "You think in decades, not months",
+      "You watched a parent decline earlier than they should have and decided that wasn't your plan",
+      "You're not sick, but you're paying attention",
+      "You want a system that builds, not a product that promises",
     ],
   },
 
@@ -371,62 +251,28 @@ export const protocolEditorialContent: Record<string, ProtocolEditorialContent> 
     tagline: "3-Month Optimization Protocol",
     description: (
       <>
-        <p className="mb-3">
-          This protocol uses bio signals and behavioral frameworks to support cognitive function, mental clarity, and long-term brain health.
+        <h3 className="text-xl md:text-2xl mb-3 font-medium text-foreground">
+          Brain fog is not a personality trait.
+        </h3>
+        <p className="mb-3 text-foreground/80">
+          Inconsistent focus. Slow recall. Cognitive fatigue by midday. This protocol is built for minds that are working hard and not getting the output they expect.
         </p>
         <p className="mb-3">
-          Cognition is influenced by sleep, recovery, stress load, nutrition, and signaling balance. Rather than forcing focus or overstimulation, this protocol emphasizes clarity, stability, and cognitive resilience through structured inputs and feedback.
+          Cognition is downstream of sleep, stress, gut health, inflammation, and metabolic function. Stimulants override the signal. This protocol works on the signal.
         </p>
-        <p className="font-medium text-foreground">
-          You are enrolling in an educational and lifestyle optimization protocol — not purchasing medical treatment or individual products.
+        <p className="mb-3">
+          The gut-brain axis, neuroinflammation, and sleep quality are frequent culprits in cognitive inconsistency — especially in people operating under sustained high load. Compounds in this area support neuroprotection, neuroplasticity, and recovery signaling. The specific approach depends on what Jesse — your personal AI coach — identifies in your intake.
+        </p>
+        <p className="mb-3">
+          This protocol is particularly relevant for people with ADHD patterns, high cognitive workload, or anyone who suspects their current baseline is meaningfully below their actual capacity.
         </p>
       </>
     ),
-    whatsIncluded: [
-      {
-        title: "The Bio Signals Protocol (3 Months)",
-        items: [
-          "Cognitive signaling awareness",
-          "Sleep and recovery alignment",
-          "Stress-load and attention management",
-          "Habit and environment design",
-          "Ongoing adjustment based on feedback",
-        ],
-        note: "The protocol is iterative and adapts based on participation and response.",
-      },
-      {
-        title: "Private Client Wiki",
-        description: "Each participant receives a private digital workspace.",
-        items: [
-          "Personalized protocol documentation",
-          "Cognitive patterns and routine tracking",
-          "Notes and adjustments",
-          "Educational references relevant to the protocol",
-        ],
-      },
-      {
-        title: "Protocol Materials",
-        items: [
-          "Non-itemized materials included as part of the protocol",
-          "Materials are not sold separately or priced individually",
-        ],
-        note: "Access contingent on active participation.",
-      },
-      {
-        title: "Reminders & Accountability",
-        items: [
-          "SMS and/or email reminders",
-          "Periodic check-ins",
-          "Prompts for focus, clarity, and routine consistency",
-        ],
-      },
-    ],
+    whatsIncluded: [...universalWhatsIncluded],
     whoIsFor: [
-      "Want to support focus, clarity, and mental stamina",
-      "Experience brain fog or cognitive inconsistency",
-      "Work in cognitively demanding environments",
-      "Want to protect long-term brain health",
-      "Prefer systems and structure over short-term stimulants",
+      "You work hard mentally and the output isn't matching the effort",
+      "You've tried stimulants and found them blunt instruments",
+      "You want clarity, not just activation — and you want it to last past noon",
     ],
   },
 };

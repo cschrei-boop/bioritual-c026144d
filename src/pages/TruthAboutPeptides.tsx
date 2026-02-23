@@ -28,7 +28,7 @@ const TruthAboutPeptides = () => {
           "Whether you're just starting to learn about peptides or ready to implement a structured protocol, we have resources to support your journey.",
         buttons: [
           { label: "View Protocols", href: "/protocols", variant: "primary" },
-          { label: "Ask AI Concierge", href: "/ai-concierge", variant: "outline" },
+          { label: "Talk to Jesse", href: "/ai-concierge", variant: "outline" },
         ],
         dark: false,
       }}
