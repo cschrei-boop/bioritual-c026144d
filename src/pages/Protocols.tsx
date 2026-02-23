@@ -1,227 +1,130 @@
-import { motion } from "framer-motion";
-import { ArrowRight, Check, X } from "lucide-react";
-import { Link } from "react-router-dom";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
-import ShopByGoal from "@/components/sections/ShopByGoal";
-import VideoHero from "@/components/sections/VideoHero";
-const protocols = [{
-  title: "Weight Loss + Metabolic Health",
-  href: "/products/bio-signals-weight-loss-metabolic-health",
-  description: "Support metabolic signaling and sustainable weight management"
-}, {
-  title: "Energy",
-  href: "/products/bio-signals-energy",
-  description: "Optimize energy production and reduce fatigue patterns"
-}, {
-  title: "Performance + Recovery",
-  href: "/products/bio-signals-performance-recovery",
-  description: "Enhance adaptation and protect recovery capacity"
-}, {
-  title: "Hair + Skin",
-  href: "/products/bio-signals-hair-skin",
-  description: "Support tissue quality and visible health indicators"
-}, {
-  title: "Cognition + Brain Health",
-  href: "/products/bio-signals-cognition-brain-health",
-  description: "Promote mental clarity and long-term brain function"
-}, {
-  title: "Longevity",
-  href: "/products/bio-signals-longevity",
-  description: "Preserve resilience and functional capacity over time"
-}];
-const bioSignalsIs = ["Educational", "Structured", "Feedback-driven", "Time-bound", "Personalized through tracking"];
-const bioSignalsIsNot = ["A supplement store", "A shortcut", "A medical clinic", "A one-size-fits-all plan"];
-const whoIsFor = ["Want clarity instead of hype", "Prefer systems over hacks", "Care about long-term outcomes", "Want to understand why something works, not just that it does"];
-const protocolIncludes = ["A structured optimization protocol", "A private client wiki", "Tracking and accountability tools", "Educational context and explanations", "Protocol-specific materials coordinated as part of the experience"];
+import Hero from "@/components/sections/Hero";
+import ProtocolGrid from "@/components/sections/ProtocolGrid";
+import CoachingCallout from "@/components/sections/CoachingCallout";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+
+const fadeIn = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 },
+};
+
 const Protocols = () => {
-  const fadeIn = {
-    initial: {
-      opacity: 0,
-      y: 20
-    },
-    whileInView: {
-      opacity: 1,
-      y: 0
-    },
-    viewport: {
-      once: true
-    },
-    transition: {
-      duration: 0.6
-    }
-  };
-  return <div className="min-h-screen bg-background">
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>Bio Signals Protocols | BioRitual</title>
+        <meta
+          name="description"
+          content="Six goals. One approach. A 3-month system built around your specific biology, your starting point, and what you're actually willing to do."
+        />
+        <link rel="canonical" href="https://bioritual.us/protocols" />
+      </Helmet>
       <Header />
-      
-      {/* Hero Section */}
-      <VideoHero tagline="Bio Signals Protocols" title="Science-backed optimization, explained in plain language." subtitle="Structured 3-month systems that combine education, tracking, and accountability for lasting results." />
 
-      <main className="max-w-4xl mx-auto px-6 py-12 md:py-16">
-        
-        {/* What Are Bio Signals */}
-        <motion.section className="mb-16 md:mb-24" {...fadeIn}>
-          <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground mb-6">What Are Bio Signals?</h2>
-          <div className="space-y-4 text-foreground/80 leading-relaxed">
-            <p>
-              Bio signals are inputs that guide the body through feedback, rather than forcing outcomes.
-            </p>
-            <p>
-              They exist on the same continuum as sleep, training, nutrition, light exposure, and recovery — signals that influence how the body allocates energy, repairs tissue, and adapts over time.
-            </p>
-            <div className="py-4 space-y-2 text-foreground/70 italic">
-              <p>Some bio signals are behavioral.</p>
-              <p>Some are environmental.</p>
-              <p>Some are molecular.</p>
-            </div>
+      <main>
+        {/* Hero */}
+        <Hero
+          tagline=""
+          headline="Six goals. One approach. Everything you need to work on it."
+          bodyParagraphs={[
+            "A Bio Signals Protocol is a 3-month system built around your specific biology, your starting point, and what you're actually willing to do. Not a fixed stack. A reasoned starting position confirmed through conversation.",
+          ]}
+          ctaText=""
+          ctaLink=""
+          subHeroLine1=""
+          subHeroLine2=""
+        />
+
+        {/* What a Protocol Is */}
+        <section className="py-12 px-6 md:px-12 lg:px-16">
+          <div className="max-w-3xl">
+            <motion.div {...fadeIn}>
+              <h2 className="text-3xl md:text-4xl mb-6">What a protocol is</h2>
+              <div className="space-y-4 text-foreground/80 leading-normal">
+                <p>
+                  Every protocol starts with Jesse™ — your personal AI coach — asking questions. Not a form. A conversation that builds a picture of your history, your goal, and what you've already tried. The compounds, the sequencing, and the supporting materials follow from that conversation.
+                </p>
+                <p>
+                  The peptides and everything you need to use them ship directly to you. Jesse™ stays with you for the full three months — tracking, flagging, maintaining a private Notion log of your progress. Your private client wiki documents every element of your protocol so you understand what you're doing and why.
+                </p>
+                <p>
+                  Three months is the unit. Long enough to produce something measurable. Short enough to stay honest about what's achievable.
+                </p>
+              </div>
+            </motion.div>
           </div>
-        </motion.section>
+        </section>
 
-        {/* What About Peptides */}
-        <motion.section className="mb-16 md:mb-24 bg-muted/30 rounded-lg p-8" {...fadeIn}>
-          <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground mb-6">"What about peptides?"</h2>
-          <p className="text-foreground/80 mb-6">You may have heard names like:</p>
-          <ul className="space-y-2 mb-6 text-foreground/80">
-            <li className="font-medium">Semaglutide</li>
-            <li className="font-medium">NAD+</li>
-            <li className="font-medium">BPC-157</li>
-            <li className="font-medium">CJC-1295</li>
-          </ul>
-          <div className="space-y-2 text-foreground/60 italic mb-6">
-            <p>Are these supplements?</p>
-            <p>Are they drugs?</p>
-            <p>Are they safe?</p>
-            <p>Do they work?</p>
+        {/* What a Protocol Is Not */}
+        <section className="py-12 px-6 md:px-12 lg:px-16 bg-secondary rounded-3xl">
+          <div className="max-w-3xl">
+            <motion.div {...fadeIn}>
+              <h2 className="text-3xl md:text-4xl mb-6">What a protocol is not</h2>
+              <p className="text-foreground/80 leading-normal">
+                A supplement store. A shortcut. A fixed stack that ships without a conversation first. A one-size-fits-all plan. A product that assumes it knows your situation before asking.
+              </p>
+            </motion.div>
           </div>
-          <p className="text-foreground/80 mb-4">
-            Most people encounter these terms without context, which leads to confusion, misuse, or unrealistic expectations.
-          </p>
-          <p className="text-foreground font-medium">
-            That's where Bio Signals comes in.
-          </p>
-        </motion.section>
+        </section>
 
-        {/* What We Actually Do */}
-        <motion.section className="mb-16 md:mb-24" {...fadeIn}>
-          <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground mb-6">What We Actually Do</h2>
-          <p className="text-foreground/80 mb-4">We develop science-backed protocols that combine:</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            {["Education", "Structure", "Tracking", "Accountability"].map(item => <div key={item} className="text-center py-4 border border-border rounded-lg">
-                <span className="font-medium text-foreground">{item}</span>
-              </div>)}
+        {/* Protocol Grid */}
+        <ProtocolGrid
+          title="Choose the goal that matches where you are right now."
+          subtitle="Jesse™ will handle the rest."
+          showBottomLink={false}
+        />
+
+        {/* Not Sure Which One */}
+        <section className="py-12 px-6 md:px-12 lg:px-16 bg-secondary rounded-3xl">
+          <div className="max-w-3xl mx-auto">
+            <motion.div {...fadeIn}>
+              <h2 className="text-3xl md:text-4xl mb-6">Not sure which one?</h2>
+              <div className="space-y-4 text-foreground/80 leading-normal mb-8">
+                <p>
+                  That's what Jesse™ is for. Describe your situation and Jesse™ — your personal AI coach — will tell you which protocol makes sense and why. No pressure toward any particular option. If a different starting point makes more sense, that's what you'll hear.
+                </p>
+              </div>
+              <Link
+                to="/ai-concierge"
+                className="inline-block text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity"
+              >
+                → Talk to Jesse™ first
+              </Link>
+            </motion.div>
           </div>
-          <p className="text-foreground/80 mb-6">
-            We explain complex concepts — including peptides — in plain language, grounded in biology and real-world feedback.
-          </p>
-          <div className="border-l-2 border-foreground/20 pl-6 space-y-2 text-foreground/70 italic">
-            <p>You are not buying molecules.</p>
-            <p>You are enrolling in a guided protocol that helps you understand what signals matter, how to apply them responsibly, and how to observe your response over time.</p>
+        </section>
+
+        {/* Want More Support */}
+        <section className="py-12 px-6 md:px-12 lg:px-16">
+          <div className="max-w-3xl mx-auto">
+            <motion.div {...fadeIn}>
+              <h2 className="text-3xl md:text-4xl mb-6">Want more support?</h2>
+              <div className="space-y-4 text-foreground/80 leading-normal mb-8">
+                <p>
+                  The 3-Month Coaching Sprint adds direct access to Hans and Luis — the founders — via weekly video calls and ongoing oversight. Jesse™ is still part of it. This adds the human layer for people who want it.
+                </p>
+                <p>Not everyone needs it. We'll tell you if you don't.</p>
+              </div>
+              <Link
+                to="/coaching"
+                className="inline-block text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity"
+              >
+                → Learn about the Coaching Sprint
+              </Link>
+            </motion.div>
           </div>
-        </motion.section>
-
-        {/* What Bio Signals Is (and Is Not) */}
-        <motion.section className="mb-16 md:mb-24" {...fadeIn}>
-          <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground mb-8">What Bio Signals Is (and Is Not)</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Bio Signals is:</h3>
-              <ul className="space-y-3">
-                {bioSignalsIs.map(item => <li key={item} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-foreground/60 mt-0.5 flex-shrink-0" />
-                    <span className="text-foreground/80">{item}</span>
-                  </li>)}
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold text-foreground mb-4">Bio Signals is not:</h3>
-              <ul className="space-y-3">
-                {bioSignalsIsNot.map(item => <li key={item} className="flex items-start gap-3">
-                    <X className="w-5 h-5 text-foreground/40 mt-0.5 flex-shrink-0" />
-                    <span className="text-foreground/60">{item}</span>
-                  </li>)}
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 pt-6 border-t border-border text-sm text-foreground/60 italic space-y-1">
-            <p>No substances are sold individually.</p>
-            <p>No medical claims are made.</p>
-          </div>
-        </motion.section>
-
-        {/* The Bio Signals Protocols */}
-        <motion.section className="mb-16 md:mb-24" {...fadeIn}>
-          <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground mb-4">The Bio Signals Protocols</h2>
-          <p className="text-foreground/80 mb-4">
-            Each protocol is a 3-month system, priced at <span className="font-semibold text-foreground">$699</span>, and includes:
-          </p>
-          <ul className="space-y-2 mb-8">
-            {protocolIncludes.map(item => <li key={item} className="flex items-start gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-foreground/40 mt-2 flex-shrink-0" />
-                <span className="text-foreground/80">{item}</span>
-              </li>)}
-          </ul>
-          
-          <p className="text-foreground font-medium mb-6">Choose the protocol that matches your current priority:</p>
-          
-          <div className="grid gap-4">
-            {protocols.map(protocol => <Link key={protocol.href} to={protocol.href} className="group flex items-center justify-between p-6 border border-border rounded-lg hover:border-foreground/30 transition-all text-destructive-foreground bg-[#bfd0fd]">
-                <div>
-                  <h3 className="font-playfair font-semibold mb-1 text-primary-foreground text-2xl">{protocol.title}</h3>
-                  <p className="text-sm text-primary-foreground">{protocol.description}</p>
-                </div>
-                <ArrowRight className="w-5 h-5 text-foreground/40 group-hover:text-foreground group-hover:translate-x-1 transition-all flex-shrink-0" />
-              </Link>)}
-          </div>
-          
-          <p className="text-sm text-foreground/60 italic mt-6 text-center">
-            Each protocol stands alone, but all share the same underlying framework.
-          </p>
-        </motion.section>
-
-        {/* Why Protocols, Not Products? */}
-        <motion.section className="mb-16 md:mb-24 bg-muted/30 rounded-lg p-8" {...fadeIn}>
-          <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground mb-6">Why Protocols, Not Products?</h2>
-          <p className="text-foreground/80 mb-6">Because outcomes don't come from substances alone.</p>
-          <p className="text-foreground/80 mb-4">They come from:</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            {["Context", "Consistency", "Feedback", "Adjustment"].map(item => <div key={item} className="text-center py-4 border border-border bg-background rounded-lg">
-                <span className="font-medium text-foreground">{item}</span>
-              </div>)}
-          </div>
-          <p className="text-foreground/80">
-            Bio Signals protocols are designed to help you understand the signal, apply it responsibly, and evaluate your response — so you're not guessing, stacking, or chasing trends.
-          </p>
-        </motion.section>
-
-        {/* Who This Is For */}
-        <motion.section className="mb-16 md:mb-24" {...fadeIn}>
-          <h2 className="font-playfair text-2xl md:text-3xl font-bold text-foreground mb-6">Who This Is For</h2>
-          <p className="text-foreground/80 mb-4">Bio Signals is for people who:</p>
-          <ul className="space-y-3 mb-6">
-            {whoIsFor.map(item => <li key={item} className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-foreground/60 mt-0.5 flex-shrink-0" />
-                <span className="text-foreground/80">{item}</span>
-              </li>)}
-          </ul>
-          <p className="text-foreground/60 italic">
-            If you're looking for a quick fix or a product checkout, this isn't it.
-          </p>
-        </motion.section>
-
-        {/* Final Statement */}
-        <motion.section className="text-center py-12 border-t border-border" {...fadeIn}>
-          <h2 className="font-playfair text-xl md:text-2xl font-bold text-foreground mb-4">
-            Bio Signals is about understanding biology, not overriding it.
-          </h2>
-          <p className="text-foreground/70 max-w-2xl mx-auto">
-            We translate science into usable protocols — and guide you through them with structure, tracking, and plain-language explanation.
-          </p>
-        </motion.section>
-
-        <ShopByGoal />
+        </section>
       </main>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default Protocols;
