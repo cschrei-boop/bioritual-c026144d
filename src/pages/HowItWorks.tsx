@@ -2,6 +2,7 @@ import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import CoachingCallout from "@/components/sections/CoachingCallout";
 import FinalCTA from "@/components/sections/FinalCTA";
+import Hero from "@/components/sections/Hero";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 
@@ -60,23 +61,15 @@ const HowItWorks = () => {
       <Header />
 
       <main>
-        {/* Hero */}
-        <section className="py-20 px-6 md:px-12 lg:px-16">
-          <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight uppercase mb-6">
-                No forms. No guesswork. No stack pulled off a shelf.
-              </h1>
-              <p className="text-lg text-foreground/70">
-                Here's exactly what happens after you decide to stop researching and start doing something about it.
-              </p>
-            </motion.div>
-          </div>
-        </section>
+        <Hero
+          tagline=""
+          headline="No forms. No guesswork. No stack pulled off a shelf."
+          bodyParagraphs={["Here's exactly what happens after you decide to stop researching and start doing something about it."]}
+          ctaText=""
+          ctaLink=""
+          subHeroLine1=""
+          subHeroLine2=""
+        />
 
         {/* Steps */}
         {steps.map((step, i) => (

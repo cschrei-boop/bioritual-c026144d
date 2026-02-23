@@ -1,6 +1,6 @@
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
-import { motion } from "framer-motion";
+import Hero from "@/components/sections/Hero";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
@@ -16,23 +16,15 @@ const JessePage = () => {
       <Header />
 
       <main>
-        {/* Hero */}
-        <section className="py-20 px-6 md:px-12 lg:px-16">
-          <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight uppercase mb-6">
-                Meet Jesse. Your BS filter for the wellness industry.
-              </h1>
-              <p className="text-lg text-foreground/70 leading-normal">
-                An AI coaching companion that lives in your WhatsApp or iMessage. No app. No dashboard. No new thing to forget about.
-              </p>
-            </motion.div>
-          </div>
-        </section>
+        <Hero
+          tagline=""
+          headline="Meet Jesse. Your BS filter for the wellness industry."
+          bodyParagraphs={["An AI coaching companion that lives in your WhatsApp or iMessage. No app. No dashboard. No new thing to forget about."]}
+          ctaText=""
+          ctaLink=""
+          subHeroLine1=""
+          subHeroLine2=""
+        />
 
         {/* What Jesse Is */}
         <section className="py-12 px-6 md:px-12 lg:px-16">

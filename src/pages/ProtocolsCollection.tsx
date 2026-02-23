@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
+import Hero from "@/components/sections/Hero";
 import { useProtocolProducts } from "@/hooks/useShopifyCollection";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -19,27 +20,15 @@ const ProtocolsCollection = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 px-6 md:px-12 border-b border-border">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h1
-            className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Bio Signals Protocols
-          </motion.h1>
-          <motion.p
-            className="text-lg md:text-xl text-foreground/70"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            3-month structured systems designed for your specific goal
-          </motion.p>
-        </div>
-      </section>
+      <Hero
+        tagline=""
+        headline="Bio Signals Protocols"
+        bodyParagraphs={["3-month structured systems designed for your specific goal"]}
+        ctaText=""
+        ctaLink=""
+        subHeroLine1=""
+        subHeroLine2=""
+      />
 
       <main className="max-w-7xl mx-auto px-6 py-12 md:py-16">
         {/* Products Grid */}

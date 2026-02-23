@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
+import Hero from "@/components/sections/Hero";
 import { articles } from "@/data/article-content";
 
 const Blog = () => {
@@ -22,35 +23,15 @@ const Blog = () => {
       <Header />
 
       <main>
-        {/* Page Header */}
-        <section className="pt-32 pb-12 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto text-center">
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4"
-            >
-              Education · Science · Clarity
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-serif text-4xl md:text-5xl lg:text-6xl mb-4"
-            >
-              Articles
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-muted-foreground max-w-xl mx-auto"
-            >
-              Clear, science-based thinking on peptides, GLP-1s, bio signals, and structured wellness.
-            </motion.p>
-          </div>
-        </section>
+        <Hero
+          tagline="Education · Science · Clarity"
+          headline="Articles"
+          bodyParagraphs={["Clear, science-based thinking on peptides, GLP-1s, bio signals, and structured wellness."]}
+          ctaText=""
+          ctaLink=""
+          subHeroLine1=""
+          subHeroLine2=""
+        />
 
         {/* Article Grid */}
         <section className="pb-16 px-6 md:px-12">

@@ -1,6 +1,7 @@
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import FinalCTA from "@/components/sections/FinalCTA";
+import Hero from "@/components/sections/Hero";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 
@@ -97,23 +98,17 @@ const JourneyPage = () => {
       <Header />
 
       <main>
-        {/* Hero */}
-        <section className="py-24 px-6 md:px-12 lg:px-16">
-          <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight uppercase mb-6">
-                The way you live is the story you are telling.
-              </h1>
-              <p className="text-lg text-foreground/70">
-                Most people haven't chosen that story deliberately. BioRitual exists for people who are ready to.
-              </p>
-            </motion.div>
-          </div>
-        </section>
+        <Hero
+          tagline=""
+          headline="The way you live is the story you are telling."
+          bodyParagraphs={["Most people haven't chosen that story deliberately. BioRitual exists for people who are ready to."]}
+          ctaText="See how it works"
+          ctaLink="/how-it-works"
+          ctaText2="Talk to Jesse — your personal AI coach"
+          ctaLink2="/ai-concierge"
+          subHeroLine1=""
+          subHeroLine2=""
+        />
 
         {/* Sections */}
         {sections.map((section, i) => (
