@@ -39,15 +39,18 @@ const ArticleCarousel = ({ currentHref }: ArticleCarouselProps) => {
           className="flex items-center justify-between mb-8"
         >
           <div className="text-center flex-1">
-            <h2 className="font-serif text-3xl md:text-4xl mb-2">
-              Blog: All You Wanted to Know About Biohacking
+            <h2 className="font-serif text-3xl md:text-4xl mb-1">
+              From the archive
             </h2>
+            <p className="text-muted-foreground text-sm">
+              No heroes. No villains. Just useful thinking.
+            </p>
           </div>
           <Link
             to="/blog"
             className="text-xs tracking-[0.2em] uppercase hover:opacity-60 transition-opacity whitespace-nowrap"
           >
-            All Articles →
+            See all articles →
           </Link>
         </motion.div>
 

@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { useCartSync } from "@/hooks/useCartSync";
 import Index from "./pages/Index";
-import ProductAIConcierge from "./pages/ProductAIConcierge";
+import ProductAIConcierge from "./pages/JessePage";
 import ProductCoaching from "./pages/ProductCoaching";
 import StartHere from "./pages/StartHere";
 import Protocols from "./pages/Protocols";
@@ -23,6 +23,8 @@ import DynamicProduct from "./pages/DynamicProduct";
 import CartRedirect from "./pages/CartRedirect";
 import LandingPage from "./pages/LandingPage";
 import About from "./pages/About";
+import HowItWorks from "./pages/HowItWorks";
+import JourneyPage from "./pages/JourneyPage";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import EmailPopup from "./components/sections/EmailPopup";
@@ -50,6 +52,8 @@ const AppContent = () => {
         <Route path="/ai-concierge" element={<ProductAIConcierge />} />
         <Route path="/coaching" element={<ProductCoaching />} />
         <Route path="/about" element={<About />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
+        <Route path="/the-journey" element={<JourneyPage />} />
         {/* Dynamic Shopify product pages - works for ANY handle */}
         <Route path="/products/:handle" element={<DynamicProduct />} />
         {/* Legacy protocol URLs - render same DynamicProduct with handle resolution */}

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Search, User, Menu, ChevronDown, Loader2 } from "lucide-react";
+import { Search, User, Menu, ChevronDown } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -7,6 +7,7 @@ import { useState } from "react";
 import { CartDrawer } from "@/components/CartDrawer";
 import { Link } from "react-router-dom";
 import { useProtocolsNavigation } from "@/hooks/useProtocolsNavigation";
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [protocolsOpen, setProtocolsOpen] = useState(false);
@@ -14,19 +15,14 @@ const Header = () => {
     protocols,
     isLoading: protocolsLoading
   } = useProtocolsNavigation();
-  const navLinks = [{
-    label: "AI Companion",
-    href: "/ai-concierge"
-  }, {
-    label: "1:1 Coaching",
-    href: "/coaching"
-  }, {
-    label: "Blog",
-    href: "/blog"
-  }, {
-    label: "About",
-    href: "/about"
-  }];
+  const navLinks = [
+    { label: "Jesse", href: "/ai-concierge" },
+    { label: "How It Works", href: "/how-it-works" },
+    { label: "The Journey", href: "/the-journey" },
+    { label: "1:1 Coaching", href: "/coaching" },
+    { label: "Blog", href: "/blog" },
+    { label: "About", href: "/about" },
+  ];
   return <>
       {/* Announcement Bar */}
       <div className="bg-foreground text-background text-center py-2 px-4">
