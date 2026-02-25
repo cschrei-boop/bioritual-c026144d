@@ -56,6 +56,11 @@ const EmailPopup = () => {
 
       if (error) throw error;
 
+      // Push to Klaviyo
+      supabase.functions.invoke("klaviyo-subscribe", {
+        body: { email: email.trim(), interests: selectedInterests },
+      }).catch((err) => console.error("Klaviyo sync failed:", err));
+
       toast({ title: "You're in!", description: "Thanks for subscribing." });
       localStorage.setItem(STORAGE_KEY, "true");
       setOpen(false);
