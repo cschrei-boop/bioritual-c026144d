@@ -23,7 +23,7 @@ export const defaultStartHereCards: CardData[] = [
     tagline: "Learn & understand",
     body: "Your personal AI coach. Ask anything about peptides, GLP-1s, or longevity science — in plain language.",
     bestIf: "I want to understand this before acting.",
-    ctaLabel: "Meet Jesse™",
+    ctaLabel: "Join the Jesse™ waitlist",
     href: "/ai-concierge",
     icon: Sparkles,
     node: "Learn",

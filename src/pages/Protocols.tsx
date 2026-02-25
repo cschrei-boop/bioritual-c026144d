@@ -5,6 +5,7 @@ import ProtocolGrid from "@/components/sections/ProtocolGrid";
 import CoachingCallout from "@/components/sections/CoachingCallout";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import JesseWaitlistForm from "@/components/sections/JesseWaitlistForm";
 import { Helmet } from "react-helmet-async";
 
 const fadeIn = {
@@ -90,12 +91,7 @@ const Protocols = () => {
                   That's what Jesse™ is for. Describe your situation and Jesse™ — your personal AI coach — will tell you which protocol makes sense and why. No pressure toward any particular option. If a different starting point makes more sense, that's what you'll hear.
                 </p>
               </div>
-              <Link
-                to="/ai-concierge"
-                className="inline-block text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity"
-              >
-                → Talk to Jesse™ first
-              </Link>
+              <JesseWaitlistForm variant="stacked" />
             </motion.div>
           </div>
         </section>

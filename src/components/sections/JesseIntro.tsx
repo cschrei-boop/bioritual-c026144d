@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import JesseWaitlistForm from "@/components/sections/JesseWaitlistForm";
 
 const JesseIntro = () => {
   const ref = useRef(null);
@@ -35,12 +35,7 @@ const JesseIntro = () => {
             </p>
           </div>
 
-          <Link
-            to="/ai-concierge"
-            className="inline-block text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity"
-          >
-            → Meet Jesse™
-          </Link>
+          <JesseWaitlistForm variant="stacked" />
         </motion.div>
       </div>
     </section>

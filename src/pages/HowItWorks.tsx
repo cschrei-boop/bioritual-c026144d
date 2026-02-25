@@ -135,7 +135,7 @@ const HowItWorks = () => {
           description="Choose the level of support that matches where you are right now."
           buttons={[
             { text: "See protocols", href: "/collection/protocols", variant: "primary" },
-            { text: "Talk to Jesse™ first", href: "/ai-concierge", variant: "link" },
+            { text: "Join the Jesse™ waitlist", href: "/ai-concierge", variant: "link" },
           ]}
         />
         <ShopByGoal />
