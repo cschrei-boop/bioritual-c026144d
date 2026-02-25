@@ -22,11 +22,18 @@ const JesseWaitlistForm = ({ variant = "inline", className = "" }: JesseWaitlist
 
     setIsSubmitting(true);
     try {
+      // Save to database
       const { error } = await supabase.from("email_subscribers").insert({
         email: email.trim(),
         interests: ["jesse-waitlist"],
       });
       if (error) throw error;
+
+      // Push to Klaviyo
+      supabase.functions.invoke("klaviyo-subscribe", {
+        body: { email: email.trim(), interests: ["jesse-waitlist"] },
+      }).catch((err) => console.error("Klaviyo sync failed:", err));
+
       toast({ title: "You're on the list!", description: "We'll be in touch when Jesse™ is ready." });
       setEmail("");
     } catch {
