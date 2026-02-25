@@ -1,10 +1,9 @@
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import Hero from "@/components/sections/Hero";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import { Helmet } from "react-helmet-async";
 import ShopByGoal from "@/components/sections/ShopByGoal";
+import JesseWaitlistForm from "@/components/sections/JesseWaitlistForm";
 
 const JessePage = () => {
   return (
@@ -117,20 +116,17 @@ const JessePage = () => {
           </div>
         </section>
 
-        {/* CTA */}
+        {/* CTA — Waitlist */}
         <section className="py-16 px-6 md:px-12 lg:px-16 bg-secondary rounded-3xl">
           <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl mb-4">Join the Jesse™ waitlist</h2>
             <p className="text-foreground/70 mb-2">Cancel anytime.</p>
             <p className="text-foreground/70 mb-8">
               If you decide to move into a Bio Signals Protocol, Jesse™ comes with it — already knowing your history, already tracking your progress.
             </p>
-            <Button
-              size="lg"
-              className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-12 py-6 text-sm tracking-widest uppercase"
-              asChild
-            >
-              <Link to="/ai-concierge">Start talking to Jesse™ →</Link>
-            </Button>
+            <div className="flex justify-center">
+              <JesseWaitlistForm variant="stacked" />
+            </div>
           </div>
         </section>
         <ShopByGoal />

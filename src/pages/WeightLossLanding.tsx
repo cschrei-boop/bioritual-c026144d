@@ -189,7 +189,7 @@ const WeightLossLanding = () => {
               to="/ai-concierge" 
               className="text-foreground border-b border-foreground pb-1 hover:opacity-70 transition-opacity"
             >
-              Learn more about peptides and longevity science →
+              Join the Jesse™ waitlist →
             </Link>
           </div>
         </div>

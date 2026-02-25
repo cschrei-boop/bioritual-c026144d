@@ -22,11 +22,11 @@ interface PathCard {
 const paths: PathCard[] = [
   {
     id: "jesse",
-    title: "Talk to Jesse™ first",
+    title: "Join the Jesse™ waitlist",
     bestIf: "I want to understand this before I commit to anything.",
     body: "Jesse™ — your personal AI coach — lives in your WhatsApp or iMessage. Ask it anything about peptides, GLP-1s, longevity science, or metabolic health. It'll give you straight answers, tell you when the evidence is thin, and help you figure out whether any of this makes sense for your situation.",
     extra: "No protocol. No peptides. Just clarity.",
-    ctaLabel: "Meet Jesse™",
+    ctaLabel: "Join the waitlist",
     href: "/ai-concierge",
     icon: Sparkles,
   },
@@ -94,7 +94,7 @@ const StartHere = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl mb-4">Not sure which path?</h2>
             <p className="text-foreground/70 leading-normal mb-6">Ask Jesse™. Seriously. Describe your situation and Jesse™ — your personal AI coach — will tell you which path makes sense and why. It has no incentive to push you toward the most expensive option. If a lower tier is right for you, that's what it'll say.</p>
-            <Link to="/ai-concierge" className="inline-block text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity">→ Talk to Jesse™</Link>
+            <Link to="/ai-concierge" className="inline-block text-sm tracking-[0.15em] uppercase border-b border-foreground pb-1 hover:opacity-60 transition-opacity">→ Join the Jesse™ waitlist</Link>
           </div>
         </section>
         <section className="py-12 px-6 md:px-12 lg:px-16">
