@@ -22,6 +22,12 @@ const StickyEmailFooter = () => {
         interests: [],
       } as any);
       if (error) throw error;
+
+      // Push to Klaviyo
+      supabase.functions.invoke("klaviyo-subscribe", {
+        body: { email: email.trim(), interests: ["newsletter"] },
+      }).catch((err) => console.error("Klaviyo sync failed:", err));
+
       toast({ title: "You're in!", description: "Thanks for subscribing." });
       setEmail("");
     } catch {
