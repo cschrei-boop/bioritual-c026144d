@@ -21,6 +21,7 @@ import FulfillmentPolicy from "./pages/FulfillmentPolicy";
 import ConsentAcknowledgment from "./pages/ConsentAcknowledgment";
 import DynamicProduct from "./pages/DynamicProduct";
 import CartRedirect from "./pages/CartRedirect";
+import ShopifyCheckoutRedirect from "./pages/ShopifyCheckoutRedirect";
 import LandingPage from "./pages/LandingPage";
 import About from "./pages/About";
 import HowItWorks from "./pages/HowItWorks";
@@ -60,6 +61,7 @@ const AppContent = () => {
         <Route path="/protocol/:handle" element={<DynamicProduct />} />
         <Route path="/lp/:slug" element={<LandingPage />} />
         <Route path="/cart" element={<CartRedirect />} />
+        <Route path="/cart/c/*" element={<ShopifyCheckoutRedirect />} />
         <Route path="/cart/:variantInfo" element={<CartRedirect />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
