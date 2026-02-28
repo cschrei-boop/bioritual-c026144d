@@ -26,6 +26,17 @@ export const CartDrawer = () => {
     if (isOpen) syncCart(); 
   }, [isOpen, syncCart]);
 
+  const proceedToCheckout = async () => {
+    // Sync cart to get the freshest checkout URL before navigating
+    await syncCart();
+    const checkoutUrl = getCheckoutUrl();
+    if (checkoutUrl) {
+      window.open(checkoutUrl, '_blank');
+      setShowConfirmation(false);
+      setIsOpen(false);
+    }
+  };
+
   const handleCheckoutClick = () => {
     // Check if any cart item has the "disclaimer" tag
     const hasDisclaimerProduct = items.some(item => {
@@ -36,22 +47,12 @@ export const CartDrawer = () => {
     if (hasDisclaimerProduct) {
       setShowConfirmation(true);
     } else {
-      // Skip modal, go directly to checkout
-      const checkoutUrl = getCheckoutUrl();
-      if (checkoutUrl) {
-        window.open(checkoutUrl, '_blank');
-        setIsOpen(false);
-      }
+      proceedToCheckout();
     }
   };
 
   const handleConfirmCheckout = () => {
-    const checkoutUrl = getCheckoutUrl();
-    if (checkoutUrl) {
-      window.open(checkoutUrl, '_blank');
-      setShowConfirmation(false);
-      setIsOpen(false);
-    }
+    proceedToCheckout();
   };
 
   return (
