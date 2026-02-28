@@ -433,9 +433,10 @@ export function formatCheckoutUrl(checkoutUrl: string): string {
     const url = new URL(checkoutUrl);
     // Force HTTPS for secure checkout
     url.protocol = 'https:';
-    // bioritual.us (non-www) is disconnected in Shopify — rewrite to www which is connected
-    if (url.hostname === 'bioritual.us') {
-      url.hostname = 'www.bioritual.us';
+    // Route checkout through Shopify's permanent domain to avoid
+    // hitting the Lovable router on bioritual.us
+    if (url.hostname !== SHOPIFY_STORE_PERMANENT_DOMAIN) {
+      url.hostname = SHOPIFY_STORE_PERMANENT_DOMAIN;
     }
     url.searchParams.set('channel', 'online_store');
     return url.toString();
