@@ -30,8 +30,13 @@ export const CartDrawer = () => {
     // Sync cart to get the freshest checkout URL before navigating
     await syncCart();
     const checkoutUrl = getCheckoutUrl();
+    console.log('[Checkout] URL from store:', checkoutUrl);
     if (checkoutUrl) {
-      window.open(checkoutUrl, '_blank');
+      // Always run through formatCheckoutUrl to ensure myshopify.com domain
+      const { formatCheckoutUrl } = await import('@/lib/shopify');
+      const safeUrl = formatCheckoutUrl(checkoutUrl);
+      console.log('[Checkout] Safe URL:', safeUrl);
+      window.open(safeUrl, '_blank');
       setShowConfirmation(false);
       setIsOpen(false);
     }
