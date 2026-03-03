@@ -20,11 +20,13 @@ const JessePage = () => {
           tagline=""
           headline="Meet Jesse™. Your BS filter for the wellness industry."
           bodyParagraphs={["An AI coaching companion that lives in your WhatsApp or iMessage. No app. No dashboard. No new thing to forget about."]}
-          ctaText="Get on the waitlist"
-          ctaLink="#jesse-waitlist"
+          ctaText=""
+          ctaLink=""
           subHeroLine1=""
           subHeroLine2=""
-        />
+        >
+          <JesseWaitlistForm variant="inline" />
+        </Hero>
 
         {/* What Jesse Is */}
         <section className="py-12 px-6 md:px-12 lg:px-16">

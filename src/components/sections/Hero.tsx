@@ -16,6 +16,7 @@ interface HeroProps {
   subHeroLine2?: string;
   backgroundImage?: string;
   backgroundVideo?: string;
+  children?: React.ReactNode;
 }
 
 const Hero = ({
@@ -30,6 +31,7 @@ const Hero = ({
   subHeroLine2 = "That's where we come in.",
   backgroundImage,
   backgroundVideo,
+  children,
 }: HeroProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoSrc = backgroundVideo || defaultBackgroundVideo;
@@ -152,6 +154,17 @@ const Hero = ({
                   {ctaText2}
                 </Link>
               )}
+            </motion.div>
+          )}
+
+          {/* Additional content (forms, etc.) */}
+          {children && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+            >
+              {children}
             </motion.div>
           )}
 
