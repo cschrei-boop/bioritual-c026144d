@@ -18,8 +18,8 @@ const JessePage = () => {
       <main>
         <Hero
           tagline=""
-          headline="Meet Jesse™. Your BS filter for the wellness industry."
-          bodyParagraphs={["An AI coaching companion that lives in your WhatsApp or iMessage. No app. No dashboard. No new thing to forget about."]}
+          headline={"MEET JESSE™.\nYOUR BS FILTER FOR THE WELLNESS INDUSTRY."}
+          bodyParagraphs={["An AI coaching companion that lives in your WhatsApp or iMessage. No app. No dashboard. No new thing to forget about.\n\n\nJesse is coming soon. Get on the list!"]}
           ctaText=""
           ctaLink=""
           subHeroLine1=""
