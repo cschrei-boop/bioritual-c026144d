@@ -126,13 +126,23 @@ const Hero = ({
               className="flex flex-col sm:flex-row gap-4"
             >
               {ctaText && (
-                <Button 
-                  size="lg" 
-                  className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-8 py-6 text-sm tracking-wider"
-                  asChild
-                >
-                  <Link to={ctaLink}>{ctaText}</Link>
-                </Button>
+                ctaLink.startsWith("#") ? (
+                  <Button 
+                    size="lg" 
+                    className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-8 py-6 text-sm tracking-wider"
+                    onClick={() => document.querySelector(ctaLink)?.scrollIntoView({ behavior: "smooth" })}
+                  >
+                    {ctaText}
+                  </Button>
+                ) : (
+                  <Button 
+                    size="lg" 
+                    className="bg-foreground text-background hover:bg-foreground/90 rounded-none px-8 py-6 text-sm tracking-wider"
+                    asChild
+                  >
+                    <Link to={ctaLink}>{ctaText}</Link>
+                  </Button>
+                )
               )}
               {ctaText2 && ctaLink2 && (
                 <Link
