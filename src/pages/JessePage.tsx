@@ -20,8 +20,8 @@ const JessePage = () => {
           tagline=""
           headline="Meet Jesse™. Your BS filter for the wellness industry."
           bodyParagraphs={["An AI coaching companion that lives in your WhatsApp or iMessage. No app. No dashboard. No new thing to forget about."]}
-          ctaText=""
-          ctaLink=""
+          ctaText="Get on the waitlist"
+          ctaLink="#jesse-waitlist"
           subHeroLine1=""
           subHeroLine2=""
         />
@@ -117,7 +117,7 @@ const JessePage = () => {
         </section>
 
         {/* CTA — Waitlist */}
-        <section className="py-16 px-6 md:px-12 lg:px-16 bg-secondary rounded-3xl">
+        <section id="jesse-waitlist" className="py-16 px-6 md:px-12 lg:px-16 bg-secondary rounded-3xl">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl mb-4">Join the Jesse™ waitlist</h2>
             <p className="text-foreground/70 mb-2">Cancel anytime.</p>
