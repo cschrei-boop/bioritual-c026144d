@@ -102,7 +102,6 @@ const Footer = () => {
               © 2026 BIORITUAL. Educational content only. Not medical advice.
             </p>
             <div className="flex flex-wrap gap-4 md:gap-6">
-              <Link to="/terms" className="text-xs text-background/40 hover:text-background transition-colors">Privacy</Link>
               <Link to="/terms" className="text-xs text-background/40 hover:text-background transition-colors">Terms</Link>
               <Link to="/fulfillment" className="text-xs text-background/40 hover:text-background transition-colors">Shipping</Link>
               <Link to="/consent" className="text-xs text-background/40 hover:text-background transition-colors">Consent</Link>
