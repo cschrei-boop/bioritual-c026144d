@@ -16,7 +16,7 @@ Deno.serve(async (req) => {
       throw new Error('KLAVIYO_PRIVATE_API_KEY is not configured');
     }
 
-    const { email, interests } = await req.json();
+    const { email, phone, interests } = await req.json();
 
     if (!email || typeof email !== 'string') {
       return new Response(
@@ -39,6 +39,7 @@ Deno.serve(async (req) => {
           type: 'profile',
           attributes: {
             email: email.trim(),
+            ...(phone && typeof phone === 'string' ? { phone_number: phone.trim() } : {}),
             properties: {
               source: 'jesse-waitlist',
               interests: interests || [],

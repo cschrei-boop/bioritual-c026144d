@@ -14,6 +14,7 @@ interface JesseWaitlistFormProps {
 
 const JesseWaitlistForm = ({ variant = "inline", className = "" }: JesseWaitlistFormProps) => {
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,20 +23,24 @@ const JesseWaitlistForm = ({ variant = "inline", className = "" }: JesseWaitlist
 
     setIsSubmitting(true);
     try {
+      const trimmedPhone = phone.trim() || null;
+
       // Save to database
       const { error } = await supabase.from("email_subscribers").insert({
         email: email.trim(),
+        phone: trimmedPhone,
         interests: ["jesse-waitlist"],
-      });
+      } as any);
       if (error) throw error;
 
       // Push to Klaviyo
       supabase.functions.invoke("klaviyo-subscribe", {
-        body: { email: email.trim(), interests: ["jesse-waitlist"] },
+        body: { email: email.trim(), phone: trimmedPhone, interests: ["jesse-waitlist"] },
       }).catch((err) => console.error("Klaviyo sync failed:", err));
 
       toast({ title: "You're on the list!", description: "We'll be in touch when Jesse™ is ready." });
       setEmail("");
+      setPhone("");
     } catch {
       toast({ title: "Something went wrong", description: "Please try again.", variant: "destructive" });
     } finally {
@@ -53,6 +58,14 @@ const JesseWaitlistForm = ({ variant = "inline", className = "" }: JesseWaitlist
           onChange={(e) => setEmail(e.target.value)}
           required
           maxLength={255}
+          className="border-foreground rounded-none focus-visible:ring-foreground"
+        />
+        <Input
+          type="tel"
+          placeholder="Mobile number (optional)"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          maxLength={20}
           className="border-foreground rounded-none focus-visible:ring-foreground"
         />
         <Button
@@ -76,6 +89,14 @@ const JesseWaitlistForm = ({ variant = "inline", className = "" }: JesseWaitlist
         required
         maxLength={255}
         className="w-64 border-foreground rounded-none focus-visible:ring-foreground"
+      />
+      <Input
+        type="tel"
+        placeholder="Mobile (optional)"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+        maxLength={20}
+        className="w-48 border-foreground rounded-none focus-visible:ring-foreground"
       />
       <Button
         type="submit"
