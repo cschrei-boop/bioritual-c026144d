@@ -1,0 +1,1 @@
+ALTER TABLE public.email_subscribers ADD COLUMN phone text CHECK (char_length(phone) <= 20);
