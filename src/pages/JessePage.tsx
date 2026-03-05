@@ -147,7 +147,6 @@ const JessePage = () => {
             </div>
           </div>
         </section>
-        </section>
 
         {/* ════════════════════════════════════════════
             SECTION 2 — A CONVERSATION, NOT A CONSULTATION
