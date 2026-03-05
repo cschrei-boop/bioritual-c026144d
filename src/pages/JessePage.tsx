@@ -87,6 +87,14 @@ const accordionItems = [
 ];
 
 const JessePage = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.75;
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
@@ -103,22 +111,42 @@ const JessePage = () => {
         {/* ════════════════════════════════════════════
             SECTION 1 — HERO
         ════════════════════════════════════════════ */}
-        <section className="pt-28 pb-20 px-6 md:px-12 lg:px-16">
-          <div className="max-w-3xl">
-            <FadeIn>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-8">
-                Raise your hand if you have been personally victimized by your supplement cabinet.
-              </h1>
-            </FadeIn>
-            <FadeIn delay={0.15}>
-              <p className="text-lg md:text-xl text-foreground/70 leading-relaxed mb-10 max-w-2xl" style={{ fontFamily: "'Inter', sans-serif" }}>
-                Jesse — your personal AI coach — lives in your WhatsApp or iMessage. No app to install. No dashboard to forget about. Just a sharp, skeptical thinking partner who asks questions before recommending anything — and who will tell you if you don't need what we sell.
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.3}>
-              <JessePhoneInput />
-            </FadeIn>
+        <section className="relative min-h-[80vh] flex items-center">
+          {/* Full-bleed background video */}
+          <div className="absolute inset-0">
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover object-center"
+            >
+              <source src={heroVideo} type="video/mp4" />
+            </video>
+            {/* Subtle overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-background/70 via-background/40 to-transparent" />
           </div>
+
+          {/* Content overlay */}
+          <div className="relative z-10 w-full px-6 md:px-12 lg:px-16 py-20">
+            <div className="max-w-3xl">
+              <FadeIn>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-8">
+                  Raise your hand if you have been personally victimized by your supplement cabinet.
+                </h1>
+              </FadeIn>
+              <FadeIn delay={0.15}>
+                <p className="text-lg md:text-xl text-foreground/70 leading-relaxed mb-10 max-w-2xl">
+                  Jesse — your personal AI coach — lives in your WhatsApp or iMessage. No app to install. No dashboard to forget about. Just a sharp, skeptical thinking partner who asks questions before recommending anything — and who will tell you if you don't need what we sell.
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.3}>
+                <JessePhoneInput />
+              </FadeIn>
+            </div>
+          </div>
+        </section>
         </section>
 
         {/* ════════════════════════════════════════════
