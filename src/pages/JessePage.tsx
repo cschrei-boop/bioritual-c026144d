@@ -4,7 +4,8 @@ import JessePhoneInput from "@/components/sections/JessePhoneInput";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import heroVideo from "@/assets/hero-video.mp4";
 import {
   Accordion,
   AccordionContent,
