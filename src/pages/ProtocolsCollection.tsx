@@ -6,6 +6,7 @@ import Hero from "@/components/sections/Hero";
 import { useProtocolProducts } from "@/hooks/useShopifyCollection";
 import { Skeleton } from "@/components/ui/skeleton";
 import ShopByGoal from "@/components/sections/ShopByGoal";
+import { AffirmMessage } from "@/components/product/AffirmMessage";
 
 const ProtocolsCollection = () => {
   const { data: products = [], isLoading } = useProtocolProducts();
@@ -90,6 +91,7 @@ const ProtocolsCollection = () => {
                   <p className="text-foreground font-medium">
                     ${parseFloat(product.price).toFixed(0)}
                   </p>
+                  <AffirmMessage price={parseFloat(product.price)} className="mt-1" />
                 </Link>
               </motion.div>
             ))}

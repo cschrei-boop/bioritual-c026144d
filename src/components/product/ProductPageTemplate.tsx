@@ -16,6 +16,7 @@ import { toast } from "sonner";
 import { ProductImageGallery } from "@/components/product/ProductImageGallery";
 import { cn } from "@/lib/utils";
 import type { FAQ, Disclosure, IncludedSection } from "@/data/product-content";
+import { AffirmMessage } from "@/components/product/AffirmMessage";
 import HowWeWork from "@/components/sections/HowWeWork";
 import CoachingCallout from "@/components/sections/CoachingCallout";
 
@@ -175,11 +176,17 @@ const ProductPageTemplate = ({
                   {loading ? (
                     <div className="h-8 w-32 bg-muted animate-pulse rounded" />
                   ) : selectedVariant ? (
-                    <p className="text-2xl font-medium">
-                      ${parseFloat(selectedVariant.price.amount).toLocaleString()}
-                    </p>
+                    <>
+                      <p className="text-2xl font-medium">
+                        ${parseFloat(selectedVariant.price.amount).toLocaleString()}
+                      </p>
+                      <AffirmMessage price={parseFloat(selectedVariant.price.amount)} className="mt-1" />
+                    </>
                   ) : (
-                    <p className="text-2xl font-medium">{fallbackPrice}</p>
+                    <>
+                      <p className="text-2xl font-medium">{fallbackPrice}</p>
+                      <AffirmMessage price={parseFloat(fallbackPrice.replace(/[^0-9.]/g, ""))} className="mt-1" />
+                    </>
                   )}
                 </div>
 

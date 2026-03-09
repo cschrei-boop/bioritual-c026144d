@@ -17,6 +17,7 @@ import { toast } from "sonner";
 import { ProductMediaGallery } from "@/components/product/ProductMediaGallery";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
+import { AffirmMessage } from "@/components/product/AffirmMessage";
 import ProductPageTemplate from "@/components/product/ProductPageTemplate";
 import { protocolEditorialContent, resolveProtocolHandle } from "@/data/protocol-content";
 import { standardProtocolFaqs, standardProtocolDisclosures } from "@/data/product-content";
@@ -169,13 +170,19 @@ const BasicDynamicProductPage = ({ handle }: { handle?: string }) => {
                 {/* Price */}
                 <div className="mb-6">
                   {selectedVariant ? (
-                    <p className="text-2xl font-medium">
-                      ${parseFloat(selectedVariant.price.amount).toLocaleString()}
-                    </p>
+                    <>
+                      <p className="text-2xl font-medium">
+                        ${parseFloat(selectedVariant.price.amount).toLocaleString()}
+                      </p>
+                      <AffirmMessage price={parseFloat(selectedVariant.price.amount)} className="mt-1" />
+                    </>
                   ) : (
-                    <p className="text-2xl font-medium">
-                      ${parseFloat(product.node.priceRange.minVariantPrice.amount).toLocaleString()}
-                    </p>
+                    <>
+                      <p className="text-2xl font-medium">
+                        ${parseFloat(product.node.priceRange.minVariantPrice.amount).toLocaleString()}
+                      </p>
+                      <AffirmMessage price={parseFloat(product.node.priceRange.minVariantPrice.amount)} className="mt-1" />
+                    </>
                   )}
                 </div>
 
