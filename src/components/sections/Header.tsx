@@ -11,18 +11,24 @@ import { useProtocolsNavigation } from "@/hooks/useProtocolsNavigation";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [protocolsOpen, setProtocolsOpen] = useState(false);
+  const [learnOpen, setLearnOpen] = useState(false);
   const {
     protocols,
     isLoading: protocolsLoading
   } = useProtocolsNavigation();
-  const navLinks = [
-    { label: "Jesse™", href: "/ai-concierge" },
+
+  // Primary nav links (shown as standalone items)
+  const primaryLinks = [
     { label: "How It Works", href: "/how-it-works" },
-    { label: "The Journey", href: "/the-journey" },
-    { label: "1:1 Coaching", href: "/coaching" },
-    { label: "Blog", href: "/blog" },
-    { label: "About", href: "/about" },
   ];
+
+  // "Learn" dropdown items
+  const learnLinks = [
+    { label: "Blog", href: "/blog" },
+    { label: "About BioRitual", href: "/about" },
+    { label: "Contact", href: "mailto:hello@bioritual.com", isExternal: true },
+  ];
+
   return <>
       {/* Announcement Bar */}
       <div className="bg-foreground text-background text-center py-2 px-4">
@@ -41,29 +47,76 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent side="left" className="w-[280px] pt-12">
               <nav className="flex flex-col gap-6">
-                {navLinks.map(link => <Link key={link.label} to={link.href} onClick={() => setIsOpen(false)} className="text-lg tracking-wide hover:opacity-60 transition-opacity">
+                {/* How It Works */}
+                {primaryLinks.map(link => (
+                  <Link key={link.label} to={link.href} onClick={() => setIsOpen(false)} className="text-lg tracking-wide hover:opacity-60 transition-opacity">
                     {link.label}
-                  </Link>)}
-                
+                  </Link>
+                ))}
+
                 {/* Mobile Protocols Collapsible */}
                 <Collapsible open={protocolsOpen} onOpenChange={setProtocolsOpen}>
                   <CollapsibleTrigger className="flex items-center justify-between w-full text-lg tracking-wide hover:opacity-60 transition-opacity">
-                    Guided Protocols by Goal
+                    Protocols
                     <ChevronDown className={`w-4 h-4 transition-transform ${protocolsOpen ? 'rotate-180' : ''}`} />
                   </CollapsibleTrigger>
                   <CollapsibleContent className="pl-4 pt-3 space-y-3">
-                    {protocols.map(protocol => <Link key={protocol.href} to={protocol.href} onClick={() => {
-                    setIsOpen(false);
-                    setProtocolsOpen(false);
-                  }} className="block text-base text-foreground/80 hover:text-foreground transition-colors">
+                    {protocols.map(protocol => (
+                      <Link key={protocol.href} to={protocol.href} onClick={() => {
+                        setIsOpen(false);
+                        setProtocolsOpen(false);
+                      }} className="block text-base text-foreground/80 hover:text-foreground transition-colors">
                         {protocol.label}
-                      </Link>)}
+                      </Link>
+                    ))}
                   </CollapsibleContent>
                 </Collapsible>
 
-                <a href="mailto:hello@bioritual.com" onClick={() => setIsOpen(false)} className="text-lg tracking-wide hover:opacity-60 transition-opacity">
-                  Contact
-                </a>
+                {/* Jesse AI */}
+                <Link to="/ai-concierge" onClick={() => setIsOpen(false)} className="text-lg tracking-wide hover:opacity-60 transition-opacity">
+                  Jesse™ AI
+                </Link>
+
+                {/* Coaching */}
+                <Link to="/coaching" onClick={() => setIsOpen(false)} className="text-lg tracking-wide hover:opacity-60 transition-opacity">
+                  Coaching
+                </Link>
+
+                {/* Mobile Learn Collapsible */}
+                <Collapsible open={learnOpen} onOpenChange={setLearnOpen}>
+                  <CollapsibleTrigger className="flex items-center justify-between w-full text-lg tracking-wide hover:opacity-60 transition-opacity">
+                    Learn
+                    <ChevronDown className={`w-4 h-4 transition-transform ${learnOpen ? 'rotate-180' : ''}`} />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="pl-4 pt-3 space-y-3">
+                    {learnLinks.map(link => (
+                      link.isExternal ? (
+                        <a key={link.label} href={link.href} onClick={() => {
+                          setIsOpen(false);
+                          setLearnOpen(false);
+                        }} className="block text-base text-foreground/80 hover:text-foreground transition-colors">
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link key={link.label} to={link.href} onClick={() => {
+                          setIsOpen(false);
+                          setLearnOpen(false);
+                        }} className="block text-base text-foreground/80 hover:text-foreground transition-colors">
+                          {link.label}
+                        </Link>
+                      )
+                    ))}
+                  </CollapsibleContent>
+                </Collapsible>
+
+                {/* Mobile CTA */}
+                <Link
+                  to="/start-here"
+                  onClick={() => setIsOpen(false)}
+                  className="mt-2 inline-block bg-foreground text-background text-center text-base font-semibold tracking-wide px-6 py-3 hover:opacity-90 transition-opacity"
+                >
+                  Start Here
+                </Link>
               </nav>
             </SheetContent>
           </Sheet>
@@ -80,28 +133,66 @@ const Header = () => {
           </motion.div>
 
           {/* Navigation - Center (Desktop) */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map(link => <Link key={link.label} to={link.href} className="text-sm tracking-wide hover:opacity-60 transition-opacity">
+          <nav className="hidden md:flex items-center gap-7">
+            {/* How It Works */}
+            {primaryLinks.map(link => (
+              <Link key={link.label} to={link.href} className="text-sm tracking-wide hover:opacity-60 transition-opacity">
                 {link.label}
-              </Link>)}
-            
+              </Link>
+            ))}
+
             {/* Desktop Protocols Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1 text-sm tracking-wide hover:opacity-60 transition-opacity outline-none">
-                Guided Protocols by Goal
+                Protocols
                 <ChevronDown className="w-3 h-3" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="center" className="w-56 bg-background border border-border shadow-lg z-50">
-                {protocols.map(protocol => <DropdownMenuItem key={protocol.href} asChild>
+                {protocols.map(protocol => (
+                  <DropdownMenuItem key={protocol.href} asChild>
                     <Link to={protocol.href} className="w-full cursor-pointer">
                       {protocol.label}
                     </Link>
-                  </DropdownMenuItem>)}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Jesse AI */}
+            <Link to="/ai-concierge" className="text-sm tracking-wide hover:opacity-60 transition-opacity">
+              Jesse™ AI
+            </Link>
+
+            {/* Coaching */}
+            <Link to="/coaching" className="text-sm tracking-wide hover:opacity-60 transition-opacity">
+              Coaching
+            </Link>
+
+            {/* Desktop Learn Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 text-sm tracking-wide hover:opacity-60 transition-opacity outline-none">
+                Learn
+                <ChevronDown className="w-3 h-3" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center" className="w-48 bg-background border border-border shadow-lg z-50">
+                {learnLinks.map((link, index) => (
+                  <DropdownMenuItem key={link.label} asChild>
+                    {link.isExternal ? (
+                      <a href={link.href} className="w-full cursor-pointer">
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link to={link.href} className="w-full cursor-pointer">
+                        {link.label}
+                      </Link>
+                    )}
+                  </DropdownMenuItem>
+                ))}
               </DropdownMenuContent>
             </DropdownMenu>
           </nav>
 
-          {/* Right Icons */}
+          {/* Right Section: CTA + Icons */}
           <motion.div initial={{
           opacity: 0
         }} animate={{
@@ -109,6 +200,13 @@ const Header = () => {
         }} transition={{
           duration: 0.6
         }} className="flex items-center gap-4">
+            {/* Start Here CTA - Desktop only */}
+            <Link
+              to="/start-here"
+              className="hidden md:inline-block bg-foreground text-background text-sm font-semibold tracking-wide px-5 py-2 hover:opacity-90 transition-opacity"
+            >
+              Start Here
+            </Link>
             <button className="hover:opacity-60 transition-opacity">
               <Search className="w-5 h-5" />
             </button>
@@ -116,9 +214,6 @@ const Header = () => {
             <button className="hover:opacity-60 transition-opacity hidden sm:block">
               <User className="w-5 h-5" />
             </button>
-            <a href="mailto:hello@bioritual.com" className="hidden md:block text-sm tracking-wide hover:opacity-60 transition-opacity">
-              Contact
-            </a>
           </motion.div>
         </div>
       </header>
