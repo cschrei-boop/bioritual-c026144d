@@ -65,12 +65,12 @@ const ProtocolGrid = ({
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { data: shopifyProducts } = useProtocolProducts();
 
-  // Build a handle→price map from Shopify data
-  const priceMap = useMemo(() => {
-    const map: Record<string, number> = {};
+  // Build a handle→{price, image} map from Shopify data
+  const productMap = useMemo(() => {
+    const map: Record<string, { price: number; image: string | null }> = {};
     if (shopifyProducts) {
       for (const p of shopifyProducts) {
-        map[p.handle] = parseFloat(p.price);
+        map[p.handle] = { price: parseFloat(p.price), image: p.image };
       }
     }
     return map;
@@ -96,7 +96,9 @@ const ProtocolGrid = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {protocols.map((protocol, i) => {
             const handle = protocol.href.replace("/products/", "");
-            const price = priceMap[handle];
+            const shopify = productMap[handle];
+            const cardImage = shopify?.image || protocol.image;
+            const price = shopify?.price;
 
             return (
               <motion.div
@@ -108,7 +110,7 @@ const ProtocolGrid = ({
                 <Link to={protocol.href} className="group block">
                   <div className="relative aspect-[4/5] overflow-hidden mb-4">
                     <img
-                      src={protocol.image}
+                      src={cardImage}
                       alt={protocol.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
@@ -123,7 +125,7 @@ const ProtocolGrid = ({
                       {price ? (
                         <div className="mb-3">
                           <p className="text-background text-lg font-medium">
-                            ${Math.round(price)}
+                            Starting at ${Math.round(price)}
                           </p>
                           <p className="text-background/70 text-xs">
                             or 4 interest-free payments of ${Math.round(price / 4)} with{" "}
