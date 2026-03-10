@@ -117,10 +117,10 @@ const ProtocolCarousel = () => {
                           {price ? (
                             <div>
                               <p className="text-background text-xs font-medium">
-                                Starting at ${Math.round(price)}
+                                Starting at ${Math.round(price / 3)}/month
                               </p>
                               <p className="text-background/70 text-[10px]">
-                                or 4 interest-free payments of ${Math.round(price / 4)}
+                                with a 3 month commitment
                               </p>
                             </div>
                           ) : null}
