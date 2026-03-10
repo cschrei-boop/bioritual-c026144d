@@ -30,9 +30,15 @@ const Header = () => {
   ];
 
   return <>
-      {/* Announcement Bar */}
-      <div className="bg-foreground text-background text-center py-2 px-4">
-        <p className="tracking-widest uppercase text-lg font-bold">PRE-LAUNCH MEMBERS GET AN EVERGREEN $100 DISCOUNT</p>
+      {/* Announcement Scroller */}
+      <div className="bg-[#4d4a93] text-white overflow-hidden py-2">
+        <div className="animate-marquee whitespace-nowrap flex">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <span key={i} className="mx-12 tracking-widest uppercase text-sm font-bold inline-block">
+              PRE-LAUNCH MEMBERS GET AN EVERGREEN $100 DISCOUNT
+            </span>
+          ))}
+        </div>
       </div>
 
       {/* Main Header */}
