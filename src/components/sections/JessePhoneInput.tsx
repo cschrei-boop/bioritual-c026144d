@@ -158,6 +158,7 @@ const JessePhoneInput = ({
           >
             <MessageCircle className="w-3.5 h-3.5" />
             WhatsApp
+            <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-foreground/10 text-foreground/50 leading-none">coming soon</span>
           </button>
           <span className="text-foreground/15 text-xs">|</span>
           <button
