@@ -27,7 +27,7 @@ interface JessePhoneInputProps {
 
 const JessePhoneInput = ({
   className = "",
-  helperText = "Jesse will reach out within a few minutes. Free for 7 days.",
+  helperText,
 }: JessePhoneInputProps) => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -40,6 +40,14 @@ const JessePhoneInput = ({
 
   const isEmail = platform === "email";
   const isWhatsApp = platform === "whatsapp";
+
+  const dynamicHelperText = helperText ?? (
+    isWhatsApp
+      ? "We'll notify you when Jesse is live on WhatsApp."
+      : isEmail
+        ? "Check your inbox — Jesse will email you within a few minutes. Free for 7 days."
+        : "Jesse will text you within a few minutes. Free for 7 days."
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -232,7 +240,7 @@ const JessePhoneInput = ({
 
       {/* Helper text */}
       <p className="text-foreground/40 text-xs mt-2 px-2" style={{ fontFamily: "'Inter', sans-serif" }}>
-        {helperText}
+        {dynamicHelperText}
       </p>
     </form>
   );
