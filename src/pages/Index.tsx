@@ -4,7 +4,7 @@ import FounderQuote from "@/components/sections/FounderQuote";
 import JourneySnippet from "@/components/sections/JourneySnippet";
 import HowItWorksCondensed from "@/components/sections/HowItWorksCondensed";
 import JesseIntro from "@/components/sections/JesseIntro";
-import ProtocolGrid from "@/components/sections/ProtocolGrid";
+import ProtocolCarousel from "@/components/sections/ProtocolCarousel";
 import Testimonials from "@/components/sections/Testimonials";
 import ThreePillarsCarousel from "@/components/sections/ThreePillarsCarousel";
 import ArticleCarousel from "@/components/blog/ArticleCarousel";
