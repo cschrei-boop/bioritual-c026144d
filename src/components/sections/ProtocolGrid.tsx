@@ -119,11 +119,11 @@ const ProtocolGrid = ({
                       <h3 className="text-background text-lg tracking-wide uppercase mb-1">
                         {protocol.title}
                       </h3>
-                      <p className="text-background/80 text-sm mb-2">
-                        {protocol.description}
-                      </p>
+                      <span className="inline-block text-xs tracking-[0.15em] uppercase text-background border-b border-background/60 pb-0.5 mb-3">
+                        → Learn more
+                      </span>
                       {price ? (
-                        <div className="mb-3">
+                        <div>
                           <p className="text-background text-lg font-medium">
                             Starting at ${Math.round(price)}
                           </p>
@@ -133,9 +133,6 @@ const ProtocolGrid = ({
                           </p>
                         </div>
                       ) : null}
-                      <span className="inline-block text-xs tracking-[0.15em] uppercase text-background border-b border-background/60 pb-0.5">
-                        → Learn more
-                      </span>
                     </div>
                   </div>
                 </Link>
