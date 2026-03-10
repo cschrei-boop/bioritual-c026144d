@@ -31,11 +31,13 @@ const JessePhoneInput = ({
 }: JessePhoneInputProps) => {
   const [phone, setPhone] = useState("");
   const [countryCode, setCountryCode] = useState("+1");
-  const [platform, setPlatform] = useState<Platform>("whatsapp");
+  const [platform, setPlatform] = useState<Platform>("imessage");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showCodes, setShowCodes] = useState(false);
 
   const selectedCountry = countryCodes.find((c) => c.code === countryCode) || countryCodes[0];
+
+  const isWhatsApp = platform === "whatsapp";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,11 +46,14 @@ const JessePhoneInput = ({
     setIsSubmitting(true);
     try {
       const fullPhone = `${countryCode}${phone.trim()}`;
+      const interests = isWhatsApp
+        ? ["jesse-waitlist", "whatsapp-coming-soon"]
+        : ["jesse-trial", "imessage"];
 
       const { error } = await supabase.from("email_subscribers").insert({
         email: `${fullPhone}@phone.placeholder`,
         phone: fullPhone,
-        interests: ["jesse-trial", platform],
+        interests,
       } as any);
       if (error) throw error;
 
@@ -57,14 +62,18 @@ const JessePhoneInput = ({
           body: {
             email: `${fullPhone}@phone.placeholder`,
             phone: fullPhone,
-            interests: ["jesse-trial", platform],
+            interests,
           },
         })
         .catch((err) => console.error("Klaviyo sync failed:", err));
 
       toast({
-        title: "Jesse will text you shortly.",
-        description: `We'll reach you on ${platform === "whatsapp" ? "WhatsApp" : "iMessage"}.`,
+        title: isWhatsApp
+          ? "You're on the list!"
+          : "Jesse will text you shortly.",
+        description: isWhatsApp
+          ? "We'll notify you as soon as Jesse is live on WhatsApp."
+          : "We'll reach you on iMessage.",
       });
       setPhone("");
     } catch {
@@ -130,7 +139,7 @@ const JessePhoneInput = ({
           disabled={isSubmitting}
           className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-5 py-2 text-sm tracking-wide shrink-0"
         >
-          {isSubmitting ? "..." : "Start talking to Jesse"}
+          {isSubmitting ? "..." : isWhatsApp ? "Join the waitlist" : "Start talking to Jesse"}
           <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
         </Button>
       </div>
@@ -149,6 +158,7 @@ const JessePhoneInput = ({
           >
             <MessageCircle className="w-3.5 h-3.5" />
             WhatsApp
+            <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-foreground/10 text-foreground/50 leading-none">coming soon</span>
           </button>
           <span className="text-foreground/15 text-xs">|</span>
           <button
