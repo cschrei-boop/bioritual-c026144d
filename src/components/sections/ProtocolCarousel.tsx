@@ -107,7 +107,7 @@ const ProtocolCarousel = () => {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent" />
-                        <h3 className="absolute top-1/2 left-0 right-0 -translate-y-1/2 text-background text-3xl md:text-4xl font-bold tracking-wide uppercase text-center px-4 z-10">
+                        <h3 className="absolute top-1/2 left-0 right-0 -translate-y-1/2 text-background text-4xl md:text-5xl font-bold tracking-wide uppercase text-center px-4 z-10">
                           {protocol.title}
                         </h3>
                         <div className="absolute bottom-0 left-0 right-0 p-5">
