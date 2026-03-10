@@ -5,6 +5,7 @@ import JourneySnippet from "@/components/sections/JourneySnippet";
 import HowItWorksCondensed from "@/components/sections/HowItWorksCondensed";
 import JesseIntro from "@/components/sections/JesseIntro";
 import ProtocolGrid from "@/components/sections/ProtocolGrid";
+import Testimonials from "@/components/sections/Testimonials";
 import ThreePillarsCarousel from "@/components/sections/ThreePillarsCarousel";
 import ArticleCarousel from "@/components/blog/ArticleCarousel";
 import FinalCTA from "@/components/sections/FinalCTA";
@@ -36,11 +37,8 @@ const Index = () => {
         headline={"This shouldn't be this confusing.\nIt's exhausting because too many people are confidently full of B.S."}
         bodyParagraphs={[
           "Peptides. Hormones. Supplements. GLP-1s.\nEvery week there's a new hero, a new villain, and a new podcast guest who \"finally explains everything.\"",
-          "You've seen this before.",
-          "You're old enough to remember when wellness meant a magazine in a waiting room. Then it became blogs. Then influencers. Then \"biohackers.\" Then TikTok doctors. Then the algorithm.",
-          "Now every decision feels louder than it needs to be.",
-          "BioRitual exists for people who are tired of that.",
-          "Not tired of health.\nTired of noise.",
+          "You're old enough to remember when wellness meant a magazine in a waiting room. Now every decision feels louder than it needs to be.",
+          "BioRitual exists for people who are tired of that.\nNot tired of health. Tired of noise.",
         ]}
         ctaText="See how it works"
         ctaLink="/how-it-works"
@@ -79,6 +77,7 @@ const Index = () => {
       <HowItWorksCondensed />
       <JesseIntro />
       <ProtocolGrid />
+      <Testimonials />
       <ThreePillarsCarousel
         subtitle=""
         title="A grown-up word about peptides and GLP-1s."

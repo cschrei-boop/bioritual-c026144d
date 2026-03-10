@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { Link } from "react-router-dom";
+import { useProtocolProducts } from "@/hooks/useShopifyCollection";
+import { AffirmMessage } from "@/components/product/AffirmMessage";
 import bioSignalsWeightLossHero from "@/assets/bio-signals-hero.jpg";
 import bioSignalsEnergyHero from "@/assets/bio-signals-energy-hero.jpg";
 import bioSignalsPerformanceHero from "@/assets/bio-signals-performance-hero.jpg";
@@ -61,6 +63,18 @@ const ProtocolGrid = ({
 }: ProtocolGridProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { data: shopifyProducts } = useProtocolProducts();
+
+  // Build a handle→price map from Shopify data
+  const priceMap = useMemo(() => {
+    const map: Record<string, number> = {};
+    if (shopifyProducts) {
+      for (const p of shopifyProducts) {
+        map[p.handle] = parseFloat(p.price);
+      }
+    }
+    return map;
+  }, [shopifyProducts]);
 
   return (
     <section ref={ref} className="py-16 px-6 md:px-12">
@@ -80,36 +94,52 @@ const ProtocolGrid = ({
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {protocols.map((protocol, i) => (
-            <motion.div
-              key={protocol.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 + i * 0.08 }}
-            >
-              <Link to={protocol.href} className="group block">
-                <div className="relative aspect-[4/5] overflow-hidden mb-4">
-                  <img
-                    src={protocol.image}
-                    alt={protocol.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <h3 className="text-background text-lg tracking-wide uppercase mb-1">
-                      {protocol.title}
-                    </h3>
-                    <p className="text-background/80 text-sm mb-3">
-                      {protocol.description}
-                    </p>
-                    <span className="inline-block text-xs tracking-[0.15em] uppercase text-background border-b border-background/60 pb-0.5">
-                      → Learn more
-                    </span>
+          {protocols.map((protocol, i) => {
+            const handle = protocol.href.replace("/products/", "");
+            const price = priceMap[handle];
+
+            return (
+              <motion.div
+                key={protocol.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.1 + i * 0.08 }}
+              >
+                <Link to={protocol.href} className="group block">
+                  <div className="relative aspect-[4/5] overflow-hidden mb-4">
+                    <img
+                      src={protocol.image}
+                      alt={protocol.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <h3 className="text-background text-lg tracking-wide uppercase mb-1">
+                        {protocol.title}
+                      </h3>
+                      <p className="text-background/80 text-sm mb-2">
+                        {protocol.description}
+                      </p>
+                      {price ? (
+                        <div className="mb-3">
+                          <p className="text-background text-lg font-medium">
+                            ${Math.round(price)}
+                          </p>
+                          <p className="text-background/70 text-xs">
+                            or 4 interest-free payments of ${Math.round(price / 4)} with{" "}
+                            <span className="font-semibold">Affirm</span>
+                          </p>
+                        </div>
+                      ) : null}
+                      <span className="inline-block text-xs tracking-[0.15em] uppercase text-background border-b border-background/60 pb-0.5">
+                        → Learn more
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
 
         {showBottomLink && (

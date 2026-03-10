@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,10 +6,36 @@ import { X, ArrowRight } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 
+const DISMISS_KEY = "bioritual_sticky_email_dismissed";
+
 const StickyEmailFooter = () => {
   const [email, setEmail] = useState("");
-  const [isVisible, setIsVisible] = useState(true);
+  const [isDismissed, setIsDismissed] = useState(() => {
+    return sessionStorage.getItem(DISMISS_KEY) === "true";
+  });
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [nearFooter, setNearFooter] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Show only after user scrolls 600px, hide near footer
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight;
+      const winHeight = window.innerHeight;
+
+      setHasScrolled(scrollY > 600);
+      setNearFooter(scrollY + winHeight > docHeight - 300);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleDismiss = () => {
+    setIsDismissed(true);
+    sessionStorage.setItem(DISMISS_KEY, "true");
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,12 +56,15 @@ const StickyEmailFooter = () => {
 
       toast({ title: "You're in!", description: "Thanks for subscribing." });
       setEmail("");
+      handleDismiss();
     } catch {
       toast({ title: "Something went wrong", description: "Please try again.", variant: "destructive" });
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  const isVisible = hasScrolled && !isDismissed && !nearFooter;
 
   return (
     <AnimatePresence>
@@ -44,23 +73,23 @@ const StickyEmailFooter = () => {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
+          transition={{ duration: 0.5 }}
           className="fixed bottom-0 left-0 right-0 z-50 bg-[#4d4a93] border-t border-[#4d4a93] shadow-[0_-4px_20px_rgba(0,0,0,0.08)]"
         >
           <button
-            onClick={() => setIsVisible(false)}
-            className="absolute top-3 right-3 p-1 text-white/60 hover:text-white transition-colors"
+            onClick={handleDismiss}
+            className="absolute top-1/2 -translate-y-1/2 right-4 p-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors"
             aria-label="Dismiss"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
-          
-          <div className="flex items-center justify-center px-6 md:px-12 py-4">
+
+          <div className="flex items-center justify-center px-6 md:px-12 py-3">
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <p className="text-sm tracking-wide text-white">
                 Get the latest signals
               </p>
-              
+
               <form onSubmit={handleSubmit} className="flex gap-2">
                 <Input
                   type="email"

@@ -24,12 +24,8 @@ const JourneySnippet = () => {
               Most health programs treat the body as a problem to solve. We treat it as a system to understand — and the person living in it as someone capable of authoring their own story.
             </p>
             <p>
-              The hero's journey starts at home. It ends there too. What changes is everything in between — and who you are when you return.
+              Not a destination. Not a transformation. A continuous journey, measured in three-month cycles, that gets more honest each time. Because you will break. That's not failure. That's the journey.
             </p>
-            <p>
-              Health works the same way. Not a destination. Not a transformation. A continuous journey, measured in three-month cycles, that gets more honest and more effective each time you come back from a break.
-            </p>
-            <p>Because you will break. That's not failure. That's the journey.</p>
           </div>
 
           <Link

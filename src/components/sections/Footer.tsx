@@ -18,7 +18,7 @@ const Footer = () => {
 
       <footer className="bg-foreground text-background py-16 px-6 md:px-12">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-5 gap-12 mb-12">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
             {/* Column 1 - Brand */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -32,29 +32,33 @@ const Footer = () => {
               </p>
             </motion.div>
 
-            {/* Column 2 - Explore */}
+            {/* Column 2 - Protocols */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <p className="text-xs tracking-[0.2em] uppercase mb-4">Explore</p>
+              <p className="text-xs tracking-[0.2em] uppercase mb-4">Protocols</p>
               <nav className="flex flex-col gap-3">
-                <Link to="/protocols" className="text-sm text-background/60 hover:text-background transition-colors">All Frameworks</Link>
-                <Link to="/blog" className="text-sm text-background/60 hover:text-background transition-colors">Blog</Link>
+                <Link to="/collection/protocols" className="text-sm text-background/60 hover:text-background transition-colors">All Protocols</Link>
+                <Link to="/how-it-works" className="text-sm text-background/60 hover:text-background transition-colors">How It Works</Link>
+                <Link to="/jesse" className="text-sm text-background/60 hover:text-background transition-colors">Jesse™ AI</Link>
+                <Link to="/coaching" className="text-sm text-background/60 hover:text-background transition-colors">Coaching</Link>
               </nav>
             </motion.div>
 
-            {/* Column 3 - Getting Started */}
+            {/* Column 3 - Learn */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <p className="text-xs tracking-[0.2em] uppercase mb-4">Getting Started</p>
+              <p className="text-xs tracking-[0.2em] uppercase mb-4">Learn</p>
               <nav className="flex flex-col gap-3">
+                <Link to="/blog" className="text-sm text-background/60 hover:text-background transition-colors">Blog</Link>
+                <Link to="/protocols" className="text-sm text-background/60 hover:text-background transition-colors">About BioRitual</Link>
                 <Link to="/start-here" className="text-sm text-background/60 hover:text-background transition-colors">Start Here</Link>
                 <a href="mailto:hello@bioritual.com" className="text-sm text-background/60 hover:text-background transition-colors">Contact</a>
               </nav>
@@ -71,20 +75,7 @@ const Footer = () => {
               <p className="text-sm text-background/60 leading-normal">
                 BioRitual is an educational platform. It does not replace licensed healthcare professionals. Decisions made based on this information are the responsibility of the individual.
               </p>
-            </motion.div>
-
-            {/* Column 5 - Stay Updated */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <p className="text-xs tracking-[0.2em] uppercase mb-4">Stay Updated</p>
-              <p className="text-sm text-background/60 mb-4">
-                Get the latest frameworks and insights.
-              </p>
-              <a href="mailto:hello@bioritual.com" className="text-sm hover:opacity-60 transition-opacity">
+              <a href="mailto:hello@bioritual.com" className="text-sm text-background/40 hover:text-background transition-colors mt-4 inline-block">
                 hello@bioritual.com
               </a>
             </motion.div>

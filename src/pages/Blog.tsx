@@ -53,7 +53,7 @@ const Blog = () => {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       {/* Gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 via-40% to-transparent" />
                       {/* Text */}
                       <div className="absolute bottom-0 left-0 right-0 p-5 text-background">
                         <h2 className="font-serif text-xl md:text-2xl tracking-wide mb-1">

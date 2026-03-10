@@ -81,7 +81,7 @@ const ArticleCarousel = ({ currentHref }: ArticleCarouselProps) => {
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       {/* Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 via-40% to-transparent" />
                       {/* Text */}
                       <div className="absolute bottom-0 left-0 right-0 p-4 text-background">
                         <h3 className="text-lg tracking-wide mb-1">
