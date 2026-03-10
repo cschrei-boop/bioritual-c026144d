@@ -1,5 +1,6 @@
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
+import JessePhoneInput from "@/components/sections/JessePhoneInput";
 import FounderQuote from "@/components/sections/FounderQuote";
 import JourneySnippet from "@/components/sections/JourneySnippet";
 import HowItWorksCondensed from "@/components/sections/HowItWorksCondensed";
