@@ -37,6 +37,8 @@ const JessePhoneInput = ({
 
   const selectedCountry = countryCodes.find((c) => c.code === countryCode) || countryCodes[0];
 
+  const isWhatsApp = platform === "whatsapp";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!phone.trim() || isSubmitting) return;
@@ -44,11 +46,14 @@ const JessePhoneInput = ({
     setIsSubmitting(true);
     try {
       const fullPhone = `${countryCode}${phone.trim()}`;
+      const interests = isWhatsApp
+        ? ["jesse-waitlist", "whatsapp-coming-soon"]
+        : ["jesse-trial", "imessage"];
 
       const { error } = await supabase.from("email_subscribers").insert({
         email: `${fullPhone}@phone.placeholder`,
         phone: fullPhone,
-        interests: ["jesse-trial", platform],
+        interests,
       } as any);
       if (error) throw error;
 
@@ -57,14 +62,18 @@ const JessePhoneInput = ({
           body: {
             email: `${fullPhone}@phone.placeholder`,
             phone: fullPhone,
-            interests: ["jesse-trial", platform],
+            interests,
           },
         })
         .catch((err) => console.error("Klaviyo sync failed:", err));
 
       toast({
-        title: "Jesse will text you shortly.",
-        description: `We'll reach you on ${platform === "whatsapp" ? "WhatsApp" : "iMessage"}.`,
+        title: isWhatsApp
+          ? "You're on the list!"
+          : "Jesse will text you shortly.",
+        description: isWhatsApp
+          ? "We'll notify you as soon as Jesse is live on WhatsApp."
+          : "We'll reach you on iMessage.",
       });
       setPhone("");
     } catch {
