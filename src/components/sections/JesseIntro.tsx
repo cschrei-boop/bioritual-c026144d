@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import JesseWaitlistForm from "@/components/sections/JesseWaitlistForm";
+import JessePhoneInput from "@/components/sections/JessePhoneInput";
 
 const JesseIntro = () => {
   const ref = useRef(null);
@@ -31,7 +31,7 @@ const JesseIntro = () => {
             </p>
           </div>
 
-          <JesseWaitlistForm variant="stacked" />
+          <JessePhoneInput />
         </motion.div>
       </div>
     </section>
