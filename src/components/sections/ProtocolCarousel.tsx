@@ -108,7 +108,7 @@ const ProtocolCarousel = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-5">
-                          <h3 className="text-background text-lg tracking-wide uppercase mb-1">
+                          <h3 className="text-background text-2xl md:text-3xl font-bold tracking-wide uppercase mb-1">
                             {protocol.title}
                           </h3>
                           <span className="inline-block text-xs tracking-[0.15em] uppercase text-background border-b border-background/60 pb-0.5 mb-3">
@@ -116,12 +116,11 @@ const ProtocolCarousel = () => {
                           </span>
                           {price ? (
                             <div>
-                              <p className="text-background text-lg font-medium">
+                              <p className="text-background text-xs font-medium">
                                 Starting at ${Math.round(price)}
                               </p>
-                              <p className="text-background/70 text-xs">
-                                or 4 interest-free payments of ${Math.round(price / 4)} with{" "}
-                                <span className="font-semibold">Affirm</span>
+                              <p className="text-background/70 text-[10px]">
+                                or 4 interest-free payments of ${Math.round(price / 4)}
                               </p>
                             </div>
                           ) : null}
