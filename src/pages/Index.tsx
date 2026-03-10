@@ -47,6 +47,7 @@ const Index = () => {
         subHeroLine1=""
         subHeroLine2=""
       />
+      <ProtocolCarousel />
       <FounderQuote>
         <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4">
           Let's be specific. This is for you if:
@@ -76,7 +77,6 @@ const Index = () => {
       <JourneySnippet />
       <HowItWorksCondensed />
       <JesseIntro />
-      <ProtocolGrid />
       <Testimonials />
       <ThreePillarsCarousel
         subtitle=""
