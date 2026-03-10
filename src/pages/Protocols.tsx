@@ -5,7 +5,7 @@ import ProtocolGrid from "@/components/sections/ProtocolGrid";
 import CoachingCallout from "@/components/sections/CoachingCallout";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import JesseWaitlistForm from "@/components/sections/JesseWaitlistForm";
+import JessePhoneInput from "@/components/sections/JessePhoneInput";
 import { Helmet } from "react-helmet-async";
 
 const fadeIn = {
