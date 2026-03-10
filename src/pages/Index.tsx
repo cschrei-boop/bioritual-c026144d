@@ -4,7 +4,7 @@ import FounderQuote from "@/components/sections/FounderQuote";
 import JourneySnippet from "@/components/sections/JourneySnippet";
 import HowItWorksCondensed from "@/components/sections/HowItWorksCondensed";
 import JesseIntro from "@/components/sections/JesseIntro";
-import ProtocolGrid from "@/components/sections/ProtocolGrid";
+import ProtocolCarousel from "@/components/sections/ProtocolCarousel";
 import Testimonials from "@/components/sections/Testimonials";
 import ThreePillarsCarousel from "@/components/sections/ThreePillarsCarousel";
 import ArticleCarousel from "@/components/blog/ArticleCarousel";
@@ -47,6 +47,7 @@ const Index = () => {
         subHeroLine1=""
         subHeroLine2=""
       />
+      <ProtocolCarousel />
       <FounderQuote>
         <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4">
           Let's be specific. This is for you if:
@@ -76,7 +77,6 @@ const Index = () => {
       <JourneySnippet />
       <HowItWorksCondensed />
       <JesseIntro />
-      <ProtocolGrid />
       <Testimonials />
       <ThreePillarsCarousel
         subtitle=""
