@@ -240,7 +240,7 @@ const JessePhoneInput = ({
 
       {/* Helper text */}
       <p className="text-foreground/40 text-xs mt-2 px-2" style={{ fontFamily: "'Inter', sans-serif" }}>
-        {helperText}
+        {dynamicHelperText}
       </p>
     </form>
   );
