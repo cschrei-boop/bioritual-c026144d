@@ -48,6 +48,7 @@ const Index = () => {
         subHeroLine2=""
       />
       <ProtocolCarousel />
+      <HowItWorksCondensed />
       <FounderQuote>
         <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4">
           Let's be specific. This is for you if:
@@ -75,7 +76,6 @@ const Index = () => {
         </div>
       </FounderQuote>
       <JourneySnippet />
-      <HowItWorksCondensed />
       <JesseIntro />
       <Testimonials />
       <ThreePillarsCarousel
