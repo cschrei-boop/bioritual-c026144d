@@ -1,5 +1,6 @@
 import Header from "@/components/sections/Header";
 import Hero from "@/components/sections/Hero";
+import JessePhoneInput from "@/components/sections/JessePhoneInput";
 import FounderQuote from "@/components/sections/FounderQuote";
 import JourneySnippet from "@/components/sections/JourneySnippet";
 import HowItWorksCondensed from "@/components/sections/HowItWorksCondensed";
@@ -49,6 +50,11 @@ const Index = () => {
       />
       <ProtocolCarousel />
       <HowItWorksCondensed />
+      <section className="py-12 px-6 md:px-12">
+        <div className="max-w-3xl mx-auto">
+          <JessePhoneInput />
+        </div>
+      </section>
       <FounderQuote>
         <p className="text-sm tracking-[0.2em] uppercase text-muted-foreground mb-4">
           Let's be specific. This is for you if:
