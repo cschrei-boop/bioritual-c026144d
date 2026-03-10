@@ -139,7 +139,7 @@ const JessePhoneInput = ({
           disabled={isSubmitting}
           className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-5 py-2 text-sm tracking-wide shrink-0"
         >
-          {isSubmitting ? "..." : "Start talking to Jesse"}
+          {isSubmitting ? "..." : isWhatsApp ? "Join the waitlist" : "Start talking to Jesse"}
           <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
         </Button>
       </div>
