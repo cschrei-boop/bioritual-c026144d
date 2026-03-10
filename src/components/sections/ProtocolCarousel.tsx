@@ -108,7 +108,7 @@ const ProtocolCarousel = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-5">
-                          <h3 className="text-background text-2xl md:text-3xl font-bold tracking-wide uppercase mb-1">
+                          <h3 className="absolute top-1/2 left-0 right-0 -translate-y-1/2 text-background text-3xl md:text-4xl font-bold tracking-wide uppercase text-center px-4">
                             {protocol.title}
                           </h3>
                           <span className="inline-block text-xs tracking-[0.15em] uppercase text-background border-b border-background/60 pb-0.5 mb-3">
