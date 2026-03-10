@@ -18,7 +18,7 @@ const countryCodes = [
   { code: "+34", label: "ES", flag: "🇪🇸" },
 ];
 
-type Platform = "whatsapp" | "imessage";
+type Platform = "whatsapp" | "imessage" | "email";
 
 interface JessePhoneInputProps {
   className?: string;
