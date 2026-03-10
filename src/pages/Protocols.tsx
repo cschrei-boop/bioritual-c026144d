@@ -91,7 +91,7 @@ const Protocols = () => {
                   That's what Jesse™ is for. Describe your situation and Jesse™ — your personal AI coach — will tell you which protocol makes sense and why. No pressure toward any particular option. If a different starting point makes more sense, that's what you'll hear.
                 </p>
               </div>
-              <JesseWaitlistForm variant="stacked" />
+              <JessePhoneInput />
             </motion.div>
           </div>
         </section>

@@ -31,7 +31,7 @@ const JesseIntro = () => {
             </p>
           </div>
 
-          <JesseWaitlistForm variant="stacked" />
+          <JessePhoneInput />
         </motion.div>
       </div>
     </section>
