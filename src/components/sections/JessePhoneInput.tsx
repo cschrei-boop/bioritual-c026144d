@@ -41,6 +41,14 @@ const JessePhoneInput = ({
   const isEmail = platform === "email";
   const isWhatsApp = platform === "whatsapp";
 
+  const dynamicHelperText = helperText ?? (
+    isWhatsApp
+      ? "We'll notify you when Jesse is live on WhatsApp."
+      : isEmail
+        ? "Check your inbox — Jesse will email you within a few minutes. Free for 7 days."
+        : "Jesse will text you within a few minutes. Free for 7 days."
+  );
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const value = isEmail ? email.trim() : phone.trim();
