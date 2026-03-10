@@ -31,7 +31,7 @@ const JessePhoneInput = ({
 }: JessePhoneInputProps) => {
   const [phone, setPhone] = useState("");
   const [countryCode, setCountryCode] = useState("+1");
-  const [platform, setPlatform] = useState<Platform>("whatsapp");
+  const [platform, setPlatform] = useState<Platform>("imessage");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showCodes, setShowCodes] = useState(false);
 
