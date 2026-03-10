@@ -27,7 +27,7 @@ interface JessePhoneInputProps {
 
 const JessePhoneInput = ({
   className = "",
-  helperText = "Jesse will reach out within a few minutes. Free for 7 days.",
+  helperText,
 }: JessePhoneInputProps) => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
