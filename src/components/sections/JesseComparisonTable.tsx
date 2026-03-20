@@ -1,0 +1,202 @@
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+
+const FadeIn = ({
+  children,
+  className = "",
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 24 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+type CellValue = "check" | "cross" | "partial";
+
+interface Row {
+  label: string;
+  values: [CellValue, CellValue, CellValue, CellValue, CellValue];
+}
+
+interface SectionGroup {
+  section: string;
+  rows: Row[];
+}
+
+const columns = ["Jesse", "Influencers", "Google", "ChatGPT", "Hire a Professional"];
+
+const data: SectionGroup[] = [
+  {
+    section: "Quality of Information",
+    rows: [
+      { label: "Cuts through the noise", values: ["check", "cross", "cross", "check", "cross"] },
+      { label: "Tells you what you need to know before you know to ask", values: ["check", "cross", "cross", "cross", "cross"] },
+      { label: "Built around your body, not everyone's", values: ["check", "cross", "cross", "cross", "check"] },
+    ],
+  },
+  {
+    section: "Relationship & Growth",
+    rows: [
+      { label: "Remembers your journey", values: ["check", "cross", "cross", "cross", "check"] },
+      { label: "Helps you figure out what's actually going on", values: ["check", "cross", "cross", "check", "check"] },
+      { label: "Respects your intelligence & invites your curiosity", values: ["check", "cross", "cross", "cross", "cross"] },
+      { label: "Makes your doctor visits actually count", values: ["check", "cross", "cross", "cross", "cross"] },
+    ],
+  },
+  {
+    section: "Trust & Integrity",
+    rows: [
+      { label: "Not trying to sell you anything", values: ["check", "cross", "cross", "check", "check"] },
+      { label: "Someone you can actually trust", values: ["check", "cross", "cross", "cross", "check"] },
+      { label: "Challenges what you think you already know", values: ["check", "cross", "cross", "cross", "check"] },
+      { label: "Tells you what you need to hear, not just what you want", values: ["check", "cross", "partial", "check", "check"] },
+    ],
+  },
+  {
+    section: "Access & Cost",
+    rows: [
+      { label: "Won't break the bank", values: ["check", "check", "check", "check", "cross"] },
+      { label: "No appointments, no waiting rooms", values: ["check", "check", "check", "check", "cross"] },
+      { label: "On your time, at your pace", values: ["check", "cross", "check", "check", "cross"] },
+    ],
+  },
+];
+
+const scores = [14, 2, 3, 7, 6];
+
+const CellIcon = ({ value }: { value: CellValue }) => {
+  if (value === "check") return <span className="text-green-500 text-lg">✓</span>;
+  if (value === "cross") return <span className="text-red-500 text-lg">✗</span>;
+  return <span className="text-amber-500 text-lg font-bold">~</span>;
+};
+
+const JesseComparisonTable = () => {
+  return (
+    <section className="py-16 md:py-24 px-6 md:px-12 lg:px-16">
+      <div className="max-w-5xl">
+        <FadeIn>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl mb-3">
+            How people learn about their bodies.
+          </h2>
+          <p className="text-foreground/50 text-sm mb-8">
+            A comparison of information sources — and why trusted guidance changes outcomes.
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={0.1}>
+          {/* Legend */}
+          <div className="flex gap-5 mb-6 text-xs text-foreground/50">
+            <span className="flex items-center gap-1.5"><span className="text-green-500">✓</span> Yes / Good</span>
+            <span className="flex items-center gap-1.5"><span className="text-amber-500 font-bold">~</span> Partial</span>
+            <span className="flex items-center gap-1.5"><span className="text-red-500">✗</span> No / Poor</span>
+          </div>
+
+          <div className="overflow-x-auto rounded-xl shadow-sm border border-foreground/5">
+            <table className="w-full text-sm">
+              {/* Header */}
+              <thead>
+                <tr className="bg-foreground text-background">
+                  <th className="text-left px-5 py-3.5 text-[11px] uppercase tracking-wider text-background/50 font-medium w-[220px]">
+                    Attribute
+                  </th>
+                  {columns.map((col, i) => (
+                    <th
+                      key={col}
+                      className={`px-5 py-3.5 text-center text-[13px] font-semibold whitespace-nowrap ${
+                        i === 0 ? "bg-[#2d6a4f] text-white" : ""
+                      }`}
+                    >
+                      {col}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+
+              <tbody>
+                {data.map((group) => (
+                  <>
+                    {/* Section header */}
+                    <tr key={`section-${group.section}`}>
+                      <td
+                        colSpan={6}
+                        className="bg-secondary px-5 py-2 text-[10px] font-bold uppercase tracking-widest text-foreground/40"
+                      >
+                        {group.section}
+                      </td>
+                    </tr>
+
+                    {/* Rows */}
+                    {group.rows.map((row) => (
+                      <tr
+                        key={row.label}
+                        className="border-b border-foreground/5 hover:bg-secondary/50 transition-colors"
+                      >
+                        <td className="px-5 py-3 text-left text-[12.5px] font-semibold text-foreground/60">
+                          {row.label}
+                        </td>
+                        {row.values.map((val, i) => (
+                          <td
+                            key={i}
+                            className={`px-5 py-3 text-center ${
+                              i === 0
+                                ? "bg-[#2d6a4f]/5 border-l-2 border-l-[#2d6a4f] border-r border-r-[#2d6a4f]/10"
+                                : ""
+                            }`}
+                          >
+                            <CellIcon value={val} />
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </>
+                ))}
+
+                {/* Score row */}
+                <tr className="bg-foreground text-background">
+                  <td className="px-5 py-3.5 text-[10px] uppercase tracking-wider text-background/50 font-semibold">
+                    ✓ Score / 14
+                  </td>
+                  {scores.map((score, i) => (
+                    <td
+                      key={i}
+                      className={`px-5 py-3.5 text-center font-bold ${
+                        i === 0
+                          ? "bg-[#2d6a4f] text-white text-base"
+                          : score <= 3
+                            ? "text-red-400"
+                            : "text-amber-300"
+                      }`}
+                    >
+                      {score} / 14
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p className="mt-5 text-xs text-foreground/40 leading-relaxed max-w-3xl">
+            Jesse is not a replacement for medical professionals — it's what helps you become an informed participant in your own health. The goal is to shrink the gap between "I have no idea what's going on with my body" and "I know exactly what to ask my doctor."
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+  );
+};
+
+export default JesseComparisonTable;

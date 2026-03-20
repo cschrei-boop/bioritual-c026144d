@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
 import heroVideo from "@/assets/hero-video.mp4";
+import JesseComparisonTable from "@/components/sections/JesseComparisonTable";
 import {
   Accordion,
   AccordionContent,
@@ -221,6 +222,11 @@ const JessePage = () => {
             </FadeIn>
           </div>
         </section>
+
+        {/* ════════════════════════════════════════════
+            SECTION 3B — COMPARISON TABLE
+        ════════════════════════════════════════════ */}
+        <JesseComparisonTable />
 
         {/* ════════════════════════════════════════════
             SECTION 4 — WHAT THE TRIAL IS FOR
