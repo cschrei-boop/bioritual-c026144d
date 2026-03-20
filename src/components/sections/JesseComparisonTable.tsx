@@ -80,33 +80,33 @@ const data: SectionGroup[] = [
 const scores = [14, 2, 3, 7, 6];
 
 const CellIcon = ({ value }: { value: CellValue }) => {
-  if (value === "check") return <span className="text-green-500 text-lg">✓</span>;
-  if (value === "cross") return <span className="text-red-500 text-lg">✗</span>;
-  return <span className="text-amber-500 text-lg font-bold">~</span>;
+  if (value === "check") return <span className="text-foreground text-lg">✓</span>;
+  if (value === "cross") return <span className="text-destructive text-lg">✗</span>;
+  return <span className="text-muted-foreground text-lg font-bold">~</span>;
 };
 
 const JesseComparisonTable = () => {
   return (
-    <section className="py-16 md:py-24 px-6 md:px-12 lg:px-16">
+    <section className="py-10 md:py-16 px-6 md:px-12 lg:px-16">
       <div className="max-w-5xl">
         <FadeIn>
           <h2 className="text-3xl md:text-4xl lg:text-5xl mb-3">
             How people learn about their bodies.
           </h2>
-          <p className="text-foreground/50 text-sm mb-8">
+          <p className="text-muted-foreground text-sm mb-8">
             A comparison of information sources — and why trusted guidance changes outcomes.
           </p>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           {/* Legend */}
-          <div className="flex gap-5 mb-6 text-xs text-foreground/50">
-            <span className="flex items-center gap-1.5"><span className="text-green-500">✓</span> Yes / Good</span>
-            <span className="flex items-center gap-1.5"><span className="text-amber-500 font-bold">~</span> Partial</span>
-            <span className="flex items-center gap-1.5"><span className="text-red-500">✗</span> No / Poor</span>
+          <div className="flex gap-5 mb-6 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1.5"><span className="text-foreground">✓</span> Yes / Good</span>
+            <span className="flex items-center gap-1.5"><span className="text-muted-foreground font-bold">~</span> Partial</span>
+            <span className="flex items-center gap-1.5"><span className="text-destructive">✗</span> No / Poor</span>
           </div>
 
-          <div className="overflow-x-auto rounded-xl shadow-sm border border-foreground/5">
+          <div className="overflow-x-auto border border-border">
             <table className="w-full text-sm">
               {/* Header */}
               <thead>
@@ -118,7 +118,7 @@ const JesseComparisonTable = () => {
                     <th
                       key={col}
                       className={`px-5 py-3.5 text-center text-[13px] font-semibold whitespace-nowrap ${
-                        i === 0 ? "bg-[#2d6a4f] text-white" : ""
+                        i === 0 ? "bg-foreground/90 text-background" : ""
                       }`}
                     >
                       {col}
@@ -134,7 +134,7 @@ const JesseComparisonTable = () => {
                     <tr key={`section-${group.section}`}>
                       <td
                         colSpan={6}
-                        className="bg-secondary px-5 py-2 text-[10px] font-bold uppercase tracking-widest text-foreground/40"
+                        className="bg-secondary px-5 py-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground"
                       >
                         {group.section}
                       </td>
@@ -144,9 +144,9 @@ const JesseComparisonTable = () => {
                     {group.rows.map((row) => (
                       <tr
                         key={row.label}
-                        className="border-b border-foreground/5 hover:bg-secondary/50 transition-colors"
+                        className="border-b border-border hover:bg-secondary/50 transition-colors"
                       >
-                        <td className="px-5 py-3 text-left text-[12.5px] font-semibold text-foreground/60">
+                        <td className="px-5 py-3 text-left text-[12.5px] font-semibold text-muted-foreground">
                           {row.label}
                         </td>
                         {row.values.map((val, i) => (
@@ -154,7 +154,7 @@ const JesseComparisonTable = () => {
                             key={i}
                             className={`px-5 py-3 text-center ${
                               i === 0
-                                ? "bg-[#2d6a4f]/5 border-l-2 border-l-[#2d6a4f] border-r border-r-[#2d6a4f]/10"
+                                ? "bg-foreground/[0.03] border-l-2 border-l-foreground border-r border-r-border"
                                 : ""
                             }`}
                           >
@@ -176,10 +176,10 @@ const JesseComparisonTable = () => {
                       key={i}
                       className={`px-5 py-3.5 text-center font-bold ${
                         i === 0
-                          ? "bg-[#2d6a4f] text-white text-base"
+                          ? "bg-foreground/90 text-background text-base"
                           : score <= 3
-                            ? "text-red-400"
-                            : "text-amber-300"
+                            ? "text-destructive-foreground/60"
+                            : "text-background/70"
                       }`}
                     >
                       {score} / 14
@@ -190,7 +190,7 @@ const JesseComparisonTable = () => {
             </table>
           </div>
 
-          <p className="mt-5 text-xs text-foreground/40 leading-relaxed max-w-3xl">
+          <p className="mt-5 text-xs text-muted-foreground leading-relaxed max-w-3xl">
             Jesse is not a replacement for medical professionals — it's what helps you become an informed participant in your own health. The goal is to shrink the gap between "I have no idea what's going on with my body" and "I know exactly what to ask my doctor."
           </p>
         </FadeIn>
