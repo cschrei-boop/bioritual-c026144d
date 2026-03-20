@@ -80,9 +80,9 @@ const data: SectionGroup[] = [
 const scores = [14, 2, 3, 7, 6];
 
 const CellIcon = ({ value }: { value: CellValue }) => {
-  if (value === "check") return <span className="text-green-500 text-lg">✓</span>;
-  if (value === "cross") return <span className="text-red-500 text-lg">✗</span>;
-  return <span className="text-amber-500 text-lg font-bold">~</span>;
+  if (value === "check") return <span className="text-foreground text-lg">✓</span>;
+  if (value === "cross") return <span className="text-destructive text-lg">✗</span>;
+  return <span className="text-muted-foreground text-lg font-bold">~</span>;
 };
 
 const JesseComparisonTable = () => {
