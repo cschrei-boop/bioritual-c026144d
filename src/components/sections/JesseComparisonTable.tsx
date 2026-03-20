@@ -81,10 +81,9 @@ const data: SectionGroup[] = [
 const scores = [14, 2, 3, 7, 6];
 
 const CellIcon = ({ value, isJesse = false }: { value: CellValue; isJesse?: boolean }) => {
-  const size = isJesse ? "text-lg" : "text-sm";
-  if (value === "check") return <span className={`${isJesse ? "text-white" : "text-foreground"} ${size}`}>✓</span>;
-  if (value === "cross") return <span className={`${isJesse ? "text-white/40" : "text-destructive"} ${size}`}>✗</span>;
-  return <span className={`${isJesse ? "text-white/60" : "text-muted-foreground"} ${size} font-bold`}>~</span>;
+  if (value === "check") return <span className={isJesse ? "text-white" : "text-foreground"}>✓</span>;
+  if (value === "cross") return <span className={isJesse ? "text-white/30" : "text-destructive"}>✗</span>;
+  return <span className={isJesse ? "text-white/50" : "text-muted-foreground"}>~</span>;
 };
 
 /* ── Mobile: stacked cards ── */
@@ -101,7 +100,7 @@ const MobileView = () => (
               <p className="text-[11px] font-semibold text-foreground mb-2">{row.label}</p>
               <div className="grid grid-cols-5 gap-0.5 text-center">
                 {columns.map((col, i) => (
-                  <div key={col} className={i === 0 ? "bg-[hsl(270,50%,40%)] rounded-full py-1" : "py-1"}>
+                  <div key={col} className={i === 0 ? "bg-[hsl(270,50%,35%)] rounded-full py-1" : "py-1"}>
                     <p className={`text-[7px] uppercase tracking-wide mb-0.5 leading-tight font-display ${i === 0 ? "text-white/70" : "text-muted-foreground"}`}>
                       {col}
                     </p>
@@ -123,12 +122,12 @@ const MobileView = () => (
       </p>
       <div className="grid grid-cols-5 gap-0.5 text-center">
         {columns.map((col, i) => (
-          <div key={col} className={i === 0 ? "bg-[hsl(270,50%,40%)] rounded-full py-1" : "py-1"}>
+          <div key={col} className={i === 0 ? "bg-[hsl(270,50%,35%)] rounded-full py-1" : "py-1"}>
             <p className={`text-[7px] uppercase tracking-wide mb-0.5 leading-tight font-display ${i === 0 ? "text-white/70" : "text-background/50"}`}>
               {col}
             </p>
             <span className={`text-xs font-bold ${
-              i === 0 ? "text-white" : scores[i] <= 3 ? "text-background/40" : "text-background/70"
+              i === 0 ? "text-white" : scores[i] <= 3 ? "text-background/30" : "text-background/60"
             }`}>
               {scores[i]}
             </span>
@@ -139,13 +138,13 @@ const MobileView = () => (
   </div>
 );
 
-/* ── Desktop: table with rounded Jesse column ── */
+/* ── Desktop: white bg table with purple Jesse column ── */
 const DesktopView = () => (
   <div className="overflow-x-auto border border-border">
     <table className="w-full text-sm border-collapse">
       <thead>
         <tr className="bg-foreground text-background">
-          <th className="text-left px-3 py-2 text-[10px] uppercase tracking-wider text-background/50 font-medium w-[190px]">
+          <th className="text-left px-3 py-2 text-[10px] uppercase tracking-wider text-background/30 font-medium w-[190px]">
             Attribute
           </th>
           {columns.map((col, i) => (
@@ -153,8 +152,8 @@ const DesktopView = () => (
               key={col}
               className={`px-3 py-2 text-center font-display tracking-wide whitespace-nowrap ${
                 i === 0
-                  ? "bg-[hsl(270,50%,40%)] text-white text-[18px] rounded-t-full"
-                  : "text-[13px]"
+                  ? "bg-[hsl(270,50%,35%)] text-white text-[22px] rounded-t-full w-[120px]"
+                  : "text-background/50 text-[13px]"
               }`}
             >
               {col}
@@ -187,11 +186,11 @@ const DesktopView = () => (
                     key={i}
                     className={`px-3 py-2 text-center ${
                       i === 0
-                        ? "bg-[hsl(270,50%,40%)]/10 border-l-2 border-l-[hsl(270,50%,40%)] border-r border-r-[hsl(270,50%,40%)]/20"
-                        : ""
+                        ? "bg-[hsl(270,50%,35%)]/10 border-l border-l-[hsl(270,50%,35%)]/30 border-r border-r-[hsl(270,50%,35%)]/30 text-lg"
+                        : "text-sm"
                     }`}
                   >
-                    <CellIcon value={val} isJesse={false} />
+                    <CellIcon value={val} />
                   </td>
                 ))}
               </tr>
@@ -200,7 +199,7 @@ const DesktopView = () => (
         ))}
 
         <tr className="bg-foreground text-background">
-          <td className="px-3 py-2 text-[9px] uppercase tracking-wider text-background/50 font-semibold">
+          <td className="px-3 py-2 text-[9px] uppercase tracking-wider text-background/30 font-semibold">
             ✓ Score / 14
           </td>
           {scores.map((score, i) => (
@@ -208,10 +207,10 @@ const DesktopView = () => (
               key={i}
               className={`px-3 py-2 text-center font-display ${
                 i === 0
-                  ? "bg-[hsl(270,50%,40%)] text-white text-xl rounded-b-full"
+                  ? "bg-[hsl(270,50%,35%)] text-white text-2xl rounded-b-full"
                   : score <= 3
-                    ? "text-background/40 text-sm"
-                    : "text-background/70 text-sm"
+                    ? "text-background/25 text-sm"
+                    : "text-background/50 text-sm"
               }`}
             >
               {score} / 14
@@ -227,7 +226,7 @@ const JesseComparisonTable = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="py-8 md:py-12 px-6 md:px-12 lg:px-16">
+    <section className="py-8 md:py-12 px-6 md:px-12 lg:px-16 bg-background">
       <div className="max-w-5xl">
         <FadeIn>
           <h2 className="text-3xl md:text-4xl lg:text-5xl mb-1">
@@ -241,7 +240,7 @@ const JesseComparisonTable = () => {
         <FadeIn delay={0.1}>
           <div className="flex gap-3 mb-3 text-[11px] text-muted-foreground">
             <span className="flex items-center gap-1"><span className="text-foreground">✓</span> Yes</span>
-            <span className="flex items-center gap-1"><span className="text-muted-foreground font-bold">~</span> Partial</span>
+            <span className="flex items-center gap-1"><span className="text-muted-foreground">~</span> Partial</span>
             <span className="flex items-center gap-1"><span className="text-destructive">✗</span> No</span>
           </div>
 
