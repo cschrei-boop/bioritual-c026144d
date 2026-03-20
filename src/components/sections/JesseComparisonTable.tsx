@@ -86,25 +86,25 @@ const CellIcon = ({ value }: { value: CellValue }) => {
   return <span className="text-muted-foreground font-bold">~</span>;
 };
 
-/* ── Mobile: each row becomes a card ── */
+/* ── Mobile: stacked cards ── */
 const MobileView = () => (
-  <div className="space-y-6">
+  <div className="space-y-4">
     {data.map((group) => (
       <div key={group.section}>
-        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-3">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-2">
           {group.section}
         </p>
-        <div className="space-y-3">
+        <div className="space-y-2">
           {group.rows.map((row) => (
-            <div key={row.label} className="border border-border p-4">
-              <p className="text-[13px] font-semibold text-foreground mb-3">{row.label}</p>
+            <div key={row.label} className="border border-border p-3">
+              <p className="text-[12px] font-semibold text-foreground mb-2">{row.label}</p>
               <div className="grid grid-cols-5 gap-1 text-center">
                 {columns.map((col, i) => (
-                  <div key={col} className={i === 0 ? "font-semibold" : ""}>
-                    <p className="text-[9px] uppercase tracking-wide text-muted-foreground mb-1 leading-tight">
+                  <div key={col} className={i === 0 ? "bg-foreground/[0.04] py-1" : "py-1"}>
+                    <p className="text-[8px] uppercase tracking-wide text-muted-foreground mb-0.5 leading-tight font-display">
                       {col}
                     </p>
-                    <span className="text-base">
+                    <span className="text-sm">
                       <CellIcon value={row.values[i]} />
                     </span>
                   </div>
@@ -116,18 +116,17 @@ const MobileView = () => (
       </div>
     ))}
 
-    {/* Score summary */}
-    <div className="bg-foreground text-background p-4">
-      <p className="text-[10px] uppercase tracking-widest text-background/50 mb-3 font-semibold">
+    <div className="bg-foreground text-background p-3">
+      <p className="text-[10px] uppercase tracking-widest text-background/50 mb-2 font-semibold">
         ✓ Score / 14
       </p>
       <div className="grid grid-cols-5 gap-1 text-center">
         {columns.map((col, i) => (
           <div key={col}>
-            <p className="text-[9px] uppercase tracking-wide text-background/50 mb-1 leading-tight">
+            <p className="text-[8px] uppercase tracking-wide text-background/50 mb-0.5 leading-tight font-display">
               {col}
             </p>
-            <span className={`text-base font-bold ${
+            <span className={`text-sm font-bold ${
               i === 0 ? "text-background" : scores[i] <= 3 ? "text-background/40" : "text-background/70"
             }`}>
               {scores[i]}
@@ -139,20 +138,20 @@ const MobileView = () => (
   </div>
 );
 
-/* ── Desktop: original table ── */
+/* ── Desktop: table with Jesse column highlighted ── */
 const DesktopView = () => (
   <div className="overflow-x-auto border border-border">
     <table className="w-full text-sm">
       <thead>
         <tr className="bg-foreground text-background">
-          <th className="text-left px-5 py-3.5 text-[11px] uppercase tracking-wider text-background/50 font-medium w-[220px]">
+          <th className="text-left px-4 py-3 text-[11px] uppercase tracking-wider text-background/50 font-medium w-[200px]">
             Attribute
           </th>
           {columns.map((col, i) => (
             <th
               key={col}
-              className={`px-5 py-3.5 text-center text-[13px] font-semibold whitespace-nowrap ${
-                i === 0 ? "bg-foreground/90 text-background" : ""
+              className={`px-4 py-3 text-center font-display text-[15px] tracking-wide whitespace-nowrap ${
+                i === 0 ? "bg-background text-foreground" : ""
               }`}
             >
               {col}
@@ -167,7 +166,7 @@ const DesktopView = () => (
             <tr key={`section-${group.section}`}>
               <td
                 colSpan={6}
-                className="bg-secondary px-5 py-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground"
+                className="bg-secondary px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-muted-foreground"
               >
                 {group.section}
               </td>
@@ -177,15 +176,15 @@ const DesktopView = () => (
                 key={row.label}
                 className="border-b border-border hover:bg-secondary/50 transition-colors"
               >
-                <td className="px-5 py-3 text-left text-[12.5px] font-semibold text-muted-foreground">
+                <td className="px-4 py-2.5 text-left text-[12px] font-semibold text-muted-foreground">
                   {row.label}
                 </td>
                 {row.values.map((val, i) => (
                   <td
                     key={i}
-                    className={`px-5 py-3 text-center ${
+                    className={`px-4 py-2.5 text-center ${
                       i === 0
-                        ? "bg-foreground/[0.03] border-l-2 border-l-foreground border-r border-r-border"
+                        ? "bg-foreground/[0.04] border-l-2 border-l-foreground border-r border-r-border"
                         : ""
                     }`}
                   >
@@ -198,15 +197,15 @@ const DesktopView = () => (
         ))}
 
         <tr className="bg-foreground text-background">
-          <td className="px-5 py-3.5 text-[10px] uppercase tracking-wider text-background/50 font-semibold">
+          <td className="px-4 py-3 text-[10px] uppercase tracking-wider text-background/50 font-semibold">
             ✓ Score / 14
           </td>
           {scores.map((score, i) => (
             <td
               key={i}
-              className={`px-5 py-3.5 text-center font-bold ${
+              className={`px-4 py-3 text-center font-display text-lg ${
                 i === 0
-                  ? "bg-foreground/90 text-background text-base"
+                  ? "bg-background text-foreground"
                   : score <= 3
                     ? "text-background/40"
                     : "text-background/70"
@@ -228,24 +227,24 @@ const JesseComparisonTable = () => {
     <section className="py-10 md:py-16 px-6 md:px-12 lg:px-16">
       <div className="max-w-5xl">
         <FadeIn>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl mb-3">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl mb-2">
             How people learn about their bodies.
           </h2>
-          <p className="text-muted-foreground text-sm mb-8">
+          <p className="text-muted-foreground text-sm mb-6">
             A comparison of information sources — and why trusted guidance changes outcomes.
           </p>
         </FadeIn>
 
         <FadeIn delay={0.1}>
-          <div className="flex gap-5 mb-6 text-xs text-muted-foreground">
-            <span className="flex items-center gap-1.5"><span className="text-foreground">✓</span> Yes</span>
-            <span className="flex items-center gap-1.5"><span className="text-muted-foreground font-bold">~</span> Partial</span>
-            <span className="flex items-center gap-1.5"><span className="text-destructive">✗</span> No</span>
+          <div className="flex gap-4 mb-4 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1"><span className="text-foreground">✓</span> Yes</span>
+            <span className="flex items-center gap-1"><span className="text-muted-foreground font-bold">~</span> Partial</span>
+            <span className="flex items-center gap-1"><span className="text-destructive">✗</span> No</span>
           </div>
 
           {isMobile ? <MobileView /> : <DesktopView />}
 
-          <p className="mt-5 text-xs text-muted-foreground leading-relaxed max-w-3xl">
+          <p className="mt-4 text-xs text-muted-foreground leading-relaxed max-w-3xl">
             Jesse is not a replacement for medical professionals — it's what helps you become an informed participant in your own health.
           </p>
         </FadeIn>
